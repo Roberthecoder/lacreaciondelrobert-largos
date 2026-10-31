@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
-const VOZ = path.join(AQUI, '..', 'voz', 'narracion@eleven_v3.json');
+const VOZ = path.join(AQUI, '..', 'voz', 'narracion-v2@eleven_v3.json');
 const RETRASO = 0.45;      // la voz entra a los 0.45 s
 const LIMITE = 178.5;
 
@@ -21,7 +21,7 @@ const al = meta.alignment, chars = al.characters.join('');
 let cursor = 0;
 const ini = lineas.map((l) => {
   if (!l.t) return null;
-  const t = l.t.replace('Jalisco, Mexico,', 'Jalisco, México,');
+  const t = l.t.replace('Jalisco, Mexico,', 'Jalisco, México,').replace('Fungi Mati: fungi, and mati,', 'Fúngui Máti: fúngui, and máti,').replace(/Fungi Mati/g, 'Fúngui Máti');
   const i = chars.indexOf(t.slice(0, 14), cursor);
   if (i < 0) throw new Error('No encuentro en la voz: ' + t.slice(0, 40));
   cursor = i + t.length - 2;

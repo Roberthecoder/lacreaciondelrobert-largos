@@ -118,7 +118,7 @@ jobs:
           SOL=$(node -e 'const fs=require("fs");globalThis.window={};new Function(fs.readFileSync("'"$V"'/tiempos.js","utf8"))();console.log(window.TIEMPOS_VOZ.slice(0,4).reduce((a,b)=>a+b,0).toFixed(2))')
           echo "total $TOTAL s · voz desde $RET ms · velocidad $VEL · solución desde $SOL s"
           node "$V/musica.mjs" musica.wav "$TOTAL" "$SOL"
-          ffmpeg -y -loglevel error -i "$LARGO/voz/narracion@eleven_v3.mp3" -i musica.wav -filter_complex \
+          ffmpeg -y -loglevel error -i "$LARGO/voz/narracion-v2@eleven_v3.mp3" -i musica.wav -filter_complex \
             "[0:a]atempo=$VEL,aresample=48000,adelay=$RET:all=1,apad,asplit=2[vz][sc];[1:a]volume=0.55[m];[m][sc]sidechaincompress=threshold=0.04:ratio=4:attack=25:release=400[duck];[duck][vz]amix=inputs=2:normalize=0:duration=first,loudnorm=I=-14:TP=-1.5:LRA=11,aresample=48000[o]" \
             -map "[o]" -t "$TOTAL" -c:a pcm_s16le mezcla.wav
           ffmpeg -y -loglevel error -i video.mp4 -i mezcla.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 320k -shortest -movflags +faststart pitch_fungi_mati_4k.mp4

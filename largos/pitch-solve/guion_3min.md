@@ -10,14 +10,14 @@ That speed is the point. In the time compost takes to half-break down, the same 
 
 In 2026, with a grant from Tec de Monterrey, I turned an abandoned space at my university's high school into a permanent mushroom farm. I taught fifty students to grow there, and every harvest went back to that community: eighty-five people in total. Fungi Mati already sells grow kits and courses.
 
-Half of those students learned with an AI tutor I built on ChatGPT with my own materials; the other half learned the traditional way. The next version will be a chatbot built on Claude, guiding growers in any language, at any hour.
+Half of those students learned with an AI tutor I built on ChatGPT, with guidance and early support from Equitech Futures; the other half learned the traditional way. The next version will be a chatbot built on Claude, guiding growers in any language, at any hour.
 
-At the Carrillo Biorefinery Lab of Tec de Monterrey, where I run the fungal strain collection under Dr. Danay Carrillo Nieves, an approved project will test whether crossing two oyster mushroom strains yields one better adapted to bagasse. It is exploratory, but if it works, the method travels to coffee pulp, corn stover or sugarcane bagasse.
+At the Carrillo Biorefinery Lab of Tec de Monterrey, I run the fungal strain collection under Dr. Danay Carrillo Nieves. In her lab, an approved project will test whether crossing two oyster mushroom strains yields one better adapted to bagasse. It is exploratory, but if it works, the method travels to spent coffee grounds, corn stover or sugarcane bagasse.
 
-With a five thousand dollar award from Equitech Futures, I am building a production farm at home, with a pressure canner, a flow hood and a humidified fruiting room. Next comes my first full tonne of pellets.
+Meanwhile, with a five thousand dollar award from Equitech Futures, I am building a production farm at home, with a pressure canner, a flow hood and a humidified fruiting room. Next comes my first full tonne of pellets.
 
 Year one: one tonne of bagasse diverted from burning, and at least six hundred kilograms of mushrooms sold to Guadalajara restaurants through a distributor I already have.
 
-From Solve, I need three things: help with offtake agreements with restaurants; connections to the tequila industry, because reaching distilleries has been the hardest part; and mentors who have taken a bio-based product from one pilot to many.
+From Solve, I need three things: help measuring my impact, so every tonne of bagasse diverted is counted rigorously; connections through Solve's network to food and agriculture partners, including the tequila industry, because reaching distilleries has been the hardest part; and mentors and past Solvers who have taken a bio-based product from one pilot to many.
 
 Fungi Mati: fungi, and mati, a Nahuatl word for knowing. Turning the one residue Jalisco has too much of into food, in weeks.

@@ -44,6 +44,10 @@ window.FOTOS = {
 640,
 360
 ],
+"video/img/robert/frasco_colonizado.jpg": [
+900,
+1600
+],
 "video/img/robert/frasco_esporas.jpg": [
 880,
 1380

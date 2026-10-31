@@ -669,7 +669,7 @@ ILUSC.cruza = {
 function IconoResiduo({ tipo, x, y, e, t }) {
   return <g opacity={e} transform={`translate(${x} ${y}) scale(${0.8 + 0.2 * e})`}>
     <circle r={130} fill="#0c0d10" opacity={0.85} /><circle r={130} fill="none" stroke={ORO} strokeWidth={3} />
-    {tipo === 'cafe' && Array.from({ length: 9 }, (_, i) => { const a = i * 0.7, rr = 22 + (i % 3) * 18; return <g key={i}><ellipse cx={Math.cos(a) * rr} cy={Math.sin(a) * rr - 10} rx={22} ry={20} fill={i % 2 ? '#a3202a' : '#c8343a'} /><ellipse cx={Math.cos(a) * rr} cy={Math.sin(a) * rr - 10} rx={22} ry={20} fill="url(#c-esfera)" /></g>; })}
+    {tipo === 'cafe' && <g><path d="M -80 10 Q 0 -70 80 10 Z" fill="#3a2416" />{Array.from({ length: 70 }, (_, i) => { const r = R(4100 + i); const x = (r() - 0.5) * 150, y = 6 - r() * 60 * (1 - Math.abs(x) / 90); return <circle key={i} cx={x} cy={y} r={2 + r() * 3} fill={['#5a3a24', '#2a1a10', '#6e4a30'][i % 3]} />; })}<path d="M -100 14 L 100 14 L 84 60 L -84 60 Z" fill="#d9d4cc" /><path d="M -100 14 L 100 14 L 84 60 L -84 60 Z" fill="url(#c-cilindro)" opacity={0.5} /></g>}
     {tipo === 'maiz' && <g><path d="M -10 90 Q -4 0 10 -90" stroke="#c9a85a" strokeWidth={14} fill="none" /><path d="M 0 30 Q -70 0 -90 -50" stroke="#b89848" strokeWidth={10} fill="none" /><path d="M 4 -10 Q 70 -30 84 -84" stroke="#b89848" strokeWidth={10} fill="none" /><path d="M -4 70 Q 60 50 80 10" stroke="#a88838" strokeWidth={9} fill="none" /></g>}
     {tipo === 'cana' && [-40, 0, 40].map((dx, i) => <g key={i}><rect x={dx - 12} y={-90} width={24} height={180} rx={10} fill={['#8aa84a', '#a0b85a', '#7a9a3a'][i]} />{[-50, 0, 50].map((dy, j) => <rect key={j} x={dx - 14} y={dy} width={28} height={6} fill="#5a6a2a" />)}</g>)}
     {tipo === 'agave' && Array.from({ length: 9 }, (_, i) => { const a = (-160 + i * 17.5) * Math.PI / 180; return <path key={i} d={`M 0 60 L ${Math.cos(a) * 110} ${Math.sin(a) * 110 + 40}`} stroke="#6a9a9a" strokeWidth={16} strokeLinecap="round" />; })}
@@ -678,7 +678,7 @@ function IconoResiduo({ tipo, x, y, e, t }) {
 ILUSC.residuos = {
   cam: { z0: 1.0, z1: 1.05, fx: 960, fy: 540 },
   dibuja: ({ p, tl, T, capa }) => {
-    const items = [['agave', 'agave bagasse', 480, 260, 0.02], ['cafe', 'coffee pulp', 1440, 260, 0.25], ['maiz', 'corn stover', 480, 690, 0.4], ['cana', 'sugarcane bagasse', 1440, 690, 0.55]];
+    const items = [['agave', 'agave bagasse', 480, 260, 0.02], ['cafe', 'spent coffee grounds', 1440, 260, 0.25], ['maiz', 'corn stover', 480, 690, 0.4], ['cana', 'sugarcane bagasse', 1440, 690, 0.55]];
     return <g>
       <g transform={capa(0.3)}><Estudio color="#10120f" luz={[0.5, 0.5]} o={0.5} /><Bokeh n={16} t={T} seed={171} o={0.3} /></g>
       <g transform={capa(1)}>
@@ -795,7 +795,7 @@ ILUSC.pedidos = {
   cam: { z0: 1.0, z1: 1.04, fx: 960, fy: 540 },
   dibuja: ({ p, tl, T, capa }) => {
     const at = [0.12, 0.33, 0.66];
-    const cards = [['01', 'Offtake agreements', 'with restaurants'], ['02', 'Tequila-industry', 'connections'], ['03', 'Mentors', 'from one pilot to many']];
+    const cards = [['01', 'Impact measurement', 'every tonne counted'], ['02', 'Food & agriculture', 'partners, incl. tequila'], ['03', 'Mentors & Solvers', 'from one pilot to many']];
     return <g>
       <g transform={capa(0.3)}><Estudio color="#0f0f12" luz={[0.5, 0.3]} o={0.45} /><Bokeh n={16} t={T} seed={211} o={0.3} /></g>
       <g transform={capa(1)}>
@@ -805,7 +805,7 @@ ILUSC.pedidos = {
           return <Tarjeta key={i} x={x} y={300} w={480} h={560} e={e} acento={act > 0.5 ? ORO : '#8a8680'}>
             <text x={40} y={90} fontFamily={FUENTE.mono} fontWeight={700} fontSize={40} fill={ORO}>{n}</text>
             <g transform="translate(240 250)">
-              {i === 0 && <g><rect x={-90} y={-110} width={180} height={220} rx={10} fill="#f3efe6" />{[0, 1, 2, 3, 4].map((k) => <rect key={k} x={-64} y={-80 + k * 30} width={k === 4 ? 70 : 128} height={10} rx={5} fill="#8a8680" />)}<path d="M -60 80 q 20 -24 40 0 t 40 0" stroke="#2346ff" strokeWidth={4} fill="none" /></g>}
+              {i === 0 && <g><path d="M -110 90 L 120 90 M -110 90 L -110 -110" stroke="#efe8da" strokeWidth={4} />{[40, 75, 110, 150, 190].map((h, k) => { const e2 = cpr(p, at[0] + 0.03 + k * 0.02, at[0] + 0.08 + k * 0.02, ease); return <rect key={k} x={-90 + k * 42} y={88 - h * e2} width={30} height={h * e2} rx={4} fill={k === 4 ? ORO : '#efe8da'} opacity={0.9} />; })}</g>}
               {i === 1 && <g><rect x={-120} y={-40} width={110} height={120} fill="#8a5a3a" /><path d="M -130 -40 L -65 -100 L 0 -40 Z" fill="#6a3a22" /><rect x={-40} y={-140} width={24} height={100} fill="#6a3a22" />
                 <path d="M 0 30 L 60 30" stroke={ORO} strokeWidth={6} strokeDasharray="10 8" strokeDashoffset={-T * 30} /><circle cx={100} cy={30} r={40} fill="#efe8da" /><SetasRepisa x={100} y={50} g={1} t={T} seed={212} tam={40} n={4} /></g>}
               {i === 2 && <g><circle cx={-100} cy={0} r={26} fill={ORO} />{Array.from({ length: 8 }, (_, k) => { const a = (k / 8) * Math.PI - Math.PI / 2, e2 = cpr(p, at[2] + 0.05 + k * 0.015, at[2] + 0.09 + k * 0.015);

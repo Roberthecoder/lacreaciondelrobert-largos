@@ -12,7 +12,7 @@ return [
   ] },
   { num: 2, titulo: 'Fungi Mati', tarjeta: false, lineas: [
     { t: 'My name is Roberto Navarro.', v: { tipo: 'foto', foto: R_('robert_seta_ostra_2026'), foco: [0.45, 0.35], lado: 'izq', texto: 'Roberto Navarro', sub: 'Biotechnology engineering · Tec de Monterrey' } },
-    { t: 'I am a biotechnology engineering student in Zapopan, and I have grown mushrooms since I was ten.', v: { tipo: 'fotos', fotos: [R_('setas_2'), R_('micelio_en_grano_frascos_2023'), R_('lab_tec_selfie_bata_setas')], etiqueta: 'GROWING MUSHROOMS SINCE AGE TEN' } },
+    { t: 'I am a biotechnology engineering student in Zapopan, and I have grown mushrooms since I was ten.', v: { tipo: 'fotos', fotos: [R_('setas_2'), R_('frasco_colonizado'), R_('lab_tec_selfie_bata_setas')], etiqueta: 'GROWING MUSHROOMS SINCE AGE TEN' } },
     { t: 'Fungi Mati turns that bagasse into gourmet mushrooms in four to six weeks.', v: { tipo: 'ilus', id: 'titulo' } },
   ] },
   { num: 3, titulo: 'How it works', tarjeta: false, lineas: [
@@ -30,16 +30,16 @@ return [
     { t: 'Fungi Mati already sells grow kits and courses.', v: { tipo: 'fotos', fotos: [R_('robert_kits_seta_gris_2023'), R_('pas_kits_seta_gris')], etiqueta: 'GROW KITS AND COURSES' } },
   ] },
   { num: 5, titulo: 'AI tutor', tarjeta: false, lineas: [
-    { t: 'Half of those students learned with an AI tutor I built on ChatGPT with my own materials; the other half learned the traditional way.', v: { tipo: 'ilus', id: 'tutor' } },
+    { t: 'Half of those students learned with an AI tutor I built on ChatGPT, with guidance and early support from Equitech Futures; the other half learned the traditional way.', v: { tipo: 'ilus', id: 'tutor' } },
     { t: 'The next version will be a chatbot built on Claude, guiding growers in any language, at any hour.', v: { tipo: 'ilus', id: 'chatbot' } },
   ] },
   { num: 6, titulo: 'Strain research', tarjeta: false, lineas: [
-    { t: 'At the Carrillo Biorefinery Lab of Tec de Monterrey, where I run the fungal strain collection under Dr. Danay Carrillo Nieves,', v: { tipo: 'fotos', fotos: [R_('lab_tec_cepario_placas'), R_('carrillo_lab_cultivo_agar_azul')], etiqueta: 'CARRILLO BIOREFINERY LAB · TEC DE MONTERREY' } },
-    { t: 'an approved project will test whether crossing two oyster mushroom strains yields one better adapted to bagasse.', v: { tipo: 'ilus', id: 'cruza' } },
-    { t: 'It is exploratory, but if it works, the method travels to coffee pulp, corn stover or sugarcane bagasse.', v: { tipo: 'ilus', id: 'residuos' } },
+    { t: 'At the Carrillo Biorefinery Lab of Tec de Monterrey, I run the fungal strain collection under Dr. Danay Carrillo Nieves.', v: { tipo: 'fotos', fotos: [R_('lab_tec_cepario_placas'), R_('carrillo_lab_cultivo_agar_azul')], etiqueta: 'CARRILLO BIOREFINERY LAB · LED BY DR. DANAY CARRILLO NIEVES' } },
+    { t: 'In her lab, an approved project will test whether crossing two oyster mushroom strains yields one better adapted to bagasse.', v: { tipo: 'ilus', id: 'cruza' } },
+    { t: 'It is exploratory, but if it works, the method travels to spent coffee grounds, corn stover or sugarcane bagasse.', v: { tipo: 'ilus', id: 'residuos' } },
   ] },
   { num: 7, titulo: 'The home farm', tarjeta: false, lineas: [
-    { t: 'With a five thousand dollar award from Equitech Futures,', v: { tipo: 'ilus', id: 'premio' } },
+    { t: 'Meanwhile, with a five thousand dollar award from Equitech Futures,', v: { tipo: 'ilus', id: 'premio' } },
     { t: 'I am building a production farm at home, with a pressure canner, a flow hood and a humidified fruiting room.', v: { tipo: 'fotos', fotos: ['equipo/olla_all_american', 'equipo/campana_ffu', 'equipo/tienda_fructificacion'], etiqueta: 'NEW EQUIPMENT FOR THE HOME FARM · ZAPOPAN' } },
     { t: 'Next comes my first full tonne of pellets.', v: { tipo: 'ilus', id: 'cuarto' } },
   ] },
@@ -47,7 +47,7 @@ return [
     { t: 'Year one: one tonne of bagasse diverted from burning, and at least six hundred kilograms of mushrooms sold to Guadalajara restaurants through a distributor I already have.', v: { tipo: 'ilus', id: 'metas' } },
   ] },
   { num: 9, titulo: 'Why Solve', tarjeta: false, lineas: [
-    { t: 'From Solve, I need three things: help with offtake agreements with restaurants; connections to the tequila industry, because reaching distilleries has been the hardest part; and mentors who have taken a bio-based product from one pilot to many.', v: { tipo: 'ilus', id: 'pedidos' } },
+    { t: "From Solve, I need three things: help measuring my impact, so every tonne of bagasse diverted is counted rigorously; connections through Solve's network to food and agriculture partners, including the tequila industry, because reaching distilleries has been the hardest part; and mentors and past Solvers who have taken a bio-based product from one pilot to many.", v: { tipo: 'ilus', id: 'pedidos' } },
   ] },
   { num: 0, titulo: 'Fungi Mati', tarjeta: false, lineas: [
     { t: 'Fungi Mati: fungi, and mati, a Nahuatl word for knowing.', v: { tipo: 'ilus', id: 'nombre' } },
