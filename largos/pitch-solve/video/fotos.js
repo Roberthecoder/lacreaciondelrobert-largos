@@ -1,5 +1,17 @@
 // Tamaño de cada foto (ancho, alto).
 window.FOTOS = {
+"video/img/equipo/campana_ffu.jpg": [
+1700,
+790
+],
+"video/img/equipo/olla_all_american.jpg": [
+1200,
+1324
+],
+"video/img/equipo/tienda_fructificacion.jpg": [
+1600,
+1014
+],
 "video/img/robert/campana_flujo_casera_1.jpg": [
 720,
 406

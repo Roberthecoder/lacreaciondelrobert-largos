@@ -701,6 +701,7 @@ ILUSC.premio = {
   dibuja: ({ p, tl, T, capa }) => <g>
     <g transform={capa(0.3)}><Estudio color="#0e1120" luz={[0.3, 0.4]} halo="#ffe2a0" o={0.45} /><Bokeh n={18} t={T} seed={181} o={0.35} /></g>
     <g transform={capa(1)}>
+      <Rotulo x={150} y={250} arriba="MEANWHILE · BACK HOME" tl={tl} at={0.1} tam={10} />
       <Cuenta x={140} y={560} hasta={5000} tl={tl} at={0.25} dura={1.4} tam={220} prefijo="$" color={CREMA} />
       <Txt x={150} y={640} tam={40} fam={FUENTE.mono} peso={700} esp={6} color={ORO} o={cpr(tl, 0.6, 1.1)}>USD AWARD</Txt>
       <Txt x={150} y={710} tam={40} ital o={cpr(tl, 0.9, 1.5)}>Rise Innovation Fund Challenge 2026</Txt>

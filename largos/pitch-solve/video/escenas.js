@@ -12,7 +12,7 @@ return [
   ] },
   { num: 2, titulo: 'Fungi Mati', tarjeta: false, lineas: [
     { t: 'My name is Roberto Navarro.', v: { tipo: 'foto', foto: R_('robert_seta_ostra_2026'), foco: [0.45, 0.35], lado: 'izq', texto: 'Roberto Navarro', sub: 'Biotechnology engineering · Tec de Monterrey' } },
-    { t: 'I am a biotechnology engineering student in Zapopan, and I have grown mushrooms since I was ten.', v: { tipo: 'fotos', fotos: [R_('setas_2'), R_('frasco_esporas'), R_('lab_tec_selfie_bata_setas')], etiqueta: 'GROWING MUSHROOMS SINCE AGE TEN' } },
+    { t: 'I am a biotechnology engineering student in Zapopan, and I have grown mushrooms since I was ten.', v: { tipo: 'fotos', fotos: [R_('setas_2'), R_('micelio_en_grano_frascos_2023'), R_('lab_tec_selfie_bata_setas')], etiqueta: 'GROWING MUSHROOMS SINCE AGE TEN' } },
     { t: 'Fungi Mati turns that bagasse into gourmet mushrooms in four to six weeks.', v: { tipo: 'ilus', id: 'titulo' } },
   ] },
   { num: 3, titulo: 'How it works', tarjeta: false, lineas: [
@@ -40,7 +40,7 @@ return [
   ] },
   { num: 7, titulo: 'The home farm', tarjeta: false, lineas: [
     { t: 'With a five thousand dollar award from Equitech Futures,', v: { tipo: 'ilus', id: 'premio' } },
-    { t: 'I am building a production farm at home, with a pressure canner, a flow hood and a humidified fruiting room.', v: { tipo: 'fotos', fotos: [R_('olla_presion_placas'), R_('campana_flujo_trabajando'), R_('frascos_grano_microscopio')], etiqueta: 'THE HOME FARM · ZAPOPAN' } },
+    { t: 'I am building a production farm at home, with a pressure canner, a flow hood and a humidified fruiting room.', v: { tipo: 'fotos', fotos: ['equipo/olla_all_american', 'equipo/campana_ffu', 'equipo/tienda_fructificacion'], etiqueta: 'NEW EQUIPMENT FOR THE HOME FARM · ZAPOPAN' } },
     { t: 'Next comes my first full tonne of pellets.', v: { tipo: 'ilus', id: 'cuarto' } },
   ] },
   { num: 8, titulo: 'Year one', tarjeta: false, lineas: [
