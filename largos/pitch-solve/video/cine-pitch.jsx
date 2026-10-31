@@ -593,7 +593,7 @@ ILUSC.tutor = {
           <path d="M -250 -10 L 200 -10 M -250 50 L 120 50" stroke="#f2efe6" strokeWidth={4} opacity={0.6} />
         </g>
         {Array.from({ length: 25 }, (_, i) => <g key={i} opacity={cpr(p, 0.3 + i * 0.006, 0.35 + i * 0.006)}><Alumno x={1160 + (i % 9) * 70 + (Math.floor(i / 9) % 2) * 35} y={680 + Math.floor(i / 9) * 74} s={0.9} c={['#4a4a6a', '#6a4a3a', '#3a5a6a', '#5a6a3a'][i % 4]} /></g>)}
-        <text x={480} y={596} textAnchor="middle" fontFamily={FUENTE.serif} fontStyle="italic" fontSize={30} fill={CREMA} opacity={a * 0.85}>built on ChatGPT with my own materials</text>
+        <text x={480} y={596} textAnchor="middle" fontFamily={FUENTE.serif} fontStyle="italic" fontSize={30} fill={CREMA} opacity={a * 0.85}>built on ChatGPT · guided and supported by Equitech Futures</text>
       </g>
       <Vineta o={0.6} />
     </g>;
