@@ -366,7 +366,7 @@ ILUSC.periodico = {
             <g clipPath="url(#c-per-foto)">
               <rect x={0} y={0} width={960} height={640} fill="#d9dcd6" />
               <g filter="url(#c-b14)"><rect x={0} y={0} width={300} height={640} fill="#eceee9" /><rect x={560} y={0} width={400} height={640} fill="#3f6f4a" /><rect x={620} y={60} width={300} height={260} fill="#2f5a3a" /><rect x={140} y={40} width={200} height={300} fill="#c9cfc7" /></g>
-              <Nene x={480} y={1010} s={2.15} edad={11} piel="#a86f48" pelo="#1a1311" playera="#f4f4f0" rayas={false} cuello="#e9e9e4" boca="risa" mira={[0, 0]} seed={14} brazoD={168} brazoI={168} parpadeo={false} />
+              <Nene x={480} y={1010} s={2.15} edad={11} piel="#a86f48" pelo="#1a1311" playera="#f4f4f0" rayas={false} cuello="#e9e9e4" boca="risa" mira={[0, 0]} seed={14} brazoD={0} brazoI={0} parpadeo={false} />
               {/* listones y medallas: plata a la izquierda, dorada a la derecha */}
               <path d="M 380 640 Q 330 520 250 440" stroke="#3f9a4a" strokeWidth={22} fill="none" />
               <path d="M 560 640 Q 640 560 700 470" stroke="#f2d56a" strokeWidth={22} fill="none" />

@@ -53,7 +53,7 @@ ILUSC.recamara = {
         {/* repisa con bolsas de cultivo y frascos */}
         <g opacity={ap(3)} transform="translate(160 0)"><Tablon x={620} y={380} w={560} prof={16} grosor={18} madera="pino" />
           {[0, 1, 2].map((k) => <g key={k} transform={`translate(${700 + k * 120} 392) scale(0.36)`}><BolsaCultivo x={0} y={0} w={220} h={300} colonizado={0.6 + k * 0.15} /></g>)}
-          {[0, 1].map((k) => <Frasco key={k} id={`rec-f${k}`} x={1090 + k * 100} y={392} w={80} h={120} contenido="maiz" tapa="oro" seed={k + 40} nivel={0.8} ventana={false} />)}</g>
+          {[0, 1].map((k) => <Frasco key={k} id={`rec-f${k}`} x={985 + k * 95} y={392} w={80} h={120} contenido="maiz" tapa="oro" seed={k + 40} nivel={0.8} ventana={false} />)}</g>
         <g opacity={ap(5)} transform="translate(160 0)"><Tablon x={620} y={560} w={600} prof={16} grosor={18} madera="pino" />
           {[0, 1, 2, 3, 4].map((k) => <g key={k} transform={`translate(${680 + k * 120} 562) scale(0.24)`}><Petri x={0} y={-60} r={200} id={`rec-p${k}`} medio="#efe0b0"><Micelio x={0} y={0} r={200} g={0.4 + k * 0.12} seed={k + 3} /></Petri></g>)}</g>
       </g>

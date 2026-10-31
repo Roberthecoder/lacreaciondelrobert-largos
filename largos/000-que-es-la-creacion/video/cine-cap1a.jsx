@@ -316,7 +316,6 @@ ILUSC.vitamina_t = {
       {etq('Tacos', 0.14, 440, 560)}
       {etq('Tortillas', 0.3, 1060, 600)}
       {etq('Tostadas', 0.46, 1610, 600)}
-      <NotaMano x={1290} y={215} texto="(culpa de mi papá)" tl={tl} at={0.62 * dur} tam={50} color="#fff" rot={-5} o={cpop(p, 0.6)} />
     </g>;
   },
 };

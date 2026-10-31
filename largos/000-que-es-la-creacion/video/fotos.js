@@ -1,5 +1,8 @@
 // Generado por preparar_fotos.py: tamaño de cada foto preparada.
 window.FOTOS = {
+"video/img/extra/equitech.png": [738, 270],
+"video/img/extra/ruta_azul.png": [152, 94],
+"video/img/extra/bosques_urbanos.jpg": [1200, 768],
 "video/img/extra/platino_hd.jpg": [1200, 925],
 "video/img/extra/mit_grupo.jpg": [2000, 1500],
 "video/img/extra/danay.jpg": [1599, 1200],

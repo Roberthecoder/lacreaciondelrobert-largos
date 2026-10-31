@@ -190,6 +190,7 @@ ILUSC.curso = {
         <rect x={560} y={70} width={800} height={460} fill="#1d1d22" /><rect x={576} y={86} width={768} height={428} fill="#f6f4ee" />
         <text x={960} y={160} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={700} fontSize={50} fill="#1d2a1a">Cultivo de setas</text>
         <text x={960} y={200} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={18} letterSpacing={4} fill="#14a37c">FUNGI MATI · RUTA AZUL</text>
+        <rect x={600} y={450} width={720} height={56} fill="#ffffff" /><image href="video/img/extra/ruta_azul.png" x={690} y={452} width={150} height={52} preserveAspectRatio="xMidYMid meet" /><image href="video/img/extra/equitech.png" x={1040} y={454} width={150} height={48} preserveAspectRatio="xMidYMid meet" />
         <BolsaCultivo x={760} y={480} w={150} h={210}><Racimo x={20} y={-140} n={6} tam={70} color="#ef7fa6" g={1} t={tl} seed={451} /></BolsaCultivo>
         <g transform="translate(1100 330)"><rect x={-150} y={-90} width={300} height={180} rx={14} fill="#e9f6f0" stroke="#14a37c" strokeWidth={3} /><text x={0} y={-50} textAnchor="middle" fontFamily={FUENTE.texto} fontWeight={800} fontSize={20} fill="#14a37c">TUTOR DE IA</text>
           {[0, 1, 2].map((k) => <rect key={k} x={-120 + (k % 2) * 60} y={-30 + k * 36} width={180} height={24} rx={12} fill={k % 2 ? '#14a37c' : '#d9e6e0'} />)}</g>
@@ -324,6 +325,107 @@ ILUSC.bagazo_vinazas = {
       <g opacity={vz} style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,.8))' }}><path d="M 1340 590 L 1340 500" stroke="#fff" strokeWidth={2.5} /><text x={1340} y={480} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={46} fill="#fff">Vinazas</text><text x={1340} y={440} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={18} letterSpacing={3} fill="#F4C25A">EL LÍQUIDO QUE QUEDA AL DESTILAR</text></g>
       <Polvo n={40} t={tl} seed={493} o={0.6} color="#ffe2b0" />
       <Rotulo x={120} y={190} arriba="RESIDUOS DE LA INDUSTRIA TEQUILERA" texto="Hongos para aprovecharlos" tl={tl} at={0.3} tam={52} />
+    </g>;
+  },
+};
+
+/* ---------- 2017: preselección en Monterrey, rumbo a Bulgaria ---------- */
+// Silueta simplificada de México (esquemática) en coordenadas de la escena.
+const MEXICO = 'M 300 250 L 520 230 L 640 300 L 700 300 L 760 360 L 820 360 L 880 330 L 900 420 L 860 470 L 880 520 L 960 560 L 1080 560 L 1110 520 L 1170 510 L 1190 470 L 1260 470 L 1240 540 L 1170 600 L 1120 640 L 1060 660 L 960 650 L 860 620 L 760 560 L 700 500 L 640 430 L 560 380 L 480 320 L 420 300 L 380 360 L 400 420 L 360 400 L 330 330 Z';
+ILUSC.monterrey = {
+  cam: { z0: 1.05, z1: 1.0, fx: 960, fy: 480 },
+  dibuja: ({ p, tl, capa }) => {
+    const viaje = cpr(p, 0.08, 0.4, kEase.suave), mundo = cpr(p, 0.52, 0.78, kEase.suave);
+    const gdl = [700, 520], mty = [850, 410], bul = [1460, 120];
+    const arco = (a, b, k, h) => { const mx = (a[0] + b[0]) / 2, my = Math.min(a[1], b[1]) - h; return `M ${a[0]} ${a[1]} Q ${mx} ${my} ${lerp(a[0], b[0], k)} ${lerp(a[1], b[1], k)}`; };
+    return <g>
+      <g transform={capa(0.4)}><rect x={-200} y={-200} width={2320} height={1500} fill="#0f1422" />
+        {Array.from({ length: 24 }, (_, i) => <path key={i} d={`M ${-200 + i * 100} -200 L ${-200 + i * 100} 1300`} stroke="#1d2640" strokeWidth={1.5} />)}
+        {Array.from({ length: 16 }, (_, i) => <path key={'h' + i} d={`M -200 ${-200 + i * 100} L 2120 ${-200 + i * 100}`} stroke="#1d2640" strokeWidth={1.5} />)}
+        <Halo x={850} y={420} r={600} color="#5f8fd6" o={0.3} /></g>
+      <g transform={`${capa(1)} translate(260 90)`}>
+        <path d={MEXICO} fill="#26365c" stroke="#7fa8e8" strokeWidth={3} />
+        <path d={MEXICO} fill="url(#c-arriba)" opacity={0.5} />
+        {/* Europa al fondo (esquemática), aparece al alejar */}
+        <g opacity={mundo}><path d="M 1320 70 L 1460 40 L 1580 80 L 1620 170 L 1540 210 L 1440 200 L 1360 170 Z" fill="#26365c" stroke="#7fa8e8" strokeWidth={3} /></g>
+        {[[gdl, 'Guadalajara'], [mty, 'Monterrey']].map(([c, n], i) => <g key={i} opacity={i ? viaje : 1}><circle cx={c[0]} cy={c[1]} r={12} fill="#F4C25A" /><circle cx={c[0]} cy={c[1]} r={24 + 6 * Math.sin(tl * 3)} fill="none" stroke="#F4C25A" strokeWidth={2} opacity={0.6} />
+          <text x={c[0] + (i ? 24 : -24)} y={c[1] + 8} textAnchor={i ? 'start' : 'end'} fontFamily={FUENTE.serif} fontWeight={600} fontSize={40} fill="#fff">{n}</text></g>)}
+        <path d={arco(gdl, mty, viaje, 120)} stroke="#F4C25A" strokeWidth={5} fill="none" strokeDasharray="14 10" />
+        {mundo > 0 && <g><path d={arco(mty, bul, mundo, 260)} stroke="#cfd8e8" strokeWidth={4} fill="none" strokeDasharray="10 12" />
+          <g opacity={cpr(p, 0.74, 0.8)}><circle cx={bul[0]} cy={bul[1]} r={12} fill="#cfd8e8" /><text x={bul[0]} y={bul[1] - 30} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={40} fill="#fff">Bulgaria</text></g></g>}
+        {/* libreta de entrenamiento */}
+        <g opacity={cpr(p, 0.25, 0.35)} transform="translate(980 500) rotate(4)">
+          <rect x={0} y={0} width={440} height={300} fill="#f6f1e4" /><rect x={0} y={0} width={440} height={300} fill="url(#c-papel-a)" />
+          {Array.from({ length: 8 }, (_, k) => <rect key={k} x={20} y={40 + k * 32} width={400} height={1.5} fill="#8fb0d0" />)}
+          <text x={30} y={66} fontFamily={FUENTE.mano} fontWeight={700} fontSize={34} fill="#1d2a5a">a² + b² = c²</text>
+          <text x={30} y={130} fontFamily={FUENTE.mano} fontWeight={700} fontSize={34} fill="#1d2a5a">n(n+1)/2</text>
+          <text x={30} y={194} fontFamily={FUENTE.mano} fontWeight={700} fontSize={34} fill="#c0392b">∠ABC = 90°</text>
+          <path d="M 300 80 L 400 80 L 300 200 Z" fill="none" stroke="#1d2a5a" strokeWidth={4} />
+        </g>
+      </g>
+      <Polvo n={30} t={tl} seed={501} o={0.4} />
+      <Rotulo x={120} y={190} arriba="OMMEB 2017 · PRESELECCIÓN" texto="Entrenando en Monterrey" sub="rumbo a una competencia en Bulgaria" tl={tl} at={0.3} tam={56} acento="#cfd8e8" />
+    </g>;
+  },
+};
+
+/* ---------- los números: un medio, no un fin ---------- */
+ILUSC.medio_fin = {
+  cam: { z0: 1.0, z1: 1.06, fx: 960, fy: 560 },
+  dibuja: ({ p, tl, capa }) => {
+    const piedras = [['π', 300], ['x²', 520], ['Σ', 740], ['∫', 960], ['%', 1180], ['√', 1400]];
+    const paso = cpr(p, 0.1, 0.82), k = paso * (piedras.length + 0.6), i = Math.min(piedras.length - 1, Math.floor(k));
+    const salto = k - Math.floor(k), kx = k >= piedras.length ? lerp(1400, 1640, Math.min(1, (k - piedras.length) / 0.6)) : lerp(piedras[Math.max(0, i - 0)][1], (piedras[i + 1] || [0, 1640])[1], Math.min(1, salto * 1.4));
+    const ky = 780 - Math.sin(Math.min(1, salto * 1.4) * Math.PI) * 60;
+    return <g>
+      <g transform={capa(0.35)}>
+        <linearGradient id="c-mf-cielo" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#1b2a4a" /><stop offset="1" stopColor="#3a5a7a" /></linearGradient>
+        <rect x={-200} y={-200} width={2320} height={1500} fill="url(#c-mf-cielo)" />
+        <Bokeh n={16} t={tl} seed={511} colores={['#7fe6ff', '#cfe8ff']} o={0.35} y={100} h={400} />
+      </g>
+      <g transform={capa(0.8)}>
+        {/* el río que hay que cruzar */}
+        <rect x={-200} y={760} width={2320} height={500} fill="#174a6a" />
+        {Array.from({ length: 30 }, (_, j) => { const r = R(5100 + j); return <path key={j} d={`M ${((r() * 2400 + tl * 40) % 2400) - 200} ${790 + r() * 260} q 30 -8 60 0`} stroke="#7fd0f0" strokeWidth={3} fill="none" opacity={0.4} />; })}
+        <path d="M -200 760 L 200 760 L 160 1300 L -200 1300 Z" fill="#3a5a3a" /><path d="M 1560 760 L 2120 760 L 2120 1300 L 1600 1300 Z" fill="#3a5a3a" />
+      </g>
+      <g transform={capa(1)}>
+        {piedras.map(([s, x], j) => <g key={j} transform={`translate(${x} 800)`}>
+          <ellipse cx={0} cy={0} rx={86} ry={30} fill="#6a7486" /><ellipse cx={0} cy={-6} rx={86} ry={26} fill="#8a94a6" />
+          <text x={0} y={4} textAnchor="middle" fontFamily="Georgia, serif" fontWeight={700} fontSize={40} fill="#fff" opacity={0.9}>{s}</text>
+          {j <= i && <ellipse cx={0} cy={-6} rx={90} ry={30} fill="#7fe6ff" opacity={0.25} />}
+        </g>)}
+        {/* la meta: la investigación */}
+        <g transform="translate(1760 760)">
+          <Halo x={0} y={-150} r={260} color="#9fff8a" o={0.5 + 0.2 * Math.sin(tl * 2)} />
+          <path d="M -70 0 Q -80 -16 -64 -34 L -24 -100 L -24 -170 L 24 -170 L 24 -100 L 64 -34 Q 80 -16 70 0 Z" fill="#3fbf6a" opacity={0.85} /><path d="M -70 0 Q -80 -16 -64 -34 L -24 -100 L -24 -170 L 24 -170 L 24 -100 L 64 -34 Q 80 -16 70 0 Z" fill="url(#c-vidrio)" />
+          <Racimo x={-130} y={0} n={5} tam={70} color="#ef7fa6" g={1} t={tl} seed={512} />
+          <text x={0} y={-230} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={22} letterSpacing={4} fill="#9fff8a">MIS OBJETIVOS</text>
+        </g>
+        <Nene x={kx} y={ky + 10} s={0.62} edad={15} lentes t={tl} playera="#2a5aa8" rayas={false} brazoD={40} brazoI={40} mira={[1, 0]} boca="sonrisa" seed={513} />
+      </g>
+      <g opacity={cpop(p, 0.02, 0.12)} style={{ filter: 'drop-shadow(0 4px 14px rgba(0,0,0,.7))' }}>
+        <text x={960} y={190} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={26} letterSpacing={8} fill="#7fe6ff">LOS NÚMEROS</text>
+        <text x={960} y={300} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={110} fill="#fff">Un medio, no un fin</text>
+      </g>
+      <Polvo n={40} t={tl} seed={514} o={0.4} />
+    </g>;
+  },
+};
+
+/* ---------- B-Eco: el censo, Bosques Urbanos y la salida a Los Colomos ---------- */
+ILUSC.beco = {
+  cam: { z0: 1.0, z1: 1.04, fx: 960, fy: 480 },
+  dibuja: ({ p, tl, capa }) => {
+    const a = cpr(p, 0.0, 0.08) * (1 - cpr(p, 0.4, 0.46)), b = cpr(p, 0.42, 0.5) * (1 - cpr(p, 0.72, 0.78)), c = cpr(p, 0.74, 0.82);
+    return <g>
+      <g transform={capa(0.4)}><rect x={-200} y={-200} width={2320} height={1500} fill="#121a14" /><Halo x={960} y={420} r={800} color="#bfe8c8" o={0.3} /><Bokeh n={14} t={tl} seed={521} colores={['#9fe8b0', '#ffe2b0']} o={0.3} /></g>
+      <g transform={capa(1)}>
+        <FotoReal src="video/img/fotos_basis/cap6/beco_censo_reconocimiento.jpg" x={960} y={470} maxW={1100} maxH={680} rot={-1.5} o={a} etiqueta="CENSO DE PERROS Y GATOS · LA PRIMAVERA" acento="#7ff0c8" />
+        <FotoReal src="video/img/extra/bosques_urbanos.jpg" x={960} y={470} maxW={1100} maxH={680} rot={1} o={b} etiqueta="CON BOSQUES URBANOS · PARQUE METROPOLITANO" acento="#7ff0c8" />
+        <FotoReal src="video/img/fotos_basis/cap6/beco_salida_voluntariado.jpg" x={960} y={470} maxW={1100} maxH={680} rot={-1} o={c} etiqueta="Y A VECES EN LOS COLOMOS" acento="#7ff0c8" />
+      </g>
+      <Polvo n={30} t={tl} seed={522} o={0.4} />
     </g>;
   },
 };

@@ -97,7 +97,7 @@ En lo académico, me esforcé muchísimo, y al graduarme fui el mejor promedio d
 En prepa intenté seguir con las olimpiadas, pero ya no me jalaban. Me di cuenta de que no eran para mí, y mi energía se fue a la innovación y al emprendimiento.
 Y mi laboratorio casero dio un salto.
 Por fin compré mi primera bolsa de agar, grado alimenticio. Ha rendido tanto que todavía la tengo.
-Empecé a trabajar dentro de una caja con una llama: no era una caja de guantes, solo caja y llama, pero limitaba el aire… y funcionaba.
+Empecé a trabajar dentro de una caja, un bote de detergente en realidad, con una llama que prendía sobre una tapita de frasco en la que vertía etanol. No era una caja de guantes, pero limitaba el aire… y funcionaba.
 Implementé un agar empobrecido: agar, agua, colorante verde, rojo o azul y jarabe de maíz. Tiene los azúcares justos para que un micelio fuerte, como el de las setas, crezca y suelte sus metabolitos, pero las esporas de otros hongos ya no alcanzan a germinar.
 No aguanta muchas transferencias, pero para enseñar microbiología sin área estéril, es genial. Con cuadritos de ese agar logré producir semilla de hongo, que luego inoculé y fructifiqué.
 Lo usaba en botecitos de polipropileno, vertiendo el agar en el lugar más limpio posible, y en frascos de vidrio que esterilizaba ya con el agar adentro, para abrirlos solo al inocular.
@@ -108,7 +108,7 @@ Así, mi recámara-laboratorio se volvió un proyecto: De basura a comida, hongo
 Ganó oro en la Feria de Ciencias e Ingeniería de Jalisco en 2022, y platino en INFOMATRIX en 2023, que le dio pase a una competencia internacional en Brasil.
 Y eso no fue todo: mi proyecto De basura a comida me llevó más lejos de lo que imaginaba. Con él fui uno de quinientos finalistas de Rise, entre más de sesenta mil jóvenes de todo el mundo.
 Y aquel filtro de aire de la pandemia también siguió dando frutos: el Gobierno de Jalisco me reconoció como joven inventor contra el COVID, y History Channel me eligió como semifinalista de "Una idea para cambiar la historia".
-Pero la prepa no fue solo competir. La Fundación EPA, que me becaba, me pedía ochenta horas de voluntariado cada semestre, y eso me llevó a lugares que de otra forma no habría conocido: a FM4 Paso Libre, acompañando a personas migrantes, y a Cómplices, con quienes llegué al Hospital Civil.
+Pero la prepa no fue solo competir. La Fundación EPA, que me becaba, me pedía ochenta horas de voluntariado cada semestre, y eso me llevó a lugares que de otra forma no habría conocido: a FM4 Paso Libre, acompañando a personas migrantes, y a Cómplices A.C., con quienes llegué al Hospital Civil.
 Ahí vi a personas que no tenían ni cinco pesos para entrar a un baño.
 Así que construí un baño seco de bajo costo. Ganó primer lugar nacional en PrepApps en 2023, y en 2024 primer lugar internacional en el Jacobs Teen Innovation Challenge, entre 4,700 estudiantes de 32 países. Espero retomarlo pronto; le debo mucho a ese proyecto.
 Pero no todo fue logros, flores y muchos colores. Fundé un grupo estudiantil, PAS, que honestamente no funcionó como esperaba.
@@ -142,7 +142,7 @@ Y De basura a comida siguió creciendo.
 En febrero de 2026, el proyecto por fin tuvo un nombre corto. El que tenía era larguísimo: De basura a comida, los hongos: héroes que combaten el hambre y la pobreza.
 El nuevo: Fungi Mati. Fungi, de hongo; y mati, una palabra náhuatl que significa saber, conocer, entender.
 Ese mismo mes empecé a rehabilitar un espacio abandonado de mi antigua prepa como granja de setas; por esas fechas, con dinero del grupo estudiantil, le renové la malla sombra.
-En mayo, con el fondo Ruta Azul y un poco de apoyo de Equitech, le enseñé a cultivar a cincuenta estudiantes,
+En mayo, con el fondo Ruta Azul y en complemento con Equitech, le enseñé a cultivar a cincuenta estudiantes,
 complementando con un tutor de inteligencia artificial que yo entrené.
 Empecé a vender kits y cursos de cultivo, y entre mis clientes hay extranjeros que viven aquí.
 Hoy soy parte del Start Up Garden del Instituto de Emprendimiento del Tec. Si algún día pasas por ahí, me encuentras en el escritorio 44, en el cuarto piso del edificio de emprendimiento.
