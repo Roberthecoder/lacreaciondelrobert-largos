@@ -102,7 +102,7 @@ function Etiqueta({ texto, x, y, tl, pal, tam = 30, rel = false }) {
   const pos = rel ? (o) => ({ position: 'relative', display: 'inline-block', ...o }) : (o) => abs(x, y, o);
   return <div style={pos({ display: 'inline-flex', alignItems: 'center', gap: 16, whiteSpace: 'nowrap', opacity: e, transform: `translateY(${(1 - e) * 14}px)` })}>
     <div style={{ width: 6, height: tam * 1.5, background: (pal && pal.acento) || KC.gold2, borderRadius: 2, transform: `scaleY(${e})` }} />
-    <div style={{ fontFamily: KF.mono, fontWeight: 700, fontSize: tam * 0.86, letterSpacing: 4, color: BLANCO, textShadow: KSOMBRA, background: 'rgba(8,9,12,.55)', padding: '8px 16px', borderRadius: 4 }}>{texto}</div>
+    <div style={{ fontFamily: KF.mono, fontWeight: 700, fontSize: tam * 0.86, letterSpacing: 4, color: BLANCO, textShadow: KSOMBRA, background: 'rgba(8,9,12,.55)', padding: '8px 16px', borderRadius: 4 }}>{String(texto).split('_').map((s, i) => (i % 2 ? <span key={i} style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 500, letterSpacing: 0, fontSize: tam * 1.02 }}>{s}</span> : s))}</div>
   </div>;
 }
 
@@ -243,6 +243,11 @@ function EscenaIlus({ v, p, tl, T, pal, dur }) {
 const ESCENAS_TIPO = { foto: EscenaFoto, fotos: EscenaFotos, texto: EscenaTexto, numero: EscenaNumero, logo: EscenaLogo, marca: EscenaMarca, iconos: EscenaIconos, ilus: EscenaIlus };
 
 /* ---------------- capas fijas ---------------- */
+// Nombres científicos: siempre en cursiva (subtítulos y etiquetas).
+const CIENTIFICOS = /(Pleurotus djamor|Pleurotus ostreatus|Pleurotus|Trichoderma|Aliivibrio fischeri|Panellus stipticus|Agaricus bisporus|Dionaea muscipula|Drosera|Mammillaria|Echeveria)/g;
+function conCursivas(texto) {
+  return texto.split(CIENTIFICOS).map((s, i) => (i % 2 ? <i key={i} style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 500, letterSpacing: 0 }}>{s}</i> : s));
+}
 function SubtituloLargo({ T }) {
   const l = LINEA.lineas.find((x) => T >= x.at && T < x.at + x.dur);
   if (!l) return null;
@@ -257,7 +262,7 @@ function SubtituloLargo({ T }) {
   for (let i = 0; i < trozos.length; i++) { acc += trozos[i].length / total; if (pr < acc) { idx = i; break; } idx = i; }
   return <div style={abs(0, H - 160, { width: W, textAlign: 'center', zIndex: 40 })}>
     <span style={{ display: 'inline-block', maxWidth: 1480, padding: '6px 20px', color: '#fff', fontFamily: KF.texto, fontWeight: 600, fontSize: 40, lineHeight: 1.28,
-      textShadow: '0 2px 3px rgba(0,0,0,.95), 0 0 18px rgba(0,0,0,.85), 0 0 4px rgba(0,0,0,.9)' }}>{trozos[idx]}</span>
+      textShadow: '0 2px 3px rgba(0,0,0,.95), 0 0 18px rgba(0,0,0,.85), 0 0 4px rgba(0,0,0,.9)' }}>{conCursivas(trozos[idx])}</span>
   </div>;
 }
 function MarcaCapitulo({ T }) {

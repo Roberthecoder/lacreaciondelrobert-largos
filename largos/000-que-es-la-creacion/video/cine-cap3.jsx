@@ -55,7 +55,18 @@ ILUSC.champinon = {
       <g opacity={B}>
         <rect x={0} y={0} width={1920} height={1080} fill="#14161c" />
         <Halo x={960} y={300} r={700} color="#cfe0ff" o={0.25} />
-        {[[560, 'tutorial de internet', 'tierra'], [1360, 'con café', 'cafe']].map(([cx, nom, tipo], i) => <g key={i}>
+        {[[560, 'tutorial: tierra normal y bolsa negra', 'tierra'], [1360, 'con café', 'cafe']].map(([cx, nom, tipo], i) => <g key={i}>
+          {tipo === 'tierra' ? <g transform={`translate(${cx} 800)`}>
+            <MacetaC x={0} y={0} w={330} h={260}>
+              <g transform="translate(0 -238)"><Champinon x={0} y={0} s={0.7} rot={180} /><g transform="rotate(180)"></g></g>
+              {Array.from({ length: 24 }, (_, k) => { const r = R(1900 + k), q = ((tl * 0.3 + r()) % 1); return <circle key={k} cx={(r() - 0.5) * 120} cy={-238 + q * 30} r={1.6} fill="#6b4038" opacity={0.6 * (1 - q)} />; })}
+            </MacetaC>
+            {/* bolsa negra encima para guardar humedad */}
+            <path d="M -190 -230 Q -210 -520 0 -540 Q 210 -520 190 -230 Q 120 -210 0 -214 Q -120 -210 -190 -230 Z" fill="#121214" opacity={0.62} />
+            <path d="M -140 -470 Q -60 -520 40 -510" stroke="#fff" strokeOpacity={0.22} strokeWidth={10} fill="none" strokeLinecap="round" />
+            <path d="M -170 -300 Q -120 -320 -150 -380 M 120 -280 Q 160 -340 130 -400" stroke="#fff" strokeOpacity={0.12} strokeWidth={6} fill="none" />
+            {[0, 1, 2, 3, 4, 5].map((k) => <circle key={'g' + k} cx={-120 + k * 48} cy={-330 + (k % 2) * 40} r={5} fill="#bfe6ff" opacity={0.35} />)}
+          </g> :
           <g transform={`translate(${cx} 760)`}>
             <Sombra x={0} y={10} rx={260} ry={20} o={0.6} />
             <path d="M -230 0 L -250 -260 L 250 -260 L 230 0 Z" fill="#dfeef0" opacity={0.2} />
@@ -65,14 +76,14 @@ ILUSC.champinon = {
             <g clipPath="none">{[0, 1, 2, 3].map((k) => <Moho key={k} x={-150 + k * 100 + (i * 30)} y={-180 + (k % 2) * 60} r={60 + k * 10} g={kclamp(fallo * 2 - k * 0.3, 0, 1)} seed={k + i * 7} aplastado={0.45} />)}</g>
             <path d="M -236 -60 L -246 -230 L 246 -230 L 236 -60 Z" fill="url(#c-vidrio)" opacity={0.7} />
             <path d="M -230 0 L -250 -260 L 250 -260 L 230 0 Z" fill="none" stroke="#fff" strokeOpacity={0.35} strokeWidth={3} />
-          </g>
+          </g>}
           <text x={cx} y={430} textAnchor="middle" fontFamily={FUENTE.serif} fontStyle="italic" fontSize={44} fill="#fff">{nom}</text>
           <g opacity={cpr(p, 0.44 + i * 0.04, 0.48 + i * 0.04)} transform={`translate(${cx} 600) rotate(-8)`}>
             <path d="M -120 -120 L 120 120 M 120 -120 L -120 120" stroke="#ff3b2f" strokeWidth={22} strokeLinecap="round" opacity={0.85} />
           </g>
         </g>)}
         <text x={960} y={190} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={26} letterSpacing={6} fill="#cfe0ff">DÍA {1 + Math.floor(fallo * 20)}</text>
-        <text x={960} y={250} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={56} fill="#fff">Ni un champiñón… solo moho</text>
+        <text x={960} y={250} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={56} fill="#fff">Ni un champiñón</text>
       </g>
       {/* C: por qué — la composta del champiñón (corte de una cama de cultivo) */}
       <g opacity={C}>
@@ -91,7 +102,7 @@ ILUSC.champinon = {
           <g opacity={cpr(p, 0.6, 0.66)}><path d="M 700 0 L 780 -60" stroke="#fff" strokeWidth={2.5} /><text x={790} y={-66} fontFamily={FUENTE.mono} fontWeight={700} fontSize={22} letterSpacing={3} fill="#F4C25A">CAPA DE COBERTURA</text><text x={790} y={-30} fontFamily={FUENTE.serif} fontStyle="italic" fontSize={30} fill="#fff">turba + cal</text></g>
           <g opacity={cpr(p, 0.64, 0.7)}><path d="M 700 170 L 780 200" stroke="#fff" strokeWidth={2.5} /><text x={790} y={196} fontFamily={FUENTE.mono} fontWeight={700} fontSize={22} letterSpacing={3} fill="#F4C25A">COMPOSTA</text><text x={790} y={232} fontFamily={FUENTE.serif} fontStyle="italic" fontSize={30} fill="#fff">paja + estiércol,</text><text x={790} y={266} fontFamily={FUENTE.serif} fontStyle="italic" fontSize={30} fill="#fff">fermentada y pasteurizada</text></g>
         </g>
-        <text x={960} y={190} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={26} letterSpacing={6} fill="#F4C25A">AGARICUS BISPORUS</text>
+        <text x={960} y={190} textAnchor="middle" fontFamily={FUENTE.serif} fontStyle="italic" fontWeight={600} fontSize={40} fill="#F4C25A">Agaricus bisporus</text>
         <text x={960} y={260} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={60} fill="#fff">Necesita una composta muy específica</text>
         <Polvo n={40} t={tl} seed={182} o={0.4} />
       </g>
@@ -158,7 +169,7 @@ ILUSC.seta_rosa = {
       </g>
       <Polvo n={60} t={tl} seed={202} o={0.7} color="#ffe0ea" />
       <Tinte color="#ff7fa6" o={0.12} />
-      <Rotulo x={1260} y={190} arriba="PLEUROTUS DJAMOR" texto="La seta rosa" sub="su olor, su color" tl={tl} at={0.3} tam={66} acento="#ff9cc4" />
+      <Rotulo x={1260} y={190} arriba="LA PRIMERA EN CRECER" texto="La seta rosa" sub="Pleurotus djamor" tl={tl} at={0.3} tam={66} acento="#ff9cc4" />
     </g>;
   },
 };
@@ -203,7 +214,7 @@ ILUSC.seta_azul = {
       </g>
       <g opacity={fin}><rect x={0} y={0} width={1920} height={1080} fill="#07080b" opacity={0.6} /><Rotulo x={960} y={430} arriba="EN CASA, CASI NUNCA HAY LUZ IDEAL" texto="Funciona, pero no es óptima" alinear="middle" tl={tl} at={0} tam={72} /></g>
       <Polvo n={40} t={tl} seed={211} o={0.5} />
-      <g opacity={1 - compara}><Rotulo x={120} y={190} arriba="PLEUROTUS OSTREATUS VAR. COLUMBINUS" texto={'La seta "azul"'} tl={tl} at={0.3} tam={64} acento="#9fc4ff" /></g>
+      <g opacity={1 - compara}><Rotulo x={120} y={190} arriba="LA SEGUNDA" texto={'La seta "azul"'} sub="Pleurotus ostreatus var. columbinus" tl={tl} at={0.3} tam={64} acento="#9fc4ff" /></g>
     </g>;
   },
 };

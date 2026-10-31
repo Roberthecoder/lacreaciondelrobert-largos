@@ -23,7 +23,7 @@ Desde muy chiquito me fascinó ver crecer las plantas. Nunca tuve jardín, así 
 Cultivarlas me daba más alegría que cualquier otra cosa, aunque tardara semanas en ver el resultado.
 Unos años después nos mudamos para probar un emprendimiento que traían mis papás, y mi hobby se vino con nosotros.
 Pusieron un negocio en Paraísos del Colli: renta de equipo de cómputo y una sección de comida casera.
-Vendían la famosa vitamina T: tacos, tortillas y tostadas… la broma es culpa de mi papá.
+Vendían la famosa vitamina T: tacos, tortillas y tostadas.
 Yo los veía con su negocio y pensaba: yo también quiero mi changarro.
 Les dije que quería vender plantas. Al principio no estaban convencidos; me veían muy chiquito.
 Hasta que los convencí. En ese entonces tenía muchas plántulas de jitomate en macetas, que había germinado tiempo atrás.
@@ -42,8 +42,8 @@ En segundo de primaria gané una tablet en un concurso de escritura de Librería
 [EN PANTALLA: "ups"]
 Hice dos videos: uno de jitomate, que todavía existe, y uno de maíz pozolero morado, que se perdió para siempre cuando pasamos el canal a mi propia cuenta.
 Ese canal, que existe desde enero de 2015, es el mismo que estás viendo. Nunca murió: solo se durmió.
-El segundo camino, las letras. En 2016 quedé entre los finalistas del concurso Pequeño Gran Escritor con un cuento, La bellota abandonada, y lo publicaron en un librito junto con los cuentos de otros cincuenta niños y niñas.
-El tercero, los números. Gracias a lo bien que me preparó mi mamá desde el kínder, las matemáticas se me daban.
+También me metía a concursos, como los de escritura. En 2016 quedé entre los finalistas del concurso Pequeño Gran Escritor con un cuento, La bellota abandonada, y lo publicaron en un librito junto con los cuentos de otros cincuenta niños y niñas.
+El segundo, los números. Gracias a lo bien que me preparó mi mamá desde el kínder, las matemáticas se me daban.
 En 2016, en quinto de primaria, fui a mi primera olimpiada, la ONMAPS, y gané oro estatal. Al año siguiente, otra vez oro. Eso sí: nunca logré pasar a la ONMAPS nacional.
 En 2017, en la primera Olimpiada Mexicana de Matemáticas para Educación Básica, me quedé a un punto del oro: plata nacional.
 Eso me llevó a entrenar en Monterrey como preselección para una competencia en Bulgaria.
@@ -98,7 +98,7 @@ En prepa intenté seguir con las olimpiadas, pero ya no me jalaban. Me di cuenta
 Y mi laboratorio casero dio un salto.
 Por fin compré mi primera bolsa de agar, grado alimenticio. Ha rendido tanto que todavía la tengo.
 Empecé a trabajar dentro de una caja con una llama: no era una caja de guantes, solo caja y llama, pero limitaba el aire… y funcionaba.
-Implementé un agar empobrecido: agar, agua, colorante verde o azul y jarabe de maíz. Tiene los azúcares justos para que un micelio fuerte, como el de las setas, crezca y suelte sus metabolitos, pero las esporas de otros hongos ya no alcanzan a germinar.
+Implementé un agar empobrecido: agar, agua, colorante verde, rojo o azul y jarabe de maíz. Tiene los azúcares justos para que un micelio fuerte, como el de las setas, crezca y suelte sus metabolitos, pero las esporas de otros hongos ya no alcanzan a germinar.
 No aguanta muchas transferencias, pero para enseñar microbiología sin área estéril, es genial. Con cuadritos de ese agar logré producir semilla de hongo, que luego inoculé y fructifiqué.
 Lo usaba en botecitos de polipropileno, vertiendo el agar en el lugar más limpio posible, y en frascos de vidrio que esterilizaba ya con el agar adentro, para abrirlos solo al inocular.
 También aprendí algo que me frenó en seco: el aserrín de las carpinterías puede traer residuos tóxicos, como conservadores de madera tratada, pinturas, barnices o pegamentos de aglomerado, y los hongos pueden absorberlos. Las mismas limitantes aplican a varios tipos de cartón y papel.
@@ -121,7 +121,9 @@ También eso me formó.
 En mi último semestre de prepa, a principios de 2024, compré mis primeras cajas de Petri de vidrio. Y en las vacaciones antes de entrar a la universidad logré esterilizarlas, plaquearlas e inocularlas de principio a fin, sin una sola contaminación, en casa, gracias a mi caja de guantes.
 En agosto de 2024 entré a Ingeniería en Biotecnología en el Tec de Monterrey, con beca completa: sesenta por ciento de Talento Académico y cuarenta por ciento de la Fundación EPA. Hoy voy en quinto semestre.
 Claro que, después de mis fallos psicomotrices en prepa, en la universidad tenía que seguir intentando: me metí a salsa. Todavía tengo dos pies izquierdos… pero cada vez menos.
-Y fue mi maestra de salsa, Anita, quien me conectó con la doctora Danay Carrillo. Desde mi primer semestre, en octubre de 2024, trabajo en su laboratorio, el Carrillo Biorefinery Lab, investigando aplicaciones de los hongos en biotecnología ambiental, con residuos de la industria tequilera como el bagazo de agave y las vinazas.
+Y fue mi maestra de salsa, Anita, quien me conectó con la doctora Danay Carrillo.
+Desde mi primer semestre, en octubre de 2024, trabajo en su laboratorio, el Carrillo Biorefinery Lab,
+investigando aplicaciones de los hongos en biotecnología ambiental, con residuos de la industria tequilera como el bagazo de agave y las vinazas.
 En el mismo laboratorio, estudiantes de doctorado hacen lo mismo con algas, y otros revalorizan el sargazo.
 Y desde el verano de 2026 estoy a cargo de la sección de hongos de su cepario: una biblioteca viva de microorganismos.
 Me han dado la Excelencia Académica tres veces, en primer, tercer y cuarto semestre, por ser el mejor promedio de mi generación en esos periodos.
@@ -157,9 +159,9 @@ Así que hoy cultivo hongos, investigo, intento emprender, me esfuerzo por mi pr
 
 Entonces, ¿qué es La Creación del Robert?
 Es todo lo que creo, desde aquella mesa de jitomates hasta hoy, contado con rigor: cada dato, verificado.
-Me inspiran The Thought Emporium, NileRed, Mark Rober y Biología desde Cero, y quiero hacer algo así, a mi manera.
+Me inspiran The Thought Emporium, NileRed, Mark Rober, Veritasium, Kurzgesagt y Biología desde Cero, y quiero hacer algo así, a mi manera.
 Antes, mis videos me quedaban larguísimos y eran agotadores de grabar. Hoy uso inteligencia artificial para convertirlos en algo que cualquiera pueda entender y disfrutar.
-Aquí vas a encontrar Shots de biotecnología, de hongos con Fungi Mati, del ambiente, de inteligencia artificial, de química y de ciencia en general, y documentales largos como este: ilustrados, grabados, o una mezcla de los dos.
+Aquí vas a encontrar Shots de biotecnología, de hongos con Fungi Mati, del ambiente, de inteligencia artificial, de química y de ciencia en general; de vez en cuando, datos curiosos de mi vida; y documentales largos como este: ilustrados, grabados, o una mezcla de los dos.
 Quiero que sientas la misma fascinación por la ciencia y el mismo amor por la vida que yo siento. Y que te pongas manos a la obra.
 
 ## Cierre

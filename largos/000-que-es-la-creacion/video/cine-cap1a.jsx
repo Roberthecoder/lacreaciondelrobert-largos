@@ -40,7 +40,7 @@ function Camioneta({ x, y, rueda = 0, color = '#3f8f8c', carga, nene }) {
     <path d="M 112 -420 L 240 -420 Q 254 -420 262 -408 L 334 -292 L 112 -292 Z" fill="#26343f" />
     <linearGradient id="c-cam-vidrio" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stopColor="#cfe6f5" stopOpacity=".55" /><stop offset=".5" stopColor="#fff" stopOpacity=".05" /><stop offset="1" stopColor="#ffd9a0" stopOpacity=".35" /></linearGradient>
     <clipPath id="c-cam-ventana"><path d="M 112 -420 L 240 -420 Q 254 -420 262 -408 L 334 -292 L 112 -292 Z" /></clipPath>
-    <g clipPath="url(#c-cam-ventana)">{nene}</g>
+    <g clipPath="url(#c-cam-ventana)"><Nene x={150} y={-210} s={0.36} edad={3} t={0} nina piel="#e9c4a6" pelo="#3a2416" playera="#e8467c" rayas={false} mira={[-1, 0]} boca="sonrisa" cuerpo="busto" seed={32} />{nene}</g>
     <path d="M 112 -420 L 240 -420 Q 254 -420 262 -408 L 334 -292 L 112 -292 Z" fill="url(#c-cam-vidrio)" />
     <path d="M 140 -420 L 220 -300" stroke="#fff" strokeOpacity={0.3} strokeWidth={14} />
     <path d="M 112 -420 L 240 -420 Q 254 -420 262 -408 L 334 -292 L 112 -292 Z" fill="none" stroke="#1d2328" strokeWidth={6} />
@@ -375,6 +375,7 @@ ILUSC.changarro = {
           <rect x={-100} y={930} width={2120} height={200} fill="#b9a48a" /><rect x={-100} y={930} width={2120} height={200} fill="url(#c-papel-a)" opacity={0.6} />
           <Adulto x={560} y={1000} s={1.2} camisa="#2f6a8f" cruzados t={tl} mira={[1, 1]} boca="seria" cejas={1} seed={5} />
           <Adulto x={1380} y={1000} s={1.2} camisa="#6a4c9c" mujer piel="#eccdb2" delantal="#f2ece0" cruzados t={tl} mira={[-1, 1]} boca="seria" cejas={1} seed={2} />
+          <Nene x={1170} y={1012} s={0.62} edad={3} t={tl} nina piel="#e9c4a6" pelo="#3a2416" playera="#e8467c" rayas={false} brazoD={10} brazoI={40} mira={[-1, -0.6]} boca="sonrisa" seed={31} />
           <Nene x={960} y={1010} s={0.95} edad={5} t={tl} playera="#2f6fd0" brazoD={120} brazoI={120} mira={[0, -1]} boca="sonrisa" seed={7}
             detalle={<MacetaC x={0} y={-120} w={70} h={60}><MataJitomate x={0} y={-52} s={0.26} t={tl} seed={3} /></MacetaC>} />
         </g>

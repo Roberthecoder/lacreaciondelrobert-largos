@@ -3,17 +3,29 @@ const ILUSC = window.ILUSC;
 
 // Olla exprés (para esterilizar).
 function OllaExpres({ x, y, s = 1, vapor = 1, t = 0 }) {
+  // olla de presión de aluminio fundido (tipo esterilizadora): cuerpo alto, manómetro, válvula de peso, tapa con mariposas
   return <g transform={`translate(${x} ${y}) scale(${s})`}>
-    <Sombra x={0} y={4} rx={200} ry={20} o={0.55} />
-    <path d="M -170 0 L -180 -220 L 180 -220 L 170 0 Z" fill="url(#c-acero)" />
-    <rect x={-190} y={-250} width={380} height={40} rx={14} fill="url(#c-acero)" /><rect x={-190} y={-250} width={380} height={8} rx={4} fill="#fff" opacity={0.4} />
-    <path d="M -150 -250 Q 0 -330 150 -250 Z" fill="url(#c-acero)" />
-    <rect x={-20} y={-330} width={40} height={40} rx={6} fill="#2a2a2e" /><circle cx={0} cy={-340} r={16} fill="#3a3a40" />
-    <rect x={180} y={-250} width={180} height={34} rx={14} fill="#1d1d22" /><rect x={-360} y={-240} width={170} height={30} rx={12} fill="#1d1d22" />
-    {[0, 1, 2].map((k) => { const q = ((t * 0.5 + k / 3) % 1); return <path key={k} d={`M 0 ${-350 - q * 260} q ${30 * Math.sin(t + k)} -40 0 -80`} stroke="#fff" strokeWidth={20 + q * 30} opacity={0.25 * vapor * Math.sin(q * Math.PI)} fill="none" filter="url(#c-b14)" />; })}
+    <Sombra x={0} y={4} rx={220} ry={22} o={0.55} />
+    <path d="M -170 0 L -176 -360 L 176 -360 L 170 0 Z" fill="url(#c-acero)" />
+    <path d="M -170 0 L -176 -360 L 176 -360 L 170 0 Z" fill="#fff" opacity={0.08} />
+    <rect x={-176} y={-20} width={352} height={20} fill="#000" opacity={0.12} />
+    {[-1, 1].map((d) => <g key={d}><path d={`M ${d * 176} -330 L ${d * 236} -330 Q ${d * 262} -330 ${d * 262} -306 L ${d * 262} -296 Q ${d * 262} -274 ${d * 236} -274 L ${d * 176} -274`} fill="url(#c-acero)" />
+      <rect x={d > 0 ? 238 : -292} y={-322} width={54} height={40} rx={18} fill="#1d1d22" /></g>)}
+    {/* tapa */}
+    <rect x={-196} y={-392} width={392} height={36} rx={8} fill="url(#c-acero)" />
+    <path d="M -180 -392 Q -150 -470 0 -476 Q 150 -470 180 -392 Z" fill="url(#c-acero)" /><path d="M -180 -392 Q -150 -470 0 -476 Q 150 -470 180 -392 Z" fill="#fff" opacity={0.1} />
+    {[-150, -90, -30, 30, 90, 150].map((mx, k) => <g key={k} transform={`translate(${mx} -386)`}><rect x={-12} y={-10} width={24} height={34} rx={4} fill="#c9ced6" /><path d="M -22 -18 L 22 -18 L 14 -4 L -14 -4 Z" fill="#1d1d22" /></g>)}
+    <path d="M -70 -472 L -70 -530 Q -70 -548 -52 -548 L 52 -548 Q 70 -548 70 -530 L 70 -472" stroke="#1d1d22" strokeWidth={22} fill="none" strokeLinejoin="round" />
+    {/* manómetro */}
+    <g transform="translate(-110 -470)"><rect x={-6} y={0} width={12} height={22} fill="#9aa1a8" /><circle r={36} fill="#f6f6f2" stroke="url(#c-acero)" strokeWidth={8} />
+      {Array.from({ length: 9 }, (_, k) => <path key={k} d={`M ${Math.cos((-220 + k * 32.5) * Math.PI / 180) * 26} ${Math.sin((-220 + k * 32.5) * Math.PI / 180) * 26} L ${Math.cos((-220 + k * 32.5) * Math.PI / 180) * 32} ${Math.sin((-220 + k * 32.5) * Math.PI / 180) * 32}`} stroke="#333" strokeWidth={2} />)}
+      <path d={`M 0 0 L ${Math.cos((-200 + 160 * vapor) * Math.PI / 180) * 26} ${Math.sin((-200 + 160 * vapor) * Math.PI / 180) * 26}`} stroke="#c0392b" strokeWidth={3} /><circle r={4} fill="#333" /></g>
+    {/* válvula de peso */}
+    <g transform="translate(110 -478)"><rect x={-6} y={-2} width={12} height={20} fill="#9aa1a8" /><circle cx={0} cy={-14} r={18} fill="url(#c-acero)" /></g>
+    {[0, 1, 2].map((k) => { const q = ((t * 0.5 + k / 3) % 1); return <path key={k} d={`M 110 ${-500 - q * 240} q ${30 * Math.sin(t + k)} -40 0 -80`} stroke="#fff" strokeWidth={18 + q * 26} opacity={0.22 * vapor * Math.sin(q * Math.PI)} fill="none" filter="url(#c-b14)" />; })}
   </g>;
 }
-// Caja de aire quieto (SAB): caja de plástico transparente con dos agujeros para los brazos.
+
 function CajaAire({ x, y, w = 520, h = 300 }) {
   return <g transform={`translate(${x} ${y})`}>
     <Sombra x={0} y={4} rx={w * 0.55} ry={18} o={0.5} />
@@ -40,10 +52,10 @@ ILUSC.recamara = {
         <rect x={1360} y={110} width={420} height={330} fill="none" stroke="#e9e1cf" strokeWidth={12} />
         {/* repisa con bolsas de cultivo y frascos */}
         <g opacity={ap(3)} transform="translate(160 0)"><Tablon x={620} y={380} w={560} prof={16} grosor={18} madera="pino" />
-          {[0, 1, 2].map((k) => <g key={k} transform={`translate(${700 + k * 120} 384) scale(0.36)`}><BolsaCultivo x={0} y={0} w={220} h={300} colonizado={0.6 + k * 0.15} /></g>)}
-          {[0, 1].map((k) => <Frasco key={k} id={`rec-f${k}`} x={1090 + k * 100} y={384} w={80} h={120} contenido="maiz" tapa="oro" seed={k + 40} nivel={0.8} ventana={false} />)}</g>
+          {[0, 1, 2].map((k) => <g key={k} transform={`translate(${700 + k * 120} 392) scale(0.36)`}><BolsaCultivo x={0} y={0} w={220} h={300} colonizado={0.6 + k * 0.15} /></g>)}
+          {[0, 1].map((k) => <Frasco key={k} id={`rec-f${k}`} x={1090 + k * 100} y={392} w={80} h={120} contenido="maiz" tapa="oro" seed={k + 40} nivel={0.8} ventana={false} />)}</g>
         <g opacity={ap(5)} transform="translate(160 0)"><Tablon x={620} y={560} w={600} prof={16} grosor={18} madera="pino" />
-          {[0, 1, 2, 3, 4].map((k) => <g key={k} transform={`translate(${680 + k * 120} 556) scale(0.24)`}><Petri x={0} y={-40} r={200} id={`rec-p${k}`} medio="#efe0b0"><Micelio x={0} y={0} r={200} g={0.4 + k * 0.12} seed={k + 3} /></Petri></g>)}</g>
+          {[0, 1, 2, 3, 4].map((k) => <g key={k} transform={`translate(${680 + k * 120} 562) scale(0.24)`}><Petri x={0} y={-60} r={200} id={`rec-p${k}`} medio="#efe0b0"><Micelio x={0} y={0} r={200} g={0.4 + k * 0.12} seed={k + 3} /></Petri></g>)}</g>
       </g>
       <g transform={capa(1)}>
         <rect x={-200} y={780} width={2320} height={500} fill="url(#c-madera-media)" /><rect x={-200} y={780} width={2320} height={500} fill="#000" opacity={0.25} />
@@ -51,13 +63,12 @@ ILUSC.recamara = {
         <g transform="translate(-60 0)"><rect x={-200} y={640} width={560} height={240} rx={20} fill="#2a4a7a" /><rect x={-200} y={640} width={560} height={240} rx={20} fill="url(#c-tela)" /><rect x={-200} y={600} width={300} height={90} rx={40} fill="#f3efe6" /><rect x={-200} y={600} width={300} height={90} rx={40} fill="url(#c-esfera)" opacity={0.4} /></g>
         {/* escritorio que se vuelve mesa de trabajo */}
         <rect x={560} y={760} width={1200} height={30} fill="url(#c-madera-clara)" /><rect x={560} y={786} width={1200} height={14} fill="#000" opacity={0.3} />
-        <g opacity={ap(0)}><OllaExpres x={760} y={762} s={0.62} vapor={1} t={tl} /></g>
+        <g opacity={ap(0)}><OllaExpres x={760} y={762} s={0.6} vapor={cpr(p, 0.1, 0.5)} t={tl} /></g>
         <g opacity={ap(1)}><CajaAire x={1150} y={762} w={460} h={260} /></g>
         <g opacity={ap(2)}>
           <g transform="translate(1500 762)"><Sombra x={0} y={4} rx={50} ry={8} o={0.5} /><rect x={-36} y={-150} width={72} height={150} rx={10} fill="#e8f3f6" opacity={0.6} /><rect x={-36} y={-110} width={72} height={110} fill="#bfe0ff" opacity={0.35} /><rect x={-22} y={-196} width={44} height={50} fill="#f6f6f6" /><path d="M 22 -190 L 64 -196 L 64 -182 L 22 -176 Z" fill="#f6f6f6" /><text x={0} y={-60} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={11} fill="#1d4f9c">ETANOL 70 %</text></g>
           {[0, 1, 2].map((k) => <g key={k} transform={`translate(${1610 + k * 40} 760)`}><ellipse cx={0} cy={-k * 14} rx={60} ry={14} fill="#dff0ee" opacity={0.6} /><ellipse cx={0} cy={-k * 14} rx={60} ry={14} fill="none" stroke="#fff" strokeOpacity={0.6} strokeWidth={2} /></g>)}
         </g>
-        <g opacity={ap(4)} transform="translate(960 600)"><rect x={-6} y={-200} width={12} height={160} fill="#2a2a30" /><g transform="translate(0 -210)"><path d="M -60 0 L 60 0 L 36 -60 L -36 -60 Z" fill="#e9e9e9" /><ellipse cx={0} cy={0} rx={60} ry={12} fill="#dff4ff" /><Rayos x={0} y={0} ang={90} abre={50} largo={500} n={4} ancho={60} color="#dff4ff" o={0.6} t={tl} seed={221} /></g></g>
       </g>
       <Polvo n={50} t={tl} seed={222} o={0.5} />
       <Tinte color="#7fb0ff" o={0.08} />

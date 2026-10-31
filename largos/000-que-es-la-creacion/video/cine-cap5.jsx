@@ -332,11 +332,11 @@ ILUSC.granjita = {
         <g transform="translate(1780 300)"><rect x={-90} y={-60} width={180} height={120} rx={12} fill="#1d1d22" /><rect x={-76} y={-46} width={152} height={92} rx={6} fill="#bfe8c8" />
           <text x={0} y={-6} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={34} fill="#1d2a1a">{Math.round(lerp(78, 90, g))}%</text><text x={0} y={30} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={22} fill="#1d2a1a">HUMEDAD</text></g>
         {/* residuos que entran → comida que sale */}
-        <g opacity={cpr(p, 0.55, 0.65)}>
+        <g opacity={cpr(p, 0.55, 0.65)}><rect x={-200} y={430} width={2320} height={320} fill="#0b0d0c" opacity={0.75} /><g transform="translate(-60 -440) scale(1.3)">
           <g transform="translate(300 1000)"><Huacal x={0} y={0} w={220} h={110}><rect x={-100} y={-90} width={200} height={70} fill="#3a2416" /></Huacal><text x={0} y={-130} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={20} letterSpacing={3} fill="#fff">RESIDUOS</text></g>
           <path d="M 440 960 L 760 960" stroke="#fff" strokeWidth={4} strokeDasharray="12 10" /><path d="M 748 948 L 764 960 L 748 972" stroke="#fff" strokeWidth={4} fill="none" />
           <g transform="translate(900 990)"><ellipse cx={0} cy={0} rx={130} ry={36} fill="#f6f2ea" /><Racimo x={0} y={-6} n={6} tam={60} color="#d9b886" g={1} t={tl} seed={131} /><text x={0} y={-110} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={20} letterSpacing={3} fill="#fff">COMIDA</text></g>
-        </g>
+        </g></g>
       </g>
       <Polvo n={60} t={tl} seed={341} o={0.6} color="#e8f6ff" />
       <Tinte color="#bfe8ff" o={0.08} />

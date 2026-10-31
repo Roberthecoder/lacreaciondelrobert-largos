@@ -47,6 +47,7 @@ ILUSC.mesa_jitomates = {
         <rect x={-200} y={740} width={2320} height={400} fill="#a49a88" /><rect x={-200} y={740} width={2320} height={400} fill="url(#c-papel-a)" opacity={0.7} />
         {Array.from({ length: 9 }, (_, i) => <path key={i} d={`M ${-200 + i * 300} 740 L ${-260 + i * 300} 1140`} stroke="#000" strokeOpacity={0.12} strokeWidth={3} />)}
         {/* el niño detrás de la mesa */}
+        <Nene x={1530} y={1004} s={0.62} edad={3} t={tl} nina piel="#e9c4a6" pelo="#3a2416" playera="#e8467c" rayas={false} brazoD={30} brazoI={10} mira={[-1, 0]} boca={tomadas >= 8 ? 'o' : 'sonrisa'} seed={34} />
         <Nene x={1340} y={1000} s={1.15} edad={6} t={tl} playera="#2f6fd0" brazoD={tomadas > 3 ? 40 : 8} brazoI={tomadas > 3 ? 40 : 8}
           mira={[llega > 0.5 ? 1 : -0.6, 0]} boca={tomadas >= n ? 'o' : tomadas > 2 ? 'risa' : 'sonrisa'} seed={4} />
         {/* mesa */}
@@ -161,7 +162,7 @@ function Cubeta({ x, y, s = 1, children }) {
     {[0, 1, 2].map((i) => <path key={i} d={`M ${-158 + i * 3} ${-276 + i * 16} L ${158 - i * 3} ${-276 + i * 16}`} stroke="#000" strokeOpacity={0.12} strokeWidth={4} />)}
     <rect x={-112} y={-210} width={224} height={150} rx={8} fill="#1f5fbf" /><rect x={-112} y={-210} width={224} height={150} rx={8} fill="url(#c-cilindro)" opacity={0.6} />
     <path d="M -112 -120 Q 0 -160 112 -120 L 112 -60 L -112 -60 Z" fill="#f4c23a" opacity={0.9} />
-    <text x={0} y={-165} textAnchor="middle" fontFamily={FUENTE.texto} fontWeight={900} fontSize={34} fill="#fff" letterSpacing={2}>DETERGENTE</text>
+    <text x={0} y={-165} textAnchor="middle" fontFamily={FUENTE.texto} fontWeight={900} fontSize={27} fill="#fff" letterSpacing={0.5}>DETERGENTE</text>
     <text x={0} y={-80} textAnchor="middle" fontFamily={FUENTE.texto} fontWeight={900} fontSize={44} fill="#1d2a5a">20 L</text>
     <ellipse cx={0} cy={-300} rx={160} ry={14} fill="none" stroke="#dcdcd6" strokeWidth={10} />
     <path d="M -150 -290 Q 0 -470 150 -290" stroke="url(#c-acero)" strokeWidth={6} fill="none" />
@@ -193,6 +194,7 @@ ILUSC.papaya = {
         <g opacity={papas} transform={`translate(${(1 - papas) * -40} 0)`}>
           <Adulto x={170} y={940} s={0.95} camisa="#2f6a8f" boca="o" mira={[1, 0.4]} brazoD={20} t={tl} seed={5} />
           <Adulto x={290} y={940} s={0.92} camisa="#6a4c9c" mujer piel="#eccdb2" boca="o" mira={[1, 0.4]} brazoI={60} brazoD={10} t={tl} seed={2} />
+          <Nene x={232} y={944} s={0.5} edad={3} t={tl} nina piel="#e9c4a6" pelo="#3a2416" playera="#e8467c" rayas={false} brazoI={30} brazoD={10} mira={[1, 0.2]} boca="o" seed={33} />
         </g>
         <rect x={40} y={290} width={340} height={20} fill="#8a5a33" /><rect x={40} y={290} width={20} height={650} fill="#8a5a33" /><rect x={360} y={290} width={20} height={650} fill="#8a5a33" />
       </g>
@@ -209,7 +211,7 @@ ILUSC.papaya = {
       </g>
       <Tinte color="#ffcf8a" o={0.12} />
       <Polvo n={40} t={tl} seed={71} o={0.5} />
-      <Rotulo x={120} y={190} arriba="A LOS CINCO O SEIS AÑOS" texto="Una papaya de 20 litros" tl={tl} at={0.5} tam={52} />
+      <Rotulo x={120} y={190} arriba="A LOS CINCO O SEIS AÑOS" texto="Una papaya en un bote de 20 L" tl={tl} at={0.5} tam={52} />
     </g>;
   },
 };

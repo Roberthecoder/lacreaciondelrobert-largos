@@ -49,9 +49,8 @@ ILUSC.plantulas = {
           return <g key={i} transform={`translate(${m.x} ${m.y}) scale(${m.s})`}>
             {m.tipo === 'barro' ? <MacetaC x={0} y={0} w={110} h={95}><MataJitomate x={0} y={-82} s={0.36 * (0.4 + 0.6 * gi)} alto={0.4 + 0.5 * gi} t={tl + i} seed={i + 50} /></MacetaC>
               : <g><Sombra x={10} y={2} rx={60} ry={10} o={0.45} />
-                <path d="M -46 0 L -54 -110 L 54 -110 L 46 0 Z" fill={m.tipo === 'vaso' ? '#f4f2ea' : '#cfe6e0'} opacity={m.tipo === 'vaso' ? 1 : 0.6} /><path d="M -46 0 L -54 -110 L 54 -110 L 46 0 Z" fill="url(#c-cilindro)" />
+                <path d="M -46 0 L -54 -110 L 54 -110 L 46 0 Z" fill={m.tipo === 'vaso' ? '#26272b' : '#cfe6e0'} opacity={m.tipo === 'vaso' ? 1 : 0.6} /><path d="M -46 0 L -54 -110 L 54 -110 L 46 0 Z" fill="url(#c-cilindro)" />
                 <ellipse cx={0} cy={-104} rx={50} ry={10} fill="url(#c-tierra)" />
-                {m.tipo === 'vaso' && <text x={0} y={-50} textAnchor="middle" fontFamily={FUENTE.texto} fontWeight={900} fontSize={18} fill="#2a5aa8" opacity={0.7}>YOGUR</text>}
                 <MataJitomate x={0} y={-104} s={0.34 * (0.4 + 0.6 * gi)} alto={0.4 + 0.5 * gi} t={tl + i} seed={i + 50} /></g>}
           </g>; })}
         {/* el niño con su regadera */}
@@ -216,6 +215,115 @@ ILUSC.curso = {
       </g>
       <Polvo n={30} t={tl} seed={462} o={0.4} />
       <Rotulo x={120} y={190} arriba="RUTA AZUL · MAYO" texto="Cincuenta estudiantes" tl={tl} at={0.3} tam={58} />
+    </g>;
+  },
+};
+
+/* ---------- Anita y la Dra. Danay Carrillo (fotos reales si existen) ---------- */
+ILUSC.anita_danay = {
+  cam: { z0: 1.0, z1: 1.05, fx: 960, fy: 500 },
+  dibuja: ({ p, tl, capa }) => {
+    const F = window.FOTOS || {};
+    const fa = 'video/img/extra/anita.jpg', fd = 'video/img/extra/danay.jpg';
+    return <g>
+      <g transform={capa(0.4)}><rect x={-200} y={-200} width={2320} height={1500} fill="#1d1418" /><Halo x={960} y={420} r={800} color="#ffcfd8" o={0.35} /><Bokeh n={16} t={tl} seed={471} colores={['#ff9cb0', '#ffd38a']} o={0.35} /></g>
+      <g transform={capa(1)}>
+        {F[fa] && <FotoReal src={fa} x={560} y={480} maxW={640} maxH={600} rot={-2.5} o={cpr(p, 0.02, 0.15)} etiqueta="ANITA · MI MAESTRA DE SALSA" acento="#ff9cc4" />}
+        {F[fd] && <FotoReal src={fd} x={1360} y={500} maxW={680} maxH={600} rot={2} o={cpr(p, 0.35, 0.5)} etiqueta="DRA. DANAY CARRILLO" acento="#7ff0c8" />}
+        {!F[fa] && <g opacity={cpr(p, 0.05, 0.2)}><text x={560} y={520} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={80} fill="#fff">Anita</text><text x={560} y={570} textAnchor="middle" fontFamily={FUENTE.serif} fontStyle="italic" fontSize={34} fill="#ff9cc4">mi maestra de salsa</text></g>}
+        {!F[fd] && <g opacity={cpr(p, 0.35, 0.5)}><text x={1360} y={520} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={72} fill="#fff">Dra. Danay Carrillo</text></g>}
+        <g opacity={cpr(p, 0.25, 0.35)}><path d="M 900 500 L 1010 500" stroke="#fff" strokeWidth={4} strokeDasharray="12 10" /><path d="M 1000 488 L 1014 500 L 1000 512" stroke="#fff" strokeWidth={4} fill="none" /></g>
+      </g>
+      <Polvo n={30} t={tl} seed={472} o={0.4} />
+    </g>;
+  },
+};
+
+/* ---------- el Carrillo Biorefinery Lab, con su logo ---------- */
+ILUSC.lab_cbl = {
+  cam: { z0: 1.0, z1: 1.08, fx: 960, fy: 500, x0: -20, x1: 20 },
+  dibuja: ({ p, tl, capa }) => <g>
+    <g transform={capa(0.45)}>
+      <Pared color="#b9c2c4" luz={[0.5, 0.1]} />
+      {[0, 1, 2].map((k) => <g key={k}><rect x={240 + k * 560} y={40} width={420} height={14} rx={7} fill="#f6fbff" /><Halo x={450 + k * 560} y={50} r={240} color="#eef8ff" o={0.4} /></g>)}
+      {/* logo del laboratorio en la pared */}
+      <rect x={720} y={110} width={480} height={300} rx={10} fill="#ffffff" /><rect x={720} y={110} width={480} height={300} rx={10} fill="none" stroke="#c9ced3" strokeWidth={4} />
+      <image href="video/img/extra/cbl_logo.png" x={760} y={120} width={400} height={280} preserveAspectRatio="xMidYMid meet" />
+      {/* campana de extracción */}
+      <rect x={1380} y={160} width={420} height={420} fill="#dfe4e6" /><rect x={1400} y={220} width={380} height={300} fill="#bfe0ea" opacity={0.6} /><rect x={1400} y={220} width={380} height={300} fill="url(#c-vidrio)" />
+      <rect x={1380} y={150} width={420} height={40} fill="#c9ced3" />
+      {/* repisa con cultivos de algas */}
+      <Tablon x={120} y={330} w={520} prof={14} grosor={14} madera="clara" />
+      {[0, 1, 2, 3].map((k) => <g key={k} transform={`translate(${190 + k * 120} 334)`}>
+        <path d="M -44 0 Q -50 -10 -40 -24 L -16 -70 L -16 -110 L 16 -110 L 16 -70 L 40 -24 Q 50 -10 44 0 Z" fill={['#3fae5a', '#5fbf4a', '#2f8f6a', '#7fcf5a'][k]} opacity={0.8} />
+        <path d="M -44 0 Q -50 -10 -40 -24 L -16 -70 L -16 -110 L 16 -110 L 16 -70 L 40 -24 Q 50 -10 44 0 Z" fill="url(#c-vidrio)" /><Halo x={0} y={-30} r={60} color="#9fff8a" o={0.25} /></g>)}
+    </g>
+    <g transform={capa(1)}>
+      <rect x={-200} y={720} width={2320} height={40} fill="#d9dde0" /><rect x={-200} y={760} width={2320} height={500} fill="#bfc6cc" />
+      <rect x={-200} y={716} width={2320} height={8} fill="#fff" opacity={0.6} />
+      {/* cajas Petri con micelio y un matraz */}
+      {[0, 1, 2].map((k) => <g key={k} transform={`translate(${380 + k * 170} 712) scale(0.3)`}><Petri x={0} y={-30} r={200} id={`cbl${k}`} medio="#e8c27a"><Micelio x={0} y={0} r={200} g={0.5 + k * 0.2} seed={k + 60} /></Petri></g>)}
+      <g transform="translate(1000 716)"><path d="M -60 0 Q -70 -14 -56 -30 L -20 -90 L -20 -150 L 20 -150 L 20 -90 L 56 -30 Q 70 -14 60 0 Z" fill="#c9862a" opacity={0.85} /><path d="M -60 0 Q -70 -14 -56 -30 L -20 -90 L -20 -150 L 20 -150 L 20 -90 L 56 -30 Q 70 -14 60 0 Z" fill="url(#c-vidrio)" /></g>
+      <Nene x={1450} y={1060} s={1.15} edad={19} lentes t={tl} playera="#f4f4f0" rayas={false} cuello="#e9e9e4" pantalon="#2a3a5a" brazoD={70} brazoI={10} mira={[-1, 0.3]} boca="sonrisa" seed={481} />
+    </g>
+    <Polvo n={30} t={tl} seed={482} o={0.4} />
+    <Rotulo x={120} y={190} arriba="DESDE OCTUBRE DE 2024" texto="Carrillo Biorefinery Lab" tl={tl} at={0.3} tam={56} acento="#7ff0c8" />
+  </g>,
+};
+
+/* ---------- residuos del tequila: bagazo de agave y vinazas ---------- */
+function Agave({ x, y, s = 1, seed = 1 }) {
+  const r = R(seed);
+  return <g transform={`translate(${x} ${y}) scale(${s})`}>
+    {Array.from({ length: 16 }, (_, i) => { const a = -90 + (i - 7.5) * 11 + (r() - 0.5) * 6, L = 160 + r() * 60; return <g key={i} transform={`rotate(${a + 90})`}>
+      <path d={`M -10 0 Q -14 ${-L * 0.6} 0 ${-L} Q 14 ${-L * 0.6} 10 0 Z`} fill={mix('#5f8fa0', '#7fa8b0', r())} /><path d={`M 0 0 L 0 ${-L}`} stroke="#3f6a7a" strokeWidth={2} />
+      <path d={`M -3 ${-L} L 0 ${-L - 14} L 3 ${-L} Z`} fill="#3a2a1a" /></g>; })}
+  </g>;
+}
+ILUSC.bagazo_vinazas = {
+  cam: { z0: 1.0, z1: 1.07, fx: 960, fy: 560 },
+  dibuja: ({ p, tl, capa }) => {
+    const b = cpr(p, 0.08, 0.2), vz = cpr(p, 0.4, 0.52), hongo = cpr(p, 0.62, 0.9);
+    return <g>
+      <g transform={capa(0.2)}>
+        <linearGradient id="c-teq-cielo" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#3f5f8f" /><stop offset=".7" stopColor="#f2a65e" /><stop offset="1" stopColor="#f6c88a" /></linearGradient>
+        <rect x={-200} y={-200} width={2320} height={800} fill="url(#c-teq-cielo)" />
+        <Halo x={1500} y={420} r={400} color="#ffd9a0" o={0.8} />
+        <Desenfoque b={3}><path d="M -200 470 Q 300 400 700 450 Q 1100 390 1500 440 Q 1800 410 2120 450 L 2120 560 L -200 560 Z" fill="#6a5a7a" /></Desenfoque>
+      </g>
+      <g transform={capa(0.55)}>
+        <rect x={-200} y={520} width={2320} height={700} fill="#8a6a4a" />
+        {/* surcos de agave azul */}
+        {Array.from({ length: 5 }, (_, f) => Array.from({ length: 14 }, (_, c) => <Agave key={f * 20 + c} x={-180 + c * 170 + (f % 2) * 85} y={560 + f * 60} s={0.22 + f * 0.06} seed={f * 20 + c} />))}
+        {/* destilería al fondo: alambiques de cobre */}
+        <Desenfoque b={2}><g transform="translate(1500 540)">
+          <rect x={-200} y={-180} width={400} height={180} fill="#d9c7a8" /><path d="M -220 -180 L 0 -260 L 220 -180 Z" fill="#a8523a" />
+          {[-90, 60].map((dx, k) => <g key={k}><ellipse cx={dx} cy={-60} rx={50} ry={60} fill="#c87a3a" /><path d={`M ${dx} -120 Q ${dx + 40} -170 ${dx + 90} -150`} stroke="#c87a3a" strokeWidth={12} fill="none" /></g>)}
+        </g></Desenfoque>
+      </g>
+      <g transform={capa(1)}>
+        <rect x={-200} y={820} width={2320} height={400} fill="#5a4632" /><rect x={-200} y={820} width={2320} height={400} fill="url(#c-tierra)" opacity={0.3} />
+        {/* bagazo: la fibra del agave cocido y exprimido */}
+        <g opacity={b} transform="translate(520 860)">
+          <path d="M -320 0 Q -200 -260 0 -280 Q 220 -260 320 0 Z" fill="#c9a46a" />
+          {Array.from({ length: 220 }, (_, k) => { const r = R(5000 + k), x0 = (r() - 0.5) * 560, y0 = -r() * 240 * (1 - Math.abs(x0) / 340); return <path key={k} d={`M ${x0} ${y0} q ${(r() - 0.5) * 60} ${(r() - 0.5) * 20} ${(r() - 0.5) * 110} ${(r() - 0.5) * 30}`} stroke={['#e8c88a', '#b8884a', '#d9b070', '#8a6030'][k % 4]} strokeWidth={2 + r() * 3} fill="none" strokeLinecap="round" />; })}
+          <g transform="translate(260 -40)"><ellipse cx={0} cy={0} rx={110} ry={80} fill="#a8622a" /><ellipse cx={0} cy={0} rx={110} ry={80} fill="url(#c-esfera)" />{Array.from({ length: 10 }, (_, k) => <path key={k} d={`M ${-90 + k * 18} -60 Q ${-80 + k * 18} 0 ${-90 + k * 18} 60`} stroke="#7a3a1a" strokeWidth={4} fill="none" opacity={0.6} />)}</g>
+          <Racimo x={-120} y={-250} n={6} tam={80} color="#ece2cc" g={hongo} t={tl} seed={491} />
+        </g>
+        {/* vinazas: el líquido oscuro que queda al destilar */}
+        <g opacity={vz} transform="translate(1340 900)">
+          <rect x={-150} y={-300} width={300} height={300} rx={18} fill="#e9eef0" opacity={0.25} />
+          <rect x={-146} y={-210} width={292} height={206} rx={14} fill="#4a2410" opacity={0.92} />
+          <path d={`M -146 -210 Q 0 ${-220 + Math.sin(tl * 2) * 6} 146 -210`} stroke="#8a4a20" strokeWidth={4} fill="none" />
+          <rect x={-150} y={-300} width={300} height={300} rx={18} fill="url(#c-vidrio)" />
+          <rect x={-110} y={-130} width={220} height={70} rx={6} fill="#f6f1e4" opacity={0.92} /><text x={0} y={-84} textAnchor="middle" fontFamily={FUENTE.mano} fontWeight={700} fontSize={42} fill="#2a2018">vinazas</text>
+          <Micelio x={-60} y={-215} r={120} g={hongo} seed={492} aplastado={0.3} o={0.8} />
+        </g>
+      </g>
+      <g opacity={b} style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,.8))' }}><path d="M 520 560 L 520 470" stroke="#fff" strokeWidth={2.5} /><text x={520} y={450} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={46} fill="#fff">Bagazo de agave</text><text x={520} y={410} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={18} letterSpacing={3} fill="#F4C25A">LA FIBRA DEL AGAVE COCIDO Y EXPRIMIDO</text></g>
+      <g opacity={vz} style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,.8))' }}><path d="M 1340 590 L 1340 500" stroke="#fff" strokeWidth={2.5} /><text x={1340} y={480} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={46} fill="#fff">Vinazas</text><text x={1340} y={440} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={18} letterSpacing={3} fill="#F4C25A">EL LÍQUIDO QUE QUEDA AL DESTILAR</text></g>
+      <Polvo n={40} t={tl} seed={493} o={0.6} color="#ffe2b0" />
+      <Rotulo x={120} y={190} arriba="RESIDUOS DE LA INDUSTRIA TEQUILERA" texto="Hongos para aprovecharlos" tl={tl} at={0.3} tam={52} />
     </g>;
   },
 };

@@ -5,7 +5,7 @@ const ILUSC = window.ILUSC;
 ILUSC.caminos = {
   cam: { z0: 1.0, z1: 1.14, fx: 960, fy: 520, y0: 20, y1: -20 },
   dibuja: ({ p, tl, capa }) => {
-    const ramas = [['Plantas', '#8fd36a', -700], ['Letras', '#ff9cc4', -250], ['Números', '#7fc4ff', 250], ['Monedas', '#f4c25a', 700]];
+    const ramas = [['Plantas', '#8fd36a', -640], ['Números', '#7fc4ff', 0], ['Monedas', '#f4c25a', 640]];
     return <g>
       <g transform={capa(0.15)}>
         <linearGradient id="c-cam-cielo" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#3d5f96" /><stop offset=".6" stopColor="#f2b77a" /><stop offset="1" stopColor="#ffd9a0" /></linearGradient>
@@ -136,12 +136,20 @@ function Moneda2({ x, y, r = 40, tipo = 'cobre', rot = 0, inclina = 1, brillo = 
     <circle r={r * 0.8} fill="none" stroke={col[2]} strokeWidth={r * 0.04} opacity={0.6} />
     {Array.from({ length: 28 }, (_, i) => <circle key={i} cx={Math.cos((i / 28) * 6.28) * r * 0.87} cy={Math.sin((i / 28) * 6.28) * r * 0.87} r={r * 0.03} fill={col[1]} opacity={0.7} />)}
     {diseno === 'resplandor' ? <g transform={`scale(${r / 40})`}>
-      {Array.from({ length: 23 }, (_, i) => { const a = (-170 + i * 7.7) * Math.PI / 180; return <path key={i} d={`M ${Math.cos(a) * 8} ${Math.sin(a) * 8 - 2} L ${Math.cos(a) * 26} ${Math.sin(a) * 26 - 2}`} stroke={col[2]} strokeWidth={1.1} opacity={0.75} />; })}
-      <path d="M -11 8 Q -14 -6 -4 -12 Q 6 -16 10 -8 Q 14 -2 12 6 Q 0 10 -11 8 Z" fill={col[1]} stroke={col[2]} strokeWidth={0.8} />
-      <path d="M -11 3 Q 0 0 12 2" stroke={col[2]} strokeWidth={0.8} fill="none" />
-      <text x={0} y={7} textAnchor="middle" fontFamily={FUENTE.texto} fontWeight={800} fontSize={3.6} fill={col[2]}>LIBERTAD</text>
-      <path id={`c-arco-${seed}`} d="M -30 6 A 30 30 0 0 0 30 6" fill="none" />
-      <text fontFamily={FUENTE.serif} fontWeight={700} fontSize={6} fill={col[2]} opacity={0.85}><textPath href={`#c-arco-${seed}`} startOffset="50%" textAnchor="middle">50 CENTAVOS</textPath></text>
+      {/* canto dentado */}
+      {Array.from({ length: 60 }, (_, i) => <rect key={'d' + i} x={-0.9} y={-38.5} width={1.8} height={2.6} fill={col[2]} opacity={0.7} transform={`rotate(${i * 6})`} />)}
+      {/* rayos que salen del gorro frigio */}
+      {Array.from({ length: 33 }, (_, i) => { const a = (-178 + i * 11.1) * Math.PI / 180, L = (a < 0 ? 9 : 26) + (i % 2) * (a < 0 ? 3 : 4); return <path key={i} d={`M ${Math.cos(a) * 5} ${-21 + Math.sin(a) * 2} L ${Math.cos(a) * L} ${-21 + Math.sin(a) * L}`} stroke={col[2]} strokeWidth={0.9} opacity={0.75} />; })}
+      <path d="M -7 -20 Q -7 -27 0 -27.5 Q 7 -27 7 -20 Z" fill={col[1]} stroke={col[2]} strokeWidth={0.6} />
+      <rect x={-7.5} y={-21} width={15} height={2.2} fill={col[1]} stroke={col[2]} strokeWidth={0.4} />
+      <text x={0} y={-19.2} textAnchor="middle" fontFamily={FUENTE.texto} fontWeight={800} fontSize={1.8} fill={col[2]}>LIBERTAD</text>
+      {/* "50" grande con relleno cuadriculado */}
+      <text x={0} y={8} textAnchor="middle" fontFamily="Georgia, serif" fontWeight={700} fontSize={22} fill={col[1]} stroke={col[2]} strokeWidth={0.8}>50</text>
+      <text x={0.5} y={11.5} textAnchor="middle" fontFamily="Georgia, serif" fontSize={3} fill={col[2]}>M</text>
+      <text x={0} y={19} textAnchor="middle" fontFamily="Georgia, serif" fontWeight={700} fontSize={6} fill={col[1]} stroke={col[2]} strokeWidth={0.35} letterSpacing={0.3}>CENTAVOS</text>
+      {/* coronas de laurel y encino a los lados */}
+      {[-1, 1].map((d) => <g key={d}>{Array.from({ length: 8 }, (_, k) => { const a = (115 - k * 15) * Math.PI / 180, R0 = 28; return <ellipse key={k} cx={d * Math.cos(a) * R0 * -1} cy={Math.sin(a) * R0 - 2} rx={1.6} ry={3.4} fill={col[1]} stroke={col[2]} strokeWidth={0.4} transform={`rotate(${d * (k * 14 - 40)} ${d * Math.cos(a) * R0 * -1} ${Math.sin(a) * R0 - 2})`} />; })}</g>)}
+      <path d="M -6 27 Q 0 30 6 27" stroke={col[2]} strokeWidth={0.8} fill="none" />
     </g> : <g>
     {/* águila en relieve (simplificada) */}
     <g transform={`scale(${r / 40})`} opacity={0.75}>
@@ -321,59 +329,62 @@ ILUSC.jardin_vertical = {
 
 /* ---------- el periódico: "Emprendedor, matemático… y sólo tiene 11 años" ---------- */
 ILUSC.periodico = {
-  cam: { z0: 1.0, z1: 1.2, fx: 880, fy: 560 },
+  cam: { z0: 1.0, z1: 1.1, fx: 960, fy: 470 },
   dibuja: ({ p, tl, capa, v }) => {
-    const medio = v.medio || 'MURAL', fecha = v.fecha || '', credito = v.credito || '';
-    const lin = (x, y, w, n, alto = 16, c = '#5a5650') => Array.from({ length: n }, (_, i) => <rect key={i} x={x} y={y + i * (alto + 9)} width={w * (i === n - 1 ? 0.6 : 0.92 + 0.08 * Math.sin(i * 7.1))} height={alto * 0.55} fill={c} opacity={0.55} />);
+    const credito = v.credito || '';
+    const sube = lerp(80, -360, cpr(p, 0.08, 0.55, kEase.suave)); // la página se desliza un poco, como al leerla
+    const cuerpo = ['Roberto Carlos Navarro Félix desarrolló un proyecto para deshidratar alimentos, ha', 'publicado cuentos, obtuvo una medalla de plata en matemáticas a nivel nacional...', 'y sólo tiene 11 años.'];
     return <g>
-      <g transform={capa(0.7)}>
-        <rect x={-200} y={-200} width={2320} height={1500} fill="url(#c-madera-media)" /><rect x={-200} y={-200} width={2320} height={1500} fill="#000" opacity={0.3} />
-        <Halo x={300} y={100} r={900} color="#ffe6b8" o={0.5} />
+      <g transform={capa(0.6)}>
+        <rect x={-200} y={-200} width={2320} height={1500} fill="#1c1d22" />
+        <Halo x={960} y={300} r={900} color="#dfe6ee" o={0.25} />
       </g>
       <g transform={capa(1)}>
-        {/* taza de café */}
-        <g transform="translate(1660 820)"><ellipse cx={20} cy={30} rx={150} ry={60} fill="#000" opacity={0.4} filter="url(#c-b14)" /><circle r={130} fill="#efe9de" /><circle r={104} fill="#3a1e10" /><circle r={104} fill="url(#c-esfera)" opacity={0.4} /><ellipse cx={-30} cy={-40} rx={40} ry={14} fill="#fff" opacity={0.3} transform="rotate(-30 -30 -40)" />
-          <path d="M 120 -20 Q 210 -30 200 40 Q 190 80 120 60" stroke="#efe9de" strokeWidth={26} fill="none" />
-          {[0, 1].map((k) => <path key={k} d={`M ${-20 + k * 40} -40 q ${20 * Math.sin(tl + k)} -80 0 -160`} stroke="#fff" strokeOpacity={0.2} strokeWidth={24} fill="none" filter="url(#c-b14)" />)}</g>
-        {/* el periódico */}
-        <g transform="translate(860 540) rotate(-3) scale(0.94)">
-          <rect x={-560} y={-470} width={1120} height={980} fill="#000" opacity={0.45} filter="url(#c-b24)" transform="translate(16 20)" />
-          <rect x={-560} y={-470} width={1120} height={980} fill="#efe8d8" />
-          <rect x={-560} y={-470} width={1120} height={980} fill="url(#c-papel-a)" />
-          <text x={0} y={-370} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={800} fontSize={110} fill="#1a1a1a" letterSpacing={6} style={{ fontVariationSettings: "'opsz' 144" }}>{medio}</text>
-          <rect x={-520} y={-345} width={1040} height={3} fill="#1a1a1a" /><rect x={-520} y={-338} width={1040} height={1} fill="#1a1a1a" />
-          <text x={-520} y={-312} fontFamily={FUENTE.serif} fontStyle="italic" fontSize={22} fill="#333">{fecha}</text>
-          <text x={520} y={-312} textAnchor="end" fontFamily={FUENTE.mono} fontSize={18} fill="#333">MURAL / STAFF</text>
-          <rect x={-520} y={-300} width={1040} height={1.5} fill="#1a1a1a" />
-          <text x={-520} y={-210} fontFamily={FUENTE.serif} fontWeight={800} fontSize={70} fill="#111">Emprendedor, matemático…</text>
-          <text x={-520} y={-130} fontFamily={FUENTE.serif} fontWeight={800} fontSize={70} fill="#111">y sólo tiene 11 años de edad</text>
-          {/* foto en semitono */}
-          <g transform="translate(-520 -90)">
-            <rect x={0} y={0} width={480} height={380} fill="#cfc8b8" />
-            <clipPath id="c-per-foto"><rect x={0} y={0} width={480} height={380} /></clipPath>
-            <g clipPath="url(#c-per-foto)" style={{ filter: 'grayscale(1) contrast(1.2)' }}>
-              <rect x={0} y={0} width={480} height={380} fill="#9a958a" />
-              <Tablon x={0} y={250} w={480} prof={20} grosor={20} madera="clara" />
-              {[0, 1, 2].map((k) => <MacetaC key={k} x={300 + k * 70} y={256} w={60} h={52}><Mammillaria x={0} y={-48} s={0.3} t={0} /></MacetaC>)}
-              <rect x={0} y={0} width={480} height={380} fill="#b8c2b0" /><rect x={300} y={0} width={180} height={380} fill="#5f7a5a" /><rect x={0} y={0} width={140} height={380} fill="#e8e8e0" />
-              <Nene x={240} y={560} s={1.25} edad={11} playera="#f4f4f0" rayas={false} cuello="#f4f4f0" boca="risa" mira={[0, 0]} seed={14} brazoD={150} brazoI={150} />
-              {[[-1, '#c9ccd0', '#3f9a4a'], [1, '#e6c25a', '#f2d56a']].map(([d, c, cinta]) => <g key={d}>
-                <path d={`M ${240 + d * 40} 300 Q ${240 + d * 70} 250 ${240 + d * 120} 210`} stroke={cinta} strokeWidth={10} fill="none" />
-                <circle cx={240 + d * 125} cy={200} r={34} fill={c} stroke="#666" strokeWidth={3} /><circle cx={240 + d * 125} cy={200} r={22} fill="none" stroke="#777" strokeWidth={2} /></g>)}
+        {/* ventana del navegador con la nota (recreación de la página de Reforma / Mural) */}
+        <g transform={`translate(960 ${520 + sube})`}>
+          <rect x={-640} y={-470} width={1280} height={1100} rx={18} fill="#000" opacity={0.45} transform="translate(16 22)" />
+          <rect x={-640} y={-470} width={1280} height={1100} rx={18} fill="#ffffff" />
+          {/* barra superior */}
+          <rect x={-640} y={-470} width={1280} height={84} rx={18} fill="#ffffff" />
+          <path d="M -600 -440 h 26 M -600 -430 h 26 M -600 -420 h 26" stroke="#222" strokeWidth={3} />
+          <circle cx={-556} cy={-432} r={9} fill="none" stroke="#222" strokeWidth={3} /><path d="M -549 -425 l 7 7" stroke="#222" strokeWidth={3} />
+          <text x={0} y={-410} textAnchor="middle" fontFamily="Georgia, 'Times New Roman', serif" fontWeight={900} fontSize={58} fill="#1f9a3e" letterSpacing={1}>REFORMA</text>
+          <rect x={290} y={-450} width={140} height={44} rx={22} fill="#ff5a1f" /><text x={360} y={-421} textAnchor="middle" fontFamily={FUENTE.titulo || 'Anton'} fontSize={20} fill="#fff">SUSCRÍBETE</text>
+          <text x={530} y={-421} textAnchor="middle" fontFamily={'Anton, Impact, sans-serif'} fontSize={20} fill="#555">INICIAR SESIÓN</text>
+          <rect x={-640} y={-386} width={1280} height={2} fill="#222" />
+          <rect x={-480} y={-370} width={960} height={10} fill="#d9dce2" />
+          {/* titular, firma y fecha */}
+          <text x={-480} y={-280} fontFamily={'Anton, Impact, sans-serif'} fontSize={70} fill="#151515">Emprendedor, matemático...</text>
+          <text x={-480} y={-200} fontFamily={'Anton, Impact, sans-serif'} fontSize={70} fill="#151515">y sólo tiene 11 años de edad</text>
+          <text x={-480} y={-150} fontFamily={FUENTE.texto} fontSize={22} fill="#222">MURAL / STAFF</text>
+          <text x={-480} y={-122} fontFamily={FUENTE.texto} fontSize={18} fill="#444">Guadalajara, México (08 julio 2017) .-00:00 hrs</text>
+          {/* botones para compartir */}
+          {['f', 'X', 'w', '✉', '∞'].map((s, k) => <g key={k} transform={`translate(${-450 + k * 70} -64)`}><circle r={30} fill="#111" /><text x={0} y={9} textAnchor="middle" fontFamily={FUENTE.texto} fontWeight={900} fontSize={26} fill="#fff">{s}</text></g>)}
+          {/* la foto: Beto con sus dos medallas */}
+          <g transform="translate(-480 -20)">
+            <clipPath id="c-per-foto"><rect x={0} y={0} width={960} height={640} /></clipPath>
+            <g clipPath="url(#c-per-foto)">
+              <rect x={0} y={0} width={960} height={640} fill="#d9dcd6" />
+              <g filter="url(#c-b14)"><rect x={0} y={0} width={300} height={640} fill="#eceee9" /><rect x={560} y={0} width={400} height={640} fill="#3f6f4a" /><rect x={620} y={60} width={300} height={260} fill="#2f5a3a" /><rect x={140} y={40} width={200} height={300} fill="#c9cfc7" /></g>
+              <Nene x={480} y={1010} s={2.15} edad={11} piel="#a86f48" pelo="#1a1311" playera="#f4f4f0" rayas={false} cuello="#e9e9e4" boca="risa" mira={[0, 0]} seed={14} brazoD={168} brazoI={168} parpadeo={false} />
+              {/* listones y medallas: plata a la izquierda, dorada a la derecha */}
+              <path d="M 380 640 Q 330 520 250 440" stroke="#3f9a4a" strokeWidth={22} fill="none" />
+              <path d="M 560 640 Q 640 560 700 470" stroke="#f2d56a" strokeWidth={22} fill="none" />
+              <path d="M 420 640 Q 470 600 560 560" stroke="#e8742a" strokeWidth={18} fill="none" opacity={0.9} />
+              <g transform="translate(245 400)"><circle r={70} fill="url(#c-acero)" /><circle r={52} fill="none" stroke="#8a929a" strokeWidth={4} /><circle r={18} fill="#b9c0c8" /></g>
+              <g transform="translate(712 420)"><circle r={60} fill="url(#c-oro)" /><circle r={40} fill="#f6f2e0" /><path d="M -24 10 L 0 -26 L 24 10 Z" fill="#1d6fb0" /><circle cx={0} cy={-4} r={10} fill="#2fa04a" /></g>
+              {[[-1, 245, 470], [1, 712, 480]].map(([d, hx, hy]) => <g key={d}><ellipse cx={hx + d * 10} cy={hy} rx={40} ry={50} fill="#a86f48" /><ellipse cx={hx + d * 10} cy={hy} rx={40} ry={50} fill="url(#c-esfera)" opacity={0.5} /></g>)}
             </g>
-            {Array.from({ length: 48 }, (_, i) => <rect key={i} x={0} y={i * 8} width={480} height={2} fill="#000" opacity={0.05} />)}
-            <text x={0} y={406} fontFamily={FUENTE.serif} fontStyle="italic" fontSize={16} fill="#444">Beto fue finalista del concurso El pequeño Gran Escritor 2016.</text>
+            <text x={0} y={672} fontFamily={FUENTE.texto} fontStyle="italic" fontSize={19} fill="#333">Beto fue finalista del concurso El pequeño Gran Escritor 2016. Crédito: Maricarmen Galindo</text>
+            {cuerpo.map((l, k) => <text key={k} x={0} y={740 + k * 36} fontFamily={FUENTE.texto} fontSize={24} fill="#333">{l}</text>)}
           </g>
-          {lin(0, -80, 240, 16)}{lin(270, -80, 240, 16)}
-          {lin(-520, 330, 330, 6)}{lin(-170, 330, 330, 6)}{lin(180, 330, 330, 6)}
         </g>
       </g>
-      <Tinte color="#ffcf8a" o={0.1} />
-      <Polvo n={40} t={tl} seed={171} o={0.5} />
+      <Polvo n={30} t={tl} seed={171} o={0.35} />
       {(() => { const o = cpr(p, 0.62, 0.72); const hay = (window.FOTOS || {})['video/img/extra/mural_nota.jpg']; return hay && o > 0 && <g>
         <rect x={0} y={0} width={1920} height={1080} fill="#0b0b0d" opacity={0.7 * o} />
         <FotoReal src="video/img/extra/mural_nota.jpg" x={960} y={480} maxW={1300} maxH={720} o={o} etiqueta="LA NOTA ORIGINAL · MURAL, 8 DE JULIO DE 2017" /></g>; })()}
-      {credito && p < 0.62 && <text x={1880} y={900} textAnchor="end" fontFamily={FUENTE.mono} fontSize={18} fill="#fff" opacity={0.8} style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,.9))' }}>{credito}</text>}
+      {credito && p < 0.62 && <text x={40} y={130} textAnchor="start" fontFamily={FUENTE.mono} fontSize={18} fill="#fff" opacity={0.8} style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,.9))' }}>{credito}</text>}
     </g>;
   },
 };
