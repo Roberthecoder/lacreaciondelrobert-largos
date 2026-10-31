@@ -8,7 +8,7 @@ const IMG = (n) => 'video/img/' + n + '.jpg';
 // Fotos que se dibujan dentro de las escenas (se precargan antes del primer cuadro).
 window.PITCH_IMGS = ['web/paisaje_agavero_2', 'web/pinas_agave', 'web/horno_destileria', 'web/paisaje_agavero_1', 'web/agave_campo', 'web/jimador',
   'robert/granja_prepa_antes', 'robert/granja_prepa_despues', 'robert/curso_ruta_azul_1', 'robert/granja_prepa_cosecha', 'robert/curso_ruta_azul_2',
-  'robert/rise_equitech_spotlight', 'robert/micelio_en_grano_frascos_2023', 'robert/djamor_3_primordios', 'robert/setas_3'].map(IMG).concat(['video/img/rise_logo_claro.svg']);
+  'robert/rise_equitech_spotlight', 'robert/micelio_en_grano_frascos_2023', 'robert/djamor_3_primordios', 'robert/setas_3'].map(IMG).concat(['video/img/rise_logo_claro.svg', 'video/img/logos/cbl.png']);
 
 const ORO = '#F4C25A', CREMA = '#F6F3EC', PAJA = '#d8b77a', PAJA2 = '#b98d4e', SETA = '#e9e2d3', SETA_OSC = '#b9ad98';
 const ease = suave3;

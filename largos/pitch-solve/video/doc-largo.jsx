@@ -270,6 +270,21 @@ function MarcaCapitulo({ T }) {
       <span style={{ color: KC.gold2 }}>{String(b.c.num).padStart(2, '0')}</span>&nbsp;&nbsp;{b.c.titulo.toUpperCase()}</div>
   </div>;
 }
+// Crédito del Carrillo Biorefinery Lab: tarjeta con su logo arriba a la derecha mientras se habla del laboratorio.
+function SelloLab({ T }) {
+  const a = LINEA.lineas.find((l) => l.t && l.t.includes('Carrillo Biorefinery Lab'));
+  const b = LINEA.lineas.find((l) => l.t && l.t.startsWith('In her lab'));
+  if (!a) return null;
+  const ini = a.at + 0.5, fin = (b || a).at + (b || a).dur - 0.2;
+  const e = kprog(T, ini, ini + 0.6, (x) => 1 - Math.pow(1 - x, 3)) * (1 - kprog(T, fin - 0.45, fin));
+  if (e <= 0) return null;
+  return <div style={abs(1594, 30, { width: 290, zIndex: 42, opacity: e, transform: `translateY(${(1 - e) * -24}px) scale(${0.94 + 0.06 * e})`, transformOrigin: '50% 0' })}>
+    <div style={{ background: '#fff', borderRadius: 18, padding: 14, boxShadow: '0 18px 36px rgba(0,0,0,.45), 0 3px 8px rgba(0,0,0,.3)' }}>
+      <img src="video/img/logos/cbl.png" style={{ display: 'block', width: 262, height: 262, objectFit: 'contain' }} />
+    </div>
+    <div style={{ marginTop: 10, textAlign: 'center', fontFamily: KF.mono, fontWeight: 700, fontSize: 17, letterSpacing: 3, color: '#fff', textShadow: '0 1px 3px rgba(0,0,0,.95), 0 0 12px rgba(0,0,0,.8)' }}>TEC DE MONTERREY</div>
+  </div>;
+}
 const LADOS_H = { 'abajo-der': { left: 1500, top: 560, width: 420 }, 'abajo-izq': { left: 0, top: 560, width: 420 }, 'arriba-der': { left: 1560, top: 90, width: 330 } };
 function RobertLargo({ T }) {
   return <>{LINEA.lineas.filter((l) => l.robert).map((l) => {
@@ -315,6 +330,7 @@ function DocLargo() {
     <Pelicula T={T} />
     <MarcaCapitulo T={T} />
     <RobertLargo T={T} />
+    <SelloLab T={T} />
     <SubtituloLargo T={T} />
   </div>;
 }
