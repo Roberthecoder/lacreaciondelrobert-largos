@@ -131,7 +131,7 @@ function EscenaFotos({ v, p, tl, T, pal }) {
   return <>
     <FondoFoto src={fotoSrc(v.fotos[0])} T={T} />
     {v.fotos.map((f, i) => <Marco key={i} foto={f} p={p} tl={tl} x={pos[i][0]} y={pos[i][1]} rot={pos[i][2]} maxW={n === 2 ? 760 : 560} maxH={n === 2 ? 600 : 560}
-      retraso={i * (v.paso ?? 0.45)} z0={1} z1={1.07} borde={10} />)}
+      retraso={i * (v.paso ?? 0.45)} z0={1} z1={1.07} borde={10} etiqueta={(v.pies || [])[i]} pal={pal} />)}
     {v.etiqueta && <div style={abs(0, 800, { width: W, textAlign: 'center' })}><Etiqueta texto={v.etiqueta} rel tl={tl - 0.9} pal={pal} tam={32} /></div>}
   </>;
 }

@@ -1,5 +1,9 @@
 // Generado por preparar_fotos.py: tamaño de cada foto preparada.
 window.FOTOS = {
+"video/img/extra/platino_hd.jpg": [1200, 925],
+"video/img/extra/mit_grupo.jpg": [2000, 1500],
+"video/img/extra/danay.jpg": [1599, 1200],
+"video/img/extra/anita.jpg": [530, 1312],
 "video/img/extra/cbl_logo.png": [447, 447],
 "video/img/extra/olote_robert.jpg": [1500, 1125],
 "video/img/extra/diploma_una_idea.jpg": [798, 618],
