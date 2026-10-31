@@ -289,11 +289,11 @@ function SelloLab({ T }) {
       </div>
       <div style={{ ...txt, marginTop: 10, textAlign: 'center', fontSize: 17 }}>TEC DE MONTERREY</div>
     </div>}
-    {eF > 0 && <div style={abs(1260, 26, { width: 626, height: 76, zIndex: 42, opacity: eF, transform: `translateY(${(1 - eF) * -16}px)`,
+    {eF > 0 && <div style={abs(1186, 26, { width: 700, height: 76, whiteSpace: 'nowrap', zIndex: 42, opacity: eF, transform: `translateY(${(1 - eF) * -16}px)`,
       display: 'flex', alignItems: 'center', gap: 14, background: 'rgba(255,255,255,.96)', borderRadius: 14, padding: '0 18px 0 8px', boxShadow: '0 10px 24px rgba(0,0,0,.4)' })}>
       <img src="video/img/logos/cbl.png" style={{ width: 66, height: 66, objectFit: 'cover', objectPosition: '20% 30%' }} />
       <div style={{ fontFamily: KF.mono, fontWeight: 700, fontSize: 18, letterSpacing: 2, color: '#24302a', lineHeight: 1.25 }}>
-        CARRILLO BIOREFINERY LAB<br /><span style={{ fontWeight: 400, color: '#4d6b57' }}>TEC DE MONTERREY · DR. DANAY CARRILLO NIEVES</span></div>
+        CARRILLO BIOREFINERY LAB<br /><span style={{ fontWeight: 400, fontSize: 15, letterSpacing: 1.5, color: '#4d6b57' }}>TEC DE MONTERREY · DR. DANAY CARRILLO NIEVES</span></div>
     </div>}
   </>;
 }
