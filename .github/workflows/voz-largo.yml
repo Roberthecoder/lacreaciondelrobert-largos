@@ -31,9 +31,10 @@ jobs:
         run: |
           for p in largos/*/video/voz/pedido.txt; do
             d=$(dirname "$(dirname "$p")")
-            node "$d/narrar_largo.mjs" "$(tr -d '[:space:]' < "$p")"
+            node "$d/narrar_largo.mjs" "$(head -1 "$p" | tr -d '[:space:]')"
           done
-      - name: Guardar la voz en la rama
+      - name: Guardar la voz en la rama (aunque algo falle, para no perder lo ya pagado)
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

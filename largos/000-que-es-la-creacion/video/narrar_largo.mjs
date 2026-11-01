@@ -20,7 +20,7 @@ const VOICE_ID = process.env.ELEVENLABS_VOICE_ID || 'uiCk6APPfsjnw3oUQzVo';
 const MODEL = process.env.ELEVENLABS_MODEL || 'eleven_v4';
 const KEY = process.env.ELEVENLABS_API_KEY;
 const modo = process.argv[2] || 'saldo';
-if (!['saldo', 'generar'].includes(modo)) throw new Error(`Pedido desconocido: "${modo}" (usa saldo o generar). No se gastó nada.`);
+if (!['saldo', 'generar', 'recuperar'].includes(modo)) throw new Error(`Pedido desconocido: "${modo}" (usa saldo o generar). No se gastó nada.`);
 const H = { 'xi-api-key': KEY };
 if (!KEY) throw new Error('Falta ELEVENLABS_API_KEY');
 
@@ -47,6 +47,22 @@ console.log(resumen);
 fs.writeFileSync(path.join(VOZ, 'saldo.txt'), resumen + '\n');
 if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, resumen + '\n');
 if (modo === 'saldo') process.exit(0);
+// recuperar: baja del historial de ElevenLabs los capítulos que ya se generaron (no gasta créditos)
+if (modo === 'recuperar') {
+  const rh = await fetch(`https://api.elevenlabs.io/v1/history?page_size=100&voice_id=${VOICE_ID}`, { headers: H });
+  if (!rh.ok) throw new Error(`No pude leer el historial (${rh.status}): ${(await rh.text()).slice(0, 300)}`);
+  const items = (await rh.json()).history || [];
+  for (const { i, t } of pendientes) {
+    const it = items.find((h) => (h.text || '').trim() === t);
+    if (!it) { console.log(`cap ${i}: no está en el historial`); continue; }
+    const ra = await fetch(`https://api.elevenlabs.io/v1/history/${it.history_item_id}/audio`, { headers: H });
+    if (!ra.ok) { console.log(`cap ${i}: no pude bajar el audio (${ra.status})`); continue; }
+    fs.writeFileSync(path.join(VOZ, `cap${i}.mp3`), Buffer.from(await ra.arrayBuffer()));
+    fs.writeFileSync(path.join(VOZ, `cap${i}.json`), JSON.stringify({ hash: hashDe(t), modelo: it.model_id || MODEL, texto: t, alignment: null, recuperado: it.history_item_id }));
+    console.log(`cap ${i}: recuperado del historial`);
+  }
+  process.exit(0);
+}
 if (sub.character_limit != null && costo > quedan) throw new Error(`No alcanzan los créditos: ${resumen} No se gastó nada.`);
 
 const tts = async (body) => fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}/with-timestamps?output_format=mp3_44100_128`, {
