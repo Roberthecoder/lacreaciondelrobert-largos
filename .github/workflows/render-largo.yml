@@ -51,7 +51,7 @@ jobs:
   render:
     needs: partir
     runs-on: ubuntu-24.04
-    timeout-minutes: 90
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       max-parallel: 20
@@ -63,9 +63,13 @@ jobs:
         with:
           node-version: 22
       - name: Instalar ffmpeg y Chromium
+        # A veces apt se queda colgado en la máquina de GitHub: cada intento tiene límite y se reintenta.
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-color-emoji
-          cd motor && npm install --no-audit --no-fund && npx playwright install --with-deps chromium
+          for intento in 1 2 3; do
+            timeout 600 bash -c 'sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-color-emoji && cd motor && npm install --no-audit --no-fund && npx playwright install --with-deps chromium' && exit 0
+            echo "Instalación colgada o fallida, reintento $intento"; sleep 10
+          done
+          exit 1
       - name: Renderizar pedazo ${{ matrix.pedazo.i }} (${{ matrix.pedazo.desde }}–${{ matrix.pedazo.hasta }} s)
         run: |
           mkdir -p salida
