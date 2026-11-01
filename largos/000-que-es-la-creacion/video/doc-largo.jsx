@@ -137,6 +137,17 @@ function EscenaFotos({ v, p, tl, T, pal }) {
 }
 function EscenaTexto({ v, p, tl, T, pal }) {
   const palabras = (v.grande || '').split(' ');
+  const D = v.dibujo && (window.DIBUJOS || {})[v.dibujo];
+  if (D) return <>
+    <Fondo color={v.fondo || pal.fondo} T={T} />
+    {/* con dibujo: el título arriba y el dibujo abajo, con entrada suave */}
+    <svg viewBox="0 0 1920 1080" style={abs(0, 0, { width: W, height: H, opacity: kprog(tl, 0.2, 1.1, kEase.sale), transform: `translateY(${(1 - kprog(tl, 0.2, 1.2, kEase.sale)) * 30}px)` })}>{D({ p, tl, T })}</svg>
+    {v.arriba && <div style={abs(0, 92, { width: W, textAlign: 'center', fontFamily: KF.mono, fontWeight: 700, fontSize: 26, letterSpacing: 8, color: pal.acento, opacity: kprog(tl, 0, 0.6), textShadow: KSOMBRA })}>{v.arriba}</div>}
+    <div style={abs(160, 132, { width: W - 320, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: (v.tam || 150) * 0.62, lineHeight: 1.05, color: BLANCO, textShadow: KSOMBRA, fontVariationSettings: "'opsz' 144" })}>
+      {palabras.map((w, i) => { const e = kprog(tl, 0.15 + i * 0.12, 0.75 + i * 0.12, kEase.sale); return <span key={i} style={{ display: 'inline-block', margin: '0 0.12em', opacity: e, transform: `translateY(${(1 - e) * 24}px)`, filter: `blur(${(1 - e) * 8}px)` }}>{w}</span>; })}
+    </div>
+    {v.sub && <div style={abs(160, 132 + (v.tam || 150) * 0.62 * 1.1 * Math.ceil((v.grande || '').length / 30) + 14, { width: W - 320, textAlign: 'center', fontFamily: SERIF, fontStyle: 'italic', fontWeight: 400, fontSize: 38, color: BLANCO, opacity: 0.88 * kprog(tl, 0.9, 1.6), textShadow: KSOMBRA })}>{v.sub}</div>}
+  </>;
   return <>
     <Fondo color={v.fondo || pal.fondo} T={T} />
     {v.arriba && <div style={abs(0, 270, { width: W, textAlign: 'center', fontFamily: KF.mono, fontWeight: 700, fontSize: 30, letterSpacing: 8, color: pal.acento, opacity: kprog(tl, 0, 0.6) })}>{v.arriba}</div>}
@@ -317,7 +328,7 @@ function DocLargo() {
       const tl = T - b.at, p = kclamp(tl / b.dur, 0, 1);
       const o = kprog(tl, 0, FUNDIDO, kEase.suave);
       // Las escenas de puro texto se apagan rápido al salir, para que dos títulos nunca se encimen en el cruce.
-      const sale = ['texto', 'numero', 'capitulo'].includes(b.v.tipo) ? 1 - kprog(T - (b.at + b.dur), 0, 0.28) : 1;
+      const sale = ['texto', 'numero', 'capitulo'].includes(b.v.tipo) ? 1 - kprog(T - (b.at + b.dur), 0, FUNDIDO, kEase.suave) : 1;
       const Comp = b.v.tipo === 'capitulo' ? null : ESCENAS_TIPO[b.v.tipo] || EscenaTexto;
       return <div key={i} style={abs(0, 0, { width: W, height: H, opacity: (i === 0 ? 1 : o) * sale, zIndex: i })}>
         {Comp ? <Comp v={b.v} p={p} tl={tl} T={T} pal={b.pal} dur={b.dur} /> : <EscenaCapitulo c={b.c} tl={tl} T={T} pal={b.pal} />}

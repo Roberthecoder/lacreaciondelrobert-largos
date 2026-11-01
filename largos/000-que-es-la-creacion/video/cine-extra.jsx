@@ -376,7 +376,7 @@ ILUSC.medio_fin = {
     const piedras = [['π', 220], ['x²', 440], ['Σ', 660], ['∫', 880], ['%', 1100], ['√', 1320]];
     // cada salto va de una piedra a la siguiente; el último, de la última piedra a la orilla (una sola vez)
     const paso = cpr(p, 0.1, 0.82), k = paso * piedras.length, i = Math.min(piedras.length - 1, Math.floor(k));
-    const salto = Math.min(1, k - i), kx = lerp(piedras[i][1], (piedras[i + 1] || [0, 1540])[1], Math.min(1, salto * 1.4));
+    const salto = Math.min(1, k - i), kx = lerp(piedras[i][1], (piedras[i + 1] || [0, 1530])[1], Math.min(1, salto * 1.4));
     const ky = 780 - Math.sin(Math.min(1, salto * 1.4) * Math.PI) * 60;
     return <g>
       <g transform={capa(0.35)}>
@@ -397,11 +397,11 @@ ILUSC.medio_fin = {
           {j <= i && <ellipse cx={0} cy={-6} rx={90} ry={30} fill="#7fe6ff" opacity={0.25} />}
         </g>)}
         {/* la meta: la investigación */}
-        <g transform="translate(1790 760)">
+        <g transform="translate(1690 760)">
           <Halo x={0} y={-150} r={260} color="#9fff8a" o={0.5 + 0.2 * Math.sin(tl * 2)} />
           <path d="M -70 0 Q -80 -16 -64 -34 L -24 -100 L -24 -170 L 24 -170 L 24 -100 L 64 -34 Q 80 -16 70 0 Z" fill="#3fbf6a" opacity={0.85} /><path d="M -70 0 Q -80 -16 -64 -34 L -24 -100 L -24 -170 L 24 -170 L 24 -100 L 64 -34 Q 80 -16 70 0 Z" fill="url(#c-vidrio)" />
-          <Racimo x={-96} y={0} n={5} tam={58} color="#ef7fa6" g={1} t={tl} seed={512} />
-          <text x={-30} y={-230} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={22} letterSpacing={4} fill="#9fff8a">MIS OBJETIVOS</text>
+          <Racimo x={95} y={0} n={4} tam={52} color="#ef7fa6" g={1} t={tl} seed={512} />
+          <text x={0} y={-230} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={22} letterSpacing={4} fill="#9fff8a">MIS OBJETIVOS</text>
         </g>
         <Nene x={kx} y={ky + 10} s={0.62} edad={15} lentes t={tl} playera="#2a5aa8" rayas={false} brazoD={40} brazoI={40} mira={[1, 0]} boca="sonrisa" seed={513} />
       </g>

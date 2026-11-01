@@ -1,2 +1,1 @@
-recuperar
-# Sun Nov  1 13:25:23     2026
+generar
