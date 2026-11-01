@@ -28,7 +28,9 @@ globalThis.window = {};
 new Function(fs.readFileSync(path.join(DIR, 'escenas.js'), 'utf8'))();
 const CAPS = window.CAPS;
 
-const sub = await (await fetch('https://api.elevenlabs.io/v1/user/subscription', { headers: H })).json();
+const rs = await fetch('https://api.elevenlabs.io/v1/user/subscription', { headers: H });
+const sub = await rs.json().catch(() => ({}));
+if (!rs.ok || sub.character_limit == null) console.log(`No pude leer el saldo (${rs.status}): ${JSON.stringify(sub).slice(0, 300)}`);
 const quedan = (sub.character_limit ?? 0) - (sub.character_count ?? 0);
 const reinicio = sub.next_character_count_reset_unix ? new Date(sub.next_character_count_reset_unix * 1000).toISOString().slice(0, 10) : '?';
 fs.mkdirSync(VOZ, { recursive: true });
@@ -44,7 +46,7 @@ console.log(resumen);
 fs.writeFileSync(path.join(VOZ, 'saldo.txt'), resumen + '\n');
 if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, resumen + '\n');
 if (modo === 'saldo') process.exit(0);
-if (costo > quedan) throw new Error(`No alcanzan los créditos: ${resumen} No se gastó nada.`);
+if (sub.character_limit != null && costo > quedan) throw new Error(`No alcanzan los créditos: ${resumen} No se gastó nada.`);
 
 const tts = async (body) => fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}/with-timestamps?output_format=mp3_44100_128`, {
   method: 'POST', headers: { ...H, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
