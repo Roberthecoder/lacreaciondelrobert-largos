@@ -182,7 +182,7 @@ ILUSC.papaya = {
       <g transform={capa(0.45)}>
         <linearGradient id="c-pap-cielo" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#7fb2e0" /><stop offset="1" stopColor="#e9f0e6" /></linearGradient>
         <rect x={-200} y={-200} width={2320} height={600} fill="url(#c-pap-cielo)" />
-        <rect x={-200} y={240} width={2320} height={700} fill="#e7d3b0" /><rect x={-200} y={240} width={2320} height={700} fill="url(#c-papel-a)" />
+        <rect x={-200} y={240} width={2320} height={1000} fill="#e7d3b0" /><rect x={-200} y={240} width={2320} height={1000} fill="url(#c-papel-a)" />
         <rect x={-200} y={230} width={2320} height={16} fill="#cdb895" />
         {Array.from({ length: 70 }, (_, i) => { const r = R(1000 + i); return <circle key={i} cx={1100 + r() * 1000} cy={180 + r() * 320} r={20 + r() * 34} fill={i % 3 ? '#d6267a' : '#3f7f34'} opacity={0.95} />; })}
         <Desenfoque b={2}>

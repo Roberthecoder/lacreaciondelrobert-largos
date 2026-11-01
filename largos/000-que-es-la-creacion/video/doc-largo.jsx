@@ -316,8 +316,10 @@ function DocLargo() {
     {vis.map(({ b, i }) => {
       const tl = T - b.at, p = kclamp(tl / b.dur, 0, 1);
       const o = kprog(tl, 0, FUNDIDO, kEase.suave);
+      // Las escenas de puro texto se apagan rápido al salir, para que dos títulos nunca se encimen en el cruce.
+      const sale = ['texto', 'numero', 'capitulo'].includes(b.v.tipo) ? 1 - kprog(T - (b.at + b.dur), 0, 0.28) : 1;
       const Comp = b.v.tipo === 'capitulo' ? null : ESCENAS_TIPO[b.v.tipo] || EscenaTexto;
-      return <div key={i} style={abs(0, 0, { width: W, height: H, opacity: i === 0 ? 1 : o, zIndex: i })}>
+      return <div key={i} style={abs(0, 0, { width: W, height: H, opacity: (i === 0 ? 1 : o) * sale, zIndex: i })}>
         {Comp ? <Comp v={b.v} p={p} tl={tl} T={T} pal={b.pal} dur={b.dur} /> : <EscenaCapitulo c={b.c} tl={tl} T={T} pal={b.pal} />}
       </div>;
     })}

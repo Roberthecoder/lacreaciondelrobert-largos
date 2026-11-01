@@ -140,9 +140,9 @@ ILUSC.torre_sej = {
           return <g key={k} opacity={Math.min(1, (1 - q) * 3)} transform={`translate(${x} ${1060 - (k % 3) * 10}) scale(${s})`}><ellipse cx={0} cy={-300} rx={40} ry={46} fill="#2a2420" /><rect x={-60} y={-250} width={120} height={250} rx={34} fill={['#f4f2ec', '#2a5a9a', '#f4f2ec', '#3a3a40'][k % 4]} /><rect x={-50} y={-240} width={100} height={110} rx={20} fill={['#c0392b', '#2f6a3a', '#7a4a2a'][k % 3]} opacity={0.9} /></g>; })}
       </g>
       {/* bronce internacional */}
-      <g opacity={bronce}><rect x={0} y={0} width={1920} height={1080} fill="#07080b" opacity={0.55} />
-        <Medalla x={960} y={lerp(380, 560, bronce)} r={170} metal="bronce" texto="BRONCE" sub="SASMO" liston={['#c0392b', '#f6f6f6', '#c0392b']} brillo={cpr(p, 0.78, 0.95)} />
-        <text x={960} y={830} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={56} fill="#fff">Bronce internacional</text></g>
+      <g opacity={bronce}><rect x={-100} y={-100} width={2120} height={1280} fill="#07080b" opacity={0.86} />
+        <Medalla x={960} y={lerp(300, 450, bronce)} r={165} metal="bronce" texto="BRONCE" sub="SASMO" liston={['#c0392b', '#f6f6f6', '#c0392b']} brillo={cpr(p, 0.78, 0.95)} />
+        <text x={960} y={720} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={56} fill="#fff">Bronce internacional</text></g>
       <Polvo n={30} t={tl} seed={421} o={0.4} />
       <g opacity={1 - bronce}><Rotulo x={120} y={190} arriba="SASMO · PRIMERA ETAPA, A DISTANCIA" texto="Torre de Educación, SEJ" tl={tl} at={0.4} tam={56} /></g>
     </g>;

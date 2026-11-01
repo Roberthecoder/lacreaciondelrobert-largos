@@ -268,7 +268,7 @@ ILUSC.plasticos = {
       <g transform={capa(0.4)}><rect x={-200} y={-200} width={2320} height={1500} fill="#1a1416" /><Halo x={960} y={1000} r={900} color={mix('#ffb36b', '#ff5a2a', calor)} o={0.35 + 0.35 * calor} /></g>
       <g transform={capa(1)}>
         {items.map(([nom, cod, ok, txt], i) => { const x = 460 + i * 500, def = ok ? 0 : calor;
-          return <g key={i} transform={`translate(${x} 800)`}>
+          return <g key={i} transform={`translate(${x} 690)`}>
             <Sombra x={0} y={6} rx={170} ry={18} o={0.5} />
             {/* el recipiente: el que no aguanta se encoge y se arruga */}
             <g transform={`scale(${1 - 0.18 * def} ${1 - 0.35 * def}) skewX(${def * 10})`}>
