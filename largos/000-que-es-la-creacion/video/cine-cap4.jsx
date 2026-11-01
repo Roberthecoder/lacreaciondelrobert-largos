@@ -52,22 +52,21 @@ ILUSC.recamara = {
         <rect x={1360} y={110} width={420} height={330} fill="none" stroke="#e9e1cf" strokeWidth={12} />
         {/* repisa con bolsas de cultivo y frascos */}
         <g opacity={ap(3)} transform="translate(160 0)"><Tablon x={620} y={380} w={560} prof={16} grosor={18} madera="pino" />
-          {[0, 1, 2].map((k) => <g key={k} transform={`translate(${700 + k * 120} 392) scale(0.36)`}><BolsaCultivo x={0} y={0} w={220} h={300} colonizado={0.6 + k * 0.15} /></g>)}
+          {[0, 1].map((k) => <g key={k} transform={`translate(${700 + k * 120} 392) scale(0.36)`}><BolsaCultivo x={0} y={0} w={220} h={300} colonizado={0.6 + k * 0.15} /></g>)}
           {[0, 1].map((k) => <Frasco key={k} id={`rec-f${k}`} x={985 + k * 95} y={392} w={80} h={120} contenido="maiz" tapa="oro" seed={k + 40} nivel={0.8} ventana={false} />)}</g>
-        <g opacity={ap(5)} transform="translate(160 0)"><Tablon x={620} y={560} w={600} prof={16} grosor={18} madera="pino" />
-          {[0, 1, 2, 3, 4].map((k) => <g key={k} transform={`translate(${680 + k * 120} 562) scale(0.24)`}><Petri x={0} y={-60} r={200} id={`rec-p${k}`} medio="#efe0b0"><Micelio x={0} y={0} r={200} g={0.4 + k * 0.12} seed={k + 3} /></Petri></g>)}</g>
+        <g opacity={ap(5)} transform="translate(160 0)"><Tablon x={750} y={560} w={480} prof={16} grosor={18} madera="pino" />
+          {[0, 1, 2, 3].map((k) => <g key={k} transform={`translate(${840 + k * 100} 562) scale(0.24)`}><Petri x={0} y={-60} r={200} id={`rec-p${k}`} medio="#efe0b0"><Micelio x={0} y={0} r={200} g={0.4 + k * 0.12} seed={k + 3} /></Petri></g>)}</g>
       </g>
       <g transform={capa(1)}>
         <rect x={-200} y={780} width={2320} height={500} fill="url(#c-madera-media)" /><rect x={-200} y={780} width={2320} height={500} fill="#000" opacity={0.25} />
         {/* cama */}
-        <g transform="translate(-60 0)"><rect x={-200} y={640} width={560} height={240} rx={20} fill="#2a4a7a" /><rect x={-200} y={640} width={560} height={240} rx={20} fill="url(#c-tela)" /><rect x={-200} y={600} width={300} height={90} rx={40} fill="#f3efe6" /><rect x={-200} y={600} width={300} height={90} rx={40} fill="url(#c-esfera)" opacity={0.4} /></g>
+        <g transform="translate(100 0)"><rect x={-200} y={640} width={560} height={240} rx={20} fill="#2a4a7a" /><rect x={-200} y={640} width={560} height={240} rx={20} fill="url(#c-tela)" /><rect x={-200} y={600} width={300} height={90} rx={40} fill="#f3efe6" /><rect x={-200} y={600} width={300} height={90} rx={40} fill="url(#c-esfera)" opacity={0.4} /></g>
         {/* escritorio que se vuelve mesa de trabajo */}
         <rect x={560} y={760} width={1200} height={30} fill="url(#c-madera-clara)" /><rect x={560} y={786} width={1200} height={14} fill="#000" opacity={0.3} />
         <g opacity={ap(0)}><OllaExpres x={760} y={762} s={0.6} vapor={cpr(p, 0.1, 0.5)} t={tl} /></g>
         <g opacity={ap(1)}><CajaAire x={1150} y={762} w={460} h={260} /></g>
         <g opacity={ap(2)}>
           <g transform="translate(1500 762)"><Sombra x={0} y={4} rx={50} ry={8} o={0.5} /><rect x={-36} y={-150} width={72} height={150} rx={10} fill="#e8f3f6" opacity={0.6} /><rect x={-36} y={-110} width={72} height={110} fill="#bfe0ff" opacity={0.35} /><rect x={-22} y={-196} width={44} height={50} fill="#f6f6f6" /><path d="M 22 -190 L 64 -196 L 64 -182 L 22 -176 Z" fill="#f6f6f6" /><text x={0} y={-60} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={11} fill="#1d4f9c">ETANOL 70 %</text></g>
-          {[0, 1, 2].map((k) => <g key={k} transform={`translate(${1610 + k * 40} 760)`}><ellipse cx={0} cy={-k * 14} rx={60} ry={14} fill="#dff0ee" opacity={0.6} /><ellipse cx={0} cy={-k * 14} rx={60} ry={14} fill="none" stroke="#fff" strokeOpacity={0.6} strokeWidth={2} /></g>)}
         </g>
       </g>
       <Polvo n={50} t={tl} seed={222} o={0.5} />

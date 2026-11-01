@@ -92,7 +92,7 @@ ILUSC.plata_nacional = {
         </g>
       </g>
       <Polvo n={40} t={tl} seed={412} o={0.5} />
-      <Rotulo x={120} y={190} arriba="1.ª OLIMPIADA MEXICANA DE MATEMÁTICAS · EDUCACIÓN BÁSICA" texto="Plata nacional" sub="a un punto del oro" tl={tl} at={0.3} tam={76} acento="#cfd8e8" />
+      <Rotulo x={120} y={190} arriba="1.ª OMMEB · 2017" texto="Plata nacional" sub="a un punto del oro" tl={tl} at={0.3} tam={76} acento="#cfd8e8" />
     </g>;
   },
 };
@@ -132,9 +132,9 @@ ILUSC.torre_sej = {
         </g>)}
         {[300, 1620].map((cx, k) => <path key={k} d={`M ${X(cx, 1100)} 1100 L ${X(cx, -40)} -40`} stroke="#c8231b" strokeWidth={30} />)}
         {/* marquesina con letrero */}
-        <path d="M 560 900 L 1360 900 L 1400 980 L 520 980 Z" fill="#e8e6e0" opacity={0.85} />
-        <rect x={520} y={830} width={880} height={76} fill="#c8231b" /><rect x={520} y={830} width={880} height={76} fill="url(#c-arriba)" />
-        <text x={960} y={882} textAnchor="middle" fontFamily={FUENTE.texto} fontWeight={800} fontSize={44} letterSpacing={3} fill="#f4f2ee">SECRETARÍA DE EDUCACIÓN</text>
+        <path d="M 560 760 L 1360 760 L 1400 840 L 520 840 Z" fill="#e8e6e0" opacity={0.85} />
+        <rect x={520} y={690} width={880} height={76} fill="#c8231b" /><rect x={520} y={690} width={880} height={76} fill="url(#c-arriba)" />
+        <text x={960} y={742} textAnchor="middle" fontFamily={FUENTE.texto} fontWeight={800} fontSize={44} letterSpacing={3} fill="#f4f2ee">SECRETARÍA DE EDUCACIÓN</text>
         {/* estudiantes entrando */}
         {Array.from({ length: 9 }, (_, k) => { const q = ((tl * 0.08 + k / 9) % 1), x = lerp(-100 + k * 40, 900, q), s = 0.42 + (k % 3) * 0.05;
           return <g key={k} opacity={Math.min(1, (1 - q) * 3)} transform={`translate(${x} ${1060 - (k % 3) * 10}) scale(${s})`}><ellipse cx={0} cy={-300} rx={40} ry={46} fill="#2a2420" /><rect x={-60} y={-250} width={120} height={250} rx={34} fill={['#f4f2ec', '#2a5a9a', '#f4f2ec', '#3a3a40'][k % 4]} /><rect x={-50} y={-240} width={100} height={110} rx={20} fill={['#c0392b', '#2f6a3a', '#7a4a2a'][k % 3]} opacity={0.9} /></g>; })}
@@ -168,8 +168,8 @@ ILUSC.reconocimientos = {
     return <g>
       <g transform={capa(0.4)}><rect x={-200} y={-200} width={2320} height={1500} fill="#17140f" /><Halo x={1240} y={420} r={800} color="#ffe2b0" o={0.4} /><Bokeh n={14} t={tl} seed={441} colores={['#ffd38a', '#fff1c9']} o={0.35} /></g>
       <g transform={capa(1)}>
-        <FotoReal src="video/img/fotos_basis/cap5/joven_inventor_jalisco.jpg" x={520} y={500} maxW={640} maxH={560} rot={-2.5} o={cpr(p, 0.02, 0.15)} etiqueta="JOVEN INVENTOR · GOBIERNO DE JALISCO" />
-        <FotoReal src="video/img/extra/diploma_una_idea.jpg" x={1320} y={470} maxW={900} maxH={680} rot={2} o={d} etiqueta={'"UNA IDEA PARA CAMBIAR LA HISTORIA" · HISTORY'} />
+        <FotoReal src="video/img/fotos_basis/cap5/joven_inventor_jalisco.jpg" x={470} y={500} maxW={560} maxH={520} rot={-2.5} o={cpr(p, 0.02, 0.15)} etiqueta="JOVEN INVENTOR · JALISCO" />
+        <FotoReal src="video/img/extra/diploma_una_idea.jpg" x={1340} y={470} maxW={860} maxH={640} rot={2} o={d} etiqueta={'"UNA IDEA PARA CAMBIAR LA HISTORIA" · HISTORY'} />
       </g>
       <Polvo n={30} t={tl} seed={442} o={0.4} />
       <Rotulo x={120} y={190} arriba="AQUEL FILTRO DE AIRE" texto="Siguió dando frutos" tl={tl} at={0.3} tam={56} />
@@ -190,8 +190,8 @@ ILUSC.curso = {
         <rect x={560} y={70} width={800} height={460} fill="#1d1d22" /><rect x={576} y={86} width={768} height={428} fill="#f6f4ee" />
         <text x={960} y={160} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={700} fontSize={50} fill="#1d2a1a">Cultivo de setas</text>
         <text x={960} y={200} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={18} letterSpacing={4} fill="#14a37c">FUNGI MATI · RUTA AZUL</text>
-        <rect x={600} y={450} width={720} height={56} fill="#ffffff" /><image href="video/img/extra/ruta_azul.png" x={690} y={452} width={150} height={52} preserveAspectRatio="xMidYMid meet" /><image href="video/img/extra/equitech.png" x={1040} y={454} width={150} height={48} preserveAspectRatio="xMidYMid meet" />
-        <BolsaCultivo x={760} y={480} w={150} h={210}><Racimo x={20} y={-140} n={6} tam={70} color="#ef7fa6" g={1} t={tl} seed={451} /></BolsaCultivo>
+        <rect x={600} y={450} width={720} height={56} fill="#ffffff" /><image href="video/img/extra/ruta_azul.png" x={680} y={449} width={170} height={58} preserveAspectRatio="xMidYMid meet" /><image href="video/img/extra/equitech.png" x={1040} y={454} width={150} height={48} preserveAspectRatio="xMidYMid meet" />
+        <BolsaCultivo x={760} y={428} w={130} h={180}><Racimo x={16} y={-118} n={6} tam={58} color="#ef7fa6" g={1} t={tl} seed={451} /></BolsaCultivo>
         <g transform="translate(1100 330)"><rect x={-150} y={-90} width={300} height={180} rx={14} fill="#e9f6f0" stroke="#14a37c" strokeWidth={3} /><text x={0} y={-50} textAnchor="middle" fontFamily={FUENTE.texto} fontWeight={800} fontSize={20} fill="#14a37c">TUTOR DE IA</text>
           {[0, 1, 2].map((k) => <rect key={k} x={-120 + (k % 2) * 60} y={-30 + k * 36} width={180} height={24} rx={12} fill={k % 2 ? '#14a37c' : '#d9e6e0'} />)}</g>
         </g>
@@ -373,9 +373,10 @@ ILUSC.monterrey = {
 ILUSC.medio_fin = {
   cam: { z0: 1.0, z1: 1.06, fx: 960, fy: 560 },
   dibuja: ({ p, tl, capa }) => {
-    const piedras = [['π', 300], ['x²', 520], ['Σ', 740], ['∫', 960], ['%', 1180], ['√', 1400]];
-    const paso = cpr(p, 0.1, 0.82), k = paso * (piedras.length + 0.6), i = Math.min(piedras.length - 1, Math.floor(k));
-    const salto = k - Math.floor(k), kx = k >= piedras.length ? lerp(1400, 1640, Math.min(1, (k - piedras.length) / 0.6)) : lerp(piedras[Math.max(0, i - 0)][1], (piedras[i + 1] || [0, 1640])[1], Math.min(1, salto * 1.4));
+    const piedras = [['π', 220], ['x²', 440], ['Σ', 660], ['∫', 880], ['%', 1100], ['√', 1320]];
+    // cada salto va de una piedra a la siguiente; el último, de la última piedra a la orilla (una sola vez)
+    const paso = cpr(p, 0.1, 0.82), k = paso * piedras.length, i = Math.min(piedras.length - 1, Math.floor(k));
+    const salto = Math.min(1, k - i), kx = lerp(piedras[i][1], (piedras[i + 1] || [0, 1415])[1], Math.min(1, salto * 1.4));
     const ky = 780 - Math.sin(Math.min(1, salto * 1.4) * Math.PI) * 60;
     return <g>
       <g transform={capa(0.35)}>
@@ -387,7 +388,7 @@ ILUSC.medio_fin = {
         {/* el río que hay que cruzar */}
         <rect x={-200} y={760} width={2320} height={500} fill="#174a6a" />
         {Array.from({ length: 30 }, (_, j) => { const r = R(5100 + j); return <path key={j} d={`M ${((r() * 2400 + tl * 40) % 2400) - 200} ${790 + r() * 260} q 30 -8 60 0`} stroke="#7fd0f0" strokeWidth={3} fill="none" opacity={0.4} />; })}
-        <path d="M -200 760 L 200 760 L 160 1300 L -200 1300 Z" fill="#3a5a3a" /><path d="M 1560 760 L 2120 760 L 2120 1300 L 1600 1300 Z" fill="#3a5a3a" />
+        <path d="M -200 760 L 200 760 L 160 1300 L -200 1300 Z" fill="#3a5a3a" /><path d="M 1430 760 L 2120 760 L 2120 1300 L 1470 1300 Z" fill="#3a5a3a" />
       </g>
       <g transform={capa(1)}>
         {piedras.map(([s, x], j) => <g key={j} transform={`translate(${x} 800)`}>
@@ -396,11 +397,11 @@ ILUSC.medio_fin = {
           {j <= i && <ellipse cx={0} cy={-6} rx={90} ry={30} fill="#7fe6ff" opacity={0.25} />}
         </g>)}
         {/* la meta: la investigación */}
-        <g transform="translate(1760 760)">
+        <g transform="translate(1700 760)">
           <Halo x={0} y={-150} r={260} color="#9fff8a" o={0.5 + 0.2 * Math.sin(tl * 2)} />
           <path d="M -70 0 Q -80 -16 -64 -34 L -24 -100 L -24 -170 L 24 -170 L 24 -100 L 64 -34 Q 80 -16 70 0 Z" fill="#3fbf6a" opacity={0.85} /><path d="M -70 0 Q -80 -16 -64 -34 L -24 -100 L -24 -170 L 24 -170 L 24 -100 L 64 -34 Q 80 -16 70 0 Z" fill="url(#c-vidrio)" />
-          <Racimo x={-130} y={0} n={5} tam={70} color="#ef7fa6" g={1} t={tl} seed={512} />
-          <text x={0} y={-230} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={22} letterSpacing={4} fill="#9fff8a">MIS OBJETIVOS</text>
+          <Racimo x={-96} y={0} n={5} tam={58} color="#ef7fa6" g={1} t={tl} seed={512} />
+          <text x={-30} y={-230} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={22} letterSpacing={4} fill="#9fff8a">MIS OBJETIVOS</text>
         </g>
         <Nene x={kx} y={ky + 10} s={0.62} edad={15} lentes t={tl} playera="#2a5aa8" rayas={false} brazoD={40} brazoI={40} mira={[1, 0]} boca="sonrisa" seed={513} />
       </g>

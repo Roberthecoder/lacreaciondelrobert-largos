@@ -274,7 +274,7 @@ ILUSC.fungimati = {
           {Array.from({ length: 22 }, (_, k) => <rect key={k} x={-740} y={-330 + k * 34} width={1480} height={1.5} fill="#8fb0d0" opacity={0.5} />)}
           <rect x={-660} y={-380} width={2} height={800} fill="#e08080" opacity={0.6} />
           {/* el nombre larguísimo, escrito y tachado */}
-          {['De basura a comida,', 'los hongos: héroes que combaten', 'el hambre y la pobreza'].map((l, k) => <g key={k}>
+          {['De basura a comida:', 'los hongos, héroes que combaten', 'el hambre y la pobreza'].map((l, k) => <g key={k}>
             <text x={-640} y={-282 + k * 68} fontFamily={FUENTE.mano} fontWeight={700} fontSize={46} fill="#2a3a6a">{l}</text>
             <path d={`M -646 ${-296 + k * 68} L ${lerp(-646, -646 + l.length * 21, tacha)} ${-300 + k * 68}`} stroke="#c0392b" strokeWidth={7} strokeLinecap="round" />
           </g>)}
@@ -340,6 +340,8 @@ ILUSC.granjita = {
       </g>
       <Polvo n={60} t={tl} seed={341} o={0.6} color="#e8f6ff" />
       <Tinte color="#bfe8ff" o={0.08} />
+      {/* sombra para que el título se lea sobre las bolsas */}
+      <rect x={0} y={0} width={1100} height={420} fill="url(#c-gr-sombra)" /><linearGradient id="c-gr-sombra" x1="0" y1="0" x2="1" y2="0.6"><stop offset="0" stopColor="#0b0d0c" stopOpacity={0.85} /><stop offset="0.45" stopColor="#0b0d0c" stopOpacity={0.6} /><stop offset="1" stopColor="#0b0d0c" stopOpacity={0} /></linearGradient>
       <Rotulo x={120} y={190} arriba="CON EL PREMIO" texto="Mi granjita" sub="residuos → comida" tl={tl} at={0.3} tam={66} acento="#ffbe7a" />
     </g>;
   },

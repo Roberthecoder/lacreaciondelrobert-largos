@@ -5,7 +5,7 @@ const ILUSC = window.ILUSC;
 ILUSC.caminos = {
   cam: { z0: 1.0, z1: 1.14, fx: 960, fy: 520, y0: 20, y1: -20 },
   dibuja: ({ p, tl, capa }) => {
-    const ramas = [['Plantas', '#8fd36a', -640], ['Números', '#7fc4ff', 0], ['Monedas', '#f4c25a', 640]];
+    const ramas = [['Plantas', '#8fd36a', -640], ['Concursos', '#7fc4ff', 0], ['Monedas', '#f4c25a', 640]];
     return <g>
       <g transform={capa(0.15)}>
         <linearGradient id="c-cam-cielo" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#3d5f96" /><stop offset=".6" stopColor="#f2b77a" /><stop offset="1" stopColor="#ffd9a0" /></linearGradient>
@@ -194,8 +194,8 @@ ILUSC.monedas = {
         <g opacity={1}>
           <Moneda2 x={lerp(1100, 1300, plata)} y={lerp(700, 520, plata)} r={lerp(44, 120, plata)} tipo="plata" diseno="resplandor" seed={501} rot={lerp(20, -8, plata) + Math.sin(tl) * 3} inclina={lerp(0.45, 1, plata)} brillo={cpr(p, 0.3, 0.36)} t={tl} />
           {plata > 0.9 && <g opacity={cpr(p, 0.45, 0.5)} style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,.7))' }}>
-            <path d="M 1340 640 L 1430 750" stroke="#fff" strokeWidth={2.5} /><text x={1440} y={782} fontFamily={FUENTE.mono} fontWeight={700} fontSize={24} letterSpacing={4} fill="#e8eef4">50 CENTAVOS · PLATA</text>
-            <text x={1440} y={822} fontFamily={FUENTE.serif} fontStyle="italic" fontSize={34} fill="#fff">no se pega al imán</text></g>}
+            <path d="M 1300 642 L 1300 668" stroke="#fff" strokeWidth={2.5} /><text x={1300} y={702} textAnchor="middle" fontFamily={FUENTE.mono} fontWeight={700} fontSize={24} letterSpacing={4} fill="#e8eef4">50 CENTAVOS · PLATA</text>
+            <text x={1300} y={744} textAnchor="middle" fontFamily={FUENTE.serif} fontStyle="italic" fontSize={34} fill="#fff">no se pega al imán</text></g>}
         </g>
         {/* imán de herradura */}
         {iman > 0 && <g transform={`translate(${ix} ${iy + Math.sin(tl * 2) * 8}) rotate(180)`}>

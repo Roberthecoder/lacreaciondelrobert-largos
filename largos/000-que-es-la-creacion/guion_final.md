@@ -42,8 +42,9 @@ En segundo de primaria gané una tablet en un concurso de escritura de Librería
 [EN PANTALLA: "ups"]
 Hice dos videos: uno de jitomate, que todavía existe, y uno de maíz pozolero morado, que se perdió para siempre cuando pasamos el canal a mi propia cuenta.
 Ese canal, que existe desde enero de 2015, es el mismo que estás viendo. Nunca murió: solo se durmió.
-También me metía a concursos, como los de escritura. En 2016 quedé entre los finalistas del concurso Pequeño Gran Escritor con un cuento, La bellota abandonada, y lo publicaron en un librito junto con los cuentos de otros cincuenta niños y niñas.
-El segundo, los números. Gracias a lo bien que me preparó mi mamá desde el kínder, las matemáticas se me daban.
+El segundo: los concursos. Me metía a todos los que podía, empezando por los de escritura.
+En 2016 quedé entre los finalistas del concurso Pequeño Gran Escritor con un cuento, La bellota abandonada, y lo publicaron en un librito junto con los cuentos de otros cincuenta niños y niñas.
+Y dentro de los concursos, un capítulo aparte: las matemáticas. Gracias a lo bien que me preparó mi mamá desde el kínder, se me daban.
 En 2016, en quinto de primaria, fui a mi primera olimpiada, la ONMAPS, y gané oro estatal. Al año siguiente, otra vez oro. Eso sí: nunca logré pasar a la ONMAPS nacional.
 En 2017, en la primera Olimpiada Mexicana de Matemáticas para Educación Básica, me quedé a un punto del oro: plata nacional.
 Eso me llevó a entrenar en Monterrey como preselección para una competencia en Bulgaria.
@@ -139,7 +140,7 @@ Y de lo que más orgulloso estoy: hace poco logré el ciclo de vida completo de 
 En 2025, en mi tercer semestre, heredé la presidencia de B-Eco, un grupo estudiantil ambiental que es socioformador del Tec de Monterrey.
 Con él organizamos un censo de perros y gatos en el pueblo de La Primavera, y colaboramos con Bosques Urbanos en el Parque Metropolitano, y a veces en Los Colomos, según nos asignen.
 Y De basura a comida siguió creciendo.
-En febrero de 2026, el proyecto por fin tuvo un nombre corto. El que tenía era larguísimo: De basura a comida, los hongos: héroes que combaten el hambre y la pobreza.
+En febrero de 2026, el proyecto por fin tuvo un nombre corto. El que tenía era larguísimo: De basura a comida: los hongos, héroes que combaten el hambre y la pobreza.
 El nuevo: Fungi Mati. Fungi, de hongo; y mati, una palabra náhuatl que significa saber, conocer, entender.
 Ese mismo mes empecé a rehabilitar un espacio abandonado de mi antigua prepa como granja de setas; por esas fechas, con dinero del grupo estudiantil, le renové la malla sombra.
 En mayo, con el fondo Ruta Azul y en complemento con Equitech, le enseñé a cultivar a cincuenta estudiantes,

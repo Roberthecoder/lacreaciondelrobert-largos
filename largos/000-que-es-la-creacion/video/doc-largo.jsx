@@ -77,7 +77,7 @@ function FondoFoto({ src, T }) {
   </div>;
 }
 // Foto impresa con movimiento de cámara lento (Ken Burns), entrada suave y sombra realista.
-function Marco({ foto, p, tl, x = W / 2, y = H / 2 - 50, maxW = 1240, maxH = 720, rot = -1.5, z0 = 1.02, z1 = 1.12, foco = [0.5, 0.45], borde = 12, retraso = 0, etiqueta, pal }) {
+function Marco({ foto, p, tl, x = W / 2, y = H / 2 - 72, maxW = 1240, maxH = 640, rot = -1.5, z0 = 1.02, z1 = 1.12, foco = [0.5, 0.45], borde = 12, retraso = 0, etiqueta, pal }) {
   const src = fotoSrc(foto);
   const [fw, fh] = fotoDim(src);
   const k = Math.min(maxW / fw, maxH / fh);
@@ -251,8 +251,13 @@ function conCursivas(texto) {
 function SubtituloLargo({ T }) {
   const l = LINEA.lineas.find((x) => T >= x.at && T < x.at + x.dur);
   if (!l) return null;
+  // Si Robert (sticker) está abajo, el subtítulo se angosta para nunca quedar encima de él.
+  const conRobert = LINEA.lineas.some((x) => x.robert && !(x.robert[1] || '').startsWith('arriba') && T >= x.at - 0.05 && T < x.at + x.dur * (x.robert[2] || 1) + 0.05);
+  // Sobre fondos claros (logos) el subtítulo lleva una franja oscura para leerse.
+  const bl = LINEA.bloques.find((x) => T >= x.at && T < x.at + x.dur);
+  const claro = bl && bl.v && bl.v.tipo === 'logo';
   // Partir frases largas en trozos de ~2 renglones, repartidos por número de caracteres.
-  const max = 92;
+  const max = conRobert ? 64 : 92;
   const trozos = []; let cur = '';
   l.t.split(' ').forEach((w) => { if ((cur + ' ' + w).trim().length > max) { trozos.push(cur.trim()); cur = w; } else cur += ' ' + w; });
   if (cur.trim()) trozos.push(cur.trim());
@@ -261,7 +266,7 @@ function SubtituloLargo({ T }) {
   const pr = (T - l.at) / l.dur;
   for (let i = 0; i < trozos.length; i++) { acc += trozos[i].length / total; if (pr < acc) { idx = i; break; } idx = i; }
   return <div style={abs(0, H - 160, { width: W, textAlign: 'center', zIndex: 40 })}>
-    <span style={{ display: 'inline-block', maxWidth: 1480, padding: '6px 20px', color: '#fff', fontFamily: KF.texto, fontWeight: 600, fontSize: 40, lineHeight: 1.28,
+    <span style={{ display: 'inline-block', maxWidth: conRobert ? 1040 : 1480, padding: claro ? '10px 28px' : '6px 20px', borderRadius: 14, background: claro ? 'rgba(12,12,16,.72)' : 'none', color: '#fff', fontFamily: KF.texto, fontWeight: 600, fontSize: 40, lineHeight: 1.28,
       textShadow: '0 2px 3px rgba(0,0,0,.95), 0 0 18px rgba(0,0,0,.85), 0 0 4px rgba(0,0,0,.9)' }}>{conCursivas(trozos[idx])}</span>
   </div>;
 }
