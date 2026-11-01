@@ -108,6 +108,13 @@ jobs:
           wc -l lista.txt
           ffmpeg -y -loglevel error -f concat -safe 0 -i lista.txt -c copy -movflags +faststart largo00_cine_mudo.mp4
           ffprobe -v error -show_entries format=duration,size -of default=nw=1 largo00_cine_mudo.mp4
+      - name: Ponerle la voz y la música (si ya existen)
+        run: |
+          A="$LARGO/video/voz/mezcla.m4a"
+          if [ -f "$A" ]; then
+            ffmpeg -y -loglevel error -i largo00_cine_mudo.mp4 -i "$A" -map 0:v -map 1:a -c:v copy -c:a copy -shortest -movflags +faststart largo00_cine_narrado.mp4
+            ffprobe -v error -show_entries format=duration,size -of default=nw=1 largo00_cine_narrado.mp4
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: largo00_cine_mudo
@@ -119,3 +126,4 @@ jobs:
           TAG="largo-$(echo '${{ github.ref_name }}' | tr '/' '-')"
           gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --prerelease --title "Largo · ${{ github.ref_name }}" --notes "Video largo renderizado en la nube (sin voz). Se reemplaza en cada render."
           gh release upload "$TAG" largo00_cine_mudo.mp4 --clobber
+          [ -f largo00_cine_narrado.mp4 ] && gh release upload "$TAG" largo00_cine_narrado.mp4 --clobber || true
