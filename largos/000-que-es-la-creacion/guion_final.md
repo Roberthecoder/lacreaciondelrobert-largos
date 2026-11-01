@@ -107,7 +107,8 @@ En tercer semestre, mi maestra de biología de primer semestre, Alma Delia Zamar
 Tiempo después también probé con olotes, por un video de YouTube. Lo que no te dicen es que, si no están bien desgranados, se fermentan, y siguen siendo difíciles: muchos me fallaron solo con pasteurización… pero los que funcionaron me dieron setas enormes.
 Así, mi recámara-laboratorio se volvió un proyecto: De basura a comida, hongos comestibles sobre residuos como coco y olote.
 Ganó oro en la Feria de Ciencias e Ingeniería de Jalisco en 2022, y platino en INFOMATRIX en 2023, que le dio pase a una competencia internacional en Brasil.
-Y eso no fue todo: mi proyecto De basura a comida me llevó más lejos de lo que imaginaba. Con él fui uno de quinientos finalistas de Rise, entre más de sesenta mil jóvenes de todo el mundo.
+Y eso no fue todo: mi proyecto De basura a comida me llevó más lejos de lo que imaginaba.
+Con él fui uno de quinientos finalistas de Rise, entre más de sesenta mil jóvenes de todo el mundo.
 Y aquel filtro de aire de la pandemia también siguió dando frutos: el Gobierno de Jalisco me reconoció como joven inventor contra el COVID, y History Channel me eligió como semifinalista de "Una idea para cambiar la historia".
 Pero la prepa no fue solo competir. La Fundación EPA, que me becaba, me pedía ochenta horas de voluntariado cada semestre, y eso me llevó a lugares que de otra forma no habría conocido: a FM4 Paso Libre, acompañando a personas migrantes, y a Cómplices A.C., con quienes llegué al Hospital Civil.
 Ahí vi a personas que no tenían ni cinco pesos para entrar a un baño.

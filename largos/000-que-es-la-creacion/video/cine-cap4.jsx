@@ -53,7 +53,7 @@ ILUSC.recamara = {
         {/* repisa con bolsas de cultivo y frascos */}
         <g opacity={ap(3)} transform="translate(160 0)"><Tablon x={620} y={380} w={560} prof={16} grosor={18} madera="pino" />
           {[0, 1].map((k) => <g key={k} transform={`translate(${700 + k * 120} 392) scale(0.36)`}><BolsaCultivo x={0} y={0} w={220} h={300} colonizado={0.6 + k * 0.15} /></g>)}
-          {[0, 1].map((k) => <Frasco key={k} id={`rec-f${k}`} x={985 + k * 95} y={392} w={80} h={120} contenido="maiz" tapa="oro" seed={k + 40} nivel={0.8} ventana={false} />)}</g>
+          {[0, 1].map((k) => <Frasco key={k} id={`rec-f${k}`} x={985 + k * 95} y={392} w={80} h={120} contenido={null} interior={<g><rect x={945 + k * 95} y={300} width={80} height={92} fill="#f2eee6" />{Array.from({ length: 22 }, (_, j) => { const r = R(6100 + j + k * 50); return <ellipse key={j} cx={950 + k * 95 + r() * 70} cy={305 + r() * 84} rx={6} ry={4.5} fill="#fbf9f4" stroke="#ddd6c8" strokeWidth={1} />; })}</g>} tapa="oro" seed={k + 40} nivel={0.8} ventana={false} />)}</g>
         <g opacity={ap(5)} transform="translate(160 0)"><Tablon x={750} y={560} w={480} prof={16} grosor={18} madera="pino" />
           {[0, 1, 2, 3].map((k) => <g key={k} transform={`translate(${840 + k * 100} 562) scale(0.24)`}><Petri x={0} y={-60} r={200} id={`rec-p${k}`} medio="#efe0b0"><Micelio x={0} y={0} r={200} g={0.4 + k * 0.12} seed={k + 3} /></Petri></g>)}</g>
       </g>
@@ -177,8 +177,11 @@ ILUSC.aserrin = {
           {[0, 1, 2].map((k) => { const q = ((tl * 0.6 + k / 3) % 1); return <path key={k} d={`M ${-80 + k * 80} ${-270 - q * 200} q 30 -40 0 -80`} stroke="#fff" strokeWidth={24} opacity={0.3 * Math.sin(q * Math.PI)} fill="none" filter="url(#c-b8)" />; })}
           {Array.from({ length: 8 }, (_, k) => <path key={'f' + k} d={`M ${-150 + k * 40} 30 q 10 -30 0 -50`} stroke={k % 2 ? '#ff8a1f' : '#2f8fff'} strokeWidth={10} fill="none" opacity={0.85} />)}</g></g>)}
         {tarjeta(2, 'Inocular', <g><rect x={-200} y={-300} width={400} height={400} fill="#3a3024" />
-          <g transform="translate(0 80)"><BolsaCultivo x={0} y={0} w={240} h={300} colonizado={0.15} /><g transform="translate(70 -260) rotate(30)"><Frasco id="as-sem" x={0} y={0} w={90} h={130} contenido="maiz" abierto seed={60} ventana={false} sombra={false} /></g>
-            {Array.from({ length: 10 }, (_, k) => <Semilla key={k} tipo="maiz" x={30 - k * 10} y={-240 + k * 14} s={0.6} rot={k * 40} />)}</g></g>)}
+          <g transform="translate(0 80)"><BolsaCultivo x={0} y={0} w={240} h={300} colonizado={0.15} /><g transform="translate(70 -260) rotate(30)"><Frasco id="as-sem" x={0} y={0} w={90} h={130} contenido={null} abierto seed={60} ventana={false} sombra={false}
+              interior={<g>{/* semilla de hongo: granos ya cubiertos de micelio blanco */}<rect x={-45} y={-120} width={90} height={120} fill="#f2eee6" />
+                {Array.from({ length: 34 }, (_, k) => { const r = R(6000 + k); return <ellipse key={k} cx={-40 + r() * 80} cy={-112 + r() * 110} rx={7} ry={5} fill="#fbf9f4" stroke="#ddd6c8" strokeWidth={1} transform={`rotate(${r() * 180} ${-40 + r() * 80} ${-112 + r() * 110})`} />; })}
+                <rect x={-45} y={-120} width={90} height={120} fill="#fff" opacity={0.25} filter="url(#c-b8)" /></g>} /></g>
+            {Array.from({ length: 10 }, (_, k) => <g key={k} transform={`translate(${30 - k * 10} ${-240 + k * 14}) rotate(${k * 40})`}><ellipse rx={9} ry={6.5} fill="#fbf9f4" stroke="#d8d0c0" strokeWidth={1.2} /><ellipse rx={12} ry={9} fill="#fff" opacity={0.35} filter="url(#c-b8)" /></g>)}</g></g>)}
         {tarjeta(3, '¡Setas!', <g><rect x={-200} y={-300} width={400} height={400} fill="#2a2f3a" /><g transform="translate(0 100)"><BolsaCultivo x={0} y={0} w={240} h={320} colonizado={0.95}><Racimo x={30} y={-210} n={7} tam={110} color="#ece2cc" g={cpr(p, 0.75, 0.98)} t={tl} seed={61} /></BolsaCultivo></g></g>)}
         {[0, 1, 2].map((i) => <g key={i} opacity={paso(i + 1)}><path d={`M ${cx(i) + 214} 470 L ${cx(i) + 258} 470`} stroke="#fff" strokeWidth={4} /><path d={`M ${cx(i) + 248} 460 L ${cx(i) + 260} 470 L ${cx(i) + 248} 480`} stroke="#fff" strokeWidth={4} fill="none" /></g>)}
       </g>

@@ -94,9 +94,13 @@ ILUSC.champinon = {
           {Array.from({ length: 220 }, (_, i) => { const r = R(1900 + i); return <path key={i} d={`M ${-690 + r() * 1380} ${50 + r() * 240} l ${(r() - 0.5) * 60} ${(r() - 0.5) * 10}`} stroke={['#c9a85a', '#8a6a3a', '#6a4a2a'][i % 3]} strokeWidth={3} opacity={0.8} />; })}
           <rect x={-700} y={-40} width={1400} height={80} fill="#2a1d14" />
           {Array.from({ length: 160 }, (_, i) => { const r = R(2100 + i); return <circle key={i} cx={-690 + r() * 1380} cy={-36 + r() * 72} r={2 + r() * 4} fill="#3a2a1c" />; })}
-          <Micelio x={-300} y={120} r={260} g={cpr(p, 0.6, 0.85)} seed={4} aplastado={0.5} o={0.8} />
-          <Micelio x={250} y={140} r={260} g={cpr(p, 0.62, 0.88)} seed={9} aplastado={0.5} o={0.8} />
-          {[-480, -160, 120, 420].map((cx, i) => { const e = cpr(p, 0.75 + i * 0.04, 0.88 + i * 0.03); return e > 0 && <g key={i} transform={`translate(${cx} -38) scale(${0.3 + 0.5 * e})`}><Champinon x={0} y={0} s={0.9} /></g>; })}
+          {/* 1) el micelio coloniza TODA la composta y la capa de cobertura (queda blanca); 2) hasta entonces brotan */}
+          <Micelio x={-300} y={120} r={260} g={cpr(p, 0.58, 0.7)} seed={4} aplastado={0.5} o={0.8} />
+          <Micelio x={250} y={140} r={260} g={cpr(p, 0.6, 0.72)} seed={9} aplastado={0.5} o={0.8} />
+          <rect x={-700} y={40} width={1400} height={260} fill="#efe9de" opacity={0.93 * cpr(p, 0.64, 0.76, kEase.suave)} />
+          <rect x={-700} y={-40} width={1400} height={80} fill="#e2dccf" opacity={0.85 * cpr(p, 0.7, 0.8, kEase.suave)} />
+          {cpr(p, 0.64, 0.76) > 0 && <g opacity={cpr(p, 0.64, 0.76)}>{[-560, -280, 0, 280, 560].map((cx, i) => <Micelio key={i} x={cx} y={150} r={190} g={1} seed={20 + i} aplastado={0.5} o={0.55} />)}</g>}
+          {[-480, -160, 120, 420].map((cx, i) => { const e = cpr(p, 0.82 + i * 0.03, 0.92 + i * 0.02); return e > 0 && <g key={i} transform={`translate(${cx} -38) scale(${0.3 + 0.5 * e})`}><Champinon x={0} y={0} s={0.9} /></g>; })}
           <rect x={-700} y={-40} width={1400} height={340} fill="none" stroke="#fff" strokeOpacity={0.3} strokeWidth={2} />
           {/* etiquetas */}
           <g opacity={cpr(p, 0.6, 0.66)}><path d="M 700 0 L 780 -60" stroke="#fff" strokeWidth={2.5} /><text x={790} y={-66} fontFamily={FUENTE.mono} fontWeight={700} fontSize={22} letterSpacing={3} fill="#F4C25A">CAPA DE COBERTURA</text><text x={790} y={-30} fontFamily={FUENTE.serif} fontStyle="italic" fontSize={30} fill="#fff">turba + cal</text></g>

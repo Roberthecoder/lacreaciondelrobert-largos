@@ -1,5 +1,7 @@
 // Generado por preparar_fotos.py: tamaño de cada foto preparada.
 window.FOTOS = {
+"video/img/extra/beco_logo.png": [1060, 1060],
+"video/img/extra/rise_certificado.jpg": [892, 690],
 "video/img/extra/equitech.png": [738, 270],
 "video/img/extra/ruta_azul.png": [152, 94],
 "video/img/extra/bosques_urbanos.jpg": [1200, 768],

@@ -103,14 +103,15 @@ DIBUJOS.adn = ({ p, tl }) => {
   </g>;
 };
 
-// Presidente de B-Eco: un árbol y el grupo estudiantil.
+// Presidente de B-Eco: el logo del grupo estudiantil, con el grupo alrededor.
 DIBUJOS.beco = ({ p, tl }) => {
-  const e = cpr(p, 0.05, 0.6, kEase.sale);
+  const e = cpr(p, 0.05, 0.45, kEase.sale);
   return <g>
     {suelo('#0a2a1a', 0.5)}
-    <g transform="translate(960 870)"><rect x={-22} y={-300} width={44} height={300} fill="#6a4a2a" />
-      {[[0, -380, 150], [-120, -320, 110], [120, -320, 110], [-60, -440, 100], [70, -440, 100]].map(([x, y, r], k) => <circle key={k} cx={x} cy={y + 20 * (1 - e)} r={r * e} fill={k % 2 ? '#3f8f4a' : '#4faf5a'} />)}</g>
-    {[[560, '#2f8f5a', 831], [700, '#f4f2ec', 832], [1220, '#2f8f5a', 833], [1360, '#2a5aa8', 834]].map(([x, c, s], k) =>
+    <Halo x={960} y={600} r={420} color="#cfeedd" o={0.35} />
+    <g opacity={e} transform={`translate(960 600) scale(${0.9 + 0.1 * e})`}>
+      <image href="video/img/extra/beco_logo.png" x={-260} y={-260} width={520} height={520} preserveAspectRatio="xMidYMid meet" /></g>
+    {[[480, '#2f8f5a', 831], [620, '#f4f2ec', 832], [1300, '#2f8f5a', 833], [1440, '#2a5aa8', 834]].map(([x, c, s], k) =>
       <Nene key={k} x={x} y={870} s={0.55} edad={16} t={tl} playera={c} rayas={false} lentes={k === 0} brazoD={k === 0 ? 50 + 10 * Math.sin(tl * 2) : 10} mira={[x < 960 ? 1 : -1, 0]} boca="sonrisa" seed={s} />)}
   </g>;
 };

@@ -54,14 +54,19 @@ const vozWav = path.join(VOZ, 'voz_completa.wav');
 ff([...ins, '-filter_complex', `${filt.join(';')};${partes.map((_, k) => `[a${k}]`).join('')}concat=n=${partes.length}:v=0:a=1[v]`, '-map', '[v]', '-ar', '48000', vozWav]);
 const total = dur(vozWav);
 
-// cama musical grave y continua (acordes sintetizados, nada de catálogo): La menor – Fa – Do – Sol,
-// dos capas desfasadas para que nunca se corte
-const acordes = [[55, 110, 130.81, 164.81], [43.65, 87.31, 110, 130.81], [65.41, 98, 130.81, 164.81], [49, 98, 123.47, 146.83]];
-const capa = (desf) => acordes.map((ac, k) => ac.map((f) => `sin(2*PI*${f}*t)*(0.6+0.4*sin(2*PI*0.07*t+${k}))`).join('+'))
-  .map((e, k) => `if(eq(mod(floor((t+${desf})/8),4),${k}),(${e})*pow(sin(PI*mod(t+${desf},8)/8),2),0)`).join('+');
+// la "musiquita": el mismo sintetizador de los shots (cama + notas en cada evento + efectos), ver musica_largo.mjs
+const bloques = [];
+{ let tt = 0, n = 0;
+  CAPS.forEach((c, ci) => {
+    if (c.tarjeta !== false) { bloques.push({ at: tt, dur: TARJETA, tipo: 'capitulo', cap: ci }); tt += TARJETA; }
+    c.lineas.forEach((l) => { const d = tiempos[n++]; const ult = bloques[bloques.length - 1];
+      if (l.v || !ult || ult.tipo === 'capitulo' || ult.cap !== ci) bloques.push({ at: tt, dur: d, tipo: (l.v || {}).tipo || 'texto', id: (l.v || {}).id, n: ((l.v || {}).fotos || []).length || 1, cap: ci });
+      else ult.dur += d;
+      tt += d; });
+  }); }
 const musWav = path.join(VOZ, 'musica.wav');
-ff(['-f', 'lavfi', '-t', String(total), '-i', `aevalsrc=exprs='0.05*(${capa(0)}+${capa(4)})':s=48000`,
-  '-af', `lowpass=f=1600,aecho=0.8:0.6:420|780:0.35|0.25,afade=t=in:d=3,afade=t=out:st=${Math.max(0, total - 6)}:d=6`, '-ac', '2', musWav]);
+const { generarMusica } = await import('./musica_largo.mjs');
+generarMusica(bloques, total, musWav);
 
 // MEZCLA OFICIAL de la sala de shots (sonido «5» elegido por Robert el 30 oct 2026; valores en mezcla.json,
 // copiados de motor/mezcla.json): voz a −16 LUFS; cama a −6 dB; música por bandas (graves y sus armónicos
