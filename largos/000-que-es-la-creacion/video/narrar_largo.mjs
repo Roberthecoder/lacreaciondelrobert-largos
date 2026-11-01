@@ -20,6 +20,7 @@ const VOICE_ID = process.env.ELEVENLABS_VOICE_ID || 'uiCk6APPfsjnw3oUQzVo';
 const MODEL = process.env.ELEVENLABS_MODEL || 'eleven_v4';
 const KEY = process.env.ELEVENLABS_API_KEY;
 const modo = process.argv[2] || 'saldo';
+if (!['saldo', 'generar'].includes(modo)) throw new Error(`Pedido desconocido: "${modo}" (usa saldo o generar). No se gastó nada.`);
 const H = { 'xi-api-key': KEY };
 if (!KEY) throw new Error('Falta ELEVENLABS_API_KEY');
 
