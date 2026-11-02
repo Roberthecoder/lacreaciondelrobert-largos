@@ -77,7 +77,7 @@ function FondoFoto({ src, T }) {
   </div>;
 }
 // Foto impresa con movimiento de cámara lento (Ken Burns), entrada suave y sombra realista.
-function Marco({ foto, p, tl, x = W / 2, y = H / 2 - 72, maxW = 1240, maxH = 640, rot = -1.5, z0 = 1.02, z1 = 1.12, foco = [0.5, 0.45], borde = 12, retraso = 0, etiqueta, pal }) {
+function Marco({ foto, p, tl, x = W / 2, y = H / 2 - 72, maxW = 1240, maxH = 640, rot = -1.5, z0 = 1.02, z1 = 1.12, foco = [0.5, 0.45], borde = 12, retraso = 0, etiqueta, pal, marcas }) {
   const src = fotoSrc(foto);
   const [fw, fh] = fotoDim(src);
   const k = Math.min(maxW / fw, maxH / fh);
@@ -91,10 +91,42 @@ function Marco({ foto, p, tl, x = W / 2, y = H / 2 - 72, maxW = 1240, maxH = 640
     <div style={abs(borde, borde, { width: w, height: h, overflow: 'hidden', borderRadius: 1, background: '#111' })}>
       <img src={src} style={{ width: w, height: h, display: 'block', transformOrigin: `${foco[0] * 100}% ${foco[1] * 100}%`, transform: `scale(${z})`, filter: 'contrast(1.06) saturate(1.06)' }} />
       <div style={abs(0, 0, { width: w, height: h, background: 'radial-gradient(ellipse at 45% 40%, rgba(255,240,215,.08), rgba(0,0,0,.28) 100%)' })} />
+      {marcas && <MarcasFoto marcas={marcas} w={w} h={h} z={z} foco={foco} tl={tl - retraso} />}
       <div style={abs(-w, 0, { width: w * 0.6, height: h, background: 'linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.14), rgba(255,255,255,0))', transform: `translateX(${kprog(tl, retraso + 0.4, retraso + 2.4, kEase.suave) * w * 2.4}px)` })} />
     </div>
     {etiqueta && <Etiqueta texto={etiqueta} x={0} y={h + borde * 2 + 22} tl={tl - retraso - 0.6} pal={pal} />}
   </div>;
+}
+// Señala algo dentro de una foto: un óvalo que se dibuja a mano (amarillo con brillo), se queda latiendo suave,
+// y una etiqueta chica con flecha. Coordenadas relativas a la foto (0–1); se mueve junto con el zoom de la foto.
+function MarcasFoto({ marcas, w, h, z, foco, tl }) {
+  const SEN = '#ffe14d';
+  return <svg width={w} height={h} style={abs(0, 0, { overflow: 'visible', transformOrigin: `${foco[0] * 100}% ${foco[1] * 100}%`, transform: `scale(${z})` })}>
+    <defs><filter id="m-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5" /></filter></defs>
+    {marcas.map((m, i) => {
+      const t0 = (m.t ?? 1.5) + i * 0.55, d = kprog(tl, t0, t0 + 0.85, kEase.suave);
+      if (d <= 0) return null;
+      const cx = m.x * w, cy = m.y * h, rx = m.rx * w, ry = m.ry * h, pulso = 1 + 0.025 * Math.sin((tl - t0) * 3.2) * kclamp(d * 2 - 1, 0, 1);
+      // óvalo a mano: un poco más de una vuelta, con el trazo que se pasa al cerrar
+      const pts = [];
+      for (let k = 0; k <= 64; k++) { const a = -2.2 + (k / 64) * Math.PI * 2.18, rr = 1 + 0.05 * Math.sin(a * 3 + i) + 0.04 * (k / 64);
+        pts.push(`${(cx + Math.cos(a) * rx * rr).toFixed(1)},${(cy + Math.sin(a) * ry * rr).toFixed(1)}`); }
+      const dd = 'M ' + pts.join(' L ');
+      const et = kprog(tl, t0 + 0.6, t0 + 1.1, kEase.sale);
+      const lado = m.lado || 'arriba', ex = cx + (m.ex ?? 0) * w, ey = lado === 'arriba' ? cy - ry - 74 : cy + ry + 74;
+      return <g key={i} transform={`rotate(${m.rot || 0} ${cx} ${cy}) translate(${cx} ${cy}) scale(${pulso}) translate(${-cx} ${-cy})`}>
+        <path d={dd} fill="none" stroke={SEN} strokeWidth={9} strokeLinecap="round" strokeLinejoin="round" opacity={0.55} filter="url(#m-glow)" pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - d} />
+        <path d={dd} fill="none" stroke={SEN} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - d} />
+        {m.txt && et > 0 && <g opacity={et} transform={`rotate(${-(m.rot || 0)} ${cx} ${cy}) translate(0 ${(1 - et) * (lado === 'arriba' ? -10 : 10)})`}>
+          <line x1={ex} y1={lado === 'arriba' ? ey + 20 : ey - 20} x2={cx + (ex - cx) * 0.4} y2={lado === 'arriba' ? cy - ry - 8 : cy + ry + 8} stroke={SEN} strokeWidth={4} strokeLinecap="round" />
+          <g transform={`translate(${ex} ${ey})`}>
+            <rect x={-m.txt.length * 7.6 - 16} y={-20} width={m.txt.length * 15.2 + 32} height={40} rx={20} fill={SEN} />
+            <text x={0} y={8} textAnchor="middle" fontFamily={KF.mono} fontWeight={800} fontSize={22} letterSpacing={1.5} fill="#16130a">{m.txt}</text>
+          </g>
+        </g>}
+      </g>;
+    })}
+  </svg>;
 }
 // Rótulo de documental: barra de acento + texto en mayúsculas espaciadas.
 function Etiqueta({ texto, x, y, tl, pal, tam = 30, rel = false }) {
@@ -111,7 +143,7 @@ function EscenaFoto({ v, p, tl, T, pal }) {
   const src = fotoSrc(v.foto);
   return <>
     <FondoFoto src={src} T={T} />
-    <Marco foto={v.foto} p={p} tl={tl} rot={v.rot ?? -1.5} foco={v.foco} z0={v.z0} z1={v.z1} etiqueta={v.etiqueta} pal={pal}
+    <Marco foto={v.foto} p={p} tl={tl} rot={v.rot ?? -1.5} foco={v.foco} z0={v.z0} z1={v.z1} etiqueta={v.etiqueta} pal={pal} marcas={v.marcas}
       x={v.lado === 'izq' ? 640 : v.lado === 'der' ? 1280 : W / 2} maxW={v.lado ? 1000 : 1240} />
     {v.texto && <TextoLateral v={v} tl={tl} pal={pal} />}
   </>;
@@ -131,7 +163,7 @@ function EscenaFotos({ v, p, tl, T, pal }) {
   return <>
     <FondoFoto src={fotoSrc(v.fotos[0])} T={T} />
     {v.fotos.map((f, i) => <Marco key={i} foto={f} p={p} tl={tl} x={pos[i][0]} y={pos[i][1]} rot={pos[i][2]} maxW={n === 2 ? 760 : 560} maxH={n === 2 ? 600 : 560}
-      retraso={i * (v.paso ?? 0.45)} z0={1} z1={1.07} borde={10} etiqueta={(v.pies || [])[i]} pal={pal} />)}
+      retraso={i * (v.paso ?? 0.45)} z0={1} z1={1.07} borde={10} etiqueta={(v.pies || [])[i]} pal={pal} marcas={(v.marcas || [])[i]} />)}
     {v.etiqueta && <div style={abs(0, 800, { width: W, textAlign: 'center' })}><Etiqueta texto={v.etiqueta} rel tl={tl - 0.9} pal={pal} tam={32} /></div>}
   </>;
 }

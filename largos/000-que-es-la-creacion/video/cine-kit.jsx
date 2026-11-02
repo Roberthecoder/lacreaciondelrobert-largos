@@ -554,14 +554,19 @@ function Adulto({ x, y, s = 1, piel = '#a86f48', pelo = '#241a14', canas = 0, ca
       {mujer
         ? <path d={`M ${-cab * 0.95} ${hC + cab * 1.1} Q ${-cab * 1.12} ${hC - cab * 1.2} 0 ${hC - cab * 1.12} Q ${cab * 1.12} ${hC - cab * 1.2} ${cab * 0.95} ${hC + cab * 1.1} L ${cab * 0.74} ${hC + cab * 0.2} Q ${cab * 0.6} ${hC - cab * 0.7} ${-cab * 0.1} ${hC - cab * 0.6} Q ${-cab * 0.6} ${hC - cab * 0.5} ${-cab * 0.74} ${hC + cab * 0.2} Z`} fill={pc} />
         : rapado
-          // pelo a rape: una sombra corta y difuminada que sigue el cráneo (sin volumen) y el brillo de la piel
-          ? <g>
-            {/* casquete de pelo corto: cubre todo el cráneo hasta la frente (línea natural, no de calvo) y baja en patillas junto a las orejas */}
-            {[['c-b4', 0.5, 1.0], ['c-b2', 0.92, 0.99]].map(([bl, op, k]) => <path key={bl} d={`M ${-cab * 0.86 * k} ${hC + cab * 0.2} Q ${-cab * 0.94 * k} ${hC - cab * 1.07 * k} 0 ${hC - cab * 1.05 * k} Q ${cab * 0.94 * k} ${hC - cab * 1.07 * k} ${cab * 0.86 * k} ${hC + cab * 0.2}
-              L ${cab * 0.76} ${hC + cab * 0.2} Q ${cab * 0.74} ${hC - cab * 0.3} ${cab * 0.56} ${hC - cab * 0.44} Q ${cab * 0.3} ${hC - cab * 0.5} 0 ${hC - cab * 0.5} Q ${-cab * 0.3} ${hC - cab * 0.5} ${-cab * 0.56} ${hC - cab * 0.44} Q ${-cab * 0.74} ${hC - cab * 0.3} ${-cab * 0.76} ${hC + cab * 0.2} Z`}
-              fill={mix(piel, pc, 0.66)} opacity={op} filter={`url(#${bl})`} />)}
-            <path d={`M ${-cab * 0.42} ${hC - cab * 0.9} Q 0 ${hC - cab * 1.0} ${cab * 0.32} ${hC - cab * 0.9}`} stroke="#fff" strokeOpacity={0.18} strokeWidth={7} fill="none" strokeLinecap="round" filter="url(#c-b2)" />
-          </g>
+          // pelo a rape (al ras y parejo): recortado exactamente a la forma del cráneo, sin volumen ni orillas que se salgan;
+          // cubre la coronilla, baja en línea de pelo normal sobre la frente y en patillas cortas junto a las orejas.
+          ? (() => { const id = `rap-${seed}-${Math.round(x)}-${Math.round(y)}`; const tono = mix(piel, pc, 0.7);
+            const forma = `M ${-cab * 1.3} ${hC + cab * 0.14} L ${-cab * 1.3} ${hC - cab * 1.5} L ${cab * 1.3} ${hC - cab * 1.5} L ${cab * 1.3} ${hC + cab * 0.14}
+              L ${cab * 0.78} ${hC + cab * 0.14} Q ${cab * 0.76} ${hC - cab * 0.36} ${cab * 0.5} ${hC - cab * 0.5} Q 0 ${hC - cab * 0.6} ${-cab * 0.5} ${hC - cab * 0.5}
+              Q ${-cab * 0.76} ${hC - cab * 0.36} ${-cab * 0.78} ${hC + cab * 0.14} Z`;
+            return <g>
+              <defs><clipPath id={id}><ellipse cx={0} cy={hC} rx={cab * 0.875} ry={cab * 1.05} /></clipPath></defs>
+              <g clipPath={`url(#${id})`}>
+                <path d={forma} fill={tono} opacity={0.93} filter="url(#c-b2)" />
+                <ellipse cx={-cab * 0.1} cy={hC - cab * 0.95} rx={cab * 0.45} ry={cab * 0.16} fill="#fff" opacity={0.1} filter="url(#c-b4)" />
+              </g>
+            </g>; })()
           : <path d={`M ${-cab * 0.88} ${hC - 4} Q ${-cab * 0.95} ${hC - cab * 1.12} 0 ${hC - cab * 1.1} Q ${cab * 0.95} ${hC - cab * 1.12} ${cab * 0.88} ${hC - 4} Q ${cab * 0.76} ${hC - cab * 0.62} ${cab * 0.2} ${hC - cab * 0.66} Q ${-cab * 0.5} ${hC - cab * 0.7} ${-cab * 0.88} ${hC - 4} Z`} fill={pc} />}
       {!rapado && <path d={`M ${-cab * 0.5} ${hC - cab * 0.86} Q 0 ${hC - cab * 1.04} ${cab * 0.4} ${hC - cab * 0.9}`} stroke="#fff" strokeOpacity={0.2} strokeWidth={5} fill="none" />}
       {[-1, 1].map((d) => <path key={d} d={`M ${d * cab * 0.14} ${hC - cab * 0.28 - (d > 0 ? cejas * 8 : 0)} Q ${d * cab * 0.32} ${hC - cab * 0.38 - (d > 0 ? cejas * 12 : 0)} ${d * cab * 0.5} ${hC - cab * 0.3 - (d > 0 ? cejas * 4 : 0)}`} stroke={pc} strokeWidth={6} strokeLinecap="round" fill="none" />)}
