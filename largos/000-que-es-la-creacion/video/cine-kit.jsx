@@ -456,6 +456,7 @@ function Nene({ x, y, s = 1, piel = '#b77a52', pelo = '#1a1311', playera = '#e87
     </g>}
     {/* torso */}
     <g transform={`translate(0 ${respira * 0.5})`}>
+      {!espalda && <rect x={-16} y={hT - 46} width={32} height={60} fill={osc(piel, 0.15)} />}
       {brazo(-1, brazoI)}
       <path d={`M ${-58 * k} ${hT + 6} Q ${-60 * k} ${hT + 90 * k} ${-50 * k} ${hT + 150 * k} L ${50 * k} ${hT + 150 * k} Q ${60 * k} ${hT + 90 * k} ${58 * k} ${hT + 6} Q 0 ${hT - 18} ${-58 * k} ${hT + 6} Z`} fill={playera} />
       {rayas && [0.35, 0.55].map((q, i) => <rect key={i} x={-58 * k} y={hT + 150 * k * q} width={116 * k} height={10} fill="#fff" opacity={0.75} />)}
@@ -512,14 +513,14 @@ function Nene({ x, y, s = 1, piel = '#b77a52', pelo = '#1a1311', playera = '#e87
 }
 // Adulto genérico (papá, mamá, Don Joaquín, el señor que compró las plantas). (x,y) = pies; mide ~620 px con s=1.
 function Adulto({ x, y, s = 1, piel = '#a86f48', pelo = '#241a14', canas = 0, camisa = '#6d4fa3', pantalon = '#3a3a40', brazoD = 8, brazoI = -8, t = 0, sombrero = null, bigote = false,
-  boca = 'sonrisa', mira = [0, 0], delantal = null, mujer = false, seed = 3, carga, cruzados = false, cejas = 0 }) {
+  boca = 'sonrisa', mira = [0, 0], delantal = null, mujer = false, seed = 3, carga, cruzados = false, cejas = 0, rapado = false }) {
   const hT = -360, cab = 66, hC = hT - 36 - cab;
   const rot = mece(t, seed, 0.4) * 2;
   const pc = mix(pelo, '#d9d4cc', canas);
-  const brazo = (lado, a) => { const sx = lado * 78, sy = hT + 22; return <g transform={`rotate(${-lado * a} ${sx} ${sy})`}>
-    <path d={`M ${sx - 22} ${sy - 4} L ${sx - 17} ${sy + 170} L ${sx + 17} ${sy + 170} L ${sx + 22} ${sy - 4} Z`} fill={camisa} /><path d={`M ${sx - 22} ${sy - 4} L ${sx - 17} ${sy + 170} L ${sx + 17} ${sy + 170} L ${sx + 22} ${sy - 4} Z`} fill="url(#c-tela)" />
-    <path d={`M ${sx - 15} ${sy + 160} L ${sx - 13} ${sy + 200} L ${sx + 13} ${sy + 200} L ${sx + 15} ${sy + 160} Z`} fill={piel} />
-    <ellipse cx={sx} cy={sy + 212} rx={18} ry={21} fill={piel} /><ellipse cx={sx} cy={sy + 212} rx={18} ry={21} fill="url(#c-esfera)" opacity={0.6} />
+  const brazo = (lado, a, corto = false) => { const sx = lado * 78, sy = hT + 22, L = corto ? 130 : 170; return <g transform={`rotate(${-lado * a} ${sx} ${sy})`}>
+    <path d={`M ${sx - 22} ${sy - 4} L ${sx - 17} ${sy + L} L ${sx + 17} ${sy + L} L ${sx + 22} ${sy - 4} Z`} fill={camisa} /><path d={`M ${sx - 22} ${sy - 4} L ${sx - 17} ${sy + L} L ${sx + 17} ${sy + L} L ${sx + 22} ${sy - 4} Z`} fill="url(#c-tela)" />
+    {!corto && <><path d={`M ${sx - 15} ${sy + 160} L ${sx - 13} ${sy + 200} L ${sx + 13} ${sy + 200} L ${sx + 15} ${sy + 160} Z`} fill={piel} />
+    <ellipse cx={sx} cy={sy + 212} rx={18} ry={21} fill={piel} /><ellipse cx={sx} cy={sy + 212} rx={18} ry={21} fill="url(#c-esfera)" opacity={0.6} /></>}
   </g>; };
   return <g transform={`translate(${x} ${y}) scale(${s})`}>
     <Sombra x={0} y={0} rx={120} ry={16} o={0.45} b="c-b8" />
@@ -529,7 +530,8 @@ function Adulto({ x, y, s = 1, piel = '#a86f48', pelo = '#241a14', canas = 0, ca
       <path d={`M ${d * 38 - 32} 0 Q ${d * 38 - 32} -32 ${d * 38} -32 Q ${d * 38 + 44} -30 ${d * 38 + 44} -6 L ${d * 38 + 44} 0 Z`} fill="#2a1c14" />
       <rect x={d * 38 - 32} y={-5} width={76} height={5} rx={2} fill="#000" opacity={0.6} />
     </g>)}
-    {brazo(-1, cruzados ? -4 : brazoI)}
+    {cruzados ? brazo(-1, -4, true) : brazo(-1, brazoI)}
+    <rect x={-20} y={hT - 40} width={40} height={60} fill={osc(piel, 0.18)} />
     <path d={`M -84 ${hT + 8} Q -92 ${hT + 120} -78 ${hT + 230} L 78 ${hT + 230} Q 92 ${hT + 120} 84 ${hT + 8} Q 0 ${hT - 22} -84 ${hT + 8} Z`} fill={camisa} />
     <path d={`M -84 ${hT + 8} Q -92 ${hT + 120} -78 ${hT + 230} L 78 ${hT + 230} Q 92 ${hT + 120} 84 ${hT + 8} Q 0 ${hT - 22} -84 ${hT + 8} Z`} fill="url(#c-tela)" />
     {!mujer && <><path d={`M -26 ${hT - 4} L 0 ${hT + 34} L 26 ${hT - 4}`} fill={osc(camisa, 0.25)} />{[0, 1, 2, 3].map((i) => <circle key={i} cx={0} cy={hT + 60 + i * 42} r={4} fill={cla(camisa, 0.5)} />)}<path d={`M 0 ${hT + 34} L 0 ${hT + 230}`} stroke="#000" strokeOpacity={0.18} strokeWidth={2} /></>}
@@ -538,7 +540,7 @@ function Adulto({ x, y, s = 1, piel = '#a86f48', pelo = '#241a14', canas = 0, ca
       <rect x={-40} y={hT + 170} width={80} height={56} rx={6} fill="#000" opacity={0.12} /></>}
     {carga}
     {cruzados ? <g>
-      {brazo(1, 4)}
+      {brazo(1, 4, true)}
       <path d={`M -96 ${hT + 120} Q 0 ${hT + 170} 96 ${hT + 120} L 96 ${hT + 168} Q 0 ${hT + 214} -96 ${hT + 168} Z`} fill={camisa} />
       <path d={`M -96 ${hT + 120} Q 0 ${hT + 170} 96 ${hT + 120} L 96 ${hT + 168} Q 0 ${hT + 214} -96 ${hT + 168} Z`} fill="#000" opacity={0.18} />
       <path d={`M -90 ${hT + 126} Q 0 ${hT + 172} 90 ${hT + 126}`} stroke="#fff" strokeOpacity={0.15} strokeWidth={3} fill="none" />
@@ -551,8 +553,14 @@ function Adulto({ x, y, s = 1, piel = '#a86f48', pelo = '#241a14', canas = 0, ca
       <ellipse cx={0} cy={hC} rx={cab * 0.86} ry={cab * 1.04} fill="url(#c-cara)" />
       {mujer
         ? <path d={`M ${-cab * 0.95} ${hC + cab * 1.1} Q ${-cab * 1.12} ${hC - cab * 1.2} 0 ${hC - cab * 1.12} Q ${cab * 1.12} ${hC - cab * 1.2} ${cab * 0.95} ${hC + cab * 1.1} L ${cab * 0.74} ${hC + cab * 0.2} Q ${cab * 0.6} ${hC - cab * 0.7} ${-cab * 0.1} ${hC - cab * 0.6} Q ${-cab * 0.6} ${hC - cab * 0.5} ${-cab * 0.74} ${hC + cab * 0.2} Z`} fill={pc} />
-        : <path d={`M ${-cab * 0.88} ${hC - 4} Q ${-cab * 0.95} ${hC - cab * 1.12} 0 ${hC - cab * 1.1} Q ${cab * 0.95} ${hC - cab * 1.12} ${cab * 0.88} ${hC - 4} Q ${cab * 0.76} ${hC - cab * 0.62} ${cab * 0.2} ${hC - cab * 0.66} Q ${-cab * 0.5} ${hC - cab * 0.7} ${-cab * 0.88} ${hC - 4} Z`} fill={pc} />}
-      <path d={`M ${-cab * 0.5} ${hC - cab * 0.86} Q 0 ${hC - cab * 1.04} ${cab * 0.4} ${hC - cab * 0.9}`} stroke="#fff" strokeOpacity={0.2} strokeWidth={5} fill="none" />
+        : rapado
+          // pelo a rape: una sombra corta y difuminada que sigue el cráneo (sin volumen) y el brillo de la piel
+          ? <g>
+            <path d={`M ${-cab * 0.85} ${hC - cab * 0.02} Q ${-cab * 0.9} ${hC - cab * 1.06} 0 ${hC - cab * 1.045} Q ${cab * 0.9} ${hC - cab * 1.06} ${cab * 0.85} ${hC - cab * 0.02} Q ${cab * 0.8} ${hC - cab * 0.5} ${cab * 0.6} ${hC - cab * 0.62} Q 0 ${hC - cab * 0.74} ${-cab * 0.6} ${hC - cab * 0.62} Q ${-cab * 0.8} ${hC - cab * 0.5} ${-cab * 0.85} ${hC - cab * 0.02} Z`} fill={mix(piel, pc, 0.62)} opacity={0.88} filter="url(#c-b2)" />
+            <path d={`M ${-cab * 0.42} ${hC - cab * 0.9} Q 0 ${hC - cab * 1.0} ${cab * 0.32} ${hC - cab * 0.9}`} stroke="#fff" strokeOpacity={0.28} strokeWidth={7} fill="none" strokeLinecap="round" filter="url(#c-b2)" />
+          </g>
+          : <path d={`M ${-cab * 0.88} ${hC - 4} Q ${-cab * 0.95} ${hC - cab * 1.12} 0 ${hC - cab * 1.1} Q ${cab * 0.95} ${hC - cab * 1.12} ${cab * 0.88} ${hC - 4} Q ${cab * 0.76} ${hC - cab * 0.62} ${cab * 0.2} ${hC - cab * 0.66} Q ${-cab * 0.5} ${hC - cab * 0.7} ${-cab * 0.88} ${hC - 4} Z`} fill={pc} />}
+      {!rapado && <path d={`M ${-cab * 0.5} ${hC - cab * 0.86} Q 0 ${hC - cab * 1.04} ${cab * 0.4} ${hC - cab * 0.9}`} stroke="#fff" strokeOpacity={0.2} strokeWidth={5} fill="none" />}
       {[-1, 1].map((d) => <path key={d} d={`M ${d * cab * 0.14} ${hC - cab * 0.28 - (d > 0 ? cejas * 8 : 0)} Q ${d * cab * 0.32} ${hC - cab * 0.38 - (d > 0 ? cejas * 12 : 0)} ${d * cab * 0.5} ${hC - cab * 0.3 - (d > 0 ? cejas * 4 : 0)}`} stroke={pc} strokeWidth={6} strokeLinecap="round" fill="none" />)}
       {[-1, 1].map((d) => <g key={'o' + d} transform={`translate(${d * cab * 0.32} ${hC - cab * 0.06})`}>
         <ellipse rx={cab * 0.12} ry={cab * 0.1} fill="#f6f0e6" /><circle cx={mira[0] * 5} cy={mira[1] * 4} r={cab * 0.075} fill="#2a1a10" /><circle cx={mira[0] * 5 - 3} cy={mira[1] * 4 - 3} r={2.4} fill="#fff" />

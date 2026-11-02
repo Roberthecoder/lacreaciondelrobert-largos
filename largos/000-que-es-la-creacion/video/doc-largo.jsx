@@ -273,10 +273,14 @@ function SubtituloLargo({ T }) {
   l.t.split(' ').forEach((w) => { if ((cur + ' ' + w).trim().length > max) { trozos.push(cur.trim()); cur = w; } else cur += ' ' + w; });
   if (cur.trim()) trozos.push(cur.trim());
   const total = trozos.reduce((a, s) => a + s.length, 0);
-  let acc = 0, idx = 0;
+  let acc = 0, idx = 0, a0 = 0, a1 = 1;
   const pr = (T - l.at) / l.dur;
-  for (let i = 0; i < trozos.length; i++) { acc += trozos[i].length / total; if (pr < acc) { idx = i; break; } idx = i; }
-  return <div style={abs(0, H - 160, { width: W, textAlign: 'center', zIndex: 40 })}>
+  for (let i = 0; i < trozos.length; i++) { a0 = acc; acc += trozos[i].length / total; a1 = acc; idx = i; if (pr < acc) break; }
+  // Cambio de subtítulo como brisa: el anterior se desvanece y el nuevo entra suave y subiendo un poquito (nunca de golpe).
+  const s0 = l.at + l.dur * a0, s1 = l.at + l.dur * a1, suave = (x) => x * x * (3 - 2 * x);
+  const ent = suave(kprog(T, s0, s0 + 0.28)), sal = 1 - suave(kprog(T, s1 - 0.2, s1));
+  const o = Math.min(ent, sal);
+  return <div style={abs(0, H - 160 + (1 - ent) * 10, { width: W, textAlign: 'center', zIndex: 40, opacity: o })}>
     <span style={{ display: 'inline-block', maxWidth: conRobert ? 1040 : 1480, padding: claro ? '10px 28px' : '6px 20px', borderRadius: 14, background: claro ? 'rgba(12,12,16,.72)' : 'none', color: '#fff', fontFamily: KF.texto, fontWeight: 600, fontSize: 40, lineHeight: 1.28,
       textShadow: '0 2px 3px rgba(0,0,0,.95), 0 0 18px rgba(0,0,0,.85), 0 0 4px rgba(0,0,0,.9)' }}>{conCursivas(trozos[idx])}</span>
   </div>;

@@ -329,13 +329,13 @@ ILUSC.bagazo_vinazas = {
 };
 
 /* ---------- 2017: preselección en Monterrey, rumbo a Bulgaria ---------- */
-// Silueta simplificada de México (esquemática) en coordenadas de la escena.
-const MEXICO = 'M 300 250 L 520 230 L 640 300 L 700 300 L 760 360 L 820 360 L 880 330 L 900 420 L 860 470 L 880 520 L 960 560 L 1080 560 L 1110 520 L 1170 510 L 1190 470 L 1260 470 L 1240 540 L 1170 600 L 1120 640 L 1060 660 L 960 650 L 860 620 L 760 560 L 700 500 L 640 430 L 560 380 L 480 320 L 420 300 L 380 360 L 400 420 L 360 400 L 330 330 Z';
+// México real con sus 32 estados (window.MAPA_MX, 1000 × 680), a escala 0.8 y desplazado a (330, 250).
+const MX_S = 0.8, MX_X = 330, MX_Y = 250, mxp = (x, y) => [MX_X + MX_S * x, MX_Y + MX_S * y];
 ILUSC.monterrey = {
   cam: { z0: 1.05, z1: 1.0, fx: 960, fy: 480 },
   dibuja: ({ p, tl, capa }) => {
     const viaje = cpr(p, 0.08, 0.4, kEase.suave), mundo = cpr(p, 0.52, 0.78, kEase.suave);
-    const gdl = [700, 520], mty = [850, 410], bul = [1460, 120];
+    const gdl = mxp(446, 462), mty = mxp(550, 293), bul = [1460, 120];
     const arco = (a, b, k, h) => { const mx = (a[0] + b[0]) / 2, my = Math.min(a[1], b[1]) - h; return `M ${a[0]} ${a[1]} Q ${mx} ${my} ${lerp(a[0], b[0], k)} ${lerp(a[1], b[1], k)}`; };
     return <g>
       <g transform={capa(0.4)}><rect x={-200} y={-200} width={2320} height={1500} fill="#0f1422" />
@@ -343,8 +343,11 @@ ILUSC.monterrey = {
         {Array.from({ length: 16 }, (_, i) => <path key={'h' + i} d={`M -200 ${-200 + i * 100} L 2120 ${-200 + i * 100}`} stroke="#1d2640" strokeWidth={1.5} />)}
         <Halo x={850} y={420} r={600} color="#5f8fd6" o={0.3} /></g>
       <g transform={`${capa(1)} translate(260 90)`}>
-        <path d={MEXICO} fill="#26365c" stroke="#7fa8e8" strokeWidth={3} />
-        <path d={MEXICO} fill="url(#c-arriba)" opacity={0.5} />
+        <g transform={`translate(${MX_X} ${MX_Y}) scale(${MX_S})`}>
+          {(window.MAPA_MX || []).map((e, k) => { const marca = e.id === 'jalisco' ? 1 : e.id === 'nl' ? viaje : 0;
+            return <path key={k} d={e.d} fill={mix('#26365c', '#3d5a94', marca)} stroke="#7fa8e8" strokeWidth={2.4 / MX_S} strokeLinejoin="round" />; })}
+          <g opacity={0.5}>{(window.MAPA_MX || []).map((e, k) => <path key={k} d={e.d} fill="url(#c-arriba)" />)}</g>
+        </g>
         {/* Europa al fondo (esquemática), aparece al alejar */}
         <g opacity={mundo}><path d="M 1320 70 L 1460 40 L 1580 80 L 1620 170 L 1540 210 L 1440 200 L 1360 170 Z" fill="#26365c" stroke="#7fa8e8" strokeWidth={3} /></g>
         {[[gdl, 'Guadalajara'], [mty, 'Monterrey']].map(([c, n], i) => <g key={i} opacity={i ? viaje : 1}><circle cx={c[0]} cy={c[1]} r={12} fill="#F4C25A" /><circle cx={c[0]} cy={c[1]} r={24 + 6 * Math.sin(tl * 3)} fill="none" stroke="#F4C25A" strokeWidth={2} opacity={0.6} />
@@ -353,7 +356,7 @@ ILUSC.monterrey = {
         {mundo > 0 && <g><path d={arco(mty, bul, mundo, 260)} stroke="#cfd8e8" strokeWidth={4} fill="none" strokeDasharray="10 12" />
           <g opacity={cpr(p, 0.74, 0.8)}><circle cx={bul[0]} cy={bul[1]} r={12} fill="#cfd8e8" /><text x={bul[0]} y={bul[1] - 30} textAnchor="middle" fontFamily={FUENTE.serif} fontWeight={600} fontSize={40} fill="#fff">Bulgaria</text></g></g>}
         {/* libreta de entrenamiento */}
-        <g opacity={cpr(p, 0.25, 0.35)} transform="translate(980 500) rotate(4)">
+        <g opacity={cpr(p, 0.25, 0.35)} transform="translate(1180 520) rotate(4)">
           <rect x={0} y={0} width={440} height={300} fill="#f6f1e4" /><rect x={0} y={0} width={440} height={300} fill="url(#c-papel-a)" />
           {Array.from({ length: 8 }, (_, k) => <rect key={k} x={20} y={40 + k * 32} width={400} height={1.5} fill="#8fb0d0" />)}
           <text x={30} y={66} fontFamily={FUENTE.mano} fontWeight={700} fontSize={34} fill="#1d2a5a">a² + b² = c²</text>

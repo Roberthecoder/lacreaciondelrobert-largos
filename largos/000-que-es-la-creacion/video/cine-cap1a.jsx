@@ -343,7 +343,7 @@ ILUSC.changarro = {
         {fondo}
         <g transform={capa(0.75)}><Desenfoque b={4}>
           <Adulto x={1430} y={900} s={0.85} camisa="#6a4c9c" mujer piel="#eccdb2" pelo="#2a1a14" delantal="#f2ece0" brazoD={28 + 10 * Math.sin(tl * 3)} brazoI={18} t={tl} mira={[-1, 0.5]} seed={2} />
-          <Adulto x={480} y={900} s={0.85} camisa="#2f6a8f" brazoD={22} brazoI={14} t={tl} mira={[1, 0.6]} seed={5} />
+          <Adulto x={480} y={900} s={0.85} camisa="#2f6a8f" rapado brazoD={22} brazoI={14} t={tl} mira={[1, 0.6]} seed={5} />
         </Desenfoque></g>
         <g transform={capa(1)}>
           <Nene x={640} y={1110} s={1.5} edad={5} t={tl} playera="#2f6fd0" cuerpo="busto" brazoD={4} brazoI={-4} mira={[1, -0.9]} boca="sonrisa" seed={7} />
@@ -372,7 +372,7 @@ ILUSC.changarro = {
         <g transform={capa(0.5)}><Pared color="#e2c69b" luz={[0.5, 0.15]} /><PapelPicado x0={-100} x1={2020} y={20} t={tl} n={18} /><Halo x={960} y={120} r={500} color="#fff0cc" o={0.6} /></g>
         <g transform={capa(1)}>
           <rect x={-100} y={930} width={2120} height={200} fill="#b9a48a" /><rect x={-100} y={930} width={2120} height={200} fill="url(#c-papel-a)" opacity={0.6} />
-          <Adulto x={560} y={1000} s={1.2} camisa="#2f6a8f" cruzados t={tl} mira={[1, 1]} boca="seria" cejas={1} seed={5} />
+          <Adulto x={560} y={1000} s={1.2} camisa="#2f6a8f" rapado cruzados t={tl} mira={[1, 1]} boca="seria" cejas={1} seed={5} />
           <Adulto x={1380} y={1000} s={1.2} camisa="#6a4c9c" mujer piel="#eccdb2" delantal="#f2ece0" cruzados t={tl} mira={[-1, 1]} boca="seria" cejas={1} seed={2} />
           <Nene x={1170} y={1012} s={0.62} edad={3} t={tl} nina piel="#e9c4a6" pelo="#3a2416" playera="#e8467c" rayas={false} brazoD={10} brazoI={40} mira={[-1, -0.6]} boca="sonrisa" seed={31} />
           <Nene x={960} y={1010} s={0.95} edad={5} t={tl} playera="#2f6fd0" brazoD={120} brazoI={120} mira={[0, -1]} boca="sonrisa" seed={7}

@@ -311,7 +311,7 @@ ILUSC.jardin_vertical = {
         <rect x={-200} y={910} width={2320} height={300} fill="#b8b0a2" />
         {/* la familia ayudando */}
         <g transform="translate(330 0)"><rect x={-70} y={330} width={14} height={590} fill="url(#c-acero)" /><rect x={56} y={330} width={14} height={590} fill="url(#c-acero)" />{Array.from({ length: 7 }, (_, k) => <rect key={k} x={-70} y={400 + k * 80} width={140} height={10} fill="url(#c-acero)" />)}</g>
-        <Adulto x={330} y={830} s={0.92} camisa="#2f6a8f" brazoD={150 + 10 * Math.sin(tl * 2)} brazoI={30} mira={[1, -0.6]} t={tl} seed={5} />
+        <Adulto x={330} y={830} s={0.92} camisa="#2f6a8f" rapado brazoD={150 + 10 * Math.sin(tl * 2)} brazoI={30} mira={[1, -0.6]} t={tl} seed={5} />
         <Adulto x={1720} y={960} s={0.95} camisa="#6a4c9c" mujer piel="#eccdb2" brazoD={20} brazoI={70} mira={[-1, -0.3]} t={tl} seed={2}
           carga={<g transform="translate(-60 -200)"><Huacal x={0} y={0} w={180} h={90}>{[0, 1, 2].map((k) => <HierbaOlor key={k} x={-50 + k * 50} y={-70} s={0.3} t={tl + k} seed={k + 30} />)}</Huacal></g>} />
         <Nene x={1300} y={1000} s={0.8} edad={7} t={tl} nina piel="#e6c3a5" pelo="#3a2416" playera="#e8467c" rayas={false} brazoD={100} brazoI={20} mira={[1, -0.6]} boca="risa" seed={19}

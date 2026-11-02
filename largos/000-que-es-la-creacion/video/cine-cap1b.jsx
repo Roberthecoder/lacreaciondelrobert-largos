@@ -192,7 +192,7 @@ ILUSC.papaya = {
         {/* puerta de la casa: ahí aparecen los papás */}
         <rect x={60} y={300} width={300} height={640} fill="#3a2a1e" />
         <g opacity={papas} transform={`translate(${(1 - papas) * -40} 0)`}>
-          <Adulto x={170} y={940} s={0.95} camisa="#2f6a8f" boca="o" mira={[1, 0.4]} brazoD={20} t={tl} seed={5} />
+          <Adulto x={170} y={940} s={0.95} camisa="#2f6a8f" rapado boca="o" mira={[1, 0.4]} brazoD={20} t={tl} seed={5} />
           <Adulto x={290} y={940} s={0.92} camisa="#6a4c9c" mujer piel="#eccdb2" boca="o" mira={[1, 0.4]} brazoI={60} brazoD={10} t={tl} seed={2} />
           <Nene x={232} y={944} s={0.5} edad={3} t={tl} nina piel="#e9c4a6" pelo="#3a2416" playera="#e8467c" rayas={false} brazoI={30} brazoD={10} mira={[1, 0.2]} boca="o" seed={33} />
         </g>
