@@ -467,7 +467,6 @@ function Nene({ x, y, s = 1, piel = '#b77a52', pelo = '#1a1311', playera = '#e87
       {mochila && !espalda && [-1, 1].map((d) => <path key={d} d={`M ${d * 40 * k} ${hT - 2} L ${d * 46 * k} ${hT + 110 * k}`} stroke={osc(mochila, 0.2)} strokeWidth={14} strokeLinecap="round" />)}
       {mochila && espalda && <g><rect x={-46 * k} y={hT + 14} width={92 * k} height={120 * k} rx={22} fill={mochila} /><rect x={-46 * k} y={hT + 14} width={92 * k} height={120 * k} rx={22} fill="url(#c-tela)" />
         <rect x={-34 * k} y={hT + 70 * k} width={68 * k} height={46 * k} rx={12} fill={osc(mochila, 0.15)} /><path d={`M ${-30 * k} ${hT + 74 * k} L ${30 * k} ${hT + 74 * k}`} stroke="url(#c-acero)" strokeWidth={4} /></g>}
-      {detalle}
       {brazo(1, brazoD)}
     </g>
     {/* cabeza */}
@@ -509,6 +508,8 @@ function Nene({ x, y, s = 1, piel = '#b77a52', pelo = '#1a1311', playera = '#e87
       {boca === 'seria' && <path d={`M ${-cab * 0.18} ${hC + cab * 0.56} L ${cab * 0.18} ${hC + cab * 0.56}`} stroke="#5a2216" strokeWidth={5} strokeLinecap="round" />}
       </g>}
     </g>
+    {/* lo que carga en el pecho (maceta, hierbas…) va al frente de todo: torso, brazos, cuello y cabeza */}
+    {detalle && <g transform={`translate(0 ${respira * 0.5})`}>{detalle}</g>}
   </g>;
 }
 // Adulto genérico (papá, mamá, Don Joaquín, el señor que compró las plantas). (x,y) = pies; mide ~620 px con s=1.

@@ -315,9 +315,9 @@ ILUSC.jardin_vertical = {
         <Adulto x={1720} y={960} s={0.95} camisa="#6a4c9c" mujer piel="#eccdb2" brazoD={20} brazoI={70} mira={[-1, -0.3]} t={tl} seed={2}
           carga={<g transform="translate(-60 -200)"><Huacal x={0} y={0} w={180} h={90}>{[0, 1, 2].map((k) => <HierbaOlor key={k} x={-50 + k * 50} y={-70} s={0.3} t={tl + k} seed={k + 30} />)}</Huacal></g>} />
         <Nene x={1300} y={1000} s={0.8} edad={7} t={tl} nina piel="#e6c3a5" pelo="#3a2416" playera="#e8467c" rayas={false} brazoD={100} brazoI={20} mira={[1, -0.6]} boca="risa" seed={19}
-          detalle={<g transform="translate(10 -210)"><HierbaOlor x={0} y={0} s={0.24} t={tl} seed={45} /></g>} />
-        <Nene x={1500} y={990} s={0.95} edad={11} t={tl} playera="#f4c23a" brazoD={110} brazoI={100} mira={[-1, -0.8]} boca="risa" seed={13}
-          detalle={<g transform="translate(-10 -230)"><HierbaOlor x={0} y={0} s={0.3} t={tl} seed={44} /></g>} />
+          detalle={<g transform="translate(10 -95)"><HierbaOlor x={0} y={0} s={0.24} t={tl} seed={45} /></g>} />
+        <Nene x={1500} y={990} s={0.95} edad={11} t={tl} playera="#f4c23a" brazoD={110} brazoI={55} mira={[-1, -0.8]} boca="risa" seed={13}
+          detalle={<g transform="translate(-10 -100)"><HierbaOlor x={0} y={0} s={0.3} t={tl} seed={44} /></g>} />
       </g>
       <Rayos x={1700} y={-100} ang={120} abre={24} largo={1500} n={6} ancho={130} o={0.5} t={tl} seed={161} />
       <Polvo n={50} t={tl} seed={162} o={0.6} />

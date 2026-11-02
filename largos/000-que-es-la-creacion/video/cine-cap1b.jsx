@@ -315,7 +315,7 @@ ILUSC.coleccion = {
         <Etiq x={2080} y={700} nombre="Drosera" comun="rocío del sol" rot={4} />
         {/* el niño con su cactus */}
         <Nene x={2340} y={1010} s={1.0} edad={6} t={tl} playera="#3fbf4a" brazoD={100} brazoI={100} mira={[-1, -0.2]} boca="risa" seed={8}
-          detalle={<g transform="translate(0 -100)"><MacetaC x={0} y={0} w={70} h={56}><Mammillaria x={0} y={-50} s={0.36} t={tl} /></MacetaC></g>} />
+          detalle={<g transform="translate(0 -70)"><MacetaC x={0} y={0} w={70} h={56}><Mammillaria x={0} y={-50} s={0.36} t={tl} /></MacetaC></g>} />
       </g>
       <g transform={capa(1.5)}><Desenfoque b={18} o={0.9}><Mammillaria x={-400} y={1250} s={2.6} t={tl} /><Echeveria x={2500} y={1250} s={2.6} /></Desenfoque></g>
       <Polvo n={70} t={tl} seed={91} o={0.6} />

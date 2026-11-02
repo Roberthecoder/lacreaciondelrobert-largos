@@ -376,7 +376,7 @@ ILUSC.changarro = {
           <Adulto x={1380} y={1000} s={1.2} camisa="#6a4c9c" mujer piel="#eccdb2" delantal="#f2ece0" cruzados t={tl} mira={[-1, 1]} boca="seria" cejas={1} seed={2} />
           <Nene x={1170} y={1012} s={0.62} edad={3} t={tl} nina piel="#e9c4a6" pelo="#3a2416" playera="#e8467c" rayas={false} brazoD={10} brazoI={40} mira={[-1, -0.6]} boca="sonrisa" seed={31} />
           <Nene x={960} y={1010} s={0.95} edad={5} t={tl} playera="#2f6fd0" brazoD={120} brazoI={120} mira={[0, -1]} boca="sonrisa" seed={7}
-            detalle={<MacetaC x={0} y={-120} w={70} h={60}><MataJitomate x={0} y={-52} s={0.26} t={tl} seed={3} /></MacetaC>} />
+            detalle={<MacetaC x={0} y={-78} w={74} h={60}><MataJitomate x={0} y={-52} s={0.23} alto={0.7} t={tl} seed={3} /></MacetaC>} />
         </g>
       </g>
       <Tinte color="#ffb35a" o={0.12} />
