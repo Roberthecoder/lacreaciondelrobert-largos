@@ -1,6 +1,6 @@
 # Publicación · Largo #00 «¿Qué es La Creación del Robert?»
 
-Video final: Release «Largo · largo-render/largo00-cine» → `largo00_cine_narrado.mp4` (20:16, 1920×1080, voz + música original, −7.1 LUFS).
+Video final: Release «Largo · largo-render/largo00-cine» → `largo00_cine_narrado.mp4` (20:17, 1920×1080, voz + música original, −7.1 LUFS).
 Para YouTube: horizontal tal cual. Marcar **"Contenido alterado o sintético: Sí"** (la narración es mi voz clonada con IA).
 
 ## Título (YouTube, ≤ 100 caracteres)
