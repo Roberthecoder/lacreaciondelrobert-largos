@@ -50,8 +50,9 @@ function GerminaFrijol({ x, y, g, t = 0, s = 1 }) {
   const hip = cpr(g, 0.3, 0.66, kEase.suave), e = cpr(g, 0.56, 0.72, kEase.suave);
   const abre = cpr(g, 0.68, 0.84, kEase.suave), hojas = cpr(g, 0.74, 1, kEase.suave), verde = cpr(g, 0.66, 1);
   const cascara = 1 - cpr(g, 0.6, 0.68), cae = cpr(g, 0.6, 0.8);
-  const hk = (1 - e) * Math.min(1, hip * 3);                  // cuánto gancho
-  const L = 385 * hip, m = mece(t, 3, 0.6) * 3 * e;
+  const hk = (1 - e) * Math.min(1, hip * 3);
+  const epi = 120 * hojas;                                     // el epicótilo crece mientras se abren las hojas                  // cuánto gancho
+  const L = 330 * hip, m = mece(t, 3, 0.6) * 3 * e;
   const tx = -60 * hk + m, ty = -L + 90 * hk;                  // punta del hipocótilo
   const a = 165 * hk;                                          // la semilla cuelga del gancho
   const hinch = 1 + 0.14 * cpr(g, 0, 0.14);
@@ -62,11 +63,13 @@ function GerminaFrijol({ x, y, g, t = 0, s = 1 }) {
     {hip > 0.01 && <><path d={tallo} stroke="#d9d3a0" strokeWidth={15} fill="none" strokeLinecap="round" />
       <path d={tallo} stroke={mix('#e8e2b8', '#8fb04a', verde)} strokeWidth={11} fill="none" strokeLinecap="round" /></>}
     {/* hojas verdaderas entre los cotiledones */}
-    {hojas > 0 && [-1, 1].map((d) => <Hoja key={'h' + d} x={tx} y={ty - 10} len={160 * hojas} w={0.62} ang={-90 + d * (6 + 34 * hojas) + m} color="#4c9a3c" venas={4} />)}
+    {/* epicótilo: el tallito que crece ARRIBA de los cotiledones y separa las hojas verdaderas de ellos */}
+    {hojas > 0 && <><path d={`M ${tx} ${ty} Q ${tx + m * 0.5} ${ty - epi * 0.6} ${tx + m} ${ty - epi}`} stroke={mix('#e8e2b8', '#8fb04a', verde)} strokeWidth={8} fill="none" strokeLinecap="round" />
+      {[-1, 1].map((d) => <Hoja key={'h' + d} x={tx + m} y={ty - epi} len={150 * hojas} w={0.62} ang={-90 + d * (6 + 36 * hojas) + m} color="#4c9a3c" venas={4} />)}</>}
     {/* la semilla = los dos cotiledones; primero con su cáscara */}
     <g transform={`translate(${tx} ${ty}) rotate(${a})`}>
       {/* cada cotiledón es una mitad del frijol: cerrados quedan de pie (el frijol completo); al abrirse giran hacia los lados */}
-      {[-1, 1].map((d) => <g key={d} transform={`rotate(${d * (2 + 74 * abre)}) translate(${d * 8 * (1 - abre)} ${-32 - 6 * abre})`}>
+      {[-1, 1].map((d) => <g key={d} transform={`rotate(${d * (2 + 96 * abre)}) translate(${d * 8 * (1 - abre)} ${-32 - 6 * abre})`}>
         <g transform={`rotate(90) scale(${(1 - 0.12 * verde) * hinch} ${hinch * (1 - 0.2 * abre)})`}>
           <path d={frijol} transform="scale(3.1 2.5)" fill={cot} />
           <path d={frijol} transform="scale(3.1 2.5)" fill="url(#c-sem)" opacity={0.6} /></g></g>)}
