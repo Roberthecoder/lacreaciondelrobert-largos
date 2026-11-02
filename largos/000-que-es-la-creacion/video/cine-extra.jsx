@@ -53,16 +53,34 @@ ILUSC.plantulas = {
                 <ellipse cx={0} cy={-104} rx={50} ry={10} fill="url(#c-tierra)" />
                 <MataJitomate x={0} y={-104} s={0.34 * (0.4 + 0.6 * gi)} alto={0.4 + 0.5 * gi} t={tl + i} seed={i + 50} /></g>}
           </g>; })}
-        {/* el niño con su regadera */}
-        <g transform="translate(1660 1010)">
-          <Nene x={0} y={0} s={1.0} edad={5} t={tl} playera="#2f6fd0" brazoI={70} brazoD={10} mira={[-1, 0.5]} boca="sonrisa" seed={21} />
-          <g transform="translate(-170 -190) rotate(-18)">
-            <path d="M -60 0 L -50 -90 L 60 -90 L 70 0 Z" fill="#3fbf4a" /><path d="M -60 0 L -50 -90 L 60 -90 L 70 0 Z" fill="url(#c-cilindro)" />
-            <path d="M -50 -60 L -150 -110" stroke="#3fbf4a" strokeWidth={14} strokeLinecap="round" /><ellipse cx={-156} cy={-114} rx={16} ry={22} fill="#2f9a3a" transform="rotate(-30 -156 -114)" />
-            <path d="M 20 -90 Q 60 -150 70 -60" stroke="#2f9a3a" strokeWidth={10} fill="none" />
-            {Array.from({ length: 14 }, (_, k) => { const q = ((tl * 1.2 + k / 14) % 1); return <circle key={k} cx={-166 - q * 60 + (k % 3) * 6} cy={-110 + q * 160} r={3} fill="#bfe6ff" opacity={0.8 * (1 - q)} />; })}
-          </g>
-        </g>
+        {/* el niño riega su plantita: la mano agarra el asa (la regadera gira alrededor de ese punto) y el chorro cae sobre la planta, dentro de su maceta */}
+        {(() => {
+          const NX = 1650, NY = 985, BRAZO = 145, kk = 1.15, A = BRAZO * Math.PI / 180;
+          const G = [NX - 52 * kk - 100 * kk * Math.sin(A), NY - 150 * kk + 18 + 100 * kk * Math.cos(A)]; // mano izquierda
+          const ASA = [44, -120.5], PERA = [-155, -129], inc = -12 + 1.5 * Math.sin(tl * 1.4), ri = inc * Math.PI / 180;
+          const gira = ([x, y]) => [G[0] + (x - ASA[0]) * Math.cos(ri) - (y - ASA[1]) * Math.sin(ri), G[1] + (x - ASA[0]) * Math.sin(ri) + (y - ASA[1]) * Math.cos(ri)];
+          const pera = gira(PERA), MX = pera[0] - 38, suelo = 922, ctl = [pera[0] - 26, pera[1] + 18];
+          const gota = (q) => [(1 - q) ** 2 * pera[0] + 2 * q * (1 - q) * ctl[0] + q * q * MX, (1 - q) ** 2 * pera[1] + 2 * q * (1 - q) * ctl[1] + q * q * suelo];
+          return <g>
+            {/* su maceta, la que está regando */}
+            <g transform={`translate(${MX} 1012) scale(1.05)`}><MacetaC x={0} y={0} w={110} h={95}><MataJitomate x={0} y={-82} s={0.36} alto={0.82} t={tl + 3} seed={77} /></MacetaC></g>
+            {/* regadera */}
+            <g transform={`translate(${G[0]} ${G[1]}) rotate(${inc}) translate(${-ASA[0]} ${-ASA[1]})`}>
+              <path d="M 18 -84 C 22 -142, 72 -142, 58 -36" stroke="#258a33" strokeWidth={12} fill="none" strokeLinecap="round" />
+              <path d="M -50 -10 L -147 -116 L -138 -125 L -42 -44 Z" fill="#35ad42" /><path d="M -50 -10 L -147 -116" stroke="#1f7a2c" strokeWidth={2.5} opacity={0.5} />
+              <g transform="translate(-142 -120) rotate(-136.5)"><path d="M 0 -7 L 20 -17 L 20 17 L 0 7 Z" fill="#2f9a3a" /><ellipse cx={20} cy={0} rx={5} ry={17} fill="#1f7a2c" />
+                {[-10, -4, 2, 8].map((yy) => <circle key={yy} cx={21} cy={yy} r={1.6} fill="#bfe6ff" />)}</g>
+              <path d="M -55 0 L -46 -80 Q 0 -88 46 -80 L 55 0 Q 0 8 -55 0 Z" fill="#3fbf4a" /><path d="M -55 0 L -46 -80 Q 0 -88 46 -80 L 55 0 Q 0 8 -55 0 Z" fill="url(#c-cilindro)" />
+              <ellipse cx={0} cy={-80} rx={46} ry={8} fill="#2f9a3a" /><ellipse cx={0} cy={-80} rx={38} ry={5} fill="#1d5e26" />
+              <path d="M -53 -18 Q 0 -10 53 -18" stroke="#2f9a3a" strokeWidth={5} fill="none" />
+            </g>
+            {/* el chorro: de la pera a la planta */}
+            {Array.from({ length: 22 }, (_, k) => { const q = ((tl * 1.1 + k / 22) % 1), [x, y] = gota(q), j = ((k * 37) % 7 - 3) * (0.4 + q);
+              return <ellipse key={k} cx={x + j} cy={y} rx={2.6} ry={4.2} fill="#cdeeff" opacity={0.85 * Math.min(1, q * 6)} />; })}
+            {[0, 1, 2].map((k) => { const q = ((tl * 1.6 + k / 3) % 1); return <circle key={'s' + k} cx={MX + (k - 1) * 10 * (0.4 + q)} cy={suelo - 4 - 10 * Math.sin(q * Math.PI)} r={2.2} fill="#cdeeff" opacity={0.7 * (1 - q)} />; })}
+            <Nene x={NX} y={NY} s={1.0} edad={5} t={tl} playera="#2f6fd0" brazoI={BRAZO} brazoD={10} mira={[-1, 0.5]} boca="sonrisa" seed={21} />
+          </g>;
+        })()}
       </g>
       <Polvo n={40} t={tl} seed={401} o={0.5} />
       <Tinte color="#ffcf8a" o={0.12} />
