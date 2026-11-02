@@ -328,78 +328,34 @@ ILUSC.bagazo_vinazas = {
   },
 };
 
-/* ---------- 2017: preselección en Monterrey, rumbo a Bulgaria ---------- */
-// México real con sus 32 estados (window.MAPA_MX, 1000 × 680). Al final la cámara se aleja: México se acomoda en su lugar
-// real dentro del mapa del mundo (window.MAPA_MUNDO, Natural Earth en Mercator, coordenadas de pantalla) y una flecha
-// sale de Monterrey hasta Bulgaria, que se pinta en dorado con un pin con su bandera.
-const MX_S = 0.8, MX_X = 590, MX_Y = 340, MX_C = [517.75, 339.5];
-const curvaQ = (a, c, b, t) => [(1 - t) ** 2 * a[0] + 2 * t * (1 - t) * c[0] + t * t * b[0], (1 - t) ** 2 * a[1] + 2 * t * (1 - t) * c[1] + t * t * b[1]];
-// tramo de una curva (a → b con control c) desde 0 hasta t, como path
-const tramoQ = (a, c, b, t) => { const c1 = [lerp(a[0], c[0], t), lerp(a[1], c[1], t)], e = curvaQ(a, c, b, t); return `M ${a[0]} ${a[1]} Q ${c1[0]} ${c1[1]} ${e[0]} ${e[1]}`; };
+/* ---------- 2017: preselección en Monterrey ---------- */
+// México real con sus 32 estados (window.MAPA_MX, 1000 × 680), a escala 0.8 en (590, 340) de la pantalla.
+// Solo el viaje Guadalajara → Monterrey (decisión de Robert: nada de Bulgaria en pantalla).
+const MX_S = 0.8, MX_X = 590, MX_Y = 340, mxp = (x, y) => [MX_X + MX_S * x, MX_Y + MX_S * y];
 ILUSC.monterrey = {
-  cam: { z0: 1.04, z1: 1.0, fx: 960, fy: 540 },
+  cam: { z0: 1.05, z1: 1.0, fx: 960, fy: 540 },
   dibuja: ({ p, tl, capa }) => {
-    const viaje = cpr(p, 0.08, 0.36, kEase.suave), mundo = cpr(p, 0.42, 0.66, kEase.suave);
-    const flecha = cpr(p, 0.6, 0.84, kEase.suave), pin = cpr(p, 0.8, 0.9), bulg = cpr(p, 0.78, 0.9, kEase.suave);
-    const PM = window.MAPA_MUNDO_PUNTOS || { mx: [[189, 627], [493, 827]], bul: [1613, 500] };
-    // México viaja de grande al centro → a su lugar en el mapa del mundo
-    const wc = [(PM.mx[0][0] + PM.mx[1][0]) / 2, (PM.mx[0][1] + PM.mx[1][1]) / 2], ws = (PM.mx[1][0] - PM.mx[0][0]) / 954.5;
-    const c0 = [MX_X + MX_S * MX_C[0], MX_Y + MX_S * MX_C[1]];
-    const sc = lerp(MX_S, ws, mundo), cx = lerp(c0[0], wc[0], mundo), cy = lerp(c0[1], wc[1], mundo);
-    const mx = (x, y) => [cx + sc * (x - MX_C[0]), cy + sc * (y - MX_C[1])];
-    const gdl = mx(446, 462), mty = mx(550, 293), bul = PM.bul;
-    const rc = lerp(12, 7, mundo), fs = lerp(40, 30, mundo);
-    // Guadalajara → Monterrey
-    const hG = lerp(120, 50, mundo), cG = [(gdl[0] + mty[0]) / 2, Math.min(gdl[1], mty[1]) - hG];
-    // flecha curva Monterrey → Bulgaria (se dibuja de a poco; la punta sigue la curva)
-    const ctrl = [(mty[0] + bul[0]) / 2, Math.min(mty[1], bul[1]) - 400];
-    const tf = flecha * 0.965, fin = curvaQ(mty, ctrl, bul, tf);
-    const dir = [2 * (1 - tf) * (ctrl[0] - mty[0]) + 2 * tf * (bul[0] - ctrl[0]), 2 * (1 - tf) * (ctrl[1] - mty[1]) + 2 * tf * (bul[1] - ctrl[1])];
-    const ang = Math.atan2(dir[1], dir[0]) * 180 / Math.PI;
-    const caida = pin > 0 ? (1 - kEase.sale(pin)) * -70 : 0;
+    const viaje = cpr(p, 0.1, 0.55, kEase.suave);
+    const gdl = mxp(446, 462), mty = mxp(550, 293);
+    const ctl = [(gdl[0] + mty[0]) / 2 - 40, Math.min(gdl[1], mty[1]) - 90];
+    const fin = [(1 - viaje) ** 2 * gdl[0] + 2 * viaje * (1 - viaje) * ctl[0] + viaje * viaje * mty[0], (1 - viaje) ** 2 * gdl[1] + 2 * viaje * (1 - viaje) * ctl[1] + viaje * viaje * mty[1]];
+    const c1 = [lerp(gdl[0], ctl[0], viaje), lerp(gdl[1], ctl[1], viaje)];
     return <g>
       <g transform={capa(0.4)}><rect x={-200} y={-200} width={2320} height={1500} fill="#0f1422" />
         {Array.from({ length: 24 }, (_, i) => <path key={i} d={`M ${-200 + i * 100} -200 L ${-200 + i * 100} 1300`} stroke="#1d2640" strokeWidth={1.5} />)}
         {Array.from({ length: 16 }, (_, i) => <path key={'h' + i} d={`M -200 ${-200 + i * 100} L 2120 ${-200 + i * 100}`} stroke="#1d2640" strokeWidth={1.5} />)}
-        <Halo x={lerp(1000, 960, mundo)} y={lerp(600, 520, mundo)} r={lerp(600, 900, mundo)} color="#5f8fd6" o={0.3} /></g>
+        <Halo x={1000} y={600} r={600} color="#5f8fd6" o={0.3} /></g>
       <g transform={capa(1)}>
-        {/* el mundo real (aparece al alejar la cámara) */}
-        {mundo > 0 && <g opacity={mundo}>
-          {(window.MAPA_MUNDO || []).map((e) => { const esB = e.id === '100', esM = e.id === '484';
-            return <path key={e.id + e.n} d={e.d} fill={esB ? mix('#26365c', '#F4C25A', bulg) : esM ? '#26365c' : '#223259'} stroke={esB ? mix('#7fa8e8', '#fff3c4', bulg) : '#5a7cb8'}
-              strokeWidth={esB ? 2 : 1.1} strokeLinejoin="round" />; })}
-          {bulg > 0 && <Halo x={bul[0]} y={bul[1]} r={90} color="#F4C25A" o={0.45 * bulg} />}
-        </g>}
-        {/* México con sus estados */}
-        <g transform={`translate(${cx} ${cy}) scale(${sc}) translate(${-MX_C[0]} ${-MX_C[1]})`}>
+        <g transform={`translate(${MX_X} ${MX_Y}) scale(${MX_S})`}>
           {(window.MAPA_MX || []).map((e, k) => { const marca = e.id === 'jalisco' ? 1 : e.id === 'nl' ? viaje : 0;
-            return <path key={k} d={e.d} fill={mix('#26365c', '#3d5a94', marca)} stroke="#7fa8e8" strokeWidth={2.4 / sc} strokeLinejoin="round" />; })}
+            return <path key={k} d={e.d} fill={mix('#26365c', '#3d5a94', marca)} stroke="#7fa8e8" strokeWidth={2.4 / MX_S} strokeLinejoin="round" />; })}
           <g opacity={0.5}>{(window.MAPA_MX || []).map((e, k) => <path key={k} d={e.d} fill="url(#c-arriba)" />)}</g>
         </g>
-        <path d={tramoQ(gdl, cG, mty, viaje)} stroke="#F4C25A" strokeWidth={lerp(5, 3.5, mundo)} fill="none" strokeDasharray="14 10" />
-        {[[gdl, 'Guadalajara'], [mty, 'Monterrey']].map(([c, n], i) => <g key={i} opacity={i ? viaje : 1}><circle cx={c[0]} cy={c[1]} r={rc} fill="#F4C25A" /><circle cx={c[0]} cy={c[1]} r={(24 + 6 * Math.sin(tl * 3)) * lerp(1, 0.6, mundo)} fill="none" stroke="#F4C25A" strokeWidth={2} opacity={0.6} />
-          <text x={c[0] + (i ? 1 : -1) * lerp(24, 16, mundo)} y={c[1] + 8 + (i ? -lerp(0, 18, mundo) : lerp(0, 14, mundo))} textAnchor={i ? 'start' : 'end'} fontFamily={FUENTE.serif} fontWeight={600} fontSize={fs} fill="#fff"
-            style={{ paintOrder: 'stroke' }} stroke="#0f1422" strokeWidth={6 * mundo}>{n}</text></g>)}
-        {/* flecha a Bulgaria */}
-        {flecha > 0 && <g>
-          <path d={tramoQ(mty, ctrl, bul, tf)} stroke="#000" strokeOpacity={0.35} strokeWidth={12} fill="none" strokeLinecap="round" />
-          <path d={tramoQ(mty, ctrl, bul, tf)} stroke="#F4C25A" strokeWidth={6} fill="none" strokeLinecap="round" strokeDasharray="22 12" />
-          <path d="M 12 0 L -22 -17 L -13 0 L -22 17 Z" transform={`translate(${fin[0]} ${fin[1]}) rotate(${ang})`} fill="#F4C25A" stroke="#0f1422" strokeWidth={2} strokeLinejoin="round" />
-        </g>}
-        {/* pin con la bandera de Bulgaria */}
-        {pin > 0 && <g transform={`translate(${bul[0]} ${bul[1] + caida})`} opacity={kclamp(pin * 3, 0, 1)}>
-          <ellipse cx={0} cy={-caida + 2} rx={18 * kclamp(pin * 2, 0, 1)} ry={6} fill="#000" opacity={0.35} />
-          <defs><clipPath id="c-bg-flag"><circle cx={0} cy={-104} r={36} /></clipPath></defs>
-          <path d="M 0 0 C -14 -30 -56 -62 -56 -104 A 56 56 0 1 1 56 -104 C 56 -62 14 -30 0 0 Z" fill="#c8323a" />
-          <path d="M 0 0 C -14 -30 -56 -62 -56 -104 A 56 56 0 0 1 0 -160 L 0 0 Z" fill="#8f1f27" opacity={0.6} />
-          <circle cx={0} cy={-104} r={41} fill="#fff" />
-          <g clipPath="url(#c-bg-flag)"><rect x={-40} y={-140} width={80} height={24} fill="#ffffff" /><rect x={-40} y={-116} width={80} height={24} fill="#00966E" /><rect x={-40} y={-92} width={80} height={30} fill="#D62612" /></g>
-          <circle cx={0} cy={-104} r={36} fill="none" stroke="#000" strokeOpacity={0.15} strokeWidth={2} />
-          <text x={58} y={-98} fontFamily={FUENTE.serif} fontWeight={700} fontSize={40} fill="#fff" opacity={kclamp(pin * 2 - 0.6, 0, 1)}
-            style={{ paintOrder: 'stroke' }} stroke="#0f1422" strokeWidth={8}>Bulgaria</text>
-        </g>}
-        {/* libreta de entrenamiento (se va al alejar la cámara) */}
-        <g opacity={cpr(p, 0.25, 0.35) * (1 - mundo)} transform={`translate(${1440 + 120 * mundo} 610) rotate(4)`}>
+        {viaje > 0 && <path d={`M ${gdl[0]} ${gdl[1]} Q ${c1[0]} ${c1[1]} ${fin[0]} ${fin[1]}`} stroke="#F4C25A" strokeWidth={5} fill="none" strokeDasharray="14 10" strokeLinecap="round" />}
+        {[[gdl, 'Guadalajara'], [mty, 'Monterrey']].map(([c, n], i) => <g key={i} opacity={i ? cpr(p, 0.45, 0.58) : 1}><circle cx={c[0]} cy={c[1]} r={12} fill="#F4C25A" /><circle cx={c[0]} cy={c[1]} r={24 + 6 * Math.sin(tl * 3)} fill="none" stroke="#F4C25A" strokeWidth={2} opacity={0.6} />
+          <text x={c[0] + (i ? 24 : -24)} y={c[1] + 8} textAnchor={i ? 'start' : 'end'} fontFamily={FUENTE.serif} fontWeight={600} fontSize={40} fill="#fff">{n}</text></g>)}
+        {/* libreta de entrenamiento */}
+        <g opacity={cpr(p, 0.3, 0.45)} transform="translate(1440 610) rotate(4)">
           <rect x={0} y={0} width={440} height={300} fill="#f6f1e4" /><rect x={0} y={0} width={440} height={300} fill="url(#c-papel-a)" />
           {Array.from({ length: 8 }, (_, k) => <rect key={k} x={20} y={40 + k * 32} width={400} height={1.5} fill="#8fb0d0" />)}
           <text x={30} y={66} fontFamily={FUENTE.mano} fontWeight={700} fontSize={34} fill="#1d2a5a">a² + b² = c²</text>
@@ -409,7 +365,7 @@ ILUSC.monterrey = {
         </g>
       </g>
       <Polvo n={30} t={tl} seed={501} o={0.4} />
-      <Rotulo x={120} y={190} arriba="OMMEB 2017 · PRESELECCIÓN" texto="Entrenando en Monterrey" sub="rumbo a una competencia en Bulgaria" tl={tl} at={0.3} tam={56} acento="#cfd8e8" />
+      <Rotulo x={120} y={190} arriba="OMMEB 2017 · PRESELECCIÓN" texto="Entrenando en Monterrey" sub="de Guadalajara a Monterrey" tl={tl} at={0.3} tam={56} acento="#cfd8e8" />
     </g>;
   },
 };
