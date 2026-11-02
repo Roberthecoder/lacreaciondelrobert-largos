@@ -41,6 +41,43 @@ function Gotitas({ x, y, w, h, n = 70, seed = 8, o = 1 }) {
     return <g key={i}><ellipse cx={gx} cy={gy} rx={gr} ry={gr * 1.1} fill="#dbeef2" opacity={0.25} /><ellipse cx={gx} cy={gy + gr * 0.25} rx={gr} ry={gr * 0.9} fill="none" stroke="#2f5560" strokeOpacity={0.25} strokeWidth={1} />
       <circle cx={gx - gr * 0.35} cy={gy - gr * 0.35} r={gr * 0.3} fill="#fff" opacity={0.9} /></g>; })}</g>;
 }
+
+// Germinación EPÍGEA del frijol (como en un time-lapse real):
+// 1) la semilla se hincha; 2) sale la radícula hacia abajo; 3) el hipocótilo sale en GANCHO y jala la semilla
+// hacia arriba; 4) el gancho se endereza y la cáscara se cae: la semilla misma son los dos cotiledones;
+// 5) los cotiledones se abren y entre ellos salen las primeras hojas verdaderas (un par, en forma de corazón).
+function GerminaFrijol({ x, y, g, t = 0, s = 1 }) {
+  const hip = cpr(g, 0.3, 0.66, kEase.suave), e = cpr(g, 0.56, 0.72, kEase.suave);
+  const abre = cpr(g, 0.68, 0.84, kEase.suave), hojas = cpr(g, 0.74, 1, kEase.suave), verde = cpr(g, 0.66, 1);
+  const cascara = 1 - cpr(g, 0.6, 0.68), cae = cpr(g, 0.6, 0.8);
+  const hk = (1 - e) * Math.min(1, hip * 3);                  // cuánto gancho
+  const L = 385 * hip, m = mece(t, 3, 0.6) * 3 * e;
+  const tx = -60 * hk + m, ty = -L + 90 * hk;                  // punta del hipocótilo
+  const a = 165 * hk;                                          // la semilla cuelga del gancho
+  const hinch = 1 + 0.14 * cpr(g, 0, 0.14);
+  const tallo = `M 0 0 C 0 ${-L * 0.5} ${tx + 70 * hk} ${ty - 130 * hk} ${tx} ${ty}`;
+  const frijol = 'M -17 -2 C -18 -12 -6 -13 0 -8 C 6 -13 18 -12 17 -1 C 16 10 6 12 0 11 C -8 12 -16 9 -17 -2 Z';
+  const cot = mix('#efe2b4', '#a9c35a', verde);
+  return <g transform={`translate(${x} ${y}) scale(${s})`}>
+    {hip > 0.01 && <><path d={tallo} stroke="#d9d3a0" strokeWidth={15} fill="none" strokeLinecap="round" />
+      <path d={tallo} stroke={mix('#e8e2b8', '#8fb04a', verde)} strokeWidth={11} fill="none" strokeLinecap="round" /></>}
+    {/* hojas verdaderas entre los cotiledones */}
+    {hojas > 0 && [-1, 1].map((d) => <Hoja key={'h' + d} x={tx} y={ty - 10} len={160 * hojas} w={0.62} ang={-90 + d * (6 + 34 * hojas) + m} color="#4c9a3c" venas={4} />)}
+    {/* la semilla = los dos cotiledones; primero con su cáscara */}
+    <g transform={`translate(${tx} ${ty}) rotate(${a})`}>
+      {/* cada cotiledón es una mitad del frijol: cerrados quedan de pie (el frijol completo); al abrirse giran hacia los lados */}
+      {[-1, 1].map((d) => <g key={d} transform={`rotate(${d * (2 + 74 * abre)}) translate(${d * 8 * (1 - abre)} ${-32 - 6 * abre})`}>
+        <g transform={`rotate(90) scale(${(1 - 0.12 * verde) * hinch} ${hinch * (1 - 0.2 * abre)})`}>
+          <path d={frijol} transform="scale(3.1 2.5)" fill={cot} />
+          <path d={frijol} transform="scale(3.1 2.5)" fill="url(#c-sem)" opacity={0.6} /></g></g>)}
+      {cascara > 0 && <g opacity={cascara}><Semilla tipo="frijol" x={0} y={-30} s={3.3 * hinch} rot={180} var={0.35} sombra={false} />
+        {g > 0.04 && <path d="M -46 -10 Q -10 4 40 -14" stroke="#4a2a18" strokeWidth={3.5} fill="none" opacity={kclamp(g * 8, 0, 1)} />}</g>}
+    </g>
+    {/* la cáscara cae en dos pedazos */}
+    {cae > 0 && cae < 1 && [-1, 1].map((d) => <g key={'c' + d} opacity={1 - cae} transform={`translate(${tx + d * (30 + 90 * cae)} ${ty + 520 * cae * cae}) rotate(${d * 200 * cae})`}>
+      <path d="M -17 -2 C -18 -12 -6 -13 0 -8 L 0 11 C -8 12 -16 9 -17 -2 Z" transform="scale(3.1 2.4)" fill="#a8724a" /></g>)}
+  </g>;
+}
 ILUSC.frijolito = {
   cam: { z0: 1.75, z1: 1.0, fx: 1000, fy: 600 },
   dibuja: ({ p, tl, capa }) => {
@@ -86,15 +123,11 @@ ILUSC.frijolito = {
             <path d={`M 770 790 Q 960 ${786 + Math.sin(tl * 2) * 2} 1150 790`} stroke="#fff" strokeOpacity={0.6} strokeWidth={2} fill="none" />
             <Algodon x={780} y={520} w={360} h={300} seed={4} />
             {/* raíz y frijol pegados al vidrio */}
-            <Raiz x={bx - 6} y={by + 18} g={cpr(g, 0.02, 0.8)} s={1.2} />
-            <g transform={`translate(${bx} ${by})`}>
-              <Semilla tipo="frijol" x={0} y={0} s={3.3} rot={-12} var={0.35} />
-              {g > 0.04 && <path d="M -30 -18 Q -6 -6 28 -22" stroke="#4a2a18" strokeWidth={3} fill="none" opacity={kclamp(g * 8, 0, 1)} />}
-            </g>
+            <Raiz x={bx - 6} y={by + 18} g={cpr(g, 0.08, 0.85)} s={1.2} />
             <Gotitas x={790} y={420} w={330} h={260} n={60} seed={2} o={0.9} />
           </g>} />
         {/* la plántula sale del frasco */}
-        <PlantulaFrijol x={bx + 4} y={by - 26} g={cpr(g, 0.12, 1)} t={tl} s={1.75} seed={3} />
+        <GerminaFrijol x={bx - 6} y={by + 18} g={g} t={tl} s={1} />
       </g>
       {/* primer plano fuera de foco */}
       <g transform={capa(1.5)}><Desenfoque b={24} o={0.85}>
