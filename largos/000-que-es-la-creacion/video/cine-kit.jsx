@@ -556,8 +556,11 @@ function Adulto({ x, y, s = 1, piel = '#a86f48', pelo = '#241a14', canas = 0, ca
         : rapado
           // pelo a rape: una sombra corta y difuminada que sigue el cráneo (sin volumen) y el brillo de la piel
           ? <g>
-            <path d={`M ${-cab * 0.85} ${hC - cab * 0.02} Q ${-cab * 0.9} ${hC - cab * 1.06} 0 ${hC - cab * 1.045} Q ${cab * 0.9} ${hC - cab * 1.06} ${cab * 0.85} ${hC - cab * 0.02} Q ${cab * 0.8} ${hC - cab * 0.5} ${cab * 0.6} ${hC - cab * 0.62} Q 0 ${hC - cab * 0.74} ${-cab * 0.6} ${hC - cab * 0.62} Q ${-cab * 0.8} ${hC - cab * 0.5} ${-cab * 0.85} ${hC - cab * 0.02} Z`} fill={mix(piel, pc, 0.62)} opacity={0.88} filter="url(#c-b2)" />
-            <path d={`M ${-cab * 0.42} ${hC - cab * 0.9} Q 0 ${hC - cab * 1.0} ${cab * 0.32} ${hC - cab * 0.9}`} stroke="#fff" strokeOpacity={0.28} strokeWidth={7} fill="none" strokeLinecap="round" filter="url(#c-b2)" />
+            {/* casquete de pelo corto: cubre todo el cráneo hasta la frente (línea natural, no de calvo) y baja en patillas junto a las orejas */}
+            {[['c-b4', 0.5, 1.0], ['c-b2', 0.92, 0.99]].map(([bl, op, k]) => <path key={bl} d={`M ${-cab * 0.86 * k} ${hC + cab * 0.2} Q ${-cab * 0.94 * k} ${hC - cab * 1.07 * k} 0 ${hC - cab * 1.05 * k} Q ${cab * 0.94 * k} ${hC - cab * 1.07 * k} ${cab * 0.86 * k} ${hC + cab * 0.2}
+              L ${cab * 0.76} ${hC + cab * 0.2} Q ${cab * 0.74} ${hC - cab * 0.3} ${cab * 0.56} ${hC - cab * 0.44} Q ${cab * 0.3} ${hC - cab * 0.5} 0 ${hC - cab * 0.5} Q ${-cab * 0.3} ${hC - cab * 0.5} ${-cab * 0.56} ${hC - cab * 0.44} Q ${-cab * 0.74} ${hC - cab * 0.3} ${-cab * 0.76} ${hC + cab * 0.2} Z`}
+              fill={mix(piel, pc, 0.66)} opacity={op} filter={`url(#${bl})`} />)}
+            <path d={`M ${-cab * 0.42} ${hC - cab * 0.9} Q 0 ${hC - cab * 1.0} ${cab * 0.32} ${hC - cab * 0.9}`} stroke="#fff" strokeOpacity={0.18} strokeWidth={7} fill="none" strokeLinecap="round" filter="url(#c-b2)" />
           </g>
           : <path d={`M ${-cab * 0.88} ${hC - 4} Q ${-cab * 0.95} ${hC - cab * 1.12} 0 ${hC - cab * 1.1} Q ${cab * 0.95} ${hC - cab * 1.12} ${cab * 0.88} ${hC - 4} Q ${cab * 0.76} ${hC - cab * 0.62} ${cab * 0.2} ${hC - cab * 0.66} Q ${-cab * 0.5} ${hC - cab * 0.7} ${-cab * 0.88} ${hC - 4} Z`} fill={pc} />}
       {!rapado && <path d={`M ${-cab * 0.5} ${hC - cab * 0.86} Q 0 ${hC - cab * 1.04} ${cab * 0.4} ${hC - cab * 0.9}`} stroke="#fff" strokeOpacity={0.2} strokeWidth={5} fill="none" />}
