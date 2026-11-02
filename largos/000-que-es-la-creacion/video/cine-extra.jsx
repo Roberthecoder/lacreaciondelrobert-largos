@@ -122,8 +122,16 @@ ILUSC.torre_sej = {
         <path d={`M ${X(420, 1000)} 1000 L ${X(420, 0)} 0 L ${X(1500, 0)} 0 L ${X(1500, 1000)} 1000 Z`} fill="url(#c-sej-vidrio)" opacity={0.7} />
         {Array.from({ length: pisos }, (_, k) => { const y = 1000 - k * 85; return <path key={k} d={`M ${X(420, y)} ${y} L ${X(1500, y)} ${y}`} stroke="#3a6a9a" strokeWidth={3} opacity={0.6} />; })}
         {[520, 700, 880, 1040, 1220, 1400].map((cx, k) => <path key={k} d={`M ${X(cx - 14, 1000)} 1000 L ${X(cx - 14, 0)} 0 L ${X(cx + 14, 0)} 0 L ${X(cx + 14, 1000)} 1000 Z`} fill="#b9b6ae" />)}
-        {Array.from({ length: 14 }, (_, k) => { const r = R(4200 + k), cx = 520 + r() * 900, y = 120 + r() * 700; return <path key={'v' + k} d={`M ${X(cx, y)} ${y} l 40 0 l 6 -22 l -52 0 Z`} fill="#f2f2ee" opacity={0.9} />; })}
-        <path d={`M ${X(420, 1000)} 1000 L ${X(420, 0)} 0 L ${X(700, 0)} 0`} stroke="#fff" strokeOpacity={0.25} strokeWidth={30} fill="none" />
+        {/* reflejos del sol: cada uno dentro de un vidrio (entre dos columnas y dos pisos), con la perspectiva de la torre */}
+        {(() => { const cols = [420, 520, 700, 880, 1040, 1220, 1400, 1500], out = [], r = R(4200);
+          for (let k = 0; k < 12; k++) {
+            const c = 1 + Math.floor(r() * 5), f = 3 + Math.floor(r() * 8), x0 = cols[c] + 14, x1 = cols[c + 1] - 14, cw = x1 - x0;
+            const yb = 1000 - f * 85 - 3, yt = yb - 79, a = x0 + cw * (0.08 + r() * 0.3), w = cw * 0.22, sesgo = cw * 0.22;
+            const q = [[a, yb], [a + w, yb], [a + w + sesgo, yt], [a + sesgo, yt]].map(([x, y]) => `${X(x, y).toFixed(1)} ${y}`);
+            out.push(<path key={'v' + k} d={`M ${q.join(' L ')} Z`} fill="#f4f8fc" opacity={0.42 + 0.12 * Math.sin(tl * 0.8 + k)} />);
+          }
+          return out; })()}
+        <path d={`M ${X(420, 1000)} 1000 L ${X(420, 0)} 0 L ${X(470, 0)} 0 L ${X(470, 1000)} 1000 Z`} fill="#fff" opacity={0.18} />
         {/* exoesqueleto rojo: vigas horizontales y diagonales */}
         {[920, 640, 360, 100].map((y, k) => <g key={k}>
           <path d={`M ${X(300, y)} ${y} L ${X(1620, y)} ${y}`} stroke="#c8231b" strokeWidth={lerp(34, 22, (1000 - y) / 1000)} />
