@@ -259,6 +259,21 @@ const CIENTIFICOS = /(Pleurotus djamor|Pleurotus ostreatus|Pleurotus|Trichoderma
 function conCursivas(texto) {
   return texto.split(CIENTIFICOS).map((s, i) => (i % 2 ? <i key={i} style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 500, letterSpacing: 0 }}>{s}</i> : s));
 }
+// Trozo de subtítulo que toca en T (frases largas partidas en trozos de ~max caracteres) y su opacidad de brisa.
+function trozoSub(T, max) {
+  const l = LINEA.lineas.find((x) => T >= x.at && T < x.at + x.dur);
+  if (!l) return null;
+  const trozos = []; let cur = '';
+  l.t.split(' ').forEach((w) => { if ((cur + ' ' + w).trim().length > max) { trozos.push(cur.trim()); cur = w; } else cur += ' ' + w; });
+  if (cur.trim()) trozos.push(cur.trim());
+  const total = trozos.reduce((a, s) => a + s.length, 0);
+  let acc = 0, idx = 0, a0 = 0, a1 = 1;
+  const pr = (T - l.at) / l.dur;
+  for (let i = 0; i < trozos.length; i++) { a0 = acc; acc += trozos[i].length / total; a1 = acc; idx = i; if (pr < acc) break; }
+  const s0 = l.at + l.dur * a0, s1 = l.at + l.dur * a1, suave = (x) => x * x * (3 - 2 * x);
+  const ent = suave(kprog(T, s0, s0 + 0.28)), sal = 1 - suave(kprog(T, s1 - 0.2, s1));
+  return { texto: trozos[idx], ent, o: Math.min(ent, sal), l };
+}
 function SubtituloLargo({ T }) {
   const l = LINEA.lineas.find((x) => T >= x.at && T < x.at + x.dur);
   if (!l) return null;
@@ -321,8 +336,9 @@ function Letras() {
 }
 
 /* ---------------- composición ---------------- */
-function DocLargo() {
-  const { T } = useComposition();
+function DocLargo({ Tx, limpio = false }) {
+  const { T: T0 } = useComposition();
+  const T = Tx ?? T0;
   const vis = LINEA.bloques.map((b, i) => ({ b, i })).filter(({ b }) => T >= b.at - 0.01 && T < b.at + b.dur + FUNDIDO);
   return <div style={abs(0, 0, { width: W, height: H, overflow: 'hidden', background: '#000' })}>
     <CineDefs />
@@ -339,10 +355,10 @@ function DocLargo() {
       </div>;
     })}
     </div>
-    <Pelicula T={T} />
-    <MarcaCapitulo T={T} />
+    {!limpio && <Pelicula T={T} />}
+    {!limpio && <MarcaCapitulo T={T} />}
     <RobertLargo T={T} />
-    <SubtituloLargo T={T} />
+    {!limpio && <SubtituloLargo T={T} />}
   </div>;
 }
 // El motor acepta escenas de hasta 300 s: se parte el largo en tramos iguales (el tiempo T sigue siendo continuo).
@@ -355,3 +371,56 @@ function LargoApp() {
   </div>;
 }
 window.LargoApp = LargoApp;
+
+/* ---------------- shots verticales (1080×1920) hechos con fragmentos del largo ---------------- */
+// window.CORTE = { n, de, desde, hasta, titulo, cola, robert } (lo escribe verticales/armar.mjs en cada Shot NN.dc.html).
+// Arriba: la serie y el gancho; en medio: la escena del largo completa (16:9, sin cortar nada); abajo: subtítulos grandes
+// (fuera del tercio inferior). Al final, la imagen se congela y entra la tarjeta de cierre con el logo y Robert.
+const VW = 1080, VH = 1920, VESC = 0.6, VX = (VW - W * 0.6) / 2, VY = 500, VSUB = 1168; // la escena se recorta solo 60 px por lado (en el largo nada importante vive ahí)
+function VerticalLargo() {
+  const { T } = useComposition();
+  const C = window.CORTE || { n: 1, de: 1, desde: 0, hasta: 60, titulo: '', cola: 3.5 };
+  const Ts = Math.min(T, C.hasta - 0.04), cierre = C.hasta - 0.3;
+  const b = LINEA.bloques.find((x) => Ts >= x.at && Ts < x.at + x.dur) || LINEA.bloques[0];
+  const pal = b.pal, prog = kclamp((T - C.desde) / (C.hasta - C.desde), 0, 1);
+  const tit = kprog(T, C.desde, C.desde + 0.5, kEase.suave);
+  const sub = T < C.hasta ? trozoSub(T, 46) : null;
+  const robertIni = C.robert && kprog(T, C.desde + 0.1, C.desde + 0.55, (x) => 1 - Math.pow(1 - x, 3)) * (1 - kprog(T, C.desde + 3.4, C.desde + 3.9));
+  return <div style={abs(0, 0, { width: VW, height: VH, overflow: 'hidden', background: '#0b0b0e' })}>
+    {/* fondo: oscuro, teñido con el color del capítulo, con papel y luz suave */}
+    <div style={abs(0, 0, { width: VW, height: VH, background: `radial-gradient(120% 55% at 50% 22%, ${pal.fondo}cc 0%, ${pal.fondo}55 38%, #0b0b0e 78%)` })} />
+    <div style={abs(0, 0, { width: VW, height: VH, background: `radial-gradient(90% 40% at 50% 100%, ${pal.fondo}66 0%, rgba(11,11,14,0) 70%)` })} />
+    <img src="video/tex/papel.png" style={abs(0, 0, { width: VW, height: VH, objectFit: 'cover', opacity: 0.16, mixBlendMode: 'overlay' })} />
+    {/* serie + gancho */}
+    <div style={abs(70, 222, { width: VW - 140, opacity: tit, transform: `translateY(${(1 - tit) * 18}px)` })}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 18 }}>
+        <img src="video/logo_color.svg" style={{ width: 50, height: 50, filter: 'drop-shadow(0 2px 8px rgba(0,0,0,.6))' }} />
+        <div style={{ fontFamily: KF.mono, fontWeight: 700, fontSize: 21, letterSpacing: 4, color: 'rgba(246,243,236,.82)' }}>
+          MI HISTORIA&nbsp;&nbsp;<span style={{ color: pal.acento }}>{String(C.n).padStart(2, '0')}/{String(C.de).padStart(2, '0')}</span></div>
+      </div>
+      <div style={{ fontFamily: SERIF, fontWeight: 650, fontSize: C.titulo.length > 34 ? 62 : 72, lineHeight: 1.06, color: BLANCO, letterSpacing: '-0.01em', textShadow: '0 4px 24px rgba(0,0,0,.55)' }}>{C.titulo}</div>
+      <div style={{ width: 120, height: 5, borderRadius: 3, background: pal.acento, marginTop: 20 }} />
+    </div>
+    {/* la escena del largo, completa */}
+    <div style={abs(0, VY, { width: VW, height: H * VESC, overflow: 'hidden', boxShadow: '0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06)' })}>
+      <div style={{ position: 'absolute', left: VX, top: 0, width: W, height: H, transform: `scale(${VESC})`, transformOrigin: '0 0' }}><DocLargo Tx={Ts} limpio /></div>
+    </div>
+    {/* barra de avance del shot */}
+    <div style={abs(0, VY + H * VESC, { width: VW, height: 6, background: 'rgba(255,255,255,.12)' })}><div style={{ width: `${prog * 100}%`, height: 6, background: pal.acento }} /></div>
+    {/* subtítulo grande, como brisa */}
+    {sub && <div style={abs(50, VSUB + (1 - sub.ent) * 10, { width: VW - 100, textAlign: 'center', opacity: sub.o })}>
+      <span style={{ fontFamily: KF.texto, fontWeight: 700, fontSize: 48, lineHeight: 1.2, color: '#fff', textShadow: '0 2px 4px rgba(0,0,0,.95), 0 0 22px rgba(0,0,0,.8)' }}>{conCursivas(sub.texto)}</span>
+    </div>}
+    {/* Robert reacciona al gancho */}
+    {robertIni > 0 && <img src={'video/stickers/' + C.robert + '.png'} style={abs(VW - 400, 1290 + (1 - robertIni) * 200, { width: 360, opacity: robertIni, filter: 'drop-shadow(0 22px 28px rgba(0,0,0,.5))', transform: `rotate(${-2.5 * Math.sin(T * 0.8)}deg)` })} />}
+    <CierreMarca T={T} at={cierre} frase="Mira mi historia completa en el canal" logo="video/logo_color.svg" robert="video/stickers/avatar_02_apuntando_camara.png" />
+  </div>;
+}
+function VerticalApp() {
+  return <div style={{ position: 'fixed', inset: 0, background: '#000' }}>
+    <CompositionStage width={VW} height={VH} scenes={JSON.stringify(partes(LINEA.total))} playback={window.OM_PLAYBACK} bg="#000">
+      <VerticalLargo />
+    </CompositionStage>
+  </div>;
+}
+window.VerticalApp = VerticalApp;
