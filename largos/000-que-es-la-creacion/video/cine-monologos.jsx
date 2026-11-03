@@ -137,7 +137,7 @@ DIBUJOS.pantallas = ({ p, tl }) => {
         return <g key={i} opacity={0.3 + 0.7 * on}><rect x={x} y={y} width={240} height={170} rx={8} fill={['#3a5f96', '#2f8f5a', '#c0392b', '#f4c23a', '#6a4c9c', '#2a8fa0'][i]} />
           <path d={`M ${x + 100} ${y + 60} L ${x + 100} ${y + 110} L ${x + 145} ${y + 85} Z`} fill="#fff" opacity={0.9} /></g>; })}</g>
     <Halo x={960} y={600} r={520} color="#7fb0ff" o={0.25} />
-    <Nene x={960} y={1010} s={0.6} edad={16} espalda t={tl} playera="#2a5aa8" rayas={false} seed={851} />
+    <Nene x={960} y={905} s={0.52} edad={16} espalda t={tl} playera="#2a5aa8" rayas={false} seed={851} />
   </g>;
 };
 

@@ -252,7 +252,10 @@ ILUSC.tianguis = {
         <rect x={100} y={660} width={300} height={46} fill="#5a1a2a" /><rect x={100} y={660} width={300} height={46} fill="url(#c-arriba)" />
         {Array.from({ length: 10 }, (_, i) => <Moneda2 key={i} x={130 + (i % 5) * 58} y={672 + Math.floor(i / 5) * 22} r={14} tipo={['plata', 'cobre', 'bronce', 'niquel'][i % 4]} inclina={0.45} />)}
         <g transform="translate(520 700)"><rect x={-70} y={-110} width={140} height={110} rx={14} fill="#7a4a2a" /><rect x={-70} y={-110} width={140} height={110} rx={14} fill="url(#c-arriba)" /><circle cx={-24} cy={-56} r={30} fill="#3a2a22" />{Array.from({ length: 6 }, (_, k) => <rect key={k} x={14} y={-90 + k * 12} width={44} height={4} fill="#d9c49a" />)}</g>
-        {[0, 1, 2].map((k) => <g key={k} transform={`translate(${660 + k * 30} ${700 - k * 4}) rotate(${-10 + k * 6})`}><circle r={54} fill="#141414" /><circle r={18} fill={['#c0392b', '#f4c23a', '#2a5aa8'][k]} /><circle r={54} fill="none" stroke="#333" strokeWidth={2} strokeDasharray="1 5" /></g>)}
+        {/* discos de vinil recargados dentro de una cajita de madera, sobre la mesa */}
+        {[0, 1, 2].map((k) => <g key={k} transform={`translate(${672 + k * 26} ${652 - k * 2}) rotate(${-12 + k * 6})`}><circle r={50} fill="#141414" /><circle r={50} fill="none" stroke="#333" strokeWidth={2} strokeDasharray="1 5" /><circle r={16} fill={['#c0392b', '#f4c23a', '#2a5aa8'][k]} /><circle r={3} fill="#0a0a0a" /></g>)}
+        <rect x={612} y={640} width={168} height={62} rx={4} fill="#8a5a33" /><rect x={612} y={640} width={168} height={62} rx={4} fill="url(#c-arriba)" />
+        <path d="M 612 671 L 780 671" stroke="#5e3b20" strokeWidth={3} />
         {Array.from({ length: 3 }, (_, k) => <g key={'ll' + k} transform={`translate(${240 + k * 40} 640) rotate(${20 + k * 30})`}><circle r={10} fill="none" stroke="url(#c-laton)" strokeWidth={5} /><rect x={8} y={-3} width={40} height={6} fill="url(#c-laton)" /></g>)}
         {/* el niño platicando */}
         <Nene x={900} y={1000} s={1.1} edad={10} t={tl} playera="#f4f2ec" rayas={false} pantalon="#1f2b4a" cuello="#f4f2ec" brazoI={lerp(30, 50, 0.5 + 0.5 * Math.sin(tl * 3))} brazoD={10} mira={[-1, -0.4]} boca={Math.sin(tl * 9) > 0 ? 'o' : 'sonrisa'} seed={12} />
