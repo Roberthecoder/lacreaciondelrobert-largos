@@ -12,3 +12,4 @@ shots/*/assets/musica_demo.wav
 
 # borradores de render de los videos largos (pesados; se regeneran)
 largos/*/borradores/
+__pycache__/
