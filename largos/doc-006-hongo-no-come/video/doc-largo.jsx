@@ -17,17 +17,18 @@ const SERIF = "'Fraunces', Georgia, serif";
 const BLANCO = '#F6F3EC';
 
 // Color de cada capítulo: tono (luz y fondos oscuros teñidos) y acento (rótulos, líneas, números).
-// Documental 001 (bioluminiscentes): tarjetas de noche; el acento es el color real de la luz de cada organismo.
+// Documental 006 (¿hay algo que no se pueda comer un hongo?): tarjetas oscuras; el acento es el color del material de cada capítulo.
 const PALETA = [
-  { fondo: '#0b1220', tinta: BLANCO, acento: KC.gold2 },
-  { fondo: '#141019', tinta: BLANCO, acento: '#FFB05A' },
-  { fondo: '#08160d', tinta: BLANCO, acento: '#3DFF4A' },
-  { fondo: '#06161a', tinta: BLANCO, acento: '#00E5E0' },
-  { fondo: '#061224', tinta: BLANCO, acento: '#00A6FF' },
-  { fondo: '#0a160b', tinta: BLANCO, acento: '#4BFF45' },
-  { fondo: '#12160a', tinta: BLANCO, acento: '#B8FF1F' },
-  { fondo: '#0b1220', tinta: BLANCO, acento: KC.gold2 },
-  { fondo: '#08160d', tinta: BLANCO, acento: '#3DFF4A' },
+  { fondo: '#14100b', tinta: BLANCO, acento: KC.gold2 },
+  { fondo: '#0b1220', tinta: BLANCO, acento: '#F6F3EC' },
+  { fondo: '#16100a', tinta: BLANCO, acento: '#E0A860' },
+  { fondo: '#14100e', tinta: BLANCO, acento: '#FFD23F' },
+  { fondo: '#160c0a', tinta: BLANCO, acento: '#FF7A4A' },
+  { fondo: '#0a1410', tinta: BLANCO, acento: '#7CFF8A' },
+  { fondo: '#08141a', tinta: BLANCO, acento: '#6AD4FF' },
+  { fondo: '#101216', tinta: BLANCO, acento: '#C9D2E3' },
+  { fondo: '#0a1612', tinta: BLANCO, acento: '#5CF0C0' },
+  { fondo: '#14100b', tinta: BLANCO, acento: KC.gold2 },
 ];
 
 /* ---------------- línea de tiempo ---------------- */
@@ -288,7 +289,7 @@ const ESCENAS_TIPO = { foto: EscenaFoto, fotos: EscenaFotos, texto: EscenaTexto,
 
 /* ---------------- capas fijas ---------------- */
 // Nombres científicos: siempre en cursiva (subtítulos y etiquetas).
-const CIENTIFICOS = /(Panellus stipticus|Panellus|Mycena chlorophos|Armillaria|Omphalotus|Aliivibrio fischeri|Euprymna scolopes|Vibrio vulnificus|Vibrio parahaemolyticus|Pyrocystis lunula|Pyrocystis|Neonothopanus nambi|Photinus pyralis|Photinus palaciosi|foxfire)/g;
+const CIENTIFICOS = /(Pleurotus ostreatus|Pleurotus|Trichophyton rubrum|Trichoderma|Amorphotheca resinae|Phanerochaete chrysosporium|Phanerochaete|Pestalotiopsis microspora|Humicola insolens|Chaetomium globosum|Fusarium oxysporum|Science)/g;
 function conCursivas(texto) {
   return texto.split(CIENTIFICOS).map((s, i) => (i % 2 ? <i key={i} style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 500, letterSpacing: 0 }}>{s}</i> : s));
 }

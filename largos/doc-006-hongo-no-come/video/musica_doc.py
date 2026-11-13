@@ -1,4 +1,4 @@
-# musica_doc.py — cama musical del documental 001 (sin voz). Todo sale de los datos del guion:
+# musica_doc.py — cama musical del documental 006 (sin voz). Todo sale de los datos del guion:
 # cada capítulo tiene su acorde (tónica distinta) y cada frase del guion suena como una nota de campana en el
 # segundo exacto en que aparece su subtítulo. Nada grabado ni de catálogo.
 # Uso: python3 musica_doc.py   →  voz/mezcla.m4a  (necesita numpy y ffmpeg; lee los tiempos con tiempos.mjs)
