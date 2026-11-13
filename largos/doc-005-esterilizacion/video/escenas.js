@@ -105,7 +105,7 @@ return [
     { t: 'Por fuera se ve igual: la pesa se mueve y el manómetro marca.' },
     { t: 'Adentro, el calor avanza de la orilla al centro, donde unas endosporas siguen en reposo.', d: 6.5 },
     { t: 'Los 15 minutos de la receta empiezan aquí: cuando el centro del frasco o de la bolsa, por fin, llega a 121 °C.', d: 9 },
-    { t: 'Soy Robert, y esto es La Creación del Robert.', v: { tipo: 'marca', sub: '¿Cuánto tiempo le das tú a tus bolsas y a tus frascos?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'abajo-izq'] },
+    { t: 'Soy Robert, y esto es La Creación del Robert.', v: { tipo: 'marca', sub: '¿Cuánto tiempo le das tú a tus bolsas y a tus frascos?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'arriba-der'] },
     { t: 'Y tú, ¿cuánto tiempo le das a tus bolsas y a tus frascos, y desde cuándo lo cuentas?', d: 5.5 },
   ] },
 ];

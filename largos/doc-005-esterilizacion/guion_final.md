@@ -148,6 +148,6 @@ Cada dato lleva su fuente entre corchetes (lista completa en `fuentes.md`). [C] 
 | 302 | 308 | 02_apuntando_camara | abajo-der | Entre más alto vives, más tiempo necesita tu ciclo, o más presión si t… |
 | 366 | 375 | 10_serio_molesto | arriba-der | Con un solo ciclo de 20 minutos a 15 psi, los síntomas de contaminació… |
 | 432 | 438 | 06_pensativo_menton | arriba-der | ¿Cómo saber si tu ciclo alcanzó? Mucha gente se guía solo por la cinta… |
-| 517 | 520 | 02_apuntando_camara | abajo-izq | Soy Robert, y esto es La Creación del Robert.… |
+| 517 | 520 | 02_apuntando_camara | arriba-der | Soy Robert, y esto es La Creación del Robert.… |
 
 Total: 10 apariciones, 68 s.
