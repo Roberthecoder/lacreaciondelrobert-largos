@@ -18,8 +18,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  LARGO: largos/doc-001-bioluminiscentes
-  HTML: Documental 001.dc.html
+  LARGO: largos/doc-003-contaminantes
+  HTML: Documental 003.dc.html
   FPS: '24'
   PEDAZO: '20'   # segundos de video por máquina
 
@@ -106,24 +106,24 @@ jobs:
         run: |
           ls tramos | sort | sed "s#^#file '$PWD/tramos/#; s#\$#'#" > lista.txt
           wc -l lista.txt
-          ffmpeg -y -loglevel error -f concat -safe 0 -i lista.txt -c copy -movflags +faststart doc001_bioluminiscentes_mudo.mp4
-          ffprobe -v error -show_entries format=duration,size -of default=nw=1 doc001_bioluminiscentes_mudo.mp4
+          ffmpeg -y -loglevel error -f concat -safe 0 -i lista.txt -c copy -movflags +faststart doc003_contaminantes_mudo.mp4
+          ffprobe -v error -show_entries format=duration,size -of default=nw=1 doc003_contaminantes_mudo.mp4
       - name: Ponerle la voz y la música (si ya existen)
         run: |
           A="$LARGO/video/voz/mezcla.m4a"
           if [ -f "$A" ]; then
-            ffmpeg -y -loglevel error -i doc001_bioluminiscentes_mudo.mp4 -i "$A" -map 0:v -map 1:a -c:v copy -c:a copy -shortest -movflags +faststart doc001_bioluminiscentes_con_musica.mp4
-            ffprobe -v error -show_entries format=duration,size -of default=nw=1 doc001_bioluminiscentes_con_musica.mp4
+            ffmpeg -y -loglevel error -i doc003_contaminantes_mudo.mp4 -i "$A" -map 0:v -map 1:a -c:v copy -c:a copy -shortest -movflags +faststart doc003_contaminantes_con_musica.mp4
+            ffprobe -v error -show_entries format=duration,size -of default=nw=1 doc003_contaminantes_con_musica.mp4
           fi
       - uses: actions/upload-artifact@v4
         with:
-          name: doc001_bioluminiscentes_mudo
-          path: doc001_bioluminiscentes_mudo.mp4
+          name: doc003_contaminantes_mudo
+          path: doc003_contaminantes_mudo.mp4
           retention-days: 3
           compression-level: 0
       - name: Publicar en Releases
         run: |
           TAG="largo-$(echo '${{ github.ref_name }}' | tr '/' '-')"
-          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --prerelease --title "Largo · ${{ github.ref_name }}" --notes "Documental 001 (bioluminiscentes), 100 % ilustrado, renderizado en la nube. Sin voz: versión muda y versión con música. Se reemplaza en cada render."
-          gh release upload "$TAG" doc001_bioluminiscentes_mudo.mp4 --clobber
-          [ -f doc001_bioluminiscentes_con_musica.mp4 ] && gh release upload "$TAG" doc001_bioluminiscentes_con_musica.mp4 --clobber || true
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --prerelease --title "Largo · ${{ github.ref_name }}" --notes "Documental 003 (contaminantes), 100 % ilustrado, renderizado en la nube. Sin voz: versión muda y versión con música. Se reemplaza en cada render."
+          gh release upload "$TAG" doc003_contaminantes_mudo.mp4 --clobber
+          [ -f doc003_contaminantes_con_musica.mp4 ] && gh release upload "$TAG" doc003_contaminantes_con_musica.mp4 --clobber || true

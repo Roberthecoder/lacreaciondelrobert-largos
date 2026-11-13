@@ -1,0 +1,4 @@
+{ "temas": [ { "id": "doc-contaminantes-cultivo-hongos", "titulo": "Eso verde no es tu hongo: los contaminantes del cultivo de hongos", "serie": "Documental", "numero": 3,
+  "estado": "renderizado", "carpeta": "largos/doc-003-contaminantes", "rama": "largo-render/doc-003-contaminantes",
+  "fuentes": ["Stamets y Chilton 1983, The Mushroom Cultivator", "Bellettini et al. 2018, Rev Argent Microbiol 50(2):216-226", "Carrasco, Navarro y Gea 2017, Span J Agric Res 15(2):e10R01", "Zhang et al. 2024, Front Plant Sci 15:1411231"],
+  "fecha": "2026-11-12", "derivados": ["Por qué Trichoderma se enrolla en otros hongos (micoparasitismo)", "La endospora: la cápsula que aguanta el agua hirviendo", "Mixomicetos: el moho que no es hongo y caza bacterias"] } ] }
