@@ -348,3 +348,166 @@ window.LUZ = window.LUZ || {};
 window.LZK = { TAU, cl, pr, ss, eo, mixn, rng, rgba, mixc, LUZC, FU, halo, luzOn, luzOff, noche, estrellas, polvo, cam, oscurece, txt, rico, chip, rotulo, guia, titulo, sello, tache, flecha,
   red, pintaRed, tronco, panellus, mycena, embudo, petri, frasco, matraz, bacteria, calamar, dino, petunia, luciernaga, abeto, foco, termometro, reloj, maleta, documento, botella, molecula, veredicto };
 window.EscenaLienzo = EscenaLienzo;
+
+/* =====================================================================================================
+   Documental 004 (papel contra plástico): fondos de color de la marca, tinta oscura, gráficas de datos
+   hechas en el lienzo (barras, balanza, báscula de muchos platos) y objetos cotidianos a escala humana.
+   Todo es esquema: los tamaños entre objetos no están a escala.
+   ===================================================================================================== */
+const TINTA = '#16120f';
+const MARCA = { amarillo: '#FFD23F', menta: '#35DDA9', rosa: '#FF86AE', cian: '#45C9F2', lila: '#B9A0FF', naranja: '#FFA04A', crema: '#F4EFE4', coral: '#FF6B5A', azul: '#2346ff', teal: '#11a39a', kraft: '#C49A6C', hoja: '#3fbf4a', oro: '#F4C25A', rojo: '#E5352B', verde: '#18A058' };
+// Fondo de color con luz suave, trama de puntos y piso opcional (o.piso = y del horizonte).
+function fondoColor(ctx, c, o = {}) {
+  const g = ctx.createLinearGradient(0, 0, 0, 1080); g.addColorStop(0, mixc(c, '#ffffff', 0.22)); g.addColorStop(0.7, c); g.addColorStop(1, mixc(c, '#000000', 0.16));
+  ctx.fillStyle = g; ctx.fillRect(-400, -400, 2720, 1880);
+  ctx.save(); ctx.fillStyle = 'rgba(255,255,255,.13)'; for (let j = 0; j < 14; j++) for (let i = 0; i < 25; i++) { const r = 2 + 5 * cl(1 - Math.hypot(i * 80 - 1500, j * 80 - 200) / 1300); ctx.beginPath(); ctx.arc(i * 80 + (j % 2) * 40, j * 80 + 20, r, 0, TAU); ctx.fill(); } ctx.restore();
+  if (o.piso) { const p = ctx.createLinearGradient(0, o.piso, 0, 1080); p.addColorStop(0, mixc(c, '#000000', 0.22)); p.addColorStop(1, mixc(c, '#000000', 0.42)); ctx.fillStyle = p; ctx.fillRect(-400, o.piso, 2720, 900); ctx.fillStyle = 'rgba(255,255,255,.18)'; ctx.fillRect(-400, o.piso, 2720, 3); }
+}
+// Va al final de cada escena clara: oscurece la franja de subtítulos y la esquina de la marca del capítulo.
+function franja(ctx, a = 1) {
+  const g = ctx.createLinearGradient(0, 850, 0, 1080); g.addColorStop(0, 'rgba(14,12,18,0)'); g.addColorStop(0.3, `rgba(14,12,18,${0.62 * a})`); g.addColorStop(1, `rgba(14,12,18,${0.9 * a})`); ctx.fillStyle = g; ctx.fillRect(0, 850, 1920, 230);
+  const r = ctx.createRadialGradient(0, 0, 0, 0, 0, 620); r.addColorStop(0, `rgba(14,12,18,${0.7 * a})`); r.addColorStop(0.5, `rgba(14,12,18,${0.4 * a})`); r.addColorStop(1, 'rgba(14,12,18,0)'); ctx.fillStyle = r; ctx.fillRect(0, 0, 620, 300);
+}
+const tinta = (ctx, s, x, y, o = {}) => rico(ctx, s, x, y, { c: TINTA, sombra: false, ...o });
+// Tarjeta oscura para datos (fondo de las gráficas sobre color).
+function panel(ctx, x, y, w, h, a = 1, o = {}) { a = cl(a); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.shadowColor = 'rgba(0,0,0,.35)'; ctx.shadowBlur = 40; ctx.shadowOffsetY = 14; ctx.fillStyle = o.c || '#14161d'; ctx.beginPath(); ctx.roundRect(x, y + (1 - a) * 18, w, h, o.r ?? 26); ctx.fill(); ctx.restore(); }
+// De qué estudio sale el dato: siempre abajo, centrado. Estudio · año de publicación · año del dato.
+function fuenteDato(ctx, s, a = 1, x = 960, y = 846) { chip(ctx, 'FUENTE · ' + s, x, y, { c: '#F4C25A', s: 21, a, al: 'center' }); }
+// Barra vertical que crece. v = fracción de la altura máxima (0..1). o: val (texto arriba), nom (texto abajo), sub, tinta.
+function barra(ctx, x, yb, w, hmax, v, color, o = {}) {
+  const a = cl(o.a ?? 1), h = Math.max(2, hmax * v * a), ti = o.tinta || '#F6F3EC';
+  if (a <= 0) return; ctx.save(); ctx.fillStyle = `rgba(255,255,255,${0.08 * cl(a * 3)})`; ctx.fillRect(x - w / 2, yb - hmax, w, hmax);
+  const g = ctx.createLinearGradient(0, yb - h, 0, yb); g.addColorStop(0, mixc(color, '#ffffff', 0.25)); g.addColorStop(1, color); ctx.fillStyle = g; ctx.beginPath(); ctx.roundRect(x - w / 2, yb - h, w, h, [10, 10, 0, 0]); ctx.fill(); ctx.restore();
+  if (o.val) txt(ctx, o.val, x, yb - h - 16, { s: o.sv || 50, f: 'serif', w: 600, al: 'center', c: ti, a: cl(a * 2), sombra: false });
+  if (o.nom) txt(ctx, o.nom, x, yb + 40, { s: o.sn || 24, f: 'mono', w: 700, ls: 2, al: 'center', c: ti, a: cl(a * 2), sombra: false });
+  if (o.sub) txt(ctx, o.sub, x, yb + 70, { s: 20, f: 'sans', w: 500, al: 'center', c: ti, a: cl(a * 2) * 0.75, sombra: false });
+}
+// Barra horizontal (para comparar razones o porcentajes).
+function barraH(ctx, x, y, wmax, h, v, color, o = {}) {
+  const a = cl(o.a ?? 1), w = Math.max(2, wmax * v * a), ti = o.tinta || '#F6F3EC';
+  if (a <= 0) return; ctx.save(); ctx.globalAlpha *= cl(a * 3); ctx.fillStyle = o.riel || 'rgba(255,255,255,.08)'; ctx.beginPath(); ctx.roundRect(x, y - h / 2, wmax, h, h / 4); ctx.fill(); ctx.fillStyle = color; ctx.beginPath(); ctx.roundRect(x, y - h / 2, w, h, h / 4); ctx.fill(); ctx.restore();
+  if (o.nom) txt(ctx, o.nom, x - 20, y + 9, { s: o.sn || 26, f: 'mono', w: 700, ls: 1, al: 'right', c: ti, a: cl(a * 2), sombra: false });
+  if (o.val) txt(ctx, o.val, x + w + 18, y + 14, { s: o.sv || 40, f: 'serif', w: 600, c: ti, a: cl(a * 2), sombra: false });
+}
+// Balanza de dos platos. ang > 0 baja el plato derecho. Regresa los centros de los platos para dibujar encima.
+function balanza(ctx, x, y, s, ang, o = {}) {
+  const c = o.c || TINTA, L = 300 * s, a = cl(o.a ?? 1); ctx.save(); ctx.globalAlpha *= a; ctx.strokeStyle = c; ctx.fillStyle = c; ctx.lineCap = 'round';
+  ctx.lineWidth = 12 * s; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + 330 * s); ctx.stroke(); ctx.beginPath(); ctx.roundRect(x - 110 * s, y + 320 * s, 220 * s, 22 * s, 8); ctx.fill();
+  const ex = Math.cos(ang) * L, ey = Math.sin(ang) * L; ctx.lineWidth = 9 * s; ctx.beginPath(); ctx.moveTo(x - ex, y - ey); ctx.lineTo(x + ex, y + ey); ctx.stroke(); ctx.beginPath(); ctx.arc(x, y, 16 * s, 0, TAU); ctx.fill();
+  const P = [[x - ex, y - ey + 150 * s], [x + ex, y + ey + 150 * s]];
+  P.forEach(([px, py], i) => { const bx = i ? x + ex : x - ex, by = i ? y + ey : y - ey; ctx.lineWidth = 2.5 * s; ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(px - 95 * s, py); ctx.moveTo(bx, by); ctx.lineTo(px + 95 * s, py); ctx.stroke(); ctx.beginPath(); ctx.ellipse(px, py, 105 * s, 15 * s, 0, 0, Math.PI); ctx.lineTo(px - 105 * s, py); ctx.fill(); });
+  ctx.restore(); return P;
+}
+// Bolsa de papel kraft de súper (fondo cuadrado, fuelle lateral, asas de papel torcido). (x, y) = centro de la base.
+// o.abre 0..1 boca abierta · o.arruga 0..1 marcas de uso · o.rota 0..1 se rasga del fondo · o.c color.
+function bolsaPapel(ctx, x, y, s = 1, o = {}) {
+  const c = o.c || '#C8A070', a = cl(o.a ?? 1); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.rotate(o.rot || 0); ctx.scale(s, s);
+  const W2 = 120, Hh = 330, ab = o.abre ?? 0.6;
+  ctx.fillStyle = 'rgba(0,0,0,.16)'; ctx.beginPath(); ctx.ellipse(10, 4, 150, 16, 0, 0, TAU); ctx.fill();
+  // asa de atrás
+  ctx.strokeStyle = mixc(c, '#000000', 0.35); ctx.lineWidth = 9; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(-40, -Hh - 6 * ab); ctx.bezierCurveTo(-40, -Hh - 100, 62, -Hh - 100, 62, -Hh - 6 * ab); ctx.stroke();
+  // interior (boca) y fuelle lateral
+  ctx.fillStyle = mixc(c, '#000000', 0.4); ctx.beginPath(); ctx.moveTo(-W2, -Hh); ctx.lineTo(-W2 + 46, -Hh - 26 * ab); ctx.lineTo(W2 + 46, -Hh - 26 * ab); ctx.lineTo(W2, -Hh); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = mixc(c, '#000000', 0.22); ctx.beginPath(); ctx.moveTo(W2, -Hh); ctx.lineTo(W2 + 46, -Hh - 26 * ab); ctx.lineTo(W2 + 40, -18); ctx.lineTo(W2, 0); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = mixc(c, '#000000', 0.38); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(W2 + 24, -Hh - 13 * ab); ctx.lineTo(W2 + 14, -Hh * 0.45); ctx.lineTo(W2 + 20, -9); ctx.stroke();
+  // frente
+  const g = ctx.createLinearGradient(-W2, 0, W2, 0); g.addColorStop(0, mixc(c, '#ffffff', 0.14)); g.addColorStop(1, c); ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(-W2, 0); ctx.lineTo(-W2, -Hh);
+  for (let i = 0; i <= 24; i++) ctx.lineTo(-W2 + i * (2 * W2 / 24), -Hh + (i % 2 ? 5 : 0)); ctx.lineTo(W2, 0); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = mixc(c, '#000000', 0.16); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(-W2, -52); ctx.lineTo(W2, -52); ctx.moveTo(-W2, -52); ctx.lineTo(-W2 + 40, 0); ctx.stroke();
+  if (o.arruga) { const r = rng(o.seed || 9); ctx.strokeStyle = rgba('#5a3d1e', 0.4 * o.arruga); ctx.lineWidth = 2.2; for (let i = 0; i < 16; i++) { const x0 = -W2 + 14 + r() * (2 * W2 - 28), y0 = -Hh + 20 + r() * (Hh - 50), an = r() * TAU, l = 24 + r() * 70; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + Math.cos(an) * l * 0.5, y0 + Math.sin(an) * l * 0.5 + (r() - 0.5) * 12); ctx.lineTo(x0 + Math.cos(an) * l, y0 + Math.sin(an) * l); ctx.stroke(); }
+    ctx.strokeStyle = rgba('#ffffff', 0.22 * o.arruga); ctx.beginPath(); ctx.moveTo(-W2 + 8, -Hh * 0.52); ctx.lineTo(W2 - 6, -Hh * 0.5); ctx.stroke(); }
+  if (o.rota) { ctx.fillStyle = o.fondoRoto || '#14161d'; ctx.beginPath(); ctx.moveTo(-70, 2); const n = 9; for (let i = 0; i <= n; i++) ctx.lineTo(-70 + i * 140 / n, 2 - (i % 2 ? 70 : 34) * o.rota * (1 - Math.abs(i - n / 2) / n)); ctx.lineTo(70, 2); ctx.closePath(); ctx.fill(); }
+  // asa de enfrente
+  ctx.strokeStyle = mixc(c, '#000000', 0.2); ctx.lineWidth = 9; ctx.beginPath(); ctx.moveTo(-62, -Hh + 14); ctx.bezierCurveTo(-62, -Hh - 96, 40, -Hh - 96, 40, -Hh + 14); ctx.stroke();
+  ctx.fillStyle = mixc(c, '#000000', 0.12); ctx.fillRect(-76, -Hh + 8, 28, 22); ctx.fillRect(26, -Hh + 8, 28, 22);
+  ctx.restore();
+}
+// Bolsa de plástico tipo camiseta (la delgada del súper). o.grosor 0..1 la hace más opaca y gruesa (bolsa danesa de LDPE).
+function bolsaPlastico(ctx, x, y, s = 1, o = {}) {
+  const a = cl(o.a ?? 1); if (a <= 0) return; const T = o.T || 0, gr = o.grosor || 0, c = o.c || '#F3F6FB';
+  ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.rotate((o.rot || 0) + Math.sin(T * 1.1) * 0.015); ctx.scale(s, s);
+  ctx.fillStyle = 'rgba(0,0,0,.14)'; ctx.beginPath(); ctx.ellipse(0, 4, 120, 13, 0, 0, TAU); ctx.fill();
+  const w = 108 + Math.sin(T * 0.9) * 3; const P = () => { ctx.beginPath(); ctx.moveTo(-w + 12, 0); ctx.quadraticCurveTo(-w - 14, -120, -w + 6, -230); ctx.lineTo(-w + 2, -330); ctx.quadraticCurveTo(-w + 22, -346, -w + 44, -330); ctx.quadraticCurveTo(-w + 48, -262, -30, -236); ctx.quadraticCurveTo(0, -226, 30, -236); ctx.quadraticCurveTo(w - 48, -262, w - 44, -330); ctx.quadraticCurveTo(w - 22, -346, w - 2, -330); ctx.lineTo(w - 6, -230); ctx.quadraticCurveTo(w + 14, -120, w - 12, 0); ctx.quadraticCurveTo(0, 12, -w + 12, 0); ctx.closePath(); };
+  P(); ctx.fillStyle = rgba(c, 0.62 + 0.3 * gr); ctx.fill(); ctx.strokeStyle = rgba('#6d7890', 0.55); ctx.lineWidth = 2.2 + 2 * gr; ctx.stroke();
+  ctx.save(); P(); ctx.clip(); ctx.strokeStyle = 'rgba(110,125,150,.32)'; ctx.lineWidth = 2; const r = rng(o.seed || 4); for (let i = 0; i < 9; i++) { const x0 = -w + r() * 2 * w; ctx.beginPath(); ctx.moveTo(x0, -230 + r() * 30); ctx.quadraticCurveTo(x0 + (r() - 0.5) * 50, -120, x0 + (r() - 0.5) * 70, -6); ctx.stroke(); }
+  ctx.fillStyle = 'rgba(255,255,255,.5)'; ctx.beginPath(); ctx.ellipse(-w * 0.45, -130, 14, 80, 0.1, 0, TAU); ctx.fill(); ctx.restore();
+  ctx.restore();
+}
+// Caja de cartón corrugado, vista de tres cuartos, con solapas.
+function cajaCarton(ctx, x, y, s = 1, o = {}) {
+  const c = o.c || '#C69A62', a = cl(o.a ?? 1); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.scale(s, s);
+  ctx.fillStyle = 'rgba(0,0,0,.16)'; ctx.beginPath(); ctx.ellipse(20, 4, 190, 18, 0, 0, TAU); ctx.fill();
+  ctx.fillStyle = c; ctx.fillRect(-150, -190, 230, 190); ctx.fillStyle = mixc(c, '#000000', 0.2); ctx.beginPath(); ctx.moveTo(80, -190); ctx.lineTo(170, -230); ctx.lineTo(170, -40); ctx.lineTo(80, 0); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = mixc(c, '#000000', 0.42); ctx.beginPath(); ctx.moveTo(-150, -190); ctx.lineTo(-60, -230); ctx.lineTo(170, -230); ctx.lineTo(80, -190); ctx.closePath(); ctx.fill();
+  const ab = o.abre ?? 0.5; ctx.fillStyle = mixc(c, '#ffffff', 0.1); ctx.beginPath(); ctx.moveTo(-150, -190); ctx.lineTo(80, -190); ctx.lineTo(60, -190 - 70 * ab); ctx.lineTo(-176, -190 - 60 * ab); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = mixc(c, '#000000', 0.1); ctx.beginPath(); ctx.moveTo(80, -190); ctx.lineTo(170, -230); ctx.lineTo(206, -230 - 54 * ab); ctx.lineTo(112, -190 - 46 * ab); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = mixc(c, '#ffffff', 0.25); ctx.fillRect(-150, -108, 230, 20); ctx.strokeStyle = mixc(c, '#000000', 0.3); ctx.lineWidth = 2; ctx.strokeRect(-150, -190, 230, 190);
+  ctx.restore();
+}
+// Árbol de día: tronco y copa redonda. o.talado 0..1 lo vuelve tocón.
+function arbol(ctx, x, y, h, o = {}) {
+  const a = cl(o.a ?? 1); if (a <= 0) return; const T = o.T || 0, tal = o.talado || 0, c = o.c || '#2E9E57'; ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y);
+  ctx.fillStyle = '#7A5230'; ctx.beginPath(); ctx.roundRect(-h * 0.055, -h * mixn(0.5, 0.1, tal), h * 0.11, h * mixn(0.5, 0.1, tal), 4); ctx.fill();
+  if (tal > 0.5) { ctx.fillStyle = '#D9B58A'; ctx.beginPath(); ctx.ellipse(0, -h * 0.1, h * 0.055, h * 0.018, 0, 0, TAU); ctx.fill(); }
+  const ca = 1 - cl(tal * 2); if (ca > 0) { ctx.globalAlpha *= ca; ctx.rotate(Math.sin(T * 0.8 + x) * 0.012 + tal * 1.2);
+    [[0, -0.72, 0.3, 0], [-0.19, -0.6, 0.22, 0.12], [0.2, -0.58, 0.23, 0.08], [0.02, -0.52, 0.24, 0.16]].forEach(([dx, dy, r, d]) => { ctx.fillStyle = mixc(c, '#000000', d); ctx.beginPath(); ctx.arc(dx * h, dy * h, r * h, 0, TAU); ctx.fill(); });
+    ctx.fillStyle = 'rgba(255,255,255,.14)'; ctx.beginPath(); ctx.arc(-0.08 * h, -0.8 * h, 0.13 * h, 0, TAU); ctx.fill(); }
+  ctx.restore();
+}
+// Fábrica con techo de sierra, chimeneas y humo que sube (T).
+function fabrica(ctx, x, y, s = 1, T = 0, o = {}) {
+  const a = cl(o.a ?? 1); if (a <= 0) return; const c = o.c || '#4A5568'; ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.scale(s, s);
+  if (o.humo !== false) for (let k = 0; k < 2; k++) for (let i = 0; i < 6; i++) { const u = ((T * 0.22 + i / 6 + k * 0.4) % 1), px = -120 + k * 62 + u * 60 + Math.sin(u * 5 + i) * 10, py = -330 - u * 190; ctx.fillStyle = `rgba(245,245,250,${0.55 * (1 - u)})`; ctx.beginPath(); ctx.arc(px, py, 16 + u * 36, 0, TAU); ctx.fill(); }
+  ctx.fillStyle = mixc(c, '#000000', 0.2); ctx.fillRect(-140, -330, 40, 200); ctx.fillRect(-78, -300, 40, 170); ctx.fillStyle = '#E5352B'; ctx.fillRect(-140, -330, 40, 16); ctx.fillRect(-78, -300, 40, 16);
+  ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(-180, 0); ctx.lineTo(-180, -150); for (let i = 0; i < 4; i++) { ctx.lineTo(-180 + i * 90 + 90, -210); ctx.lineTo(-180 + i * 90 + 90, -150); } ctx.lineTo(180, 0); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#FFE08A'; for (let i = 0; i < 5; i++) ctx.fillRect(-156 + i * 66, -110, 40, 34); ctx.fillStyle = mixc(c, '#000000', 0.35); ctx.fillRect(-30, -56, 64, 56);
+  ctx.restore();
+}
+// Camión de reparto (caja cerrada). Las ruedas giran con T.
+function camion(ctx, x, y, s = 1, T = 0, o = {}) {
+  const a = cl(o.a ?? 1); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y + Math.sin(T * 9) * 1.2); ctx.scale(s, s);
+  ctx.fillStyle = 'rgba(0,0,0,.18)'; ctx.beginPath(); ctx.ellipse(0, 4, 190, 12, 0, 0, TAU); ctx.fill();
+  ctx.fillStyle = o.c || '#F6F3EC'; ctx.beginPath(); ctx.roundRect(-180, -170, 240, 140, 8); ctx.fill(); ctx.fillStyle = o.c2 || '#E5352B'; ctx.beginPath(); ctx.roundRect(66, -128, 104, 98, [8, 26, 6, 6]); ctx.fill();
+  ctx.fillStyle = '#BFE6F7'; ctx.beginPath(); ctx.roundRect(104, -116, 54, 42, [4, 18, 4, 4]); ctx.fill(); ctx.fillStyle = '#2A2D36'; ctx.fillRect(-184, -34, 360, 12);
+  for (const wx of [-116, 116]) { ctx.fillStyle = '#1b1d23'; ctx.beginPath(); ctx.arc(wx, -22, 30, 0, TAU); ctx.fill(); ctx.fillStyle = '#9aa3b5'; ctx.beginPath(); ctx.arc(wx, -22, 13, 0, TAU); ctx.fill(); ctx.strokeStyle = '#1b1d23'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(wx + Math.cos(T * 6) * 13, -22 + Math.sin(T * 6) * 13); ctx.lineTo(wx - Math.cos(T * 6) * 13, -22 - Math.sin(T * 6) * 13); ctx.stroke(); }
+  ctx.restore();
+}
+// Bomba de pozo de petróleo (balancín), en esquema.
+function pozo(ctx, x, y, s = 1, T = 0, o = {}) {
+  const a = cl(o.a ?? 1); if (a <= 0) return; const an = Math.sin(T * 1.6) * 0.22; ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.scale(s, s); ctx.strokeStyle = '#2A2D36'; ctx.fillStyle = '#2A2D36'; ctx.lineWidth = 12; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(-40, 0); ctx.lineTo(0, -170); ctx.lineTo(40, 0); ctx.stroke(); ctx.save(); ctx.translate(0, -170); ctx.rotate(an); ctx.beginPath(); ctx.moveTo(-130, 0); ctx.lineTo(120, 0); ctx.stroke(); ctx.beginPath(); ctx.moveTo(120, -6); ctx.quadraticCurveTo(160, 20, 124, 60); ctx.lineTo(112, 0); ctx.fill(); ctx.restore();
+  ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(126 * Math.cos(an) + 6, -170 + 126 * Math.sin(an) + 40); ctx.lineTo(132, 0); ctx.stroke(); ctx.fillRect(-90, -8, 250, 10); ctx.restore();
+}
+// Mar: franjas de olas que se mueven con T, de y hacia abajo.
+function mar(ctx, y, T = 0, o = {}) {
+  const c = o.c || '#1E78C8', h = o.h || 400; for (let k = 0; k < 5; k++) { const yy = y + k * (o.paso || 46), amp = 9 + k * 2; ctx.fillStyle = mixc(c, k % 2 ? '#0B3D7A' : '#48B6E8', 0.18 + k * 0.12); ctx.beginPath(); ctx.moveTo(-50, yy + h); ctx.lineTo(-50, yy);
+    for (let x = -50; x <= 1980; x += 30) ctx.lineTo(x, yy + Math.sin(x * 0.012 + T * (0.9 + k * 0.15) + k * 1.7) * amp); ctx.lineTo(1980, yy + h); ctx.closePath(); ctx.fill(); }
+}
+// Corte de un relleno sanitario o tiradero: capas de residuos y tierra, de (x, y) hacia abajo.
+function rellenoSanitario(ctx, x, y, w, h, o = {}) {
+  const r = rng(o.seed || 31), capas = o.capas || 4, hc = h / capas; ctx.save(); ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  for (let k = 0; k < capas; k++) { ctx.fillStyle = mixc('#3a2c22', '#1c1612', k / capas); ctx.fillRect(x, y + k * hc, w, hc); ctx.fillStyle = mixc('#6b5238', '#3d2f22', k / capas); ctx.fillRect(x, y + k * hc, w, hc * 0.2);
+    for (let i = 0; i < w / 26; i++) { const px = x + r() * w, py = y + k * hc + hc * 0.28 + r() * hc * 0.66, t = r(); ctx.fillStyle = t < 0.3 ? 'rgba(200,160,112,.5)' : t < 0.55 ? 'rgba(235,240,248,.4)' : t < 0.8 ? 'rgba(90,110,80,.5)' : 'rgba(120,130,150,.45)'; ctx.save(); ctx.translate(px, py); ctx.rotate(r() * 3); ctx.fillRect(-10 - r() * 12, -5 - r() * 5, 20 + r() * 26, 9 + r() * 10); ctx.restore(); } }
+  ctx.restore();
+}
+// Vaso desechable con tapa. tipo: 'papel' (blanco con manga kraft), 'plastico' (transparente), 'bio' (verdoso), 'reusable' (termo).
+function vaso(ctx, x, y, s = 1, tipo = 'papel', o = {}) {
+  const a = cl(o.a ?? 1); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.scale(s, s);
+  ctx.fillStyle = 'rgba(0,0,0,.15)'; ctx.beginPath(); ctx.ellipse(0, 3, 80, 10, 0, 0, TAU); ctx.fill();
+  const P = () => { ctx.beginPath(); ctx.moveTo(-74, -220); ctx.lineTo(74, -220); ctx.lineTo(54, 0); ctx.lineTo(-54, 0); ctx.closePath(); };
+  if (tipo === 'reusable') { ctx.fillStyle = o.c || '#11a39a'; ctx.beginPath(); ctx.roundRect(-62, -250, 124, 250, [14, 14, 22, 22]); ctx.fill(); ctx.fillStyle = 'rgba(255,255,255,.22)'; ctx.fillRect(-48, -230, 16, 200); ctx.fillStyle = '#2A2D36'; ctx.beginPath(); ctx.roundRect(-68, -284, 136, 44, 12); ctx.fill(); ctx.fillStyle = '#4a4f5e'; ctx.fillRect(10, -296, 34, 16); }
+  else { P(); ctx.fillStyle = tipo === 'papel' ? '#F7F3EA' : tipo === 'bio' ? 'rgba(190,235,200,.75)' : 'rgba(225,240,250,.65)'; ctx.fill(); ctx.strokeStyle = 'rgba(60,70,90,.45)'; ctx.lineWidth = 2.5; ctx.stroke();
+    if (tipo === 'papel') { ctx.fillStyle = '#C8A070'; ctx.beginPath(); ctx.moveTo(-68, -160); ctx.lineTo(68, -160); ctx.lineTo(60, -60); ctx.lineTo(-60, -60); ctx.closePath(); ctx.fill(); }
+    else { ctx.fillStyle = 'rgba(255,255,255,.5)'; ctx.fillRect(-50, -200, 12, 170); }
+    if (o.tapa !== false) { ctx.fillStyle = tipo === 'papel' ? '#2A2D36' : 'rgba(240,246,252,.9)'; ctx.beginPath(); ctx.roundRect(-82, -244, 164, 26, 10); ctx.fill(); ctx.beginPath(); ctx.roundRect(-64, -262, 128, 22, 10); ctx.fill(); ctx.strokeStyle = 'rgba(60,70,90,.45)'; ctx.stroke(); } }
+  ctx.restore();
+}
+// Popote. c = color del material.
+function popote(ctx, x, y, l, an, c, o = {}) { const a = cl(o.a ?? 1); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.rotate(an); ctx.fillStyle = c; ctx.beginPath(); ctx.roundRect(-11, -l, 22, l, 6); ctx.fill(); ctx.fillStyle = 'rgba(255,255,255,.35)'; ctx.fillRect(-7, -l + 4, 5, l - 8); if (o.rayas) { ctx.fillStyle = o.rayas; for (let i = 0; i < l / 44; i++) { ctx.beginPath(); ctx.moveTo(-11, -l + i * 44 + 10); ctx.lineTo(11, -l + i * 44 + 24); ctx.lineTo(11, -l + i * 44 + 40); ctx.lineTo(-11, -l + i * 44 + 26); ctx.closePath(); ctx.fill(); } } ctx.strokeStyle = 'rgba(40,40,50,.4)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.roundRect(-11, -l, 22, l, 6); ctx.stroke(); ctx.restore(); }
+// Casa sencilla y bote de basura (para la línea de vida de la bolsa).
+function casa(ctx, x, y, s = 1, o = {}) { const a = cl(o.a ?? 1); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.scale(s, s); ctx.fillStyle = '#F6F3EC'; ctx.fillRect(-90, -130, 180, 130); ctx.fillStyle = '#E5352B'; ctx.beginPath(); ctx.moveTo(-112, -126); ctx.lineTo(0, -214); ctx.lineTo(112, -126); ctx.closePath(); ctx.fill(); ctx.fillStyle = '#7A5230'; ctx.fillRect(-22, -72, 44, 72); ctx.fillStyle = '#BFE6F7'; ctx.fillRect(40, -100, 34, 34); ctx.fillRect(-74, -100, 34, 34); ctx.restore(); }
+function bote(ctx, x, y, s = 1, o = {}) { const a = cl(o.a ?? 1); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.scale(s, s); ctx.fillStyle = o.c || '#5B6578'; ctx.beginPath(); ctx.moveTo(-56, -150); ctx.lineTo(56, -150); ctx.lineTo(44, 0); ctx.lineTo(-44, 0); ctx.closePath(); ctx.fill(); ctx.fillStyle = mixc(o.c || '#5B6578', '#000000', 0.3); ctx.beginPath(); ctx.roundRect(-66, -172, 132, 24, 8); ctx.fill(); ctx.fillRect(-16, -186, 32, 14); ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.lineWidth = 4; for (const d of [-22, 0, 22]) { ctx.beginPath(); ctx.moveTo(d, -130); ctx.lineTo(d * 0.8, -16); ctx.stroke(); } ctx.restore(); }
+// Palomita y círculo de color (semáforos de tablas).
+function luzSem(ctx, x, y, r, c, a = 1) { a = cl(a); if (a <= 0) return; ctx.save(); ctx.globalAlpha *= a; ctx.fillStyle = c; ctx.beginPath(); ctx.arc(x, y, r * (0.6 + 0.4 * a), 0, TAU); ctx.fill(); ctx.strokeStyle = 'rgba(255,255,255,.5)'; ctx.lineWidth = 2; ctx.stroke(); ctx.restore(); }
+
+Object.assign(window.LZK, { TINTA, MARCA, fondoColor, franja, tinta, panel, fuenteDato, barra, barraH, balanza, bolsaPapel, bolsaPlastico, cajaCarton, arbol, fabrica, camion, pozo, mar, rellenoSanitario, vaso, popote, casa, bote, luzSem });

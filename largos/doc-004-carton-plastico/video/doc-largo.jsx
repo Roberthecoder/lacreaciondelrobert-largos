@@ -17,17 +17,18 @@ const SERIF = "'Fraunces', Georgia, serif";
 const BLANCO = '#F6F3EC';
 
 // Color de cada capítulo: tono (luz y fondos oscuros teñidos) y acento (rótulos, líneas, números).
-// Documental 001 (bioluminiscentes): tarjetas de noche; el acento es el color real de la luz de cada organismo.
+// Documental 004 (papel contra plástico): tarjetas oscuras teñidas con el color de la marca de cada capítulo.
 const PALETA = [
-  { fondo: '#0b1220', tinta: BLANCO, acento: KC.gold2 },
-  { fondo: '#141019', tinta: BLANCO, acento: '#FFB05A' },
-  { fondo: '#08160d', tinta: BLANCO, acento: '#3DFF4A' },
-  { fondo: '#06161a', tinta: BLANCO, acento: '#00E5E0' },
-  { fondo: '#061224', tinta: BLANCO, acento: '#00A6FF' },
-  { fondo: '#0a160b', tinta: BLANCO, acento: '#4BFF45' },
-  { fondo: '#12160a', tinta: BLANCO, acento: '#B8FF1F' },
-  { fondo: '#0b1220', tinta: BLANCO, acento: KC.gold2 },
-  { fondo: '#08160d', tinta: BLANCO, acento: '#3DFF4A' },
+  { fondo: '#5a4708', tinta: BLANCO, acento: '#FFD23F' },
+  { fondo: '#0c4a39', tinta: BLANCO, acento: '#35DDA9' },
+  { fondo: '#5a1f36', tinta: BLANCO, acento: '#FF86AE' },
+  { fondo: '#0d4257', tinta: BLANCO, acento: '#45C9F2' },
+  { fondo: '#10285e', tinta: BLANCO, acento: '#7FB2FF' },
+  { fondo: '#35255e', tinta: BLANCO, acento: '#B9A0FF' },
+  { fondo: '#5c3410', tinta: BLANCO, acento: '#FFA04A' },
+  { fondo: '#4a4234', tinta: BLANCO, acento: '#F4EFE4' },
+  { fondo: '#0c4a39', tinta: BLANCO, acento: '#35DDA9' },
+  { fondo: '#5a4708', tinta: BLANCO, acento: '#FFD23F' },
 ];
 
 /* ---------------- línea de tiempo ---------------- */
@@ -233,7 +234,7 @@ function EscenaCapitulo({ c, tl, T, pal }) {
     <Fondo color={pal.fondo} T={T} seed={c.num * 3 + 1} />
     <div style={abs(0, 0, { width: W, height: H, background: `linear-gradient(100deg, rgba(255,255,255,0) 30%, rgba(255,240,210,.10) 50%, rgba(255,255,255,0) 70%)`, transform: `translateX(${klerp(-W, W, kprog(tl, 0.3, 2.8, kEase.suave))}px)` })} />
     <div style={abs(0, 330, { width: W, textAlign: 'center', fontFamily: KF.mono, fontWeight: 700, fontSize: 30, letterSpacing: 14, color: pal.acento, opacity: e * (1 - s) })}>CAPÍTULO {c.num}</div>
-    <div style={abs(120, 390, { width: W - 240, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: 170, lineHeight: 1, color: BLANCO, textShadow: KSOMBRA,
+    <div style={abs(120, 390, { width: W - 240, textAlign: 'center', fontFamily: SERIF, fontWeight: 600, fontSize: c.titulo.length > 17 ? Math.max(92, Math.round(170 * 17 / c.titulo.length)) : 170, lineHeight: '196px', color: BLANCO, textShadow: KSOMBRA, whiteSpace: 'nowrap',
       transform: `scale(${0.96 + 0.04 * e + 0.02 * kprog(tl, 0, TARJETA)})`, opacity: e * (1 - s), filter: `blur(${(1 - e) * 10}px)`, fontVariationSettings: "'opsz' 144" })}>{c.titulo}</div>
     <div style={abs(W / 2 - 180 * e, 610, { width: 360 * e, height: 3, background: pal.acento, opacity: 1 - s })} />
     {c.sub && <div style={abs(0, 650, { width: W, textAlign: 'center', fontFamily: SERIF, fontStyle: 'italic', fontWeight: 400, fontSize: 46, color: BLANCO, opacity: 0.88 * kprog(tl, 0.8, 1.5) * (1 - s) })}>{c.sub}</div>}
@@ -288,7 +289,7 @@ const ESCENAS_TIPO = { foto: EscenaFoto, fotos: EscenaFotos, texto: EscenaTexto,
 
 /* ---------------- capas fijas ---------------- */
 // Nombres científicos: siempre en cursiva (subtítulos y etiquetas).
-const CIENTIFICOS = /(Panellus stipticus|Panellus|Mycena chlorophos|Armillaria|Omphalotus|Aliivibrio fischeri|Euprymna scolopes|Vibrio vulnificus|Vibrio parahaemolyticus|Pyrocystis lunula|Pyrocystis|Neonothopanus nambi|Photinus pyralis|Photinus palaciosi|foxfire)/g;
+const CIENTIFICOS = /(Environmental Science & Technology Letters|Food Additives & Contaminants)/g; // este documental no nombra especies; quedan las revistas
 function conCursivas(texto) {
   return texto.split(CIENTIFICOS).map((s, i) => (i % 2 ? <i key={i} style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 500, letterSpacing: 0 }}>{s}</i> : s));
 }
@@ -347,7 +348,7 @@ function RobertLargo({ T }) {
   return <>{LINEA.lineas.filter((l) => l.robert).map((l) => {
     const [pose, lado = 'abajo-der', hasta = 1] = l.robert;
     const fin = l.at + l.dur * hasta;
-    const e = kprog(T, l.at, l.at + 0.45, (x) => 1 - Math.pow(1 - x, 3)) * (1 - kprog(T, fin - 0.35, fin));
+    const e = (l.at === 0 ? 1 : kprog(T, l.at, l.at + 0.45, (x) => 1 - Math.pow(1 - x, 3))) * (1 - kprog(T, fin - 0.35, fin)); // en el cuadro 0 Robert ya está en pantalla
     if (e <= 0) return null;
     const L = LADOS_H[lado];
     return <img key={l.n} src={'video/stickers/' + pose + '.png'} style={abs(L.left, L.top + (1 - e) * 160, { width: L.width, zIndex: 39, opacity: e,
