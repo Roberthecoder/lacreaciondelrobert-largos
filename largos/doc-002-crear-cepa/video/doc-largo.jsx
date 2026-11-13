@@ -17,17 +17,18 @@ const SERIF = "'Fraunces', Georgia, serif";
 const BLANCO = '#F6F3EC';
 
 // Color de cada capítulo: tono (luz y fondos oscuros teñidos) y acento (rótulos, líneas, números).
-// Documental 001 (bioluminiscentes): tarjetas de noche; el acento es el color real de la luz de cada organismo.
+// Documental 002 (crear una cepa): tarjetas oscuras; un acento por capítulo.
 const PALETA = [
-  { fondo: '#0b1220', tinta: BLANCO, acento: KC.gold2 },
-  { fondo: '#141019', tinta: BLANCO, acento: '#FFB05A' },
-  { fondo: '#08160d', tinta: BLANCO, acento: '#3DFF4A' },
-  { fondo: '#06161a', tinta: BLANCO, acento: '#00E5E0' },
-  { fondo: '#061224', tinta: BLANCO, acento: '#00A6FF' },
-  { fondo: '#0a160b', tinta: BLANCO, acento: '#4BFF45' },
-  { fondo: '#12160a', tinta: BLANCO, acento: '#B8FF1F' },
-  { fondo: '#0b1220', tinta: BLANCO, acento: KC.gold2 },
-  { fondo: '#08160d', tinta: BLANCO, acento: '#3DFF4A' },
+  { fondo: '#1a120c', tinta: BLANCO, acento: KC.gold2 },
+  { fondo: '#1a140d', tinta: BLANCO, acento: '#F4C25A' },
+  { fondo: '#1f0f18', tinta: BLANCO, acento: '#F08CAB' },
+  { fondo: '#0b1416', tinta: BLANCO, acento: '#7FD0E0' },
+  { fondo: '#0c0e1d', tinta: BLANCO, acento: '#F08CAB' },
+  { fondo: '#090d18', tinta: BLANCO, acento: '#4FA8FF' },
+  { fondo: '#0a1410', tinta: BLANCO, acento: '#63E08A' },
+  { fondo: '#17120a', tinta: BLANCO, acento: '#F4C25A' },
+  { fondo: '#120c1c', tinta: BLANCO, acento: '#B79CFF' },
+  { fondo: '#1a120c', tinta: BLANCO, acento: KC.gold2 },
 ];
 
 /* ---------------- línea de tiempo ---------------- */
@@ -288,7 +289,7 @@ const ESCENAS_TIPO = { foto: EscenaFoto, fotos: EscenaFotos, texto: EscenaTexto,
 
 /* ---------------- capas fijas ---------------- */
 // Nombres científicos: siempre en cursiva (subtítulos y etiquetas).
-const CIENTIFICOS = /(Panellus stipticus|Panellus|Mycena chlorophos|Armillaria|Omphalotus|Aliivibrio fischeri|Euprymna scolopes|Vibrio vulnificus|Vibrio parahaemolyticus|Pyrocystis lunula|Pyrocystis|Neonothopanus nambi|Photinus pyralis|Photinus palaciosi|foxfire)/g;
+const CIENTIFICOS = /(Pleurotus djamor|Pleurotus ostreatus|Pleurotus|Coprinopsis cinerea|Coprinopsis|Lecanicillium fungicola|Lentinula edodes|Auricularia heimuer|spawn)/g;
 function conCursivas(texto) {
   return texto.split(CIENTIFICOS).map((s, i) => (i % 2 ? <i key={i} style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 500, letterSpacing: 0 }}>{s}</i> : s));
 }
