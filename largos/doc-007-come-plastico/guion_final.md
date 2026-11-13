@@ -1,8 +1,7 @@
 # Documental 007 · ¿Los organismos come plástico son una estafa?
 
 Versión 1 (13 nov 2026). Expositiva, 100 % ilustrada, sin voz por ahora. Duración: 6.0 min (361.0 s).
-Tesis: 15 minutos a 121 °C no alcanzan para casi nada de la preparación de inóculo y sustrato; los frascos de grano suelen ir de 60 a 90 minutos y las bolsas de 2 a 2.5 horas porque el reloj de la receta empieza cuando el centro llega a 121 °C.
-Cada dato lleva su fuente entre corchetes (lista completa en `fuentes.md`). [C] = cálculo propio con datos de las fuentes. [P] = práctica del cultivo que indicó Robert.
+Cada dato lleva su fuente entre corchetes (lista completa en `fuentes.md`). [C] = cálculo propio con datos de las fuentes.
 
 ## 00 Gancho
 
