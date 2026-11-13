@@ -16,6 +16,13 @@ Decisiones de Robert del 12 nov 2026: renumerar a **001**, hacerlo **100 % ilust
 - «Si vas, mi consejo: ve a…» → «Si vas, lo sensato es ir a…» (sigue siendo una recomendación, no una regla oficial).
 - Cierre: «la luz azul de mis bacterias» → «la luz azul de las bacterias»; «esa luz junto a mi cama no era una lámpara» → «esa luz no es una lámpara».
 
+## Segunda ronda (12 nov 2026, comentarios de Robert al borrador)
+- **Gancho:** se quitó la escena de la recámara con el *Panellus*. El video abre con los cinco seres en fila: «Ninguna de estas cinco luces es una lámpara: las cinco están vivas.»
+- **Dificultad de las algas:** ya no se dice que son «fáciles» a secas. Se aclara que lo son si se compran el cultivo y el medio ya hechos, y hay una escena nueva (`medio`) que explica que formular el medio desde cero es lo difícil (fuentes nuevas al final de `fuentes.md`).
+- **Bacterias:** se agregó que su medio es un caldo nutritivo con sal y que también se vende preparado.
+- **Resumen:** ya no dice «de más fácil a más difícil»; parte de que se compra cada cultivo y su medio ya hechos.
+- **Cierre:** ya no regresa a «esa luz verde del principio»; regresa a las cinco luces con las que abre.
+
 ## Pendiente para Robert
 - Ver el borrador y decir qué escenas cambiar.
 - Decidir la voz (grabada por él o clonada). Las 19 preguntas del original ya no bloquean nada; solo harían falta si se quiere regresar la parte personal.

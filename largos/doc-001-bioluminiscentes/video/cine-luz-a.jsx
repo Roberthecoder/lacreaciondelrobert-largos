@@ -54,22 +54,18 @@ function emblema(ctx, cual, x, y, s, luz, T) {
 }
 
 /* ====== 00 · Gancho ====== */
-LUZ.cuarto = (ctx, e) => {
-  const z = mixn(1.0, 2.7, ss(e.tl, e.L(2) - 0.2, e.L(2) + 2.6)) + 0.06 * e.p, kx = ss(e.tl, e.L(2) - 0.2, e.L(2) + 2.6);
-  const fin = cam(ctx, z, mixn(960, 1110, kx), mixn(540, 575, kx));
-  const brillo = eo(e.tl, 0, 0.9) * (0.75 + 0.25 * en(e, 3, 1.5)), techo = ss(e.tl, e.L(1), e.L(1) + 0.5) * (1 - ss(e.tl, e.L(1) + 1.6, e.L(1) + 3.2));
-  recamara(ctx, e.T, brillo, techo, 1 - 0.75 * en(e, 3, 2));
-  fin();
-  rotulo(ctx, 1290, 520, '*Panellus stipticus*', 'HONGO · LUZ PROPIA', en(e, 2, 0.8, 1.6));
-};
+// Los cinco candidatos en fila. Abre el documental y regresa en el cierre (misma imagen, ya transformada).
+function cincoLuces(ctx, e, o = {}) {
+  const E = [['alga', 'ALGAS', LUZC.dino], ['hongo', 'HONGOS', LUZC.pan], ['bact', 'BACTERIAS', LUZC.bact], ['petunia', 'UNA PLANTA', LUZC.pet], ['luci', 'LUCIÉRNAGAS', LUZC.luc]];
+  const y0 = o.y ?? 560, s = o.s ?? 1.25, A = o.a ?? 1;
+  E.forEach(([k, n, c], i) => { const a = (o.entra === false ? 1 : eo(e.tl, i * 0.14, 0.55 + i * 0.14)) * A, x = 280 + i * 340, vuela = i === 4 ? (o.vuela || 0) : 0, y = y0 - vuela * 190 + Math.sin(e.T * 0.8 + i) * 6;
+    ctx.save(); ctx.globalAlpha = a; emblema(ctx, k, x + vuela * 70, y, s, a * (o.luz ?? 1), e.T); ctx.restore();
+    if (o.nombres !== false) txt(ctx, n, x, y0 + 260 * s / 1.25, { s: 24, f: 'mono', w: 700, ls: 5, al: 'center', c, a: a * (i === 4 ? 1 - 0.6 * vuela : 1) });
+    if (o.duda) { const duda = o.duda(i) * (i === 4 ? 1 - vuela : 1); ctx.save(); ctx.globalAlpha = duda; ctx.strokeStyle = 'rgba(220,230,250,.5)'; ctx.lineWidth = 2; ctx.setLineDash([6, 8]); ctx.beginPath(); ctx.arc(x, y0 + 318, 20, e.T * 0.6, e.T * 0.6 + TAU); ctx.stroke(); ctx.restore(); txt(ctx, '?', x, y0 + 328, { s: 30, f: 'serif', w: 500, al: 'center', a: duda }); } });
+}
 LUZ.cinco = (ctx, e) => {
   noche(ctx, '#04060b', '#080d18'); polvo(ctx, 26, 5, e.T, '#7f95c0', 0.35);
-  const E = [['alga', 'ALGAS', LUZC.dino], ['hongo', 'HONGOS', LUZC.pan], ['bact', 'BACTERIAS', LUZC.bact], ['petunia', 'UNA PLANTA', LUZC.pet], ['luci', 'LUCIÉRNAGAS', LUZC.luc]];
-  E.forEach(([k, n, c], i) => { const a = ss(e.tl, 0.3 + i * 0.55, 1.3 + i * 0.55), x = 280 + i * 340, vuela = i === 4 ? en(e, 2, 3.5) : 0, y = 440 - vuela * 190 + Math.sin(e.T * 0.8 + i) * 6;
-    ctx.save(); ctx.globalAlpha = a; emblema(ctx, k, x + vuela * 70, y, 1.25, a, e.T); ctx.restore();
-    txt(ctx, n, x, 700, { s: 24, f: 'mono', w: 700, ls: 5, al: 'center', c, a: a * (i === 4 ? 1 - 0.6 * vuela : 1) });
-    const duda = en(e, 1, 0.6, i * 0.18); ctx.save(); ctx.globalAlpha = duda * (i === 4 ? 1 - vuela : 1); ctx.strokeStyle = 'rgba(220,230,250,.5)'; ctx.lineWidth = 2; ctx.setLineDash([6, 8]); ctx.beginPath(); ctx.arc(x, 770, 22, e.T * 0.6, e.T * 0.6 + TAU); ctx.stroke(); ctx.restore();
-    txt(ctx, '?', x, 781, { s: 30, f: 'serif', w: 500, al: 'center', a: duda * (i === 4 ? 1 - vuela : 1) }); });
+  cincoLuces(ctx, e, { vuela: en(e, 3, 3.5), duda: (i) => en(e, 2, 0.6, i * 0.18) });
 };
 
 /* ====== 01 · Luz sin calor ====== */
@@ -312,10 +308,10 @@ LUZ.riesgo = (ctx, e) => {
     txt(ctx, 'EN LOS MARISCOS CRUDOS VIVEN LAS TRES', 960, 200, { s: 24, f: 'mono', w: 700, ls: 6, al: 'center', c: '#c9d2e3', a: A }); titulo(ctx, '¿Cuál creció en tu caja?', 960, 850, en(e, 6, 0.8) * (1 - parte4), { s: 64 }); }
   // 4) lo responsable: cepa identificada
   if (parte4 > 0) { ctx.save(); ctx.globalAlpha = parte4; ctx.translate(700, 520); ctx.rotate(0.12); ctx.strokeStyle = 'rgba(210,225,245,.5)'; ctx.lineWidth = 3; ctx.fillStyle = 'rgba(120,150,190,.06)'; ctx.beginPath(); ctx.roundRect(-52, -250, 104, 480, [10, 10, 52, 52]); ctx.fill(); ctx.stroke(); ctx.fillStyle = '#2a2d36'; ctx.fillRect(-58, -280, 116, 46); ctx.fillStyle = '#ece6d8'; ctx.fillRect(-46, -120, 92, 150); ctx.fillStyle = '#3a3d46'; for (let i = 0; i < 5; i++) ctx.fillRect(-36, -104 + i * 26, 50 + (i % 2) * 20, 6); ctx.restore(); halo(ctx, 716, 660, 170, LUZC.bact, 0.5 * parte4);
-    rotulo(ctx, 980, 480, 'Cepa identificada', 'DE UNA COLECCIÓN O UN PROVEEDOR EDUCATIVO', parte4, { c: LUZC.bact, s: 58 }); }
+    rotulo(ctx, 980, 480, 'Cepa identificada', 'DE UNA COLECCIÓN O UN PROVEEDOR EDUCATIVO', parte4, { c: LUZC.bact, s: 58 }); chip(ctx, 'MEDIO: CALDO NUTRITIVO CON SAL', 1000, 620, { c: LUZC.oro, a: en(e, 8, 0.8) }); chip(ctx, 'TAMBIÉN SE VENDE YA PREPARADO', 1000, 680, { c: '#3DFF7A', a: en(e, 8, 0.8, 2.6) }); }
 };
 LUZ.v_bact = (ctx, e) => {
   noche(ctx, '#04090c', '#071016'); petri(ctx, 580, 520, 330); colonias(ctx, 580, 520, 330, ss(e.tl, 0, 2.5), LUZC.bact, 4, eo(e.tl, 0, 3)); halo(ctx, 580, 520, 540, LUZC.bact, 0.14 * ss(e.tl, 0, 3));
   veredicto(ctx, e, 1, 'Preciosa, pero ya\nes microbiología', 'Un experimento, no una mascota', LUZC.bact);
 };
-window.LZA = { recamara, colonias, emblema, enjambre, en, esquema };
+window.LZA = { recamara, colonias, emblema, enjambre, en, esquema, cincoLuces };

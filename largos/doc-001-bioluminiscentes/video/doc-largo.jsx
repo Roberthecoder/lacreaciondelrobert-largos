@@ -342,7 +342,7 @@ function MarcaCapitulo({ T }) {
       <span style={{ color: b.pal.acento }}>{String(b.c.num).padStart(2, '0')}</span>&nbsp;&nbsp;{b.c.titulo.toUpperCase()}</div>
   </div>;
 }
-const LADOS_H = { 'abajo-der': { left: 1500, top: 560, width: 420 }, 'abajo-izq': { left: 0, top: 560, width: 420 }, 'arriba-der': { left: 1560, top: 90, width: 330 } };
+const LADOS_H = { 'abajo-der': { left: 1500, top: 560, width: 420 }, 'abajo-izq': { left: 0, top: 560, width: 420 }, 'arriba-der': { left: 1560, top: 90, width: 330 }, 'arriba-centro': { left: 820, top: 46, width: 280 } };
 function RobertLargo({ T }) {
   return <>{LINEA.lineas.filter((l) => l.robert).map((l) => {
     const [pose, lado = 'abajo-der', hasta = 1] = l.robert;

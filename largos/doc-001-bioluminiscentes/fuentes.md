@@ -51,3 +51,12 @@ devolvió el buscador o, cuando se indica, de `shots/fun-23-brillan/verificacion
 - No usé ninguna cifra de fotones, lux ni "cuántas veces más brillante": no encontré mediciones comparables abiertas.
 - No repetí datos de fun-23 (Brasil 2013, 42/12 insectos, ~100 especies, 160 Ma) salvo como referencia.
 - Lo que no se pudo abrir en esta sesión está marcado 🔎. Tras la verificación (7 nov 2026): F28 ya abierta (APHIS); F7 con autores corregidos; F12 quitada; F30 sigue pendiente de abrir el texto oficial.
+
+## Fuentes agregadas el 12 nov 2026 (medios de cultivo; corrección de Robert sobre la dificultad)
+
+| # | Dato | Fuente | Qué dice |
+|---|---|---|---|
+| F37 | Los dinoflagelados necesitan nitrato, fosfato, metales traza y vitaminas, añadidos a agua de mar; hay enriquecimientos ya preparados; hacer el medio propio "requiere balanza sensible y autoclave" | Guía de cultivo de dinoflagelados marinos (biblioteca de bioluminiscencia, Michigan State University): https://s2.lite.msu.edu/res/msu/botonl/b_online/library/bioluminescence/Dino_culture.html | "Dinoflagellates require nitrate, phosphate, trace metals, and vitamins"; "Do-your-own Culture Media (for the brave only, requires sensitive balance and autoclave)" |
+| F38 | Receta del medio f/2 (agua de mar filtrada más nitrato, fosfato, metales traza y vitaminas: tiamina, biotina y B12), usada para *Pyrocystis lunula* | Laboratorio de bioluminiscencia, Universidad de California en Santa Bárbara: https://biolum.eemb.ucsb.edu/organism/dinolab.html (receta original: Guillard y Ryther 1962, *Can. J. Microbiol.* 8:229-239) | Lista de especies cultivadas con ese método: incluye *Pyrocystis lunula* |
+| F39 | *Aliivibrio fischeri* crece en caldo o agar marino comercial; para ver la luz se recomienda el medio para fotobacterias | Ficha de la cepa ATCC 14546 (American Type Culture Collection): https://www.atcc.org/products/14546 y ATCC 49387: https://www.atcc.org/products/49387 | "will grow on Marine Broth 2216 … but Photobacterium Medium is recommended for demonstrating luminescence" |
+| F40 | Un medio sencillo para bacterias luminosas: agua, sal de mar, peptona, extracto de levadura y glicerol | Cornell Institute for Biology Teachers, receta "Seawater Complete (SWC)": https://prod.cibt.cornell.edu/workshops_and_summer_programs/0610ccc/media.pdf | Receta de 500 mL con 12 g de sal de mar |

@@ -1,7 +1,7 @@
 // cine-luz-b.jsx — Documental 001, capítulos 4 a 8 (algas, petunia, luciérnagas, resumen y cierre).
 const { TAU, cl, pr, ss, eo, mixn, rng, rgba, mixc, LUZC, halo, noche, estrellas, polvo, cam, oscurece, txt, rico, chip, rotulo, guia, titulo, sello, tache, flecha,
   red, pintaRed, tronco, panellus, mycena, embudo, petri, frasco, matraz, bacteria, calamar, dino, petunia, luciernaga, abeto, foco, termometro, reloj, maleta, documento, botella, molecula, veredicto } = window.LZK;
-const { recamara, colonias, emblema, enjambre, en, esquema } = window.LZA;
+const { recamara, colonias, emblema, enjambre, en, esquema, cincoLuces } = window.LZA;
 const LUZ = window.LUZ;
 
 // Frasco (matraz) con muchas células de Pyrocystis. fuerza: qué tanto destellan al agitar (0..1). agita: ángulo.
@@ -30,6 +30,21 @@ LUZ.celula = (ctx, e) => {
   guia(ctx, 1150, 430, 1380, 300, en(e, 2, 0.7), '#e9c46a'); txt(ctx, 'CLOROPLASTOS', 1396, 296, { s: 20, f: 'mono', w: 700, ls: 4, c: '#e9c46a', a: en(e, 2, 0.7, 0.3) });
   chip(ctx, 'SE CONSIGUE PARA ESCUELAS', 960, 800, { c: LUZC.oro, al: 'center', a: en(e, 3, 0.8) * (1 - en(e, 4, 0.5)) }); rico(ctx, 'por ejemplo, *Pyrocystis lunula*', 960, 862, { s: 34, al: 'center', a: en(e, 3, 0.8, 0.5) * (1 - en(e, 4, 0.5)) });
   chip(ctx, 'DE DÍA: FOTOSÍNTESIS', 960, 800, { c: '#ffe08a', al: 'center', s: 28, a: en(e, 4, 0.8, 0.6) });
+};
+// El medio de cultivo de las algas: agua de mar enriquecida (tipo f/2). Hacerlo desde cero es lo difícil.
+LUZ.medio = (ctx, e) => {
+  noche(ctx, '#03080e', '#061019'); const T = e.T, t1 = e.L(1) ?? 7, f2 = en(e, 1, 1);
+  matraz(ctx, 560, 840, 2.0, 0.55, 'rgba(30,110,150,.32)'); txt(ctx, 'AGUA DE MAR', 560, 884, { s: 20, f: 'mono', w: 700, ls: 5, al: 'center', c: '#7fc4e0', a: ss(e.tl, 0.2, 1) });
+  [['NITRATO', '#9fe0a8'], ['FOSFATO', '#ffd08a'], ['METALES TRAZA', '#c9b6ff'], ['VITAMINAS', '#ff9ab0']].forEach(([n, c], i) => { const t0 = 1.6 + i * 1.05, k = eo(e.tl, t0, t0 + 0.9), x = 1060, y = 290 + i * 96;
+    chip(ctx, n, x, y, { c, s: 26, a: k * (1 - f2) }); const cae = pr(e.tl, t0 + 0.4, t0 + 1.5); if (cae > 0 && cae < 1) halo(ctx, mixn(1040, 570, cae), mixn(y, 700, cae) - Math.sin(cae * Math.PI) * 120, 26, c, 1); if (cae >= 1) { const R = rng(i + 3); for (let j = 0; j < 9; j++) halo(ctx, 470 + R() * 180 + Math.sin(T + j) * 6, 730 + R() * 90, 9, c, 0.5); } });
+  rotulo(ctx, 150, 210, 'El medio de cultivo', 'AGUA DE MAR ENRIQUECIDA', ss(e.tl, 0.4, 1.3), { c: LUZC.dino });
+  if (f2 > 0) { // desde cero: balanza y autoclave · o ya preparado
+    ctx.save(); ctx.globalAlpha = f2; ctx.strokeStyle = '#c9d2e3'; ctx.lineWidth = 4; ctx.fillStyle = '#1c2330'; ctx.beginPath(); ctx.roundRect(1010, 470, 190, 50, 8); ctx.fill(); ctx.stroke(); ctx.beginPath(); ctx.roundRect(1040, 440, 130, 30, 6); ctx.stroke(); ctx.fillStyle = '#3DFF7A'; ctx.font = "700 20px 'Space Mono'"; ctx.fillText('0.0001 g', 1050, 503);
+    ctx.fillStyle = '#2a3142'; ctx.beginPath(); ctx.roundRect(1280, 380, 150, 140, 16); ctx.fill(); ctx.stroke(); ctx.beginPath(); ctx.arc(1355, 450, 44, 0, TAU); ctx.stroke(); ctx.fillStyle = '#8a93a6'; ctx.fillRect(1335, 352, 40, 30); ctx.restore();
+    txt(ctx, 'BALANZA DE PRECISIÓN', 1105, 560, { s: 16, f: 'mono', w: 700, ls: 3, al: 'center', c: '#c9d2e3', a: f2 }); txt(ctx, 'AUTOCLAVE', 1355, 560, { s: 16, f: 'mono', w: 700, ls: 3, al: 'center', c: '#c9d2e3', a: f2 });
+    txt(ctx, 'Desde cero: difícil', 1230, 330, { s: 54, f: 'serif', w: 500, al: 'center', a: f2 });
+    const ok = ss(e.tl, t1 + 4.2, t1 + 5.2); ctx.save(); ctx.globalAlpha = ok; ctx.fillStyle = '#e9edf2'; ctx.beginPath(); ctx.roundRect(1560, 560, 110, 190, 14); ctx.fill(); ctx.fillStyle = '#2f6fd6'; ctx.fillRect(1582, 530, 66, 34); ctx.fillStyle = '#1f8a5a'; ctx.fillRect(1560, 620, 110, 70); ctx.restore(); halo(ctx, 1615, 650, 190, '#3DFF7A', 0.35 * ok);
+    txt(ctx, 'Ya preparado: fácil', 1380, 720, { s: 54, f: 'serif', w: 500, al: 'right', c: '#3DFF7A', a: ok }); txt(ctx, 'SE VENDE LISTO PARA USAR', 1380, 762, { s: 18, f: 'mono', w: 700, ls: 4, al: 'right', c: '#3DFF7A', a: ok }); }
 };
 LUZ.destello = (ctx, e) => {
   noche(ctx, '#02060c', '#040b14'); const T = e.T, t1 = e.L(1) ?? 4, lento = en(e, 1, 0.8);
@@ -99,7 +114,7 @@ LUZ.cloro = (ctx, e) => {
 LUZ.v_alga = (ctx, e) => {
   noche(ctx, '#02060c', '#040b14'); const emp = Math.sin(e.tl * 12) * 0.1 * (Math.sin(e.tl * 1.1) > 0.3 ? 1 : 0);
   matrazAlgas(ctx, 580, 840, 2.4, e.T, emp, 0.25 + 0.75 * (Math.sin(e.tl * 1.1) > 0.1 ? 1 : 0));
-  veredicto(ctx, e, 0, 'La más fácil,\nsegura y vistosa', 'Solo brillan cuando tú las mueves', LUZC.dino);
+  veredicto(ctx, e, 0, 'Fácil y segura,\ncon todo ya hecho', 'Cultivo y medio comprados.\nSolo brillan cuando tú las mueves', LUZC.dino);
 };
 
 /* ====== 05 · Petunia ====== */
@@ -218,8 +233,8 @@ LUZ.v_luci = (ctx, e) => { bosque(ctx, e.T, 320, 7); oscurece(ctx, 0.25); veredi
 /* ====== 07 · Resumen ====== */
 LUZ.escalera = (ctx, e) => {
   noche(ctx, '#04060b', '#080c16'); const T = e.T;
-  const P = [['alga', 'Algas *Pyrocystis*', 'FÁCILES Y SEGURAS · BRILLAN AL MOVERLAS', LUZC.dino, 0], ['hongo', 'Hongo *Panellus*', 'LUZ SUAVE Y CONTINUA · PIDE PACIENCIA', LUZC.pan, 0], ['bact', 'Bacterias *Aliivibrio fischeri*', 'CEPA IDENTIFICADA · MICROBIOLOGÍA EN SERIO', LUZC.bact, 1], ['petunia', 'La petunia', 'EN MÉXICO, POR AHORA, NO', LUZC.pet, 2], ['luci', 'Luciérnagas', 'NUNCA EN UN FRASCO', LUZC.luc, 2]];
-  txt(ctx, 'DE MÁS FÁCIL A MÁS DIFÍCIL', 960, 150, { s: 22, f: 'mono', w: 700, ls: 10, al: 'center', c: '#c9d2e3', a: ss(e.tl, 0.3, 1.2) });
+  const P = [['alga', 'Algas *Pyrocystis*', 'SEGURAS · BRILLAN AL MOVERLAS', LUZC.dino, 0], ['hongo', 'Hongo *Panellus*', 'LUZ SUAVE Y CONTINUA · PIDE PACIENCIA', LUZC.pan, 0], ['bact', 'Bacterias *Aliivibrio fischeri*', 'CEPA IDENTIFICADA · MICROBIOLOGÍA EN SERIO', LUZC.bact, 1], ['petunia', 'La petunia', 'EN MÉXICO, POR AHORA, NO', LUZC.pet, 2], ['luci', 'Luciérnagas', 'NUNCA EN UN FRASCO', LUZC.luc, 2]];
+  txt(ctx, 'COMPRANDO EL CULTIVO Y SU MEDIO YA HECHOS', 960, 150, { s: 22, f: 'mono', w: 700, ls: 10, al: 'center', c: '#c9d2e3', a: ss(e.tl, 0.3, 1.2) });
   P.forEach(([k, n, s, c, niv], i) => { const a = en(e, i + 1, 0.9), y = 250 + i * 122, x = 200 + i * 46, act = a * (1 - 0.45 * en(e, i + 2, 0.6));
     ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = 'rgba(255,255,255,.035)'; ctx.beginPath(); ctx.roundRect(x, y - 50, 1180, 104, 18); ctx.fill(); ctx.fillStyle = c; ctx.fillRect(x, y - 50, 5, 104 * a); ctx.restore();
     txt(ctx, String(i + 1), x + 60, y + 22, { s: 70, f: 'serif', w: 400, al: 'center', c, a });
@@ -237,12 +252,12 @@ LUZ.regla = (ctx, e) => {
 
 /* ====== 08 · Cierre ====== */
 LUZ.cierre = (ctx, e) => {
-  const T = e.T, fuera = en(e, 6, 2.2), z = mixn(1.9, 1.0, fuera) + 0.04 * e.p, fin = cam(ctx, z, mixn(1110, 960, fuera), mixn(585, 540, fuera));
-  recamara(ctx, T, 0.95, 0, 0.25 + 0.5 * fuera); fin();
-  // lupa 1: la luz del hongo por dentro (hifas)
-  const l1 = en(e, 1, 1) * (1 - fuera); if (l1 > 0) { const x = 520, y = 470, r = 250; guia(ctx, 880, 540, x + r * 0.8, y + r * 0.3, l1, LUZC.pan); ctx.save(); ctx.globalAlpha = l1; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fillStyle = '#040806'; ctx.fill(); ctx.save(); ctx.clip(); ctx.translate(x, y); pintaRed(ctx, red('cie', { seed: 91, radio: 260, brotes: 8, max: 7000 }), eo(e.tl, e.L(1) ?? 3, (e.L(1) ?? 3) + 5), LUZC.pan, {}); ctx.restore(); ctx.strokeStyle = 'rgba(220,235,255,.8)'; ctx.lineWidth = 5; ctx.stroke(); ctx.restore(); chip(ctx, 'UNA REACCIÓN DE HACE MILLONES DE AÑOS', x, y + r + 46, { c: LUZC.pan, al: 'center', a: l1 }); }
-  // lupa 2: las bacterias que se prenden juntas
-  const l2 = en(e, 2, 1) * (1 - fuera); if (l2 > 0) { const x = 1500, y = 440, r = 250, t4 = e.L(4) ?? 14.4, tq = (e.L(5) ?? 18) + 1.6, n = 4 + 150 * Math.pow(ss(e.tl, t4, tq), 2), pr2 = ss(e.tl, tq, tq + 0.8);
-    ctx.save(); ctx.globalAlpha = l2; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fillStyle = '#03090d'; ctx.fill(); ctx.save(); ctx.clip(); enjambre(ctx, T, n, 0.05 + 0.95 * pr2, ss(e.tl, t4, tq), { x: x - r, y: y - r, w: r * 2, h: r * 2, len: 24, seed: 31 }); ctx.restore(); ctx.strokeStyle = 'rgba(220,235,255,.8)'; ctx.lineWidth = 5; ctx.stroke(); ctx.restore(); halo(ctx, x, y, 420, LUZC.bact, 0.3 * pr2 * l2);
-    chip(ctx, 'UNA DECISIÓN EN EQUIPO', x, y + r + 46, { c: LUZC.bact, al: 'center', a: l2 * en(e, 3, 0.8) }); }
+  // Regresa a la imagen con la que abre el documental; dos lupas muestran qué hay detrás de dos de esas luces.
+  noche(ctx, '#04060b', '#080d18'); polvo(ctx, 26, 5, e.T, '#7f95c0', 0.35); const T = e.T, fuera = en(e, 6, 1.6, 0.5), quita = 1 - en(e, 6, 0.5);
+  cincoLuces(ctx, e, { y: mixn(250, 560, fuera), s: mixn(0.8, 1.25, fuera), nombres: fuera > 0.6, a: 1, luz: 0.8 + 0.2 * fuera });
+  halo(ctx, 960, 470, 1100, '#9fd8ff', 0.1 * en(e, 7, 2));
+  const l1 = en(e, 1, 1) * quita; if (l1 > 0) { const x = 560, y = 610, r = 195; guia(ctx, 620, 330, x + 30, y - r + 6, l1, LUZC.pan); ctx.save(); ctx.globalAlpha = l1; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fillStyle = '#040806'; ctx.fill(); ctx.save(); ctx.clip(); ctx.translate(x, y); pintaRed(ctx, red('cie', { seed: 91, radio: 205, brotes: 8, max: 6000 }), eo(e.tl, e.L(1) ?? 3, (e.L(1) ?? 3) + 5), LUZC.pan, {}); ctx.restore(); ctx.strokeStyle = 'rgba(220,235,255,.8)'; ctx.lineWidth = 5; ctx.stroke(); ctx.restore(); chip(ctx, 'UNA REACCIÓN DE HACE MILLONES DE AÑOS', x, y + r + 40, { c: LUZC.pan, al: 'center', a: l1 }); }
+  const l2 = en(e, 2, 1) * quita; if (l2 > 0) { const x = 1360, y = 610, r = 195, t4 = e.L(4) ?? 14.4, tq = (e.L(5) ?? 18) + 1.6, n = 4 + 150 * Math.pow(ss(e.tl, t4, tq), 2), pr2 = ss(e.tl, tq, tq + 0.8);
+    guia(ctx, 960, 330, x - 60, y - r + 12, l2, LUZC.bact); ctx.save(); ctx.globalAlpha = l2; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fillStyle = '#03090d'; ctx.fill(); ctx.save(); ctx.clip(); enjambre(ctx, T, n, 0.05 + 0.95 * pr2, ss(e.tl, t4, tq), { x: x - r, y: y - r, w: r * 2, h: r * 2, len: 22, seed: 31 }); ctx.restore(); ctx.strokeStyle = 'rgba(220,235,255,.8)'; ctx.lineWidth = 5; ctx.stroke(); ctx.restore(); halo(ctx, x, y, 360, LUZC.bact, 0.3 * pr2 * l2);
+    chip(ctx, 'UNA DECISIÓN EN EQUIPO', x, y + r + 40, { c: LUZC.bact, al: 'center', a: l2 * en(e, 3, 0.8) }); }
 };

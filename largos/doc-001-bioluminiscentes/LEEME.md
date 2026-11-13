@@ -9,7 +9,7 @@ Hecho con el motor de largos más el kit nuevo **cine de luz** (`video/cine-luz.
 | `fuentes.md`, `verificacion.md`, `notas_visuales.md` | Los del guion original (misma numeración de fuentes). |
 | `video/escenas.js` | Capítulos → frases → escena (`v: { tipo: 'lienzo', id }`). |
 | `video/cine-luz.jsx` | El kit: luz, texto, hifas, hongos, vidrio, bacterias, calamar, algas, petunia, luciérnaga, objetos. |
-| `video/cine-luz-a.jsx`, `cine-luz-b.jsx` | Las 38 escenas (`window.LUZ.<id>`). |
+| `video/cine-luz-a.jsx`, `cine-luz-b.jsx` | Las 38 escenas (abre y cierra con `cinco`) (`window.LUZ.<id>`). |
 | `video/tiempos.mjs` | Imprime la línea de tiempo: en qué segundo empieza cada escena. |
 | `video/musica_doc.py` | Genera la música (`video/voz/mezcla.m4a`): un acorde por capítulo y una campana por frase. |
 

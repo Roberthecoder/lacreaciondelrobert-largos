@@ -6,13 +6,10 @@ window.CAPS = (() => {
 const L = (id) => ({ tipo: 'lienzo', id });
 return [
   { num: 0, titulo: 'Gancho', tarjeta: false, lineas: [
-    { t: 'Esa luz verde no es una lámpara.', v: L('cuarto'), d: 3.4 },
-    { t: 'Tampoco es una estrellita de las que se pegan en el techo.' },
-    { t: 'Es un hongo. Vivo.', d: 3.2, robert: ['avatar_11_sorprendido', 'arriba-der'] },
-    { t: 'Y fabrica su propia luz, en plena oscuridad.' },
-    { t: 'Hoy vas a ver qué seres vivos que brillan podrías tener en tu cuarto.', v: L('cinco') },
+    { t: 'Ninguna de estas cinco luces es una lámpara: las cinco están vivas.', v: L('cinco'), robert: ['avatar_11_sorprendido', 'arriba-centro'] },
+    { t: 'Hoy vas a ver cuáles podrías tener en tu cuarto.' },
     { t: 'Cuáles son buena idea, cuáles son mala idea…' },
-    { t: 'y uno que, aunque te encante, es mejor dejar donde está.' },
+    { t: 'y una que, aunque te encante, es mejor dejar donde está.' },
   ] },
 
   { num: 1, titulo: 'Luz sin calor', lineas: [
@@ -87,17 +84,20 @@ return [
     { t: 'En los mariscos crudos también viven parientes que sí enferman, como Vibrio vulnificus o Vibrio parahaemolyticus.' },
     { t: 'Y no puedes saber cuál creció en tu caja.' },
     { t: 'Lo responsable es partir de una cepa identificada, de una colección o un proveedor educativo.' },
+    { t: 'Su medio de cultivo es sencillo: un caldo nutritivo con sal, parecido al agua de mar. También se vende ya preparado.' },
     { t: '¿Veredicto?', v: L('v_bact'), d: 2.4 },
     { t: 'Es una luz preciosa en una caja Petri.' },
     { t: 'Pero es un experimento de microbiología, no una mascota.' },
   ] },
 
   { num: 4, titulo: 'Las algas', sub: 'Brillan cuando las mueves', lineas: [
-    { t: 'Si quieres algo más fácil, esta es la opción para empezar.', v: L('celula') },
+    { t: 'Si las compras ya hechas, con su medio de cultivo, esta es la opción para empezar.', v: L('celula') },
     { t: 'Los dinoflagelados del género Pyrocystis.' },
     { t: 'Son algas de una sola célula, del mar.' },
     { t: 'Se consiguen para escuelas, por ejemplo Pyrocystis lunula.' },
     { t: 'De día hacen fotosíntesis, como una planta.' },
+    { t: 'Lo difícil es su medio: agua de mar enriquecida con nitrato, fosfato, metales traza y vitaminas.', v: L('medio') },
+    { t: 'Prepararlo desde cero pide balanza de precisión y autoclave. Por eso conviene comprarlo ya hecho.' },
     { t: 'Y de noche, si agitas el frasco… destellan azul.', v: L('destello') },
     { t: 'Cada destello dura una fracción de segundo: unos 200 milisegundos.' },
     { t: 'Lo más loco es que tienen reloj.', v: L('reloj') },
@@ -111,7 +111,7 @@ return [
     { t: 'nunca las tires vivas al drenaje ni al mar.' },
     { t: 'Antes de tirarlas, se matan, por ejemplo con cloro. Lo que cultivas no se libera.' },
     { t: '¿Veredicto?', v: L('v_alga'), d: 2.4 },
-    { t: 'Es la opción más fácil, más segura y más espectacular para tu cuarto.' },
+    { t: 'Con el cultivo y el medio ya hechos, es la opción más fácil, más segura y más espectacular para tu cuarto.' },
     { t: 'Eso sí: solo brillan cuando tú les das un empujoncito.' },
   ] },
 
@@ -154,8 +154,8 @@ return [
   ] },
 
   { num: 7, titulo: 'Entonces, ¿cuál tener?', lineas: [
-    { t: 'Hagamos el resumen, de más fácil a más difícil.', v: L('escalera'), robert: ['avatar_13_senalando_arriba', 'abajo-der', 0.9] },
-    { t: 'Uno: algas Pyrocystis. Fáciles, seguras, de un kit escolar. Brillan cuando las mueves de noche.' },
+    { t: 'Hagamos el resumen, suponiendo que compras cada cultivo y su medio ya hechos.', v: L('escalera'), robert: ['avatar_13_senalando_arriba', 'abajo-der', 0.9] },
+    { t: 'Uno: algas Pyrocystis. Seguras, de un kit escolar. Brillan cuando las mueves de noche.' },
     { t: 'Dos: un hongo Panellus de cepa luminosa. Luz verde, suave y continua. Pide paciencia.' },
     { t: 'Tres: bacterias Aliivibrio fischeri, de una cepa identificada. Preciosas, pero ya es microbiología en serio.' },
     { t: 'Cuatro: la petunia. En México, por ahora, no.' },
@@ -166,13 +166,13 @@ return [
   ] },
 
   { num: 8, titulo: 'La luz, otra vez', lineas: [
-    { t: 'Ahora regresa a esa luz verde del principio.', v: L('cierre') },
-    { t: 'Es una reacción que un hongo inventó hace millones de años.' },
+    { t: 'Ahora regresa a las cinco luces del principio.', v: L('cierre') },
+    { t: 'La verde del hongo es una reacción que un hongo inventó hace millones de años.' },
     { t: 'Y la luz azul de las bacterias es todavía más rara:' },
     { t: 'es una decisión en equipo.', d: 2.8 },
     { t: 'Millones de células que se cuentan unas a otras…' },
     { t: 'y, solo cuando son suficientes, se prenden juntas.' },
-    { t: 'Así que esa luz no es una lámpara.' },
+    { t: 'Así que ninguna de esas luces es una lámpara.' },
     { t: 'Es vida, platicando en la oscuridad.', d: 4.4 },
     { t: 'Soy Robert, de La Creación del Robert.', v: { tipo: 'marca', sub: 'Y tú, ¿cuál escogerías?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'abajo-der'] },
     { t: 'Y si tú tuvieras una de estas en tu cuarto, ¿cuál escogerías?', d: 5 },

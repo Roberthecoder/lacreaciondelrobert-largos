@@ -10,13 +10,10 @@
 
 ## 00 Gancho
 
-Esa luz verde no es una lámpara.
-Tampoco es una estrellita de las que se pegan en el techo.
-Es un hongo. Vivo.
-Y fabrica su propia luz, en plena oscuridad.
-Hoy vas a ver qué seres vivos que brillan podrías tener en tu cuarto.
+Ninguna de estas cinco luces es una lámpara: las cinco están vivas.
+Hoy vas a ver cuáles podrías tener en tu cuarto.
 Cuáles son buena idea, cuáles son mala idea…
-y uno que, aunque te encante, es mejor dejar donde está.
+y una que, aunque te encante, es mejor dejar donde está.
 
 ## 01 Luz sin calor
 
@@ -91,17 +88,20 @@ No lo hagas en casa.
 En los mariscos crudos también viven parientes que sí enferman, como *Vibrio vulnificus* o *Vibrio parahaemolyticus*.
 Y no puedes saber cuál creció en tu caja.
 Lo responsable es partir de una cepa identificada, de una colección o un proveedor educativo.
+Su medio de cultivo es sencillo: un caldo nutritivo con sal, parecido al agua de mar. También se vende ya preparado.
 ¿Veredicto?
 Es una luz preciosa en una caja Petri.
 Pero es un experimento de microbiología, no una mascota.
 
 ## 04 Las algas · Brillan cuando las mueves
 
-Si quieres algo más fácil, esta es la opción para empezar.
+Si las compras ya hechas, con su medio de cultivo, esta es la opción para empezar.
 Los dinoflagelados del género *Pyrocystis*.
 Son algas de una sola célula, del mar.
 Se consiguen para escuelas, por ejemplo *Pyrocystis lunula*.
 De día hacen fotosíntesis, como una planta.
+Lo difícil es su medio: agua de mar enriquecida con nitrato, fosfato, metales traza y vitaminas.
+Prepararlo desde cero pide balanza de precisión y autoclave. Por eso conviene comprarlo ya hecho.
 Y de noche, si agitas el frasco… destellan azul.
 Cada destello dura una fracción de segundo: unos 200 milisegundos.
 Lo más loco es que tienen reloj.
@@ -115,7 +115,7 @@ Una regla importante:
 nunca las tires vivas al drenaje ni al mar.
 Antes de tirarlas, se matan, por ejemplo con cloro. Lo que cultivas no se libera.
 ¿Veredicto?
-Es la opción más fácil, más segura y más espectacular para tu cuarto.
+Con el cultivo y el medio ya hechos, es la opción más fácil, más segura y más espectacular para tu cuarto.
 Eso sí: solo brillan cuando tú les das un empujoncito.
 
 ## 05 La planta que brilla · …y la frontera
@@ -158,8 +158,8 @@ La luciérnaga no se tiene. Se visita.
 
 ## 07 Entonces, ¿cuál tener?
 
-Hagamos el resumen, de más fácil a más difícil.
-Uno: algas *Pyrocystis*. Fáciles, seguras, de un kit escolar. Brillan cuando las mueves de noche.
+Hagamos el resumen, suponiendo que compras cada cultivo y su medio ya hechos.
+Uno: algas *Pyrocystis*. Seguras, de un kit escolar. Brillan cuando las mueves de noche.
 Dos: un hongo *Panellus* de cepa luminosa. Luz verde, suave y continua. Pide paciencia.
 Tres: bacterias *Aliivibrio fischeri*, de una cepa identificada. Preciosas, pero ya es microbiología en serio.
 Cuatro: la petunia. En México, por ahora, no.
@@ -170,13 +170,13 @@ Lo que nace en tu cuarto, termina en tu cuarto.
 
 ## 08 La luz, otra vez
 
-Ahora regresa a esa luz verde del principio.
-Es una reacción que un hongo inventó hace millones de años.
+Ahora regresa a las cinco luces del principio.
+La verde del hongo es una reacción que un hongo inventó hace millones de años.
 Y la luz azul de las bacterias es todavía más rara:
 es una decisión en equipo.
 Millones de células que se cuentan unas a otras…
 y, solo cuando son suficientes, se prenden juntas.
-Así que esa luz no es una lámpara.
+Así que ninguna de esas luces es una lámpara.
 Es vida, platicando en la oscuridad.
 Soy Robert, de La Creación del Robert.
 Y si tú tuvieras una de estas en tu cuarto, ¿cuál escogerías?
