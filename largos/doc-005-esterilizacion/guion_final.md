@@ -1,173 +1,153 @@
 # Documental 005 · ¿Por qué NO basta con 15 minutos? La esterilización del sustrato, por dentro
 
-- **Antes era el documental 001.** Renumerado a 005 por decisión de Robert (12 nov 2026).
-- **Versión expositiva** (decisión de Robert, 12 nov 2026): solo hechos con fuente. Se quitó toda la experiencia personal y todas las líneas `[PREGUNTA]`; nada de este guion depende de respuestas pendientes.
-- **Formato:** 16:9, 100 % ilustrado, sin voz por ahora (subtítulos y música). Cada renglón es un subtítulo.
-- **Gancho:** número 1 de `CLAUDE.md` («esto no es X: es Y» sobre lo que se ve): la olla marca 121 °C y el centro de la bolsa no.
-- **Fuentes y verificación:** `fuentes.md` y `verificacion.md` (misma numeración F1, F2… del guion original). Lo que se quitó o cambió está en `CAMBIOS.md`.
-- Este archivo se genera desde `video/escenas.js` (una frase por renglón, igual al subtítulo).
-
----
+Versión 2 (13 nov 2026). Expositiva, 100 % ilustrada, sin voz por ahora. Duración: 8.8 min (526.7 s).
+Tesis: 15 minutos a 121 °C no alcanzan para casi nada de la preparación de inóculo y sustrato; los frascos de grano suelen ir de 60 a 90 minutos y las bolsas de 2 a 2.5 horas porque el reloj de la receta empieza cuando el centro llega a 121 °C.
+Cada dato lleva su fuente entre corchetes (lista completa en `fuentes.md`). [C] = cálculo propio con datos de las fuentes. [P] = práctica del cultivo que indicó Robert.
 
 ## 00 Gancho
 
-Esta olla ya marca 121 grados Celsius: el centro de la bolsa que lleva adentro, todavía no.
-15 minutos a 121 °C es la receta clásica de los laboratorios.
-Con una bolsa de sustrato para hongos, esa receta puede quedarse corta.
-El sustrato y el grano necesitan bastante más que 15 minutos, y a veces horas.
-Parte de la razón está en los microbios.
-La otra parte está en el calor, que dentro de un bloque húmedo avanza muy despacio.
+**Escena `olla2`** (0 s) [P]
+- Esta olla ya marca 121 grados Celsius: el centro de la bolsa que lleva adentro, todavía no.
+- 15 minutos a 121 °C es la receta clásica de los laboratorios.
+- En el cultivo de hongos casi nunca alcanza: a los frascos de grano se les suele dar de 60 a 90 minutos, y a las bolsas de sustrato, de 2 a 2.5 horas.
+- Casi toda esa diferencia es lo que tarda el calor en llegar al centro.
 
 ## 01 Los 15 minutos · De dónde sale la receta
 
-Esos 15 minutos tienen un origen.
-Son el tiempo que el material debe pasar a 121 °C, con vapor.
-Y están pensados para uno de los blancos más resistentes que hay: las endosporas bacterianas.
-Para comprobar que un autoclave funciona se usan esporas de una bacteria termófila, que crece en caliente: *Geobacillus stearothermophilus*.
-Aquí entra el valor D: el tiempo que tarda el calor en matar al 90 por ciento de las esporas.
-En un lote de esas esporas que usó la Agencia de Protección Ambiental de Estados Unidos (EPA), el valor D a 121 °C fue de 1.5 minutos.
-Es decir: cada minuto y medio sobrevive una de cada diez.
-En 15 minutos caben diez de esos pasos.
-Si empiezas con un millón de esporas, después de seis pasos queda, en promedio, una.
-Después de diez, la probabilidad de que quede una viva es de una en diez mil.
-En hospitales lo típico es pedir más: una probabilidad de una en un millón de que sobreviva un microbio.
-A eso se le llama nivel de garantía de esterilidad.
-El detalle está en una palabra de la receta que casi nadie lee: el material.
+**Escena `receta`** (30 s) [F1][F9]
+- Los 15 minutos son el tiempo que el material debe pasar a 121 °C, en contacto con vapor.
+- Están pensados para las endosporas bacterianas, de lo más resistente al calor que se conoce.
+**Escena `valord`** (43 s) [F1][F4][C]
+- Esa resistencia se mide con el valor D: el tiempo que tarda el calor en matar al 90 por ciento de las esporas.
+- En las esporas de prueba de Geobacillus stearothermophilus que usó la Agencia de Protección Ambiental de Estados Unidos (EPA), el valor D a 121 °C fue de 1.5 minutos.
+- En 15 minutos caben diez de esos pasos: de un millón de esporas, la probabilidad de que sobreviva una baja a una en diez mil.
+**Escena `material`** (71 s) [F1]
+- La receta tiene una condición que casi nadie lee: habla del material, no de la olla.
 
-## 02 El reloj del centro · Cuándo empiezan a contar
+## 02 El reloj del centro · Lo que se ha medido
 
-Los 15 minutos cuentan desde que lo que quieres esterilizar llega a 121 °C.
-No desde que prendes la estufa.
-Tampoco desde que la olla marca la temperatura.
-Una guía de la Universidad de Columbia Británica reproduce la tabla de un fabricante de autoclaves para ciclos de líquidos.
-Un frasco de 75 mililitros lleva 25 minutos en total.
-Uno de un litro, 45.
-Uno de dos litros, 55.
-La tabla aclara que esos tiempos ya incluyen lo que tarda el líquido en llegar a 121 °C.
-Entre más volumen, más espera hasta que el centro alcanza a la orilla.
-En 2005, la EPA metió a un autoclave comercial bolsas con tablaroca, plafones y alfombra.
-Dentro del material escondió 24 termopares, que son termómetros de cable, y tiras con un millón de esporas cada una.
-La cámara trabajaba más caliente, a unos 135 °C, y su sensor llegó rápido.
-Pero muchos termopares dentro del material nunca llegaron a 121 °C.
-Ni en dos horas.
-¿Y las esporas?
-Donde el material sí pasó 15 minutos a 121 °C, no creció nada.
-Y en la mayoría de los puntos que no llegaron, sí crecieron.
-La receta funciona. Lo difícil es que se cumpla en el centro.
+**Escena `relojes`** (81 s) [F1]
+- Los 15 minutos empiezan a contar cuando el punto más frío de la carga llega a 121 °C.
+- No cuando prendes la estufa, ni cuando el manómetro marca la presión.
+**Escena `ozanne`** (92 s) [F20]
+- En 1993, un estudio midió ese retraso en 276 bolsas de residuos de laboratorio, llenas a la mitad.
+- Con el autoclave a 121 °C, el centro de la carga tardó en promedio 46 minutos en alcanzar esa temperatura.
+- Con doble bolsa tardó 60. Con la bolsa dentro de un contenedor vertical, 82.
+- Con cortes en la bolsa para que entrara el vapor, 37.
+**Escena `rutala`** (116 s) [F21]
+- En 1982, otro estudio probó cargas de 2.3, 4.5 y 6.8 kilos, con esporas de prueba adentro.
+- Con las de 4.5 y 6.8 kilos, lo único que aseguró matar las esporas fue un contenedor de acero inoxidable y 90 minutos de ciclo.
+- Las cargas chicas se calentaron mejor que las grandes, y el acero, mejor que el plástico.
+**Escena `epa`** (138 s) [F1]
+- En 2005, la EPA metió a un autoclave comercial bolsas con tablaroca, plafones y alfombra.
+- Dentro del material escondió 24 termopares, que son termómetros de cable, y tiras con un millón de esporas cada una.
+**Escena `curvas`** (152 s) [F1]
+- La cámara trabajaba a unos 135 °C, y su sensor llegó rápido.
+- Muchos termopares dentro del material nunca llegaron a 121 °C.
+- Ni en dos horas.
+**Escena `tiras`** (164 s) [F1]
+- ¿Y las esporas?
+- Donde el material sí pasó 15 minutos a 121 °C, no creció nada.
+- En la mayoría de los puntos que no llegaron, sí crecieron.
 
-## 03 El calor lento
+## 03 El calor lento · Tubo, frasco y bolsa
 
-¿Por qué el centro tarda tanto?
-Dentro de un bloque húmedo, el calor casi no viaja con el vapor.
-Viaja sobre todo por conducción: de partícula en partícula, como un recado que pasa de mano en mano.
-Hay un número que dice qué tan rápido se mueve el calor en un material: la difusividad térmica.
-La del agua es baja: unos 0.14 milímetros cuadrados por segundo.
-La del aluminio es de 97.
-Casi 700 veces más.
-El tiempo que tarda el calor en llegar al centro crece con el cuadrado del tamaño.
-Si duplicas el grosor, el tiempo se multiplica por cuatro.
-Una estimación con las propiedades del agua lo deja ver.
-Si el calor solo avanzara por conducción, el centro de un tubo de ensayo de 1.5 centímetros de ancho llegaría casi a la temperatura de afuera en unos 5 minutos.
-El centro de una bolsa de 10 centímetros de ancho, en unas 4 horas.
-Más de 40 veces más, solo por el tamaño.
-Ese es el peor caso.
-En una bolsa real, algo de vapor se cuela entre las partículas y ayuda.
-Los autores del estudio de la EPA propusieron una explicación.
-Cuando el vapor toca el material frío, se condensa y llena los poros de agua.
-Con los poros llenos, plantean, el calor entra casi solo por conducción, que es lenta.
-Al punto que más tarda en calentarse se le llama punto frío.
-En un bloque que se calienta desde afuera por conducción, queda hacia el centro.
+**Escena `poros`** (179 s) [F1] hipótesis de los autores
+- ¿Por qué tarda tanto el centro? Los autores del estudio de la EPA propusieron una explicación.
+- Cuando el vapor toca el material frío, se condensa y llena los poros de agua.
+- Con los poros llenos, plantean, el calor entra casi solo por conducción: de partícula en partícula.
+**Escena `simula`** (198 s) [C][F22]
+- Una simulación deja comparar recipientes. Supone lo peor: que el calor avanza solo por conducción, a la velocidad con que lo hace en el agua.
+- Así, el centro de un tubo de ensayo de 1.5 centímetros de ancho alcanza al vapor en unos 6 minutos.
+- El de un frasco de 8 centímetros, en unas 2 horas y 40 minutos. El de una bolsa de 12, en unas 6 horas.
+- El tiempo crece con el cuadrado del ancho: la bolsa es una vez y media más ancha que el frasco, y tarda más del doble.
+- En cargas reales algo de vapor sí se cuela, y los tiempos medidos son menores. El orden no cambia: primero el tubo, luego el frasco, al final la bolsa.
+**Escena `puntofrio`** (244 s) [F4]
+- Al punto que más tarda en calentarse se le llama punto frío.
+- En un recipiente que se calienta desde afuera, queda hacia el centro.
 
-## 04 El aire atrapado
+## 04 Aire y altitud · Lo que le resta grados a la olla
 
-Hay un segundo obstáculo, y no se ve: el aire.
-Si la olla se cierra con aire adentro, el manómetro puede marcar la presión correcta mientras la temperatura real es más baja.
-Las guías de enlatado casero basadas en el Departamento de Agricultura de Estados Unidos (USDA) lo explican: el aire atrapado baja la temperatura y deja el proceso corto.
-Su recomendación: dejar salir vapor, sin la pesa, 10 minutos seguidos antes de presurizar.
-La altitud también cuenta.
-Una pesa de 15 libras por pulgada cuadrada (psi) mantiene esa presión por encima de la del aire de afuera.
-A unos 1,500 metros de altitud, como en Guadalajara, el aire de afuera empuja menos.
-Con las tablas de vapor, la cuenta deja la olla en unos 118 °C en lugar de 121.
-Con las esporas del lote de la EPA, un minuto a 118 °C mata como medio minuto a 121.
-Por eso las guías de enlatado piden subir la presión cuando se trabaja en altura.
+**Escena `aire2`** (256 s) [F23]
+- El segundo obstáculo es el aire que se queda atrapado.
+- Para esterilizar con vapor, todo el aire tiene que salir: donde queda aire, el vapor no toca el material, y esa zona se calienta menos.
+**Escena `purga2`** (269 s) [F23]
+- En una olla, eso se consigue dejando salir vapor antes de cerrar la válvula o de poner la pesa.
+**Escena `altitud2`** (276 s) [C][F24][F25]
+- La altitud también resta.
+- La pesa agrega 15 libras por pulgada cuadrada (psi) sobre la presión del aire de afuera.
+- A 1,500 metros de altitud el aire de afuera empuja menos, y la misma pesa deja el vapor en unos 118 °C en lugar de 121.
+**Escena `letal2`** (293 s) [C][F1][F19]
+- Para las esporas, esos 3 grados pesan: a 118 °C hace falta casi el doble de tiempo para lograr lo mismo, y con algunas cepas, el triple.
+- Entre más alto vives, más tiempo necesita tu ciclo, o más presión si tu olla la permite.
+**Escena `ollas`** (308 s) [F26]
+- Y no todas las ollas llegan. En 2018 se probaron cuatro marcas de ollas eléctricas de presión.
+- Todas esterilizaron medios de cultivo e instrumentos, pero solo una logró matar las esporas de prueba.
 
-## 05 El grano · Por qué es tan difícil
+## 05 El grano · El caso más difícil
 
-Uno de los casos más duros es el inóculo de grano, lo que muchos cultivadores llaman semilla.
-El grano puede traer de origen endosporas de bacterias como *Bacillus*, que resisten mucho tiempo en el ambiente y contaminan alimentos con facilidad.
-Una endospora es una bacteria en reposo, envuelta en varias capas protectoras.
-Su núcleo tiene muy poca agua: puede ser apenas una cuarta parte de su peso.
-Y entre menos agua tiene ese núcleo, más resiste el calor húmedo.
-Pueden pasar cientos de años en reposo y germinar en minutos.
-Una revisión de 2021 señala que las esporas de algunas cepas de *Bacillus* resisten las temperaturas normales del procesado de alimentos.
-Por eso incluso un laboratorio grande ajusta el tiempo al tamaño.
-En el laboratorio de inóculo de la Universidad Estatal de Pensilvania, un matraz de 250 mililitros con centeno va 35 minutos a 121 °C, y uno de un litro, 45.
-En bolsas más grandes, los tiempos se van a horas.
-Una tesis de 2025 en Finlandia lo probó con bolsas de grano de centeno.
-A un grupo le agregaron bacterias a propósito y lo trataron unas 4 horas a casi 100 °C: eso es pasteurizar, no esterilizar.
-Ese ciclo además tuvo una falla y llegó a bajar a unos 80 °C.
-Para la séptima semana, todas las bolsas olían a *Bacillus*.
-Con 2.5 horas a 121 °C el resultado fue mucho mejor, aunque no perfecto.
-Sin bacterias agregadas, se contaminó una bolsa de cinco.
-Con bacterias agregadas, ninguna de cinco en un grupo y cuatro de diez en otro que reposó un día antes.
-Son pocas bolsas: es un indicio, no una prueba.
-El trabajo sugiere que la bacteria ya venía en el grano.
+**Escena `grano`** (326 s) [F9][F17][F27]
+- El caso más duro es el inóculo de grano, lo que muchos cultivadores llaman semilla.
+- El grano puede traer de origen endosporas de bacterias del género Bacillus.
+**Escena `endospora`** (338 s) [F9]
+- Una endospora es una bacteria en reposo, envuelta en varias capas protectoras.
+- Su núcleo puede tener apenas una cuarta parte de agua.
+- Entre menos agua tiene ese núcleo, más resiste el calor húmedo.
+**Escena `germina`** (352 s) [F9]
+- Puede pasar cientos de años en reposo y germinar en minutos cuando encuentra alimento.
+**Escena `gupta`** (358 s) [F27]
+- En 2020, un centro de investigación de hongos de la India puso a prueba los ciclos cortos con inóculo de grano.
+- Con un solo ciclo de 20 minutos a 15 psi, los síntomas de contaminación por bacterias bajaron apenas 23 por ciento frente al grano sin tratar.
+- Hicieron falta tres ciclos, con un día de espera entre uno y otro, para bajarlos casi 99 por ciento.
+- La bacteria que aislaron del inóculo contaminado fue Bacillus.
 
-## 06 ¿Y pasteurizar?
+## 06 ¿Cuántos minutos? · La cuenta completa
 
-Pasteurizar no es esterilizar.
-Pasteurizar es bajar el número de microbios con calor más suave, para que el hongo gane la carrera.
-Esterilizar busca que no quede ninguno vivo.
-Para la seta *Pleurotus ostreatus* sobre paja sin suplementar, pasteurizar puede funcionar bien.
-Un estudio alemán de 2024 lo comparó: la paja en autoclave dio hasta 50 por ciento más cosecha en peso seco.
-Pero la pasteurización también dio buenas cosechas, con pocas plagas.
-¿Cuándo conviene esterilizar?
-Cuando el sustrato es muy nutritivo, como el aserrín con salvado o el grano.
-Ahí cualquier sobreviviente encuentra comida de sobra y puede ganarle al hongo.
+**Escena `cuenta`** (391 s) [F20][P][F28][F29]
+- Con todo esto, el tiempo de un ciclo se entiende como una suma.
+- Primero, lo que tarda el centro en llegar a 121 °C: en las bolsas medidas, de 37 a 82 minutos.
+- Después, los 15 minutos de la receta, ya con el centro caliente.
+- Y un margen: por la altitud, por el aire que no salió del todo y por un grano que llega cargado de esporas.
+- Por eso a los frascos de grano se les suele dar de 60 a 90 minutos.
+- Y a las bolsas, que son más anchas, de 2 a 2.5 horas.
+- Los artículos de cultivo reportan cifras del mismo orden: de 90 a 120 minutos para el grano y de 90 a 160 para bolsas de sustrato.
+**Escena `cinta`** (432 s) [F30][F31]
+- ¿Cómo saber si tu ciclo alcanzó? Mucha gente se guía solo por la cinta testigo.
+- La cinta cambia de color cuando recibe vapor caliente. Avisa que el paquete pasó por el proceso, y nada más.
+- No mide si el centro cumplió su tiempo. En 1979 se compararon 21 indicadores químicos contra esporas de prueba, y solo 2 siguieron bien la combinación de tiempo y temperatura.
+- La prueba directa es el indicador biológico: esporas de Geobacillus stearothermophilus, una bacteria que crece en caliente.
+**Escena `validar`** (466 s) [F21][F1][F26]
+- Así se valida un ciclo.
+- El indicador se coloca en el centro de la carga, se corre el ciclo y después se incuba.
+- Si las esporas no crecen, el ciclo sirve para esa carga.
+- Si crecen, el ciclo se alarga y la prueba se repite.
+**Escena `carga`** (484 s) [F1]
+- La EPA midió algo más: las cargas apretadas se esterilizaron peor que las sueltas.
 
-## 07 ¿Cuántos minutos?
+## 07 En el centro · 15 minutos a 121 °C
 
-La respuesta honesta: depende de tu carga.
-Un fabricante de autoclaves para hongos lo resume así.
-Un volumen pequeño de aserrín se esteriliza en menos de 20 minutos.
-Ese mismo aserrín, en bloques o bolsas grandes, puede tardar más de 2.5 horas.
-Y los frascos de grano, de 45 minutos a 2 horas, según su tamaño y su humedad.
-Por eso los laboratorios no adivinan: validan.
-Colocan un indicador biológico, con esporas, en el centro de la carga, corren el ciclo y luego lo incuban.
-Si las esporas no crecen, el ciclo sirve para esa carga.
-Si crecen, el ciclo se alarga y la prueba se repite.
-Hay tres errores fáciles de cometer.
-Contar el tiempo desde que la olla se pone al fuego.
-No sacar el aire.
-Y llenar la olla tan apretada que el vapor no puede rodear las bolsas.
-Ese último también lo midió la EPA: las cargas apretadas se esterilizaron peor que las sueltas.
-
-## 08 En el centro · 15 minutos a 121 °C
-
-Regresa a la olla del principio.
-Por fuera se ve igual: la pesa se mueve y el manómetro marca.
-Adentro de la bolsa, capas de calor avanzan despacio, de la orilla al centro.
-El aire que no se sacó le quita grados.
-Y en el centro, unas endosporas en reposo esperan a ver si el calor llega.
-Los 15 minutos no estaban mal.
-Hay que contarlos donde importa: 15 minutos a 121 °C, en el centro de tu bolsa.
-Soy Robert, de La Creación del Robert.
-Y tú, ¿cuánto tiempo le das a tus bolsas y a tus frascos, y desde cuándo lo cuentas?
-
----
+**Escena `cierre2`** (494 s) 
+- Regresa a la olla del principio.
+- Por fuera se ve igual: la pesa se mueve y el manómetro marca.
+- Adentro, el calor avanza de la orilla al centro, donde unas endosporas siguen en reposo.
+- Los 15 minutos de la receta empiezan aquí: cuando el centro del frasco o de la bolsa, por fin, llega a 121 °C.
+**Escena `marca`** (517 s) 
+- Soy Robert, y esto es La Creación del Robert.
+- Y tú, ¿cuánto tiempo le das a tus bolsas y a tus frascos, y desde cuándo lo cuentas?
 
 ## Robert en pantalla
 
-| Entra | Sale | Pose | Lado | Frase |
+| Entra (s) | Sale (s) | Pose | Lado | Frase |
 |---|---|---|---|---|
-| 0:00 | 0:06 | avatar_11_sorprendido | arriba-der | Esta olla ya marca 121 grados Celsius: el centro de la bolsa que lleva adentro, todavía no. |
-| 1:27 | 1:32 | avatar_13_senalando_arriba | abajo-der | Después de diez, la probabilidad de que quede una viva es de una en diez mil. |
-| 2:58 | 3:01 | avatar_10_serio_molesto | abajo-der | Ni en dos horas. |
-| 3:20 | 3:23 | avatar_06_pensativo_menton | arriba-der | ¿Por qué el centro tarda tanto? |
-| 4:22 | 4:25 | avatar_04_bajando_lentes | abajo-izq | Más de 40 veces más, solo por el tamaño. |
-| 5:50 | 5:55 | avatar_04_bajando_lentes | abajo-der | Con las tablas de vapor, la cuenta deja la olla en unos 118 °C en lugar de 121. |
-| 6:48 | 6:57 | avatar_11_sorprendido | arriba-der | Una revisión de 2021 señala que las esporas de algunas cepas de Bacillus resisten las temperaturas normales del procesado de alimentos. |
-| 8:57 | 9:00 | avatar_02_apuntando_camara | abajo-der | La respuesta honesta: depende de tu carga. |
-| 10:36 | 10:39 | avatar_02_apuntando_camara | abajo-der | Soy Robert, de La Creación del Robert. |
+| 0 | 7 | 11_sorprendido | arriba-der | Esta olla ya marca 121 grados Celsius: el centro de la bolsa que lleva… |
+| 62 | 71 | 13_senalando_arriba | abajo-der | En 15 minutos caben diez de esos pasos: de un millón de esporas, la pr… |
+| 161 | 164 | 10_serio_molesto | abajo-der | Ni en dos horas.… |
+| 179 | 185 | 06_pensativo_menton | arriba-der | ¿Por qué tarda tanto el centro? Los autores del estudio de la EPA prop… |
+| 198 | 208 | 13_senalando_arriba | abajo-der | Una simulación deja comparar recipientes. Supone lo peor: que el calor… |
+| 285 | 293 | 04_bajando_lentes | abajo-der | A 1,500 metros de altitud el aire de afuera empuja menos, y la misma p… |
+| 302 | 308 | 02_apuntando_camara | abajo-der | Entre más alto vives, más tiempo necesita tu ciclo, o más presión si t… |
+| 366 | 375 | 10_serio_molesto | arriba-der | Con un solo ciclo de 20 minutos a 15 psi, los síntomas de contaminació… |
+| 432 | 438 | 06_pensativo_menton | arriba-der | ¿Cómo saber si tu ciclo alcanzó? Mucha gente se guía solo por la cinta… |
+| 517 | 520 | 02_apuntando_camara | abajo-izq | Soy Robert, y esto es La Creación del Robert.… |
 
-Total: 9 apariciones, 43 s en pantalla. Duración del video: 10:46.
+Total: 10 apariciones, 68 s.

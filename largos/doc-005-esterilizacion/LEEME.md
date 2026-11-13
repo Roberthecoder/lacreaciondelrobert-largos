@@ -12,6 +12,7 @@
 | `video/escenas.js` | Capítulos, frases y escena de cada frase (`v: { tipo: 'lienzo', id }`). |
 | `video/cine-luz-a.jsx` | Piezas compartidas (olla de presión con vista de rayos X, mapa de calor por conducción, bolsa, frasco de grano, endospora en corte, bacilo, gráficas, manómetro) y capítulos 0 a 3. |
 | `video/cine-luz-b.jsx` | Capítulos 4 a 8 (aire, altitud, grano, tesis, pasteurizar, tiempos, errores y cierre). |
+| `video/cine-luz-c.jsx` | Escenas de la versión 2: mediciones en bolsas, simulación de tubo, frasco y bolsa, altitud, ollas eléctricas, ciclos cortos en grano, la cuenta y la cinta testigo. |
 | `video/tiempos.mjs` | Imprime la línea de tiempo: en qué segundo empieza cada escena. |
 | `video/musica_doc.py` | Genera la música (`video/voz/mezcla.m4a`): un acorde por capítulo y una campana por frase. |
 

@@ -1,40 +1,22 @@
-# Cambios respecto al guion original (documental de esterilización, 7 nov 2026)
+# Cambios · Documental 005
 
-Decisiones de Robert del 12 nov 2026: renumerar a **005**, hacerlo **100 % ilustrado**, **sin voz por ahora** y **expositivo** (hechos, no experiencia personal).
+## Versión 2 (13 nov 2026), con la revisión de Robert
+1. **Solo artículos arbitrados.** Salieron siete fuentes que no lo eran y sus frases (lista en `verificacion.md`). Entraron once artículos (F20 a F31 en `fuentes.md`).
+2. **Tesis al frente.** El gancho ya dice que 15 minutos casi nunca alcanzan y que los frascos van de 60 a 90 minutos y las bolsas de 2 a 2.5 horas. El capítulo 6 arma la cuenta: subida del centro, más 15 minutos, más margen.
+3. **Mediciones reales en lugar de reglas de libro.** Dos escenas nuevas con datos medidos en bolsas (Ozanne 1993 y Rutala 1982), además del experimento de la EPA.
+4. **Frascos.** La olla del gancho y del cierre lleva una bolsa y un frasco. La simulación compara tubo de ensayo, frasco de 8 cm y bolsa de 12 cm.
+5. **Altitud.** Ahora dice que el tiempo sube: a 1,500 m la olla queda en unos 118 °C y hace falta de 1.7 a 3.3 veces más tiempo según la cepa. Ya no se nombra Guadalajara.
+6. **Cinta testigo.** Escena nueva: qué avisa, qué no, y el indicador biológico como prueba directa.
+7. **Grano.** Estudio de Gupta 2020: un ciclo de 20 minutos baja la contaminación bacteriana 23 %; tres ciclos, 99 %.
+8. **Ollas eléctricas.** Swenson 2018: de cuatro marcas, solo una mató las esporas de prueba.
+9. **Sin repeticiones.** De 152 frases a 96; de 10.8 a 8.8 minutos. Salieron el capítulo de pasteurización, la lista de tres errores, el nivel de garantía de hospitales y las frases que decían lo mismo dos veces.
+10. **Detalles.** Fuentes en pantalla más grandes. En el cierre, el rótulo de endosporas inactivadas aparece hasta que el reloj del centro termina. Despedida nueva: «Soy Robert, y esto es La Creación del Robert».
 
-## Se quitó (dependía de la experiencia de Robert o de preguntas sin contestar)
-- Las cuatro líneas `[PREGUNTA]`: su rutina con la pesa (3), qué contaminación le sale más (4), sus tiempos en la olla (5) y el autoclave del Carrillo Biorefinery Lab (6).
-- «Yo una vez tuve un frasco con miles de millones de esporas… que no eran las que yo quería.»
-- «aquí en Guadalajara, donde estudio» y «nos pega directo». Guadalajara queda solo como ejemplo de una ciudad a unos 1,500 m.
-- «Hoy te voy a contar…», «Mira esta tabla», «Mira este trabajo», «Hagamos la cuenta».
-- La despedida «Que tengas un magnífico día, una magnífica semana». El cierre es la tarjeta de marca con una pregunta para comentar.
+## Para el ojo de Robert
+- Los rangos de 60 a 90 minutos y de 2 a 2.5 horas, y que mucha gente se guía solo por la cinta, van como práctica del cultivo (son tuyos, no de un artículo).
+- La simulación da tiempos mucho más largos que la práctica (frasco 2 h 40 min, bolsa 6 h) porque supone solo conducción. En pantalla va con sello de peor caso. Si confunde, se puede dejar solo la proporción (2.25 veces).
+- No encontré mediciones publicadas con termopar dentro de frascos de grano ni de bolsas de sustrato para hongos. Las mediciones son de bolsas de residuos de laboratorio.
+- Seis citas faltan de abrir a texto completo (lista en `verificacion.md`).
 
-## Se reescribió sin cambiar el dato
-- Gancho: antes abría con «Quince minutos a ciento veintiún grados». Ahora abre con lo que se ve: «Esta olla ya marca 121 grados Celsius: el centro de la bolsa que lleva adentro, todavía no.»
-- «te puede salir carísima» pasó a «esa receta puede quedarse corta» (lo de «carísima» no tenía fuente).
-- «la culpa no es solo de los microbios, la culpa es del calor» pasó a dos frases sin esa figura: parte de la razón está en los microbios y la otra en el calor.
-- «esporas de bacterias», «bacterias dormidas, metidas en una armadura» pasó a «endosporas bacterianas» y «una bacteria en reposo, envuelta en varias capas protectoras».
-- «una bacteria que ama el calor» pasó a «una bacteria termófila, que crece en caliente».
-- «la semilla de hongo, que es grano» pasó a «el inóculo de grano, lo que muchos cultivadores llaman semilla».
-- «como un chisme» pasó a «como un recado que pasa de mano en mano».
-- «un buffet libre» pasó a «comida de sobra».
-- «casi siempre está en el centro» (el punto frío de una bolsa) no tenía fuente propia. Quedó como «en un bloque que se calienta desde afuera por conducción, queda hacia el centro», que es deducción de la ecuación de calor.
-- «creen ellos» pasó a «plantean» y en pantalla va el sello «hipótesis de los autores».
-- «Si las esporas no crecen, el ciclo sirve» se completó con lo que dice la misma fuente: si crecen, el ciclo se alarga y la prueba se repite.
-- Siglas con su nombre la primera vez: EPA, USDA, psi; en pantalla también NIST, NCHFP y kPa.
-- Los números van en cifras porque ahora son subtítulos y no voz.
-- Los títulos de los capítulos se acortaron para que quepan en una línea de la tarjeta.
-
-## Se agregó en pantalla (no estaba en el guion hablado)
-- La tabla completa de líquidos (también 250 ml, 500 ml y 1.5 L), ya verificada en el original.
-- Las presiones del capítulo 4 en kilopascales (son la cuenta que ya estaba verificada).
-- El rótulo «La presión la suman el vapor y el aire; la temperatura depende solo del vapor». Es un principio de física, no una cita de la guía de enlatado.
-- Los nombres de las capas de la endospora y las etapas de la germinación (de la misma revisión de 2021).
-
-## Pendiente para Robert
-- Revisar con ojo de cultivador el capítulo 3: el mapa de calor y los tiempos (5 min y 4 h) son una estimación de solo conducción con las propiedades del agua. No hay mediciones con termopar dentro de bolsas de sustrato en las fuentes; si un día lo mide en su olla, ese dato sustituiría a la estimación.
-- Decidir si se queda el rótulo de física del aire (fila N4 de `verificacion.md`).
-- La guía de enlatado pide subir la presión en altura, pero con una pesa fija de 15 psi eso no se puede; el guion no dice qué hacer en ese caso porque ninguna fuente lo dice para sustrato. Si Robert quiere decir «se alarga el tiempo», hace falta una fuente o decirlo como práctica suya.
-- Dos fuentes no son arbitradas (el fabricante Priorclave y la tesis finlandesa) y dos datos vienen de Wikipedia (difusividad del aluminio y altitud de Guadalajara). Están rotuladas, pero conviene cambiarlas si aparece algo mejor.
-- La olla dibujada es genérica (no es su modelo) y lleva manómetro y pesa. Si quiere que se parezca a la suya, hace falta una foto.
-- Decidir la voz (grabada o clonada) y el título final.
+## Versión 1 (12 nov 2026)
+Versión expositiva 100 % ilustrada a partir del guion original (carpeta `original/`).

@@ -72,7 +72,7 @@ LUZ.grano = (ctx, e) => {
   const R = rng(17); for (let i = 0; i < 12; i++) { const px = x - 190 + R() * 380, py = y - 40 + R() * 150 + Math.abs(px - x) * 0.18; if (i % 4 === 0) bacilo(ctx, px, py, 1.5, R() * 3, ss(e.tl, Lx(e, 1) + 0.8 + i * 0.12, Lx(e, 1) + 1.4 + i * 0.12), 1); else esporita(ctx, px, py, 1.6, R() * 3, ss(e.tl, Lx(e, 1) + 0.8 + i * 0.12, Lx(e, 1) + 1.4 + i * 0.12), '#eaf6ff', 0.5 + 0.2 * Math.sin(T * 2 + i)); }
   ctx.restore(); ctx.strokeStyle = 'rgba(220,235,255,.8)'; ctx.lineWidth = 6; ctx.stroke(); ctx.restore();
   rico(ctx, 'Endosporas de *Bacillus*', 1400, 470, { s: 42, f: 'serif', w: 500, a: en(e, 1, 0.8, 1.5) }); txt(ctx, 'VIENEN DEL SUELO Y DEL CAMPO', 1402, 512, { s: 19, f: 'mono', w: 700, ls: 2, c: '#bfe4ff', a: en(e, 1, 0.8, 1.9) }); txt(ctx, 'RESISTEN MUCHO TIEMPO', 1402, 544, { s: 19, f: 'mono', w: 700, ls: 2, c: '#bfe4ff', a: en(e, 1, 0.8, 3.4) }); txt(ctx, 'EN EL AMBIENTE', 1402, 574, { s: 19, f: 'mono', w: 700, ls: 2, c: '#bfe4ff', a: en(e, 1, 0.8, 3.4) });
-  fte(ctx, 'SETLOW Y CHRISTIE 2021 · RODRIGO ET AL. 2021 (ARROZ) · BRÉANT 2025', al); esquema(ctx, al, 'ESQUEMA · SIN ESCALA');
+  fte(ctx, 'SETLOW Y CHRISTIE 2021 · RODRIGO ET AL. 2021 (ARROZ) · GUPTA ET AL. 2020', al); esquema(ctx, al, 'ESQUEMA · SIN ESCALA');
 };
 LUZ.endospora = (ctx, e) => {
   noche(ctx, '#05080e', '#091019'); const a = ss(e.tl, 0.1, 1), z = 2.5 + 0.12 * e.p, x = 620, y = 500;
@@ -214,7 +214,7 @@ LUZ.depende = (ctx, e) => {
 function ampolleta(ctx, x, y, s, a = 1) { ctx.save(); ctx.globalAlpha *= a; ctx.translate(x, y); ctx.scale(s, s); ctx.fillStyle = 'rgba(200,220,245,.25)'; ctx.strokeStyle = 'rgba(225,235,250,.9)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.roundRect(-9, -30, 18, 60, 8); ctx.fill(); ctx.stroke(); ctx.fillStyle = '#f1ecdf'; ctx.fillRect(-4, -4, 8, 26); ctx.fillStyle = '#6a7aa0'; ctx.fillRect(-9, -30, 18, 12); ctx.restore(); }
 LUZ.validar = (ctx, e) => {
   noche(ctx, '#080706', '#0f0c0a'); const T = e.T, a = ss(e.tl, 0.1, 0.9), xs = [330, 900, 1470], y = 470;
-  titulo(ctx, 'No adivinar: validar', 960, 190, a, { s: 72 });
+  titulo(ctx, 'Validar el ciclo', 960, 190, a, { s: 72 });
   const a1 = en(e, 1, 0.8); bolsaCorte(ctx, xs[0], y + 30, 300, 250, 0.03, { a: a1, seed: 5, motas: 140 }); ampolleta(ctx, xs[0], y + 30, 1.5, en(e, 1, 0.6, 0.8)); halo(ctx, xs[0], y + 30, 90, '#bfe4ff', 0.4 * en(e, 1, 0.6, 0.8));
   txt(ctx, '1 · INDICADOR EN EL CENTRO', xs[0], 730, { s: 19, f: 'mono', w: 700, ls: 3, al: 'center', c: C.gris, a: a1 }); txt(ctx, 'con esporas', xs[0], 772, { s: 36, f: 'mano', w: 700, al: 'center', c: '#bfe4ff', a: a1 });
   const a1b = en(e, 1, 0.8, 3.2); flecha(ctx, xs[0] + 200, y + 30, xs[1] - 180, y + 30, a1b, 'rgba(210,222,240,.7)', 4); olla(ctx, xs[1], 640, 0.6, T, { a: a1b }); txt(ctx, '2 · CORRER EL CICLO', xs[1], 730, { s: 19, f: 'mono', w: 700, ls: 3, al: 'center', c: C.gris, a: a1b });
@@ -224,7 +224,7 @@ LUZ.validar = (ctx, e) => {
   const a2 = en(e, 2, 0.8), a3 = en(e, 3, 0.8); tuboCultivo(ctx, xs[2] - 90, 620, 0, Math.max(a1c * 0.6, a2), T); tuboCultivo(ctx, xs[2] + 90, 620, a3, Math.max(a1c * 0.25, a3), T);
   palomita(ctx, xs[2] - 90, 366, 24, a2); tache(ctx, xs[2] + 90, 366, 22, a3);
   chip(ctx, 'NO CRECEN: EL CICLO SIRVE PARA ESA CARGA', 960, 818, { c: C.verde, s: 19, al: 'center', a: a2 * (1 - a3) }); chip(ctx, 'CRECEN: ALARGAR EL CICLO Y REPETIR LA PRUEBA', 960, 818, { c: C.rojo, s: 19, al: 'center', a: a3 });
-  fte(ctx, 'PRIORCLAVE 2023 (FABRICANTE DE AUTOCLAVES)', a1, 870); esquema(ctx, a1);
+  fte(ctx, 'RUTALA ET AL. 1982 · LEMIEUX ET AL. 2006 · SWENSON ET AL. 2018', a1, 870); esquema(ctx, a1);
 };
 function ollaLlena(ctx, x, y, s, T, apretada, a = 1) { olla(ctx, x, y, s, T, { a, rx: 1, vapor: 0.4, vaporIn: apretada ? 0.2 : 1, dentro: (c) => { if (apretada) { for (let i = 0; i < 3; i++) for (let j = 0; j < 2; j++) bolsaCorte(c, -134 + i * 134, -112 - j * 122, 128, 104, 0.012, { seed: i + j * 3, motas: 20, n: 12 }); } else { bolsaCorte(c, -95, -140, 120, 130, 0.5, { seed: 2, motas: 20, n: 12 }); bolsaCorte(c, 95, -140, 120, 130, 0.5, { seed: 4, motas: 20, n: 12 }); for (let i = 0; i < 8; i++) { const ph = (T * 0.5 + i / 8) % 1; halo(c, [-190, 0, 190][i % 3], -60 - ph * 240, 30, C.vapor, 0.5 * (1 - ph)); } } } }); }
 LUZ.errores = (ctx, e) => {
@@ -264,4 +264,4 @@ LUZ.cierre = (ctx, e) => {
     txt(ctx, vivo > 0.5 ? 'ENDOSPORAS EN REPOSO' : 'ENDOSPORAS INACTIVADAS', x, y + r + 40, { s: 19, f: 'mono', w: 700, ls: 4, al: 'center', c: vivo > 0.5 ? '#bfe4ff' : C.verde, a: a4 }); }
   esquema(ctx, rx);
 };
-window.LZB = { aire, microbios, pleurotus, ollaLlena };
+window.LZB = { aire, microbios, pleurotus, ollaLlena, ampolleta, miniOlla };

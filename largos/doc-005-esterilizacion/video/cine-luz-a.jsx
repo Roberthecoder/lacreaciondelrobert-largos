@@ -6,7 +6,7 @@ const Lx = (e, i) => { const a = e.L(i); return a == null ? 1e9 : a; };
 const en = (e, i, d = 0.7, r = 0) => { const a = e.L(i); return a == null ? 0 : ss(e.tl, a + r, a + r + d); };
 const esquema = (ctx, a = 1, s = 'ESQUEMA') => chip(ctx, s, 1870, 52, { c: '#8fa0bd', s: 17, a: a * 0.85, al: 'right' });
 // Fuente del dato, siempre abajo a la izquierda (arriba de los subtítulos).
-const fte = (ctx, s, a = 1, y = 856) => chip(ctx, 'FUENTE: ' + s, 50, y, { c: '#8fa0bd', s: 16, a: a * 0.9 });
+const fte = (ctx, s, a = 1, y = 856) => chip(ctx, 'FUENTE: ' + s, 50, y, { c: '#a9b8d2', s: 19, a: a * 0.95 });
 const C = { frio: '#3b7be0', vapor: '#dfe8f5', oro: LUZC.oro, rojo: '#ff5a4a', verde: '#3DFF7A', gris: '#c9d2e3', metal: '#9aa3ad' };
 
 /* ====== calor ====== */
@@ -173,10 +173,10 @@ LUZ.receta = (ctx, e) => {
   txt(ctx, 'ESTERILIZACIÓN CON VAPOR', 0, -170, { s: 22, f: 'mono', w: 700, ls: 6, al: 'center', c: '#7a3a2a', a: a0, sombra: false });
   txt(ctx, '15 min', 0, -50, { s: 130, f: 'serif', w: 600, al: 'center', c: '#1b1d22', a: a0, sombra: false });
   txt(ctx, 'a 121 °C', 0, 50, { s: 84, f: 'serif', w: 500, al: 'center', c: '#1b1d22', a: a0, sombra: false });
-  const a1 = en(e, 1, 0.8); txt(ctx, 'el material, con vapor', 0, 150, { s: 62, f: 'mano', w: 700, al: 'center', c: '#b9442e', a: a1, sombra: false });
+  const a1 = ss(e.tl, 1.8, 2.6); txt(ctx, 'el material, con vapor', 0, 150, { s: 62, f: 'mano', w: 700, al: 'center', c: '#b9442e', a: a1, sombra: false });
   ctx.save(); ctx.globalAlpha = a1; ctx.strokeStyle = '#b9442e'; ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(-230, 172); ctx.lineTo(-230 + 460 * a1, 168); ctx.stroke(); ctx.restore(); ctx.restore();
-  const a2 = en(e, 2, 0.9);
-  const R = rng(12); for (let i = 0; i < 16; i++) { const an = R() * TAU, d = 40 + R() * 150; esporita(ctx, 1380 + Math.cos(an) * d * 1.3 + Math.sin(e.T * 0.6 + i) * 6, 400 + Math.sin(an) * d * 0.8 + Math.cos(e.T * 0.5 + i * 2) * 6, 1.7 + R() * 0.8, R() * 3, a2 * ss(e.tl, Lx(e, 2) + i * 0.08, Lx(e, 2) + 0.6 + i * 0.08)); }
+  const a2 = en(e, 1, 0.9);
+  const R = rng(12); for (let i = 0; i < 16; i++) { const an = R() * TAU, d = 40 + R() * 150; esporita(ctx, 1380 + Math.cos(an) * d * 1.3 + Math.sin(e.T * 0.6 + i) * 6, 400 + Math.sin(an) * d * 0.8 + Math.cos(e.T * 0.5 + i * 2) * 6, 1.7 + R() * 0.8, R() * 3, a2 * ss(e.tl, Lx(e, 1) + i * 0.08, Lx(e, 1) + 0.6 + i * 0.08)); }
   rotulo(ctx, 1150, 690, 'Endosporas bacterianas', 'DE LOS BLANCOS MÁS RESISTENTES AL CALOR', a2, { c: '#bfe4ff' });
   fte(ctx, 'LEMIEUX ET AL. 2006 · SETLOW Y CHRISTIE 2021', ss(e.tl, 1, 2)); esquema(ctx, a2);
 };
@@ -203,7 +203,7 @@ LUZ.valord = (ctx, e) => {
   noche(ctx, '#07090f', '#0b0f18'); const { X, Y } = graf(GD), a = ss(e.tl, 0.2, 1.2);
   ejes(ctx, GD, a, { yt: [[6, '1,000,000'], [4, '10,000'], [2, '100'], [0, '1'], [-2, '1 en 100'], [-4, '1 en 10,000']], xt: [0, 3, 6, 9, 12, 15].map((v) => [v, String(v)]), xl: 'MINUTOS A 121 °C (EN EL MATERIAL)', yl: 'ESPORAS VIVAS · ESCALA LOGARÍTMICA', ylx: 196 });
   // pasos: 1 durante las frases 0–2, hasta 10 en la frase 3
-  const n = eo(e.tl, 2.2, 5.5) + 9 * ss(e.tl, Lx(e, 3) + 0.2, Lx(e, 3) + 2.8), f = (v) => 6 - v / 1.5;
+  const n = eo(e.tl, 2.2, 5.5) + 9 * ss(e.tl, Lx(e, 2) + 0.2, Lx(e, 2) + 2.8), f = (v) => 6 - v / 1.5;
   curva(ctx, GD, f, n * 1.5, '#bfe4ff', 5);
   for (let k = 0; k <= Math.floor(n + 0.001); k++) { halo(ctx, X(k * 1.5), Y(6 - k), 26, '#bfe4ff', 0.6); ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(X(k * 1.5), Y(6 - k), 6, 0, TAU); ctx.fill(); }
   // un paso D
@@ -214,12 +214,12 @@ LUZ.valord = (ctx, e) => {
   txt(ctx, 'VALOR D', 1400, 190, { s: 26, f: 'mono', w: 700, ls: 10, c: C.oro, a });
   rico(ctx, 'tiempo en que el calor', 1400, 240, { s: 34, f: 'sans', w: 500, c: C.gris, a }); rico(ctx, 'mata al 90 % de las esporas', 1400, 284, { s: 34, f: 'sans', w: 500, c: C.gris, a });
   const a1 = en(e, 1, 0.8); txt(ctx, 'D = 1.5 min', 1400, 400, { s: 78, f: 'serif', w: 500, a: a1 }); txt(ctx, 'A 121 °C · LOTE DE LA EPA', 1400, 444, { s: 19, f: 'mono', w: 700, ls: 3, c: C.oro, a: a1 }); rico(ctx, '*G. stearothermophilus* ATCC 7953', 1400, 482, { s: 24, f: 'sans', w: 500, c: C.gris, a: a1 });
-  const a2 = en(e, 2, 0.7) * (1 - en(e, 5, 0.5)); for (let i = 0; i < 10; i++) esporita(ctx, 1412 + i * 44, 560, 1.5, 0.4, a2 * (i === 0 ? 1 : 1 - 0.8 * en(e, 2, 0.8, 0.8 + i * 0.12)), i === 0 ? '#eaf6ff' : '#5a6474', i === 0 ? 0.6 : 0);
+  const a2 = en(e, 1, 0.7, 3.2) * (1 - en(e, 2, 0.5)); for (let i = 0; i < 10; i++) esporita(ctx, 1412 + i * 44, 560, 1.5, 0.4, a2 * (i === 0 ? 1 : 1 - 0.8 * en(e, 1, 0.8, 4 + i * 0.12)), i === 0 ? '#eaf6ff' : '#5a6474', i === 0 ? 0.6 : 0);
   txt(ctx, 'cada 1.5 min sobrevive 1 de cada 10', 1400, 620, { s: 36, f: 'mano', w: 700, c: '#bfe4ff', a: a2 });
-  const a3 = en(e, 3, 0.7); txt(ctx, '15 min = 10 pasos', X(7.5), 170, { s: 44, f: 'serif', w: 500, al: 'center', a: a3 });
-  const a4 = en(e, 4, 0.7); guia(ctx, X(9), Y(0), X(9) + 90, Y(0) - 84, a4, C.oro); chip(ctx, 'PASO 6: QUEDA 1, EN PROMEDIO', X(9) + 96, Y(0) - 100, { c: C.oro, s: 20, a: a4 });
-  const a5 = en(e, 5, 0.7); guia(ctx, X(15), Y(-4), X(13.6), Y(-3.4), a5, C.verde); chip(ctx, 'PASO 10: 1 EN 10,000', X(13.5), Y(-3.4), { c: C.verde, s: 20, a: a5, al: 'right' });
-  fte(ctx, 'LEMIEUX ET AL. 2006 (VALOR D) · JIMENEZ ET AL. 2024 · CÁLCULO', ss(e.tl, 6, 7));
+  const a3 = en(e, 2, 0.7); txt(ctx, '15 min = 10 pasos', X(7.5), 170, { s: 44, f: 'serif', w: 500, al: 'center', a: a3 });
+  const a4 = en(e, 2, 0.7, 3); guia(ctx, X(9), Y(0), X(9) + 90, Y(0) - 84, a4, C.oro); chip(ctx, 'PASO 6: QUEDA 1, EN PROMEDIO', X(9) + 96, Y(0) - 100, { c: C.oro, s: 20, a: a4 });
+  const a5 = en(e, 2, 0.7, 5); guia(ctx, X(15), Y(-4), X(13.6), Y(-3.4), a5, C.verde); chip(ctx, 'PASO 10: 1 EN 10,000', X(13.5), Y(-3.4), { c: C.verde, s: 20, a: a5, al: 'right' });
+  fte(ctx, 'LEMIEUX ET AL. 2006 (VALOR D) · JIMENEZ ET AL. 2024 · CÁLCULO', ss(e.tl, 3, 4));
 };
 LUZ.sal = (ctx, e) => {
   noche(ctx, '#07090f', '#0b0f18'); const a = ss(e.tl, 0.1, 0.9), x0 = 240, x1 = 1680, y = 520, X = (p) => mixn(x0, x1, (6 - p) / 12);
@@ -249,11 +249,11 @@ LUZ.relojes = (ctx, e) => {
     txt(ctx, E[i][0], x, y + 80, { s: 38, f: 'serif', w: 500, al: 'center', a: ai }); txt(ctx, E[i][1], x, y + 118, { s: 17, f: 'mono', w: 700, ls: 3, al: 'center', c, a: ai });
     ctx.save(); ctx.globalAlpha = ai; if (i === 0) { ctx.fillStyle = '#2a2d36'; ctx.fillRect(x - 70, y - 120, 140, 14); for (let k = 0; k < 5; k++) halo(ctx, x - 52 + k * 26, y - 128, 26 + 6 * Math.sin(T * 11 + k), '#3aa0ff', 0.7); }
     else if (i === 1) manometro(ctx, x, y - 170, 74, 15 + 0.15 * Math.sin(T * 7)); else bolsaCorte(ctx, x, y - 170, 190, 150, 0.9, { seed: 6, motas: 60 }); ctx.restore(); });
-  tache(ctx, xs[0], y - 150, 96, en(e, 1, 0.5, 0.2)); tache(ctx, xs[1], y - 170, 96, en(e, 2, 0.5, 0.2));
+  tache(ctx, xs[0], y - 150, 96, en(e, 1, 0.5, 0.3)); tache(ctx, xs[1], y - 170, 96, en(e, 1, 0.5, 2.4));
   const g = ss(e.tl, 2.6, 3.6); halo(ctx, xs[2], y - 170, 260, C.verde, 0.16 * g); const fr = pr(e.tl, 3.4, e.dur);
   cronometro(ctx, 1700, 330, 62, fr, g, C.verde); txt(ctx, mmss(15 * fr), 1700, 446, { s: 34, f: 'mono', w: 700, al: 'center', c: C.verde, a: g });
   ctx.save(); ctx.globalAlpha = g; ctx.strokeStyle = C.verde; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(xs[2], y); ctx.lineTo(mixn(xs[2], 1740, fr), y); ctx.stroke(); ctx.restore();
-  fte(ctx, 'LEMIEUX ET AL. 2006 · UBC BOTANY 2021', ss(e.tl, 1.5, 2.4));
+  fte(ctx, 'LEMIEUX ET AL. 2006', ss(e.tl, 1.5, 2.4));
 };
 function botellaLab(ctx, x, y, w, h, nivel = 0.6, a = 1, Fo = null) { ctx.save(); ctx.globalAlpha *= a; const P = () => { ctx.beginPath(); ctx.moveTo(x - w * 0.2, y - h); ctx.lineTo(x + w * 0.2, y - h); ctx.lineTo(x + w * 0.2, y - h * 0.86); ctx.quadraticCurveTo(x + w / 2, y - h * 0.8, x + w / 2, y - h * 0.68); ctx.lineTo(x + w / 2, y - 6); ctx.quadraticCurveTo(x + w / 2, y, x + w / 2 - 6, y); ctx.lineTo(x - w / 2 + 6, y); ctx.quadraticCurveTo(x - w / 2, y, x - w / 2, y - 6); ctx.lineTo(x - w / 2, y - h * 0.68); ctx.quadraticCurveTo(x - w / 2, y - h * 0.8, x - w * 0.2, y - h * 0.86); ctx.closePath(); };
   P(); ctx.save(); ctx.clip(); if (Fo != null) { const cy = y - h * nivel / 2; mapaCalor(ctx, (k) => { ctx.beginPath(); ctx.ellipse(x, cy, w * 0.72 * k, h * nivel * 0.72 * k, 0, 0, TAU); }, Fo, { n: 16 }); ctx.fillStyle = '#080b12'; ctx.fillRect(x - w, y - h * 1.1, w * 2, h * 1.1 - h * nivel); } else { ctx.fillStyle = 'rgba(214,170,90,.55)'; ctx.fillRect(x - w, y - h * nivel, w * 2, h); } ctx.restore();
@@ -426,7 +426,7 @@ LUZ.puntofrio = (ctx, e) => {
   guia(ctx, cx, cy + 40, 1240, 400, ss(e.tl, 2, 2.8), '#7fc4ff'); rotulo(ctx, 1250, 410, 'Punto frío', 'EL QUE MÁS TARDA EN CALENTARSE', ss(e.tl, 2.2, 3), { c: '#7fc4ff', s: 64 });
   const a1 = en(e, 1, 0.8); [[-1, 0], [1, 0], [0, -1], [0, 1]].forEach(([dx, dy], i) => { const k = 0.5 + 0.5 * Math.sin(T * 1.6 + i); flecha(ctx, cx + dx * 250, cy + 40 + dy * 205, cx + dx * (150 - 20 * k), cy + 40 + dy * (120 - 20 * k), a1, '#ffd9a0', 6); });
   txt(ctx, 'el calor entra desde todas las orillas;', 1260, 560, { s: 40, f: 'mano', w: 700, c: '#ffd9a0', a: a1 }); txt(ctx, 'el centro es lo último en recibirlo', 1260, 606, { s: 40, f: 'mano', w: 700, c: '#ffd9a0', a: a1 });
-  barraColor(ctx, 1260, 700, 360, a); fte(ctx, 'JIMENEZ ET AL. 2024 (PUNTO FRÍO) · ECUACIÓN DE CALOR', ss(e.tl, 1, 2)); esquema(ctx, a);
+  barraColor(ctx, 1260, 700, 360, a); fte(ctx, 'JIMENEZ ET AL. 2024, FOOD SCI. NUTR. 12: 1545', ss(e.tl, 1, 2)); esquema(ctx, a);
 };
 
 window.LZA = { Lx, en, esquema, fte, C, calor, ganado, tempC, ALFA, mapaCalor, barraColor, mmss, vapor, manometro, olla, bolsaCorte, bolsa, granos, frascoGrano, esporita, bacilo, endospora, graf, ejes, curva, cronometro, palomita, particulas, particula, reloj7, escenaOlla, corteCil, botellaLab, tuboCultivo, erf, pot };
