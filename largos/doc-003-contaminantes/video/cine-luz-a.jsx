@@ -212,10 +212,15 @@ LUZ.gancho = (ctx, e) => {
 };
 LUZ.desfile = (ctx, e) => {
   noche(ctx, '#05070c', '#0b0f18'); polvo(ctx, 22, 9, e.T, '#7f95c0', 0.25);
-  const E = [['moho', 'MOHOS', CO.tri], ['bact', 'BACTERIAS', CO.bac], ['acaro', 'ÁCAROS', '#e0a184'], ['mosca', 'MOSCAS', '#aab3c8'], ['nema', 'NEMATODOS', '#bfe0d0'], ['virus', 'VIRUS', '#ff8fb0']];
-  E.forEach(([k, n, c], i) => { const t0 = 0.3 + (i ? e.L(1) + (i - 1) * 1.2 - 0.3 : 0), a = eo(e.tl, t0, t0 + 0.8), x = 210 + i * 300, y = 440 + Math.sin(e.T * 0.8 + i) * 6 + (1 - a) * 40;
-    ctx.save(); ctx.globalAlpha = a; halo(ctx, x, y, 170, c, 0.12); emblema(ctx, k, x, y, 1.25, e.T, a); ctx.restore(); txt(ctx, n, x, 660, { s: 24, f: 'mono', w: 700, ls: 5, al: 'center', c, a }); });
-  ['RECONOCERLOS', 'POR DÓNDE ENTRAN', 'QUÉ SE HACE'].forEach((s, i) => chip(ctx, s, 480 + i * 480, 780, { al: 'center', s: 26, a: en(e, 2, 0.6, 0.4 + i * 1.3) }));
+  const E = [['moho', 'MOHOS', CO.tri], ['lev', 'LEVADURAS', CO.lev], ['bact', 'BACTERIAS', CO.bac], ['acaro', 'ÁCAROS', '#e0a184'], ['mosca', 'MOSCAS', '#aab3c8'], ['nema', 'NEMATODOS', '#bfe0d0'], ['virus', 'VIRUS', '#ff8fb0']];
+  const L1 = e.L(1) == null ? 1e9 : e.L(1);
+  E.forEach(([k, n, c], i) => { const t0 = 0.05 + i * 0.3, a = eo(e.tl, t0, t0 + 0.7), x = 180 + i * 260, y = 440 + Math.sin(e.T * 0.8 + i) * 6 + (1 - a) * 40, luz = ss(e.tl, L1 + i * 0.75, L1 + i * 0.75 + 0.4) * (1 - ss(e.tl, L1 + i * 0.75 + 0.9, L1 + i * 0.75 + 1.5));
+    ctx.save(); ctx.globalAlpha = a; halo(ctx, x, y, 150 + 60 * luz, c, 0.12 + 0.25 * luz);
+    if (k === 'lev') { const R = rng(7); [[0, 0, 46], [44, -34, 26], [-40, 30, 34], [30, 46, 22], [-34, -44, 20]].forEach(([dx, dy, r]) => { const g = ctx.createRadialGradient(x + dx - r * 0.3, y + dy - r * 0.3, 1, x + dx, y + dy, r); g.addColorStop(0, '#fffbe8'); g.addColorStop(0.5, c); g.addColorStop(1, mixc(c, '#000000', 0.35)); ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(x + dx, y + dy, r * 1.12, r, 0.4, 0, TAU); ctx.fill(); }); }
+    else emblema(ctx, k, x, y, 1.1, e.T, a);
+    ctx.restore(); txt(ctx, n, x, 660, { s: 22, f: 'mono', w: 700, ls: 4, al: 'center', c, a }); });
+  ['RECONOCERLOS', 'POR DÓNDE ENTRAN', 'QUÉ SE HACE'].forEach((t, i) => chip(ctx, t, 480 + i * 480, 780, { al: 'center', s: 26, a: en(e, 2, 0.6, 0.4 + i * 1.3) * (1 - en(e, 3, 0.5)) }));
+  chip(ctx, 'A SIMPLE VISTA, LA IDENTIFICACIÓN ES TENTATIVA: SE CONFIRMA AL MICROSCOPIO', 960, 780, { al: 'center', s: 22, c: '#ffd27a', a: en(e, 3, 0.7) });
 };
 
 /* ====== 01 · Una carrera por la comida ====== */

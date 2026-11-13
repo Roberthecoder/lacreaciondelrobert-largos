@@ -7,11 +7,10 @@ window.CAPS = (() => {
 const L = (id) => ({ tipo: 'lienzo', id });
 return [
   { num: 0, titulo: 'Gancho', tarjeta: false, lineas: [
-    { t: 'Esa mancha verde no es parte de tu hongo: es otro hongo, y le está quitando la comida.', v: L('gancho'), robert: ['avatar_11_sorprendido', 'arriba-der'] },
-    { t: 'Se llama Trichoderma, y es uno de los contaminantes más temidos del cultivo de hongos.' },
-    { t: 'Pero no viene solo.', v: L('desfile'), d: 2.4 },
-    { t: 'Hay mohos, bacterias, ácaros, moscas, gusanos microscópicos y hasta virus que quieren lo mismo que tu hongo.' },
+    { t: 'Nada de esto es tu hongo: todos vienen por su comida.', v: L('desfile'), robert: ['avatar_11_sorprendido', 'arriba-centro'] },
+    { t: 'Hay mohos, levaduras, bacterias, ácaros, moscas, gusanos microscópicos y hasta virus.', d: 7 },
     { t: 'Hoy vas a aprender a reconocerlos, a saber por dónde entran y qué se hace con cada uno.' },
+    { t: 'Una advertencia: a simple vista la identificación es tentativa. Muchos mohos se parecen entre sí, y solo se confirman al microscopio.', d: 9 },
   ] },
 
   { num: 1, titulo: 'Una carrera por la comida', lineas: [
@@ -153,11 +152,12 @@ return [
     { t: 'Dos: no se huele de cerca ni se sacude, y menos si en casa vive alguien con defensas bajas.' },
     { t: 'Tres: nada contaminado se come. Tampoco «la parte que se ve bien».', robert: ['avatar_12_perfil_serio', 'arriba-der'] },
     { t: 'Y antes de tirarlo, míralo bien: el color, la textura y el olor dicen quién fue.', v: L('guia') },
-    { t: 'Verde que empezó blanco. Azulado y polvoso. Rosa y veloz. Alfileres negros. Grano mojado y agrio.' },
-    { t: 'Así que esa mancha verde no era parte de tu hongo.', v: L('cierre') },
-    { t: 'Era el aviso de que alguien más llegó primero.' },
-    { t: 'La próxima vez, que el primero sea el tuyo.', d: 4.2 },
-    { t: 'Soy Robert, de La Creación del Robert.', v: { tipo: 'marca', sub: '¿Cuál te ha tumbado más cultivos?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'abajo-der'] },
+    { t: 'Verde que empezó blanco. Azulado y polvoso. Rosa y veloz. Alfileres negros. Grano mojado y agrio. Cremoso y sin pelusa.' },
+    { t: 'Son pistas, no un diagnóstico: para confirmar de qué moho se trata hay que mirarlo al microscopio.' },
+    { t: 'Mohos, levaduras, bacterias, ácaros, moscas, nematodos y virus: ninguno era tu hongo.', v: L('desfile') },
+    { t: 'Todos llegaron por la misma comida.', d: 6.5 },
+    { t: 'La próxima vez, que el primero en llegar sea el tuyo.', d: 5 },
+    { t: 'Soy Robert, y esto es La Creación del Robert.', v: { tipo: 'marca', sub: '¿Cuál te ha tumbado más cultivos?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'arriba-der'] },
     { t: 'Y a ti, ¿cuál de estos contaminantes te ha tumbado más cultivos?', d: 5 },
   ] },
 ];

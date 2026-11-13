@@ -222,15 +222,17 @@ LUZ.reglas = (ctx, e) => {
 LUZ.guia = (ctx, e) => {
   noche(ctx, '#06090c', '#0b1016'); const T = e.T;
   ['COLOR', 'TEXTURA', 'OLOR'].forEach((s, i) => chip(ctx, s, 700 + i * 260, 190, { al: 'center', a: ss(e.tl, 0.5 + i * 1.2, 1.2 + i * 1.2), s: 26 }));
-  const G = [['*Trichoderma*', 'VERDE QUE EMPEZÓ BLANCO', CO.tri], ['*Penicillium*', 'AZULADO Y POLVOSO', CO.pen], ['*Neurospora*', 'ROSA Y VELOZ', CO.neu], ['*Mucor* · *Rhizopus*', 'ALFILERES NEGROS', CO.muc], ['*Bacillus*', 'GRANO MOJADO Y AGRIO', CO.bac]];
-  const dl = e.L(1) == null ? 99 : e.L(1), paso = (e.dur - dl - 0.6) / 5;
-  G.forEach(([n, s, c], i) => { const x = 220 + i * 370, y = 480, a = ss(e.tl, 0.4 + i * 0.5, 1.2 + i * 0.5), nom = ss(e.tl, dl + i * paso, dl + i * paso + 0.6); ctx.save(); ctx.globalAlpha = a;
+  const G = [['*Trichoderma*', 'VERDE QUE EMPEZÓ BLANCO', CO.tri], ['*Penicillium*', 'AZULADO Y POLVOSO', CO.pen], ['*Neurospora*', 'ROSA Y VELOZ', CO.neu], ['*Mucor* · *Rhizopus*', 'ALFILERES NEGROS', CO.muc], ['*Bacillus*', 'GRANO MOJADO Y AGRIO', CO.bac], ['Levaduras', 'CREMOSAS, SIN PELUSA', CO.lev]];
+  const dl = e.L(1) == null ? 99 : e.L(1), fin = e.L(2) == null ? e.dur : e.L(2), paso = (fin - dl - 0.6) / 6;
+  G.forEach(([n, s, c], i) => { const x = 180 + i * 312, y = 480, a = ss(e.tl, 0.4 + i * 0.5, 1.2 + i * 0.5), nom = ss(e.tl, dl + i * paso, dl + i * paso + 0.6); ctx.save(); ctx.globalAlpha = a;
     if (i === 0) { algodon(ctx, x, y, 110, '#ffffff', 1, 2, 1, 26); polvoMoho(ctx, x, y, 80, c, 1.2, 3, 300); petri(ctx, x, y, 140); }
     else if (i === 1) { algodon(ctx, x, y, 110, '#ffffff', 1, 5, 0.8, 20); polvoMoho(ctx, x, y, 95, c, 1.2, 4, 380); petri(ctx, x, y, 140); }
     else if (i === 2) { micelio(ctx, 'guN', x, y, 1, c, { seed: 3, radio: 128, max: 2500, brotes: 12 }); polvoMoho(ctx, x, y, 120, '#ff9a70', 1.2, 5, 300, 0.7); petri(ctx, x, y, 140); }
     else if (i === 3) { for (let k = 0; k < 9; k++) esporangio(ctx, x - 100 + k * 25, y + 120, 0.8, 1, { h: 150 + Math.sin(k * 2) * 50, r: 15, inc: (k - 4) * 0.05 }); }
-    else frascoGrano(ctx, x, y + 150, 190, 280, { mic: 0.6, humedo: 1, seed: 21 });
+    else if (i === 4) frascoGrano(ctx, x, y + 150, 190, 280, { mic: 0.6, humedo: 1, seed: 21 });
+    else { const R = rng(15); for (let k = 0; k < 8; k++) { const px = x - 70 + R() * 140, py = y - 70 + R() * 140, r = 14 + R() * 20, g = ctx.createRadialGradient(px - r * 0.3, py - r * 0.3, 1, px, py, r); g.addColorStop(0, '#fffbe8'); g.addColorStop(0.5, c); g.addColorStop(1, mixc(c, '#000000', 0.35)); ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(px, py, r * 1.1, r, 0, 0, TAU); ctx.fill(); } petri(ctx, x, y, 140); }
     ctx.restore(); rico(ctx, n, x, 720, { s: 34, f: 'sans', w: 500, al: 'center', a: nom }); txt(ctx, s, x, 764, { s: 16, f: 'mono', w: 700, ls: 2, al: 'center', c, a: nom }); });
+  chip(ctx, 'SON PISTAS, NO UN DIAGNÓSTICO: UN MOHO SE CONFIRMA AL MICROSCOPIO', 960, 840, { al: 'center', s: 22, c: '#ffd27a', a: e.L(2) == null ? 0 : ss(e.tl, e.L(2), e.L(2) + 0.7) });
 };
 LUZ.cierre = (ctx, e) => {
   noche(ctx, '#05080d', '#0a1016'); polvo(ctx, 18, 5, e.T, '#7f95c0', 0.25);

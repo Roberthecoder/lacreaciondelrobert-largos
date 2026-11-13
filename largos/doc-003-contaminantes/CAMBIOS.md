@@ -49,3 +49,10 @@ Este documental no tenía guion original, así que no se quitó nada: el guion s
 ## Pendientes técnicos
 - Sin voz: cada frase es un subtítulo. Si se graba voz, los tiempos cambian y hay que revisar las escenas.
 - La música es la cama generada por `video/musica_doc.py`.
+
+## Versión 2 (13 nov 2026), con la revisión de Robert
+1. El video abre en el desfile de contaminantes (se quitó el gancho de la mancha verde). Primera frase: «Nada de esto es tu hongo: todos vienen por su comida».
+2. Las levaduras entran al desfile, a la guía final y al cierre (ya tenían su escena en el capítulo 3).
+3. Se avisa dos veces, al inicio y en la guía final, que la identificación a simple vista es tentativa y que un moho se confirma al microscopio.
+4. El cierre regresa al desfile en lugar de a la mancha verde. Despedida: «Soy Robert, y esto es La Creación del Robert».
+5. Pendiente: imágenes reales. Desde la nube no se pueden bajar fotos (internet bloqueado) y el permiso para usar carpetas de la computadora de Robert fue rechazado por el sistema; falta que Robert conecte una carpeta o adjunte las fotos. `guion_final.md` todavía es el de la versión 1.
