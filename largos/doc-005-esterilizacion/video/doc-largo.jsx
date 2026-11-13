@@ -17,17 +17,17 @@ const SERIF = "'Fraunces', Georgia, serif";
 const BLANCO = '#F6F3EC';
 
 // Color de cada capítulo: tono (luz y fondos oscuros teñidos) y acento (rótulos, líneas, números).
-// Documental 001 (bioluminiscentes): tarjetas de noche; el acento es el color real de la luz de cada organismo.
+// Documental 005 (esterilización): tarjetas oscuras y cálidas; el acento va del frío (azul) al calor (naranja y rojo).
 const PALETA = [
-  { fondo: '#0b1220', tinta: BLANCO, acento: KC.gold2 },
-  { fondo: '#141019', tinta: BLANCO, acento: '#FFB05A' },
-  { fondo: '#08160d', tinta: BLANCO, acento: '#3DFF4A' },
-  { fondo: '#06161a', tinta: BLANCO, acento: '#00E5E0' },
-  { fondo: '#061224', tinta: BLANCO, acento: '#00A6FF' },
-  { fondo: '#0a160b', tinta: BLANCO, acento: '#4BFF45' },
-  { fondo: '#12160a', tinta: BLANCO, acento: '#B8FF1F' },
-  { fondo: '#0b1220', tinta: BLANCO, acento: KC.gold2 },
-  { fondo: '#08160d', tinta: BLANCO, acento: '#3DFF4A' },
+  { fondo: '#120d0a', tinta: BLANCO, acento: KC.gold2 },
+  { fondo: '#0b0a10', tinta: BLANCO, acento: '#bfe4ff' },
+  { fondo: '#07090f', tinta: BLANCO, acento: '#3DFF7A' },
+  { fondo: '#120e0a', tinta: BLANCO, acento: '#FFB05A' },
+  { fondo: '#0a0d14', tinta: BLANCO, acento: '#aebdd6' },
+  { fondo: '#120e0a', tinta: BLANCO, acento: KC.gold2 },
+  { fondo: '#0b0f18', tinta: BLANCO, acento: '#ff8a7a' },
+  { fondo: '#080a10', tinta: BLANCO, acento: '#7fc4ff' },
+  { fondo: '#120d0a', tinta: BLANCO, acento: '#ff5a4a' },
 ];
 
 /* ---------------- línea de tiempo ---------------- */
@@ -288,7 +288,7 @@ const ESCENAS_TIPO = { foto: EscenaFoto, fotos: EscenaFotos, texto: EscenaTexto,
 
 /* ---------------- capas fijas ---------------- */
 // Nombres científicos: siempre en cursiva (subtítulos y etiquetas).
-const CIENTIFICOS = /(Panellus stipticus|Panellus|Mycena chlorophos|Armillaria|Omphalotus|Aliivibrio fischeri|Euprymna scolopes|Vibrio vulnificus|Vibrio parahaemolyticus|Pyrocystis lunula|Pyrocystis|Neonothopanus nambi|Photinus pyralis|Photinus palaciosi|foxfire)/g;
+const CIENTIFICOS = /(Geobacillus stearothermophilus|Geobacillus|Bacillus cereus|Bacillus|Pleurotus ostreatus|Pleurotus|Trichoderma)/g;
 function conCursivas(texto) {
   return texto.split(CIENTIFICOS).map((s, i) => (i % 2 ? <i key={i} style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 500, letterSpacing: 0 }}>{s}</i> : s));
 }
