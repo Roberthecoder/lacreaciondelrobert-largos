@@ -1,4 +1,4 @@
-# Documental 005 · ¿Por qué NO basta con 15 minutos? La esterilización del sustrato, por dentro
+# Documental 001 · ¿Por qué NO basta con 15 minutos? La esterilización del sustrato, por dentro
 
 Versión 2 (13 nov 2026). Expositiva, 100 % ilustrada, sin voz por ahora. Duración: 8.8 min (526.7 s).
 Tesis: 15 minutos a 121 °C no alcanzan para casi nada de la preparación de inóculo y sustrato; los frascos de grano suelen ir de 60 a 90 minutos y las bolsas de 2 a 2.5 horas porque el reloj de la receta empieza cuando el centro llega a 121 °C.

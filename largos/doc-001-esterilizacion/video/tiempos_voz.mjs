@@ -66,7 +66,7 @@ const bloques = [];
       tt += d; });
   }); }
 const musWav = path.join(VOZ, 'musica.wav');
-const { generarMusica } = await import('./musica_largo.mjs');
+const { generarMusica } = await import('./musica_luminosa.mjs'); // cama luminosa del manual maestro (22 nov 2026)
 generarMusica(bloques, total, musWav);
 
 // MEZCLA OFICIAL de la sala de shots (sonido «5» elegido por Robert el 30 oct 2026; valores en mezcla.json,
@@ -91,8 +91,14 @@ const bandas =
   `[d]highpass=f=3500,volume=${MZ.agudos_db}dB[hi];[hi][s3]sidechaincompress=threshold=0.05:ratio=1.3:knee=4:attack=60:release=600[hid];` +
   '[lod][harm][midd][hid]amix=inputs=4:normalize=0[mus];' +
   `[mus][vz]amix=inputs=2:normalize=0,equalizer=f=3000:t=q:w=1.2:g=${MZ.presencia_3k_db},equalizer=f=6000:t=q:w=1:g=${MZ.brillo_6k_db}[o]`;
+// Mezcla «luminosa» (manual maestro, 22 nov 2026): la música entra completa, sin nada debajo de 90 Hz, y baja toda junta al hablar.
+const luminosa =
+  `[1:a]acompressor=threshold=-18dB:ratio=3:attack=5:release=120:makeup=1,volume=${gVoz.toFixed(2)}dB,asplit=2[s][vz];` +
+  `[0:a]volume=${gMus.toFixed(2)}dB,highpass=f=90:p=2,equalizer=f=4500:t=q:w=1.2:g=${MZ.agudos_db}[m];` +
+  `[m][s]sidechaincompress=threshold=0.03:ratio=${MZ.medios_ratio}:knee=4:attack=40:release=500[md];` +
+  `[md][vz]amix=inputs=2:normalize=0,equalizer=f=3000:t=q:w=1.2:g=${MZ.presencia_3k_db},equalizer=f=6000:t=q:w=1:g=${MZ.brillo_6k_db}[o]`;
 const mezWav = path.join(VOZ, 'mezcla_narrada.wav');
-ff(['-i', musWav, '-i', vozProc, '-filter_complex', bandas, '-map', '[o]', '-ar', '48000', '-c:a', 'pcm_f32le', mezWav]);
+ff(['-i', musWav, '-i', vozProc, '-filter_complex', MZ.estilo === 'luminosa' ? luminosa : bandas, '-map', '[o]', '-ar', '48000', '-c:a', 'pcm_f32le', mezWav]);
 // volumen final, igual que motor/render.mjs
 const lim = 'alimiter=limit=0.84:attack=3:release=80:asc=1:level=false';
 const i0 = medir(mezWav); let g = MZ.final_lufs_narrado - i0;

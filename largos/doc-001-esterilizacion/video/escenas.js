@@ -1,4 +1,4 @@
-// escenas.js — Documental 005 · ¿Por qué NO basta con 15 minutos? La esterilización del sustrato, por dentro.
+// escenas.js — Documental 001 · ¿Por qué NO basta con 15 minutos? La esterilización del sustrato, por dentro.
 // Versión 2 (13 nov 2026, revisión de Robert): solo datos de artículos arbitrados, sin frases repetidas, con frascos además de bolsas,
 // y con la tesis al frente: 15 min a 121 °C no alcanzan para inóculo ni sustrato; por qué los frascos van de 60 a 90 min y las bolsas de 2 a 2.5 h.
 // Cada capítulo: { num, titulo, sub?, tarjeta?, lineas: [{ t: texto del subtítulo (igual a guion_final.md), v?: visual, robert?: [pose, lado] }] }

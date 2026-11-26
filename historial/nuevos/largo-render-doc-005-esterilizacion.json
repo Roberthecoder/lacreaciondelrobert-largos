@@ -1,3 +1,0 @@
-{ "temas": [ { "id": "doc-esterilizacion-15-minutos", "titulo": "¿Por qué NO basta con 15 minutos? La esterilización del sustrato, por dentro", "serie": "Documentales", "numero": 5,
-  "estado": "renderizado", "carpeta": "largos/doc-005-esterilizacion", "rama": "largo-render/doc-005-esterilizacion", "fuentes": ["Lemieux et al. 2006, doi:10.1128/AEM.02563-05", "Setlow y Christie 2021, doi:10.1007/s11274-021-03108-0", "NCHFP 2025, Using Pressure Canners"],
-  "fecha": "2026-11-12", "derivados": ["Pasteurizar paja con cal o agua caliente, por dentro", "Qué es el valor D y por qué la muerte de microbios es logarítmica", "Por qué el agua hierve a menos grados en la altura"] } ] }

@@ -1,4 +1,4 @@
-# Verificación · Documental 005, versión 2 (13 nov 2026)
+# Verificación · Documental 001, versión 2 (13 nov 2026)
 
 ## Qué se abrió hoy y qué no
 - **Leídos hoy (resumen del artículo en PubMed Central o en la revista):** F20 Ozanne 1993 (276 bolsas; 46 min control, 60 con agua o doble bolsa, 82 en contenedor vertical, 37 con cortes, 32 a 123 °C y 19 a 132 °C), F21 Rutala 1982 (cargas de 2.27, 4.54 y 6.80 kg; 90 min en acero para matar las esporas en las de 4.54 y 6.80 kg), F27 Gupta 2020 (texto completo: ciclos de 20 min a 15 psi cada 24 h; reducción bacteriana de 23.33, 83.33 y 98.66 %; fúngica de 54.00, 89.33 y 98.66 %), F26 Swenson 2018 (resumen), F30 Lee 1979 (resumen: 21 indicadores, solo 2 integran bien tiempo y temperatura entre 116 y 132 °C), F31 Rutala 1996 (resumen).

@@ -1,4 +1,4 @@
-# Documental 005 · Esterilización del sustrato (16:9, 100 % ilustrado)
+# Documental 001 · Esterilización del sustrato (16:9, 100 % ilustrado)
 
 «¿Por qué NO basta con 15 minutos? La esterilización del sustrato, por dentro». Versión expositiva, sin voz (subtítulos y música), hecha con el kit **cine de luz** (`video/cine-luz.jsx`): cada escena es un lienzo dibujado en función del tiempo.
 
@@ -21,8 +21,8 @@ Son 40 escenas de lienzo en 9 capítulos, más la tarjeta de marca. Abre y cierr
 El mapa de calor no es decorativo: `ganado(rr, Fo)` es la solución de conducción en un cilindro largo y con ella se dibujan los cortes y las curvas del capítulo 3 (cálculo C2 de `fuentes.md`).
 
 ## Comandos (desde `motor/`)
-- Hoja de cuadros: `NAVEGADOR=chrome node preview.mjs ../largos/doc-005-esterilizacion "Documental 005.dc.html" hoja.png 5,60,120 --horizontal`
+- Hoja de cuadros: `NAVEGADOR=chrome node preview.mjs ../largos/doc-005-esterilizacion "Documental 001.dc.html" hoja.png 5,60,120 --horizontal`
   (si el primer tiempo pasa de 280 s, pon antes un tiempo chico).
-- Un tramo: `node render.mjs ../largos/doc-005-esterilizacion "Documental 005.dc.html" tramo.mp4 --horizontal --fps 24 --desde 0 --hasta 31`
+- Un tramo: `node render.mjs ../largos/doc-005-esterilizacion "Documental 001.dc.html" tramo.mp4 --horizontal --fps 24 --desde 0 --hasta 31`
 - Completo en la nube: cada push a la rama `largo-render/doc-005-esterilizacion` que toque `largos/` lanza `render-largo.yml` y deja el MP4 en Releases.
 - Regenerar el guion: ver el encabezado de `guion_final.md` (sale de `video/escenas.js`).

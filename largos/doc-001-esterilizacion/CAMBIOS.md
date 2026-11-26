@@ -1,4 +1,4 @@
-# Cambios · Documental 005
+# Cambios · Documental 001
 
 ## Versión 2 (13 nov 2026), con la revisión de Robert
 1. **Solo artículos arbitrados.** Salieron siete fuentes que no lo eran y sus frases (lista en `verificacion.md`). Entraron once artículos (F20 a F31 en `fuentes.md`).
@@ -20,3 +20,9 @@
 
 ## Versión 1 (12 nov 2026)
 Versión expositiva 100 % ilustrada a partir del guion original (carpeta `original/`).
+
+## Versión 3 (25 nov 2026): voz y número nuevo
+1. Ahora es el documental 001 (antes 005). Robert renumeró: 001 esterilización, 002 come plástico, 003 bioluminiscentes, 004 crear cepa, 005 contaminantes, 006 cartón contra plástico, 007 hongo que no come.
+2. Voz clonada de Robert (ElevenLabs, 7,166 caracteres), aprobada por él el 25 nov 2026. La animación sigue los tiempos reales de la voz (`video/tiempos_voz.js`); el video quedó en 8.4 minutos.
+3. Lo que oye la voz sale de `video/decir.mjs`: lee «grados Celsius» en lugar del símbolo, «punto» en los decimales y quita los paréntesis. Los subtítulos no cambian.
+4. Música nueva: la «cama luminosa» del manual maestro de shots (registro medio-agudo, sin cama grave) y su mezcla (`video/mezcla.json`, estilo luminosa, final a −10 LUFS).

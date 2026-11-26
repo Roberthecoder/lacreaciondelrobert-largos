@@ -1,4 +1,4 @@
-# Fuentes · Documental 005 · Esterilización del sustrato (versión 2, 13 nov 2026)
+# Fuentes · Documental 001 · Esterilización del sustrato (versión 2, 13 nov 2026)
 
 Regla de esta versión (Robert, 13 nov 2026): todo dato con artículo arbitrado, o no se pone. Se quitaron la guía de la Universidad de Columbia Británica con la tabla del fabricante STERIS, la guía de enlatado NCHFP, la página del laboratorio de Penn State, la tesis de Bréant, la guía del fabricante Priorclave y las dos entradas de Wikipedia, junto con las frases que dependían de ellas. Se conserva la numeración vieja (F1, F4, F9, F17, F19) y las nuevas empiezan en F20.
 
