@@ -1,4 +1,4 @@
-# Documental 006 · ¿Hay algo que no se pueda comer un hongo? (16:9, 100 % ilustrado)
+# Documental 007 · ¿Hay algo que no se pueda comer un hongo? (16:9, 100 % ilustrado)
 
 Versión expositiva, sin voz (subtítulos y música), de 12.6 minutos. Hecho con el motor de largos y el kit **cine de luz** (`video/cine-luz.jsx`): cada escena es un lienzo (canvas) dibujado en función del tiempo.
 
@@ -21,9 +21,9 @@ Versión expositiva, sin voz (subtítulos y música), de 12.6 minutos. Hecho con
 Hifa en crema, enzimas en amarillo (comecocos), radicales libres como chispas naranjas, lignina en café, celulosa en verde claro, flúor en verde agua. Los tres veredictos: verde (se lo comen), amarillo (crecen encima y lo atacan), rojo (sin pruebas).
 
 ## Comandos (desde `motor/`)
-- Hoja de cuadros: `NAVEGADOR=chrome node preview.mjs ../largos/doc-006-hongo-no-come "Documental 006.dc.html" hoja.png 5,60,120 --horizontal`
+- Hoja de cuadros: `NAVEGADOR=chrome node preview.mjs ../largos/doc-006-hongo-no-come "Documental 007.dc.html" hoja.png 5,60,120 --horizontal`
   (si el primer tiempo pasa de 280 s, pon antes un tiempo chico).
-- Un tramo: `node render.mjs ../largos/doc-006-hongo-no-come "Documental 006.dc.html" tramo.mp4 --horizontal --fps 24 --desde 0 --hasta 27`
+- Un tramo: `node render.mjs ../largos/doc-006-hongo-no-come "Documental 007.dc.html" tramo.mp4 --horizontal --fps 24 --desde 0 --hasta 27`
 - Completo en la nube: cada push a la rama `largo-render/doc-006-hongo-no-come` que toque `largos/` lanza `render-largo.yml` y deja el MP4 en Releases.
 - Si editas `escenas.js`, hay que volver a generar `guion_final.md` (una frase por renglón, mismas duraciones que `tiempos.mjs`) y la música.
 

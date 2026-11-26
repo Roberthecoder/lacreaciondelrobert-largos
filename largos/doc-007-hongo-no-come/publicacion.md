@@ -1,4 +1,4 @@
-# Documental 006 · Textos para publicar (borrador para YouTube)
+# Documental 007 · Textos para publicar (borrador para YouTube)
 
 ## Título (opciones)
 1. ¿Hay algo que un hongo NO se pueda comer?

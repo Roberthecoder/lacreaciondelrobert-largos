@@ -1,4 +1,4 @@
-# Documental 006 · Qué cambió respecto al guion original
+# Documental 007 · Qué cambió respecto al guion original
 
 El original (`original/guion_final.md`, antes doc-003) estaba pensado para la voz de Robert. Esta versión es expositiva, sin voz (subtítulos y música) y 100 % ilustrada.
 
@@ -35,3 +35,7 @@ El original (`original/guion_final.md`, antes doc-003) estaba pensado para la vo
 6. **Dibujos esquemáticos** que conviene mirar con ojo de micólogo: racimo de *Pleurotus* sobre el bloque de bagazo (primero blanco, luego setas), conidios de *Pestalotiopsis*, esporas de *Chaetomium*, colonia rosada de *Fusarium*, tapete de *Amorphotheca* en el tanque.
 7. El título de YouTube y la pregunta final («¿cuántos de los ocho acertaste?») son propuestas.
 8. Las preguntas 6, 7, 9 y 10 de `original/preguntas.md` (mesa real o dibujada, stickers o video, duración, título) quedaron resueltas de hecho por el formato ilustrado; las 1 a 5 ya no aplican.
+
+## 25 nov 2026: número nuevo y música nueva
+1. Ahora es el documental 007 (antes 006). Numeración nueva de Robert: 001 esterilización, 002 come plástico, 003 bioluminiscentes, 004 crear cepa, 005 contaminantes, 006 cartón contra plástico, 007 hongo que no come.
+2. Música nueva: la «cama luminosa» del manual maestro de shots (registro medio-agudo, sin cama grave), con `node video/musica_sin_voz.mjs`. Sigue sin voz: los créditos de ElevenLabs se usaron en los documentales 001, 002 y 003.

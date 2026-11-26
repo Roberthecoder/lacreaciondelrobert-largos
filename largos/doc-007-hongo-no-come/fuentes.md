@@ -1,4 +1,4 @@
-# Documental 006 · ¿Hay algo que no se pueda comer un hongo? · Fuentes
+# Documental 007 · ¿Hay algo que no se pueda comer un hongo? · Fuentes
 
 Numeración nueva (F1, F2…) para la versión expositiva. Entre corchetes va la clave que tenía cada fuente en `original/fuentes.md`, donde están las frases textuales completas y cómo se abrió cada una (7 nov 2026). La cita textual corta de cada dato está en `verificacion.md`.
 

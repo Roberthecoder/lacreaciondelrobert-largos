@@ -1,4 +1,4 @@
-# Documental 006 · ¿Hay algo que no se pueda comer un hongo? · Guion final (versión expositiva)
+# Documental 007 · ¿Hay algo que no se pueda comer un hongo? · Guion final (versión expositiva)
 
 Este archivo se genera desde `video/escenas.js`: una frase por renglón, y cada renglón es un subtítulo (el documental va sin voz, con música). Es la **versión expositiva** del guion de `original/guion_final.md`: solo hechos con fuente, sin experiencia personal de Robert y sin las líneas `[PREGUNTA]`. Lo que se quitó o reescribió está en `CAMBIOS.md`; cada dato con su fuente, en `fuentes.md` y `verificacion.md`.
 

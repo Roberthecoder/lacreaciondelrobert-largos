@@ -1,4 +1,4 @@
-# Documental 006 · Verificación dato por dato (versión expositiva)
+# Documental 007 · Verificación dato por dato (versión expositiva)
 
 Cada dato del guion final con su fuente (numeración de `fuentes.md`) y una cita textual corta. Las citas se tomaron de `original/fuentes.md` y `original/verificacion.md` (verificación independiente del 7 nov 2026, que abrió las fuentes); en esta pasada **no se volvieron a abrir los artículos**, salvo F7. Estado: OK = la cita sostiene la frase tal como quedó; AVISO = hay algo que Robert debe mirar.
 
