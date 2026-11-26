@@ -1,4 +1,4 @@
-# Documental 001 · Seres vivos que brillan: cuáles podrías tener en tu cuarto (y cuáles no)
+# Documental 003 · Seres vivos que brillan: cuáles podrías tener en tu cuarto (y cuáles no)
 
 - **Antes era el documental 005** («Lo que brilla junto a mi cama»). Renumerado a 001 por decisión de Robert (12 nov 2026).
 - **Versión expositiva** (decisión de Robert, 12 nov 2026): solo hechos con fuente. Se quitó toda la experiencia personal y todas las líneas `[PREGUNTA]`; nada de este guion depende de respuestas pendientes.

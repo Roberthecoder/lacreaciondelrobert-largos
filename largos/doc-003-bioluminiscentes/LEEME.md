@@ -1,4 +1,4 @@
-# Documental 001 · Bioluminiscentes (16:9, 100 % ilustrado)
+# Documental 003 · Bioluminiscentes (16:9, 100 % ilustrado)
 
 Hecho con el motor de largos más el kit nuevo **cine de luz** (`video/cine-luz.jsx`): cada escena es un lienzo (canvas) dibujado en función del tiempo, con luz aditiva, hifas que crecen, enjambres de bacterias y cámara lenta.
 
@@ -14,9 +14,9 @@ Hecho con el motor de largos más el kit nuevo **cine de luz** (`video/cine-luz.
 | `video/musica_doc.py` | Genera la música (`video/voz/mezcla.m4a`): un acorde por capítulo y una campana por frase. |
 
 ## Comandos (desde `motor/`)
-- Hoja de cuadros: `NAVEGADOR=chrome node preview.mjs ../largos/doc-001-bioluminiscentes "Documental 001.dc.html" hoja.png 5,60,120 --horizontal`
+- Hoja de cuadros: `NAVEGADOR=chrome node preview.mjs ../largos/doc-001-bioluminiscentes "Documental 003.dc.html" hoja.png 5,60,120 --horizontal`
   (si el primer tiempo pasa de 280 s, pon antes un tiempo chico: el primer salto a otra "Parte" a veces no entra).
-- Un tramo: `node render.mjs ../largos/doc-001-bioluminiscentes "Documental 001.dc.html" tramo.mp4 --horizontal --fps 24 --desde 0 --hasta 27`
+- Un tramo: `node render.mjs ../largos/doc-001-bioluminiscentes "Documental 003.dc.html" tramo.mp4 --horizontal --fps 24 --desde 0 --hasta 27`
 - Completo en la nube: cada push a esta rama que toque `largos/` lanza `render-largo.yml` y deja el MP4 en Releases → «Largo · largo-render/doc-001-bioluminiscentes».
 
 ## Para agregar una escena

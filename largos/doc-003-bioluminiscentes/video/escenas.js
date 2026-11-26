@@ -1,4 +1,4 @@
-// escenas.js — Documental 001 · Seres vivos que brillan: cuáles podrías tener en tu cuarto (y cuáles no).
+// escenas.js — Documental 003 · Seres vivos que brillan: cuáles podrías tener en tu cuarto (y cuáles no).
 // Versión EXPOSITIVA (12 nov 2026, decisión de Robert): solo hechos con fuente; sin experiencia personal ni líneas [PREGUNTA].
 // Cada capítulo: { num, titulo, sub?, tarjeta?, lineas: [{ t: texto del subtítulo (igual a guion_final.md), v?: visual, robert?: [pose, lado] }] }
 // Una línea sin "v" continúa el visual anterior. v: { tipo: 'lienzo', id } dibuja window.LUZ[id] (cine-luz*.jsx).
@@ -174,7 +174,7 @@ return [
     { t: 'y, solo cuando son suficientes, se prenden juntas.' },
     { t: 'Así que ninguna de esas luces es una lámpara.' },
     { t: 'Es vida, platicando en la oscuridad.', d: 4.4 },
-    { t: 'Soy Robert, y esto es La Creación del Robert.', v: { tipo: 'marca', sub: 'Y tú, ¿cuál escogerías?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'abajo-der'] },
+    { t: 'Soy Robert, y esto es La Creación del Robert.', v: { tipo: 'marca', sub: 'Y tú, ¿cuál escogerías?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'arriba-der'] },
     { t: 'Y si tú tuvieras una de estas en tu cuarto, ¿cuál escogerías?', d: 5 },
   ] },
 ];

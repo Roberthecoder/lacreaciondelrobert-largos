@@ -27,3 +27,9 @@ Decisiones de Robert del 12 nov 2026: renumerar a **001**, hacerlo **100 % ilust
 - Ver el borrador y decir qué escenas cambiar.
 - Decidir la voz (grabada por él o clonada). Las 19 preguntas del original ya no bloquean nada; solo harían falta si se quiere regresar la parte personal.
 - En las fichas (letra de máquina) los nombres científicos van en mayúsculas rectas solo donde no cabía cursiva; en rótulos y subtítulos van en cursiva.
+
+## Versión 3 (25 nov 2026): voz y número nuevo
+1. Ahora es el documental 003 (antes 001). Numeración nueva de Robert: 001 esterilización, 002 come plástico, 003 bioluminiscentes, 004 crear cepa, 005 contaminantes, 006 cartón contra plástico, 007 hongo que no come.
+2. Voz clonada de Robert (ElevenLabs, 8,787 caracteres), aprobada por él el 25 nov 2026. La animación sigue los tiempos reales de la voz; el video quedó en 10.1 minutos.
+3. Música nueva: la «cama luminosa» del manual maestro de shots y su mezcla.
+4. Despedida: «Soy Robert, y esto es La Creación del Robert». El Robert de la tarjeta final ya no tapa el nombre del canal.
