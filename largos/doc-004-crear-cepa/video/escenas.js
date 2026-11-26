@@ -156,7 +156,7 @@ return [
     { t: 'Puede ser el clon de una seta.' },
     { t: 'O la cruza de dos monocariones, o de un dicarión que le donó un núcleo a un monocarión.' },
     { t: 'Y detrás hay alguien que buscó fíbulas al microscopio y guardó esa cepa para que cambiara lo menos posible.' },
-    { t: 'Soy Robert, de La Creación del Robert.', v: { tipo: 'marca', sub: '¿Qué cualidad le buscarías a tu cepa?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'arriba-der'] },
+    { t: 'Soy Robert, y esto es La Creación del Robert.', v: { tipo: 'marca', sub: '¿Qué cualidad le buscarías a tu cepa?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'arriba-der'] },
     { t: 'Si tú pudieras crear una cepa de hongo, ¿qué cualidad le buscarías?', d: 5 },
   ] },
 ];
