@@ -1,4 +1,4 @@
-# Documental 007 · ¿Los organismos come plástico son una estafa?
+# Documental 002 · ¿Los organismos come plástico son una estafa?
 
 Versión 1 (13 nov 2026). Expositiva, 100 % ilustrada, sin voz por ahora. Duración: 6.0 min (361.0 s).
 Cada dato lleva su fuente entre corchetes (lista completa en `fuentes.md`). [C] = cálculo propio con datos de las fuentes.

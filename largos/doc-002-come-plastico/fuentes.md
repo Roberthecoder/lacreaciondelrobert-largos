@@ -1,4 +1,4 @@
-# Fuentes · Documental 007 · ¿Los organismos come plástico son una estafa? (13 nov 2026)
+# Fuentes · Documental 002 · ¿Los organismos come plástico son una estafa? (13 nov 2026)
 
 Regla: solo artículos arbitrados. Formato APA 7.
 

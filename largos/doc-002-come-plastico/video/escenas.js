@@ -1,4 +1,4 @@
-// escenas.js — Documental 007 · ¿Los organismos come plástico son una estafa?
+// escenas.js — Documental 002 · ¿Los organismos come plástico son una estafa?
 // Expositivo, 100 % ilustrado, sin voz por ahora (13 nov 2026). Solo datos de artículos arbitrados (ver ../fuentes.md y ../verificacion.md).
 // Cada capítulo: { num, titulo, sub?, tarjeta?, lineas: [{ t: texto del subtítulo, v?: visual, robert?: [pose, lado] }] }
 window.CAPS = (() => {
