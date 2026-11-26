@@ -1,4 +1,4 @@
-# Documental 002 · ¿Cómo se crea una cepa de un hongo? (guion final)
+# Documental 004 · ¿Cómo se crea una cepa de un hongo? (guion final)
 
 Versión expositiva (12 de noviembre de 2026, decisión de Robert): solo hechos con fuente, sin experiencia personal y sin las líneas marcadas [PREGUNTA] del guion original. Este archivo se genera desde `video/escenas.js`: cada renglón es un subtítulo del video (por ahora sin voz). Las fuentes de cada dato están en `fuentes.md` y `verificacion.md`; lo que cambió respecto al original está en `CAMBIOS.md`. El guion original se conserva en `original/`.
 

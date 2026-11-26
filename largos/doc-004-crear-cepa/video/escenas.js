@@ -1,4 +1,4 @@
-// escenas.js — Documental 002 · ¿Cómo se crea una cepa de un hongo?
+// escenas.js — Documental 004 · ¿Cómo se crea una cepa de un hongo?
 // Versión EXPOSITIVA (12 nov 2026, decisión de Robert): solo hechos con fuente; sin experiencia personal ni líneas [PREGUNTA].
 // Cada capítulo: { num, titulo, sub?, tarjeta?, lineas: [{ t: texto del subtítulo (igual a guion_final.md), v?: visual, robert?: [pose, lado] }] }
 // Una línea sin "v" continúa el visual anterior. v: { tipo: 'lienzo', id } dibuja window.LUZ[id] (cine-luz-a.jsx y cine-luz-b.jsx).

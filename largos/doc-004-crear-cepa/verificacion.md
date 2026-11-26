@@ -1,4 +1,4 @@
-# Verificación · Documental 002 (versión expositiva)
+# Verificación · Documental 004 (versión expositiva)
 
 Dato por dato: qué dice el guion (`guion_final.md`), su fuente (numeración de `fuentes.md`) y la cita textual corta. Las citas se copiaron de la verificación original del 7 de noviembre de 2026 (`original/verificacion.md` y `original/fuentes.md`); en esta versión no se volvieron a abrir las fuentes. Las líneas marcadas DEDUCCIÓN o SIN FUENTE DIRECTA son las que Robert debe mirar primero.
 

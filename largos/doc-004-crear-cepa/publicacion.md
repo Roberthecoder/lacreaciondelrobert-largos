@@ -1,4 +1,4 @@
-# Publicación · Documental 002 (borrador para YouTube)
+# Publicación · Documental 004 (borrador para YouTube)
 
 ## Título
 Esto no es semilla de hongo: cómo se crea una cepa

@@ -1,4 +1,4 @@
-# Documental 002 · ¿Cómo se crea una cepa de un hongo? (16:9, 100 % ilustrado)
+# Documental 004 · ¿Cómo se crea una cepa de un hongo? (16:9, 100 % ilustrado)
 
 Hecho con el motor de largos y el kit **cine de luz** (`video/cine-luz.jsx`): cada escena es un lienzo dibujado en función del tiempo. Sin voz por ahora: cada frase es un subtítulo y la música sale del guion.
 
@@ -20,9 +20,9 @@ Hecho con el motor de largos y el kit **cine de luz** (`video/cine-luz.jsx`): ca
 Colores fijos: núcleo de un padre en azul, del otro en dorado, un tercero en verde; micelio en blanco hueso; seta rosa en rosa.
 
 ## Comandos (desde `motor/`)
-- Hoja de cuadros: `NAVEGADOR=chrome node preview.mjs ../largos/doc-002-crear-cepa "Documental 002.dc.html" hoja.png 5,60,120 --horizontal`
+- Hoja de cuadros: `NAVEGADOR=chrome node preview.mjs ../largos/doc-002-crear-cepa "Documental 004.dc.html" hoja.png 5,60,120 --horizontal`
   (si el primer tiempo pasa de 280 s, pon antes un tiempo chico).
-- Un tramo: `node render.mjs ../largos/doc-002-crear-cepa "Documental 002.dc.html" tramo.mp4 --horizontal --fps 24 --desde 350 --hasta 381`
+- Un tramo: `node render.mjs ../largos/doc-002-crear-cepa "Documental 004.dc.html" tramo.mp4 --horizontal --fps 24 --desde 350 --hasta 381`
 - Completo en la nube: cada push a `largo-render/doc-002-crear-cepa` que toque `largos/` lanza `render-largo.yml` y deja el MP4 en Releases.
 
 ## Para cambiar una frase o una escena

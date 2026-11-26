@@ -1,4 +1,4 @@
-# Fuentes · Documental 002 · ¿Cómo se crea una cepa de un hongo? (versión expositiva)
+# Fuentes · Documental 004 · ¿Cómo se crea una cepa de un hongo? (versión expositiva)
 
 Las fuentes son las mismas del guion original (`original/fuentes.md`, investigación y verificación del 7 de noviembre de 2026), ahora numeradas F1 a F27. Entre paréntesis va la clave que tenían en el original. En esta versión no se abrieron de nuevo: las citas textuales de `verificacion.md` se copiaron de la verificación original.
 

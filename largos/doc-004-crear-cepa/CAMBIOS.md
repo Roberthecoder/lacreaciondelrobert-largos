@@ -1,4 +1,4 @@
-# Cambios respecto al guion original · Documental 002
+# Cambios respecto al guion original · Documental 004
 
 El guion original (`original/guion_final.md`, 11 capítulos, pensado para voz de Robert) se convirtió a versión expositiva, sin voz, 100 % ilustrada con el kit cine de luz. Quedó en 10 bloques (gancho y 9 capítulos), 43 escenas, 125 frases, 12.0 minutos.
 
@@ -36,3 +36,7 @@ El guion original (`original/guion_final.md`, 11 capítulos, pensado para voz de
 6. Dura 12.0 minutos, en el tope de lo pedido. Lo más fácil de recortar: Buller (23 s) y protoplastos (15 s).
 7. Varias fuentes de método no son arbitradas (páginas de Penn State, Universidad de Florida, Jardín Botánico Nacional de Australia, y una de Wikipedia para «cariópside»). Vienen así del original.
 8. Las fuentes no se volvieron a abrir en esta versión; las citas son las de la verificación del 7 de noviembre.
+
+## 25 nov 2026: número nuevo y música nueva
+1. Ahora es el documental 004 (antes 002). Numeración nueva de Robert: 001 esterilización, 002 come plástico, 003 bioluminiscentes, 004 crear cepa, 005 contaminantes, 006 cartón contra plástico, 007 hongo que no come.
+2. Música nueva: la «cama luminosa» del manual maestro de shots (registro medio-agudo, sin cama grave), con `node video/musica_sin_voz.mjs`. Sigue sin voz: los créditos de ElevenLabs se usaron en los documentales 001, 002 y 003.
