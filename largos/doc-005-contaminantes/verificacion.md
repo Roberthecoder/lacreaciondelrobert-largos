@@ -1,4 +1,4 @@
-# Verificación dato por dato · Documental 003
+# Verificación dato por dato · Documental 005
 
 Cada dato del guion con su fuente (numeración de `fuentes.md`) y una cita textual corta.
 Aviso honesto: las citas se extrajeron con un lector automático de páginas el 12 de noviembre de 2026. Antes de publicar conviene que alguien abra cada fuente y confirme la cita, sobre todo las de F1, cuyo texto en línea viene de un escaneo con errores.

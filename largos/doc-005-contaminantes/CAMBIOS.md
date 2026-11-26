@@ -1,4 +1,4 @@
-# Cambios y pendientes · Documental 003 (contaminantes)
+# Cambios y pendientes · Documental 005 (contaminantes)
 
 Este documental no tenía guion original, así que no se quitó nada: el guion se escribió desde cero el 12 de noviembre de 2026 con fuentes publicadas. Nadie lo ha revisado. Abajo está todo lo que Robert debe confirmar con su experiencia de cultivo antes de publicarlo.
 
@@ -56,3 +56,7 @@ Este documental no tenía guion original, así que no se quitó nada: el guion s
 3. Se avisa dos veces, al inicio y en la guía final, que la identificación a simple vista es tentativa y que un moho se confirma al microscopio.
 4. El cierre regresa al desfile en lugar de a la mancha verde. Despedida: «Soy Robert, y esto es La Creación del Robert».
 5. Pendiente: imágenes reales. Desde la nube no se pueden bajar fotos (internet bloqueado) y el permiso para usar carpetas de la computadora de Robert fue rechazado por el sistema; falta que Robert conecte una carpeta o adjunte las fotos. `guion_final.md` todavía es el de la versión 1.
+
+## 25 nov 2026: número nuevo y música nueva
+1. Ahora es el documental 005 (antes 003). Numeración nueva de Robert: 001 esterilización, 002 come plástico, 003 bioluminiscentes, 004 crear cepa, 005 contaminantes, 006 cartón contra plástico, 007 hongo que no come.
+2. Música nueva: la «cama luminosa» del manual maestro de shots (registro medio-agudo, sin cama grave), con `node video/musica_sin_voz.mjs`. Sigue sin voz: los créditos de ElevenLabs se usaron en los documentales 001, 002 y 003.

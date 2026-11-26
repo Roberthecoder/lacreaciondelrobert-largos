@@ -1,4 +1,4 @@
-# Fuentes · Documental 003 (contaminantes del cultivo de hongos)
+# Fuentes · Documental 005 (contaminantes del cultivo de hongos)
 
 Consultadas el 12 de noviembre de 2026. La numeración (F1, F2…) es la que usa `verificacion.md`.
 Tipo: A = artículo arbitrado · L = libro de referencia de cultivo · E = extensión universitaria u organismo técnico · G = organismo de gobierno · W = página técnica no arbitrada (solo como apoyo).

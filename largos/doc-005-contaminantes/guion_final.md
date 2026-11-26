@@ -1,4 +1,4 @@
-# Documental 003 · Eso verde no es tu hongo: los contaminantes del cultivo de hongos
+# Documental 005 · Eso verde no es tu hongo: los contaminantes del cultivo de hongos
 
 Guion final, versión expositiva (sin voz por ahora: cada renglón es un subtítulo). Se genera desde `video/escenas.js`; si cambias una frase, cámbiala allá.
 Este documental no tenía guion original: se escribió desde cero a partir de fuentes publicadas (`fuentes.md`, `verificacion.md`). No lleva experiencia personal ni frases sin fuente; lo que Robert debe confirmar con su experiencia está en `CAMBIOS.md`.

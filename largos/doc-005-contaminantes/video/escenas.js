@@ -1,4 +1,4 @@
-// escenas.js — Documental 003 · Eso verde no es tu hongo: los contaminantes del cultivo de hongos.
+// escenas.js — Documental 005 · Eso verde no es tu hongo: los contaminantes del cultivo de hongos.
 // Guion EXPOSITIVO escrito desde cero (12 nov 2026): solo hechos con fuente (ver ../fuentes.md y ../verificacion.md).
 // Nadie lo ha revisado todavía: lo que Robert debe confirmar con su experiencia está en ../CAMBIOS.md.
 // Cada capítulo: { num, titulo, sub?, tarjeta?, lineas: [{ t: texto del subtítulo (igual a guion_final.md), v?: visual, robert?: [pose, lado] }] }

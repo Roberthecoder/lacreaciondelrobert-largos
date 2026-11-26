@@ -1,4 +1,4 @@
-# Documental 003 · Contaminantes del cultivo de hongos (16:9, 100 % ilustrado)
+# Documental 005 · Contaminantes del cultivo de hongos (16:9, 100 % ilustrado)
 
 Título propuesto: "Eso verde no es tu hongo: los contaminantes del cultivo de hongos". Dura 11 minutos y medio, sin voz (subtítulos y música). Hecho con el motor de largos y el kit cine de luz (`video/cine-luz.jsx`).
 
@@ -16,9 +16,9 @@ Título propuesto: "Eso verde no es tu hongo: los contaminantes del cultivo de h
 | `video/musica_doc.py` | Genera `video/voz/mezcla.m4a` (un acorde por capítulo, una campana por frase). |
 
 ## Comandos (desde `motor/`)
-- Hoja de cuadros: `NAVEGADOR=chrome node preview.mjs ../largos/doc-003-contaminantes "Documental 003.dc.html" hoja.png 5,60,120 --horizontal`
+- Hoja de cuadros: `NAVEGADOR=chrome node preview.mjs ../largos/doc-003-contaminantes "Documental 005.dc.html" hoja.png 5,60,120 --horizontal`
   (si el primer tiempo pasa de 280 s, pon antes un tiempo chico).
-- Un tramo: `node render.mjs ../largos/doc-003-contaminantes "Documental 003.dc.html" tramo.mp4 --horizontal --fps 24 --desde 0 --hasta 27`
+- Un tramo: `node render.mjs ../largos/doc-003-contaminantes "Documental 005.dc.html" tramo.mp4 --horizontal --fps 24 --desde 0 --hasta 27`
 - Completo en la nube: cada push a la rama `largo-render/doc-003-contaminantes` lanza `render-largo.yml` y deja el MP4 en Releases.
 - Regenerar el guion en texto: se hizo con un script temporal que recorre `escenas.js`; si cambias frases, vuelve a generarlo o edita `guion_final.md` a mano.
 
