@@ -40,3 +40,6 @@ El guion original (`original/guion_final.md`, 11 capítulos, pensado para voz de
 ## 25 nov 2026: número nuevo y música nueva
 1. Ahora es el documental 004 (antes 002). Numeración nueva de Robert: 001 esterilización, 002 come plástico, 003 bioluminiscentes, 004 crear cepa, 005 contaminantes, 006 cartón contra plástico, 007 hongo que no come.
 2. Música nueva: la «cama luminosa» del manual maestro de shots (registro medio-agudo, sin cama grave), con `node video/musica_sin_voz.mjs`. Sigue sin voz: los créditos de ElevenLabs se usaron en los documentales 001, 002 y 003.
+
+## 25 nov 2026 (más tarde): voz
+Voz clonada de Robert (ElevenLabs, 9,527 caracteres) con los créditos que sobraban, aprobada por él el 25 nov 2026. La animación sigue los tiempos reales de la voz; el video quedó en 11.0 minutos. Despedida: «Soy Robert, y esto es La Creación del Robert».
