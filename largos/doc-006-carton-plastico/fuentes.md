@@ -1,4 +1,4 @@
-# Fuentes · Documental 004 · ¿La estafa del cartón? Papel contra plástico, con datos
+# Fuentes · Documental 006 · ¿La estafa del cartón? Papel contra plástico, con datos
 
 Versión expositiva (12 nov 2026). Misma numeración que el guion original. Las fuentes de líneas que ya no están en el guion (F31) se conservan marcadas. Lo que cambió respecto al original está al final, en «Cambios de la versión expositiva».
 

@@ -1,4 +1,4 @@
-# Verificación · Documental 004 · versión expositiva
+# Verificación · Documental 006 · versión expositiva
 
 Qué es este archivo: cada dato del guion expositivo (`guion_final.md`) y de las gráficas, con su fuente (numeración de `fuentes.md`) y una cita textual corta.
 

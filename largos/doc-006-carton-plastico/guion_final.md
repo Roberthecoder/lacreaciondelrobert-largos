@@ -1,4 +1,4 @@
-# Documental 004 · ¿La estafa del cartón? Papel contra plástico, con datos
+# Documental 006 · ¿La estafa del cartón? Papel contra plástico, con datos
 
 **Versión expositiva** (12 nov 2026). Este archivo se genera desde `video/escenas.js`: una frase por renglón, y cada renglón es un subtítulo del video (no hay voz por ahora).
 Solo quedan hechos con fuente: se quitó la experiencia personal y todas las líneas `[PREGUNTA]` del guion original (ver `CAMBIOS.md`). Las fuentes de cada dato están en `fuentes.md` y la revisión dato por dato en `verificacion.md`.

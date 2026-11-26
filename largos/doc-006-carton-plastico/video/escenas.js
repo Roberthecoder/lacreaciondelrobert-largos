@@ -1,4 +1,4 @@
-// escenas.js — Documental 004 · ¿La estafa del cartón? Papel contra plástico, con datos.
+// escenas.js — Documental 006 · ¿La estafa del cartón? Papel contra plástico, con datos.
 // Versión EXPOSITIVA (12 nov 2026, decisión de Robert): solo hechos con fuente; sin experiencia personal ni líneas [PREGUNTA].
 // Cada capítulo: { num, titulo, sub?, tarjeta?, lineas: [{ t: texto del subtítulo (igual a guion_final.md), v?: visual, robert?: [pose, lado] }] }
 // Una línea sin "v" continúa el visual anterior. v: { tipo: 'lienzo', id } dibuja window.LUZ[id] (cine-luz*.jsx).

@@ -1,4 +1,4 @@
-# Cambios respecto al guion original · Documental 004
+# Cambios respecto al guion original · Documental 006
 
 Versión expositiva del 12 de noviembre de 2026. El guion original (con voz de Robert y líneas `[PREGUNTA]`) sigue completo en `original/`.
 
@@ -46,3 +46,7 @@ Versión expositiva del 12 de noviembre de 2026. El guion original (con voz de R
 4. El resumen del PNUMA de 2021 es la fuente de las frases sobre bolsas, porque el informe original de 2020 no abrió. Está dicho en pantalla («PNUMA 2021, resume PNUMA 2020»).
 5. Dos estudios base tienen datos viejos (bolsas de 2006 y muestras de empaques de 2014 y 2015). El año va en pantalla cada vez, pero vale la pena decidir si se busca algo más reciente.
 6. Sin voz por ahora. Si se graba voz, cambian los tiempos y hay que volver a correr la música.
+
+## 25 nov 2026: número nuevo y música nueva
+1. Ahora es el documental 006 (antes 004). Numeración nueva de Robert: 001 esterilización, 002 come plástico, 003 bioluminiscentes, 004 crear cepa, 005 contaminantes, 006 cartón contra plástico, 007 hongo que no come.
+2. Música nueva: la «cama luminosa» del manual maestro de shots (registro medio-agudo, sin cama grave), con `node video/musica_sin_voz.mjs`. Sigue sin voz: los créditos de ElevenLabs se usaron en los documentales 001, 002 y 003.
