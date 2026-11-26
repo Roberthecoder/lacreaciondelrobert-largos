@@ -174,7 +174,7 @@ return [
     { t: 'y, solo cuando son suficientes, se prenden juntas.' },
     { t: 'Así que ninguna de esas luces es una lámpara.' },
     { t: 'Es vida, platicando en la oscuridad.', d: 4.4 },
-    { t: 'Soy Robert, de La Creación del Robert.', v: { tipo: 'marca', sub: 'Y tú, ¿cuál escogerías?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'abajo-der'] },
+    { t: 'Soy Robert, y esto es La Creación del Robert.', v: { tipo: 'marca', sub: 'Y tú, ¿cuál escogerías?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'abajo-der'] },
     { t: 'Y si tú tuvieras una de estas en tu cuarto, ¿cuál escogerías?', d: 5 },
   ] },
 ];
