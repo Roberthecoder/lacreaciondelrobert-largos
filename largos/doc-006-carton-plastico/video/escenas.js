@@ -160,7 +160,7 @@ return [
     { t: 'Y cada uso más reparte el impacto de fabricarla entre más viajes.' },
     { t: 'Al final, lo que más pesa no es solo de qué está hecha.' },
     { t: 'Es cuántas veces se usa.', d: 4.2 },
-    { t: 'Soy Robert, de La Creación del Robert.', v: { tipo: 'marca', sub: 'Y tú, ¿cuántas veces usas una bolsa?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'arriba-der'] },
+    { t: 'Soy Robert, y esto es La Creación del Robert.', v: { tipo: 'marca', sub: 'Y tú, ¿cuántas veces usas una bolsa?' }, d: 3.6, robert: ['avatar_02_apuntando_camara', 'arriba-der'] },
     { t: 'Y tú, ¿cuántas veces usas una bolsa antes de tirarla?', d: 5 },
   ] },
 ];
